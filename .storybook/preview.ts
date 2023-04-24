@@ -1,3 +1,5 @@
+import "@fontsource/material-icons";
+import "../src/global.css";
 import type { Preview } from "@storybook/vue3";
 
 const preview: Preview = {
