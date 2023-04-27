@@ -9,6 +9,9 @@ import Topo from "./moleculas/Topo.vue";
 // Organismos
 import LinhaDoTempo from "./organismos/LinhaDoTempo.vue";
 
+// Tipos
+import * as Tipos from "./type";
+
 export {
   CabecalhoEventos,
   DescricaoEvento,
@@ -17,4 +20,5 @@ export {
   SeparadorPeriodo,
   Topo,
   LinhaDoTempo,
+  Tipos,
 };
