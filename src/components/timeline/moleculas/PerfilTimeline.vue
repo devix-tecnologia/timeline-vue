@@ -1,14 +1,14 @@
 <template>
   <div
-    class="cabecalhoEventos"
+    class="perfilTimeline"
     ref="elementoFixo"
     :style="style"
     :class="{ fixed: isFixed }"
   >
     <!-- :class="{ fixed: isFixed }" -->
-    <AvatarTimeline v-if="imagemCabecalho" :imagem="imagemCabecalho" />
+    <AvatarTimeline v-if="imagemPerfil" :imagem="imagemPerfil" />
     <AvatarTimeline v-else-if="icone" :icone="icone" />
-    <h2 class="nome">{{ nomeCabecalho }}</h2>
+    <h2 class="nome">{{ nomePerfil }}</h2>
   </div>
 </template>
 
@@ -26,10 +26,10 @@ import AvatarTimeline from '../atomos/AvatarTimeline.vue';
 export default defineComponent({
   components: { AvatarTimeline },
   props: {
-    imagemCabecalho: {
+    imagemPerfil: {
       type: String,
     },
-    nomeCabecalho: {
+    nomePerfil: {
       type: String,
     },
     icone: {
@@ -58,6 +58,7 @@ export default defineComponent({
         isFixed.value = scrollTop > offset;
       }
     };
+
     onMounted(() => {
       window.addEventListener('scroll', handleScroll);
     });
@@ -75,7 +76,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.cabecalhoEventos {
+.perfilTimeline {
   background: var(--cor-primaria);
   padding: 1.4rem;
   display: flex;
@@ -96,6 +97,7 @@ export default defineComponent({
 .fixed {
   position: fixed;
   top: 0;
-  transition: all 1s;
+  left: 0;
+  transition: all 0.3s;
 }
 </style>

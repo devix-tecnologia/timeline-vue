@@ -30,11 +30,8 @@ export default defineComponent({
   props: {
     horaPrevista: {
       required: true,
-      type: String,
     },
-    horaRealizada: {
-      type: String,
-    },
+    horaRealizada: {},
     // aparencia: {
     //   type: String,
     // },

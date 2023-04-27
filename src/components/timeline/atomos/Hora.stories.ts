@@ -13,7 +13,7 @@ export default {
   },
 } as Meta<typeof Hora>;
 
-const horaMock = '09:00';
+const horaMock = '2023-12-10T09:00Z';
 
 const Template: StoryFn<typeof Hora> = (args) => ({
   components: { Hora },

@@ -26,7 +26,7 @@ export default defineComponent({
   color: var(--cor-texto);
 }
 
-.atual .descricaoEvento .titulo {
+.bg-selecionado .descricaoEvento .titulo {
   color: var(--cor-texto-selecao);
 }
 </style>

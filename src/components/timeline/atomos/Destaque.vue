@@ -33,7 +33,7 @@ export default defineComponent({
   vertical-align: middle;
 }
 
-.atual .destaqueEvento {
+.bg-selecionado .destaqueEvento {
   color: var(--cor-texto-selecao);
 }
 </style>

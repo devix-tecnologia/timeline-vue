@@ -11,7 +11,7 @@
     <span v-else class="material-symbols-outlined"> person </span>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue';
 export default defineComponent({
   props: {

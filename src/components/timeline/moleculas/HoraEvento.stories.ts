@@ -12,7 +12,7 @@ export default {
   },
 } as Meta<typeof HoraEvento>;
 
-const horaMock = '09:00';
+const horaMock = '2023-12-10T11:00Z';
 
 const Template: StoryFn<typeof HoraEvento> = (args) => ({
   components: { HoraEvento: HoraEvento },
@@ -24,14 +24,14 @@ const Template: StoryFn<typeof HoraEvento> = (args) => ({
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  hora: horaMock,
-  horaFim: '',
+  horaPrevista: horaMock,
+  horaRealizada: '',
   // aparencia: 'padrao',
 };
 
 export const Atrasado = Template.bind({});
 Atrasado.args = {
-  hora: horaMock,
-  horaFim: '10:00',
+  horaPrevista: horaMock,
+  horaRealizada: '2023-12-10T12:00Z',
   // aparencia: 'riscada',
 };

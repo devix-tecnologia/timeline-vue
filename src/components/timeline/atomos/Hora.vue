@@ -39,7 +39,7 @@ export default defineComponent({
   color: var(--cor-texto);
 }
 
-.atual .hora {
+.bg-selecionado .hora {
   color: var(--cor-texto-selecao);
 }
 .hora-padrao,

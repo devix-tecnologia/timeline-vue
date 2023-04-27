@@ -5,10 +5,6 @@ export default {
   title: 'Devix/Timeline/Moleculas/EventoTimeline',
   component: EventoTimeline,
   argTypes: {
-    visualizacao: {
-      control: { type: 'select' },
-      options: ['padrao', 'atual'],
-    },
     status: {
       control: { type: 'select' },
       options: ['planejado', 'realizado', 'cancelado', 'adiado', 'atrasado'],
@@ -25,69 +21,74 @@ const Template: StoryFn<typeof EventoTimeline> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<EventoTimeline :evento="args"  />',
+  template: '<EventoTimeline :dadosEvento="args" />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  hora_prevista: '9:00',
-  hora_realizada: '',
-  titulo: 'Evento padrão',
-  subtitulo: 'Apenas planejado',
-  destaque: 'Destaque',
+  previsto: '2023-04-19T11:00Z',
+  realizado: '',
+  tolerancia: '',
+  titulo: 'Consulta Clinico geral',
+  subtitulo: 'Posto de saúde do bairro',
+  destaque: 'Estava passando mal',
   categoria: {
-    nome: 'Ligação',
-    icone: 'call',
+    nome: 'Cardiologista',
+    icone: 'cardiology',
   },
   status: 'planejado',
-  criticidade: 'normal',
-  visualizacao: 'padrao',
+  criticidade: 'media',
+  acao: false,
 };
 
 export const Atual = Template.bind({});
 Atual.args = {
-  hora_prevista: '9:00',
-  hora_realizada: '',
-  titulo: 'Evento atual',
-  subtitulo: 'Muda o background',
-  destaque: 'Destaque',
+  previsto: '2023-04-19T10:00Z',
+  realizado: '',
+  tolerancia: '',
+  titulo: 'Consulta',
+  subtitulo: 'Posto de saúde',
+  destaque: '',
   categoria: {
-    nome: 'Ligação',
+    nome: 'Tele consulta',
     icone: 'call',
   },
-  status: 'planejado',
-  criticidade: 'normal',
-  visualizacao: 'atual',
+  status: 'realizado',
+  criticidade: 'alta',
+  acao: false,
+  selecionado: true,
 };
 
 export const Importante = Template.bind({});
 Importante.args = {
-  hora_prevista: '9:00',
-  hora_realizada: '',
-  titulo: 'Criticidade alta',
-  subtitulo: 'Fica com borda vermelha',
-  destaque: 'Destaque',
+  previsto: '2023-04-19T18:00Z',
+  realizado: '',
+  tolerancia: '',
+  titulo: 'Consulta cardiologista',
+  subtitulo: 'Posto de saúde do bairro',
+  destaque: '',
   categoria: {
-    nome: 'Ligação',
-    icone: 'call',
+    nome: 'Cardiologista',
+    icone: 'cardiology',
   },
   status: 'planejado',
   criticidade: 'alta',
-  visualizacao: 'padrao',
+  acao: false,
 };
 
 export const Realizado = Template.bind({});
 Realizado.args = {
-  hora_prevista: '9:00',
-  hora_realizada: '10:00',
-  titulo: 'Evento realizado com atraso',
-  subtitulo: 'Fica esmaecido',
-  destaque: 'Destaque',
+  previsto: '2023-04-20T12:30Z',
+  realizado: '',
+  tolerancia: '',
+  titulo: 'Vacina da gripe',
+  subtitulo: 'Posto de saúde do bairro',
+  destaque: '',
   categoria: {
-    nome: 'Ligação',
-    icone: 'call',
+    nome: 'Vacina',
+    icone: 'vaccines',
   },
   status: 'realizado',
-  criticidade: 'normal',
-  visualizacao: 'padrao',
+  criticidade: 'media',
+  acao: true,
 };

@@ -10,7 +10,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent, reactive, computed } from 'vue';
 export default defineComponent({
   name: 'categoria',

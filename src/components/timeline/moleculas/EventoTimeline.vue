@@ -3,33 +3,36 @@
     <article
       class="eventoTimeline"
       :class="[
-        evento.status,
-        'criticidade-' + evento.criticidade,
-        evento.visualizacao,
+        dadosEvento.valor.status,
+        'criticidade-' + dadosEvento.valor.criticidade,
+        false,
       ]"
     >
-      <!-- É preciso fazer uma função que adicione a classe "atual" no article.  -->
+      <!-- TODO: É preciso fazer uma função que adicione a classe "atual" no article.  -->
 
-      <!-- Opção 1) pegar a hora_prevista do evento, a hora_prevista do evento seguinte e determine o intervalo e depois verifique se a hora_atual está nesse intervalo. Em caso positivo ela adiciona a classe "atual" no article. -->
+      <!-- TODO: Opção 1) pegar a previsto do evento, a previsto do evento seguinte e determine o intervalo e depois verifique se a hora_atual está nesse intervalo. Em caso positivo ela adiciona a classe "atual" no article. -->
 
-      <!-- Opção 2) a cada x tempo uma função verifica qual hora_prevista é menor que a hora_atual, pega a que está mais próxima e verifica se a hora_prevista do evento seguinte é maior a a hora_atual. -->
+      <!-- TODO: Opção 2) a cada x tempo uma função verifica qual previsto é menor que a hora_atual, pega a que está mais próxima e verifica se a previsto do evento seguinte é maior a a hora_atual. -->
 
-      <IconeStatus :status="evento.status" />
+      <IconeStatus :status="dadosEvento.valor.status" />
       <HoraEvento
-        :horaPrevista="evento.hora_prevista"
-        :horaRealizada="evento.hora_realizada"
+        :horaPrevista="dadosEvento.valor.previsto"
+        :horaRealizada="dadosEvento.valor.realizado"
       />
       <IconeCategoria
-        :iconeCategoria="evento.categoria.icone"
-        :categoria="evento.categoria.nome"
+        :iconeCategoria="dadosEvento.valor.categoria.icone"
+        :categoria="dadosEvento.valor.categoria.nome"
       />
-      <DescricaoEvento :titulo="evento.titulo" :subtitulo="evento.subtitulo" />
-      <Destaque :destaque="evento.destaque" />
+      <DescricaoEvento
+        :titulo="dadosEvento.valor.titulo"
+        :subtitulo="dadosEvento.valor.subtitulo"
+      />
+      <Destaque :destaque="dadosEvento.valor.destaque" />
     </article>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import IconeCategoria from '../atomos/IconeCategoria.vue';
 import IconeStatus from '../atomos/IconeStatus.vue';
 import DescricaoEvento from './DescricaoEvento.vue';
@@ -38,10 +41,11 @@ import Destaque from '../atomos/Destaque.vue';
 
 export default defineComponent({
   props: {
-    evento: {
-      type: Object,
+    dadosEvento: {
       required: true,
+      type: Object,
     },
+    selecionado: {},
   },
   components: {
     IconeStatus,
@@ -50,25 +54,20 @@ export default defineComponent({
     DescricaoEvento,
     Destaque,
   },
-  setup(props) {
-    const eventoCompleto = ref(props.evento).value;
+  setup() {
+    // TODO: O que faz essas variaveis.
+    // eslint-disable-next-line vue/no-setup-props-destructure
+    // let eventoRecebido = ref(props.dadosEvento);
+    // let evento = eventoRecebido.value as Evento;
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-argument
-    const horaPrevista = new Date(eventoCompleto.hora_prevista);
-    console.log(horaPrevista);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const horaAtual = new Date();
-    console.log(horaAtual);
-
-    let mensagem;
-    if (horaPrevista < horaAtual) {
-      mensagem = 'Hora prevista é menor';
-    } else if (horaPrevista > horaAtual) {
-      mensagem = 'Hora prevista é MAIOR';
-    }
-
-    console.log(mensagem);
-    return {};
+    return {
+      // TODO: O que faz esse método.
+      // eventoSelecionado: computed(() => ({
+      //   'bg-selecionado': props.selecionado == true,
+      //   'bg-padrao': props.selecionado == false,
+      // })),
+      // evento,
+    };
   },
 });
 </script>
@@ -92,11 +91,11 @@ export default defineComponent({
   background: #f9f9f9;
 }
 
-.atual {
+.bg-selecionado {
   background: var(--cor-selecao);
 }
 
-.atual:hover {
+.bg-selecionado:hover {
   background: var(--cor-selecao);
 }
 
