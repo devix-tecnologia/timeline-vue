@@ -9,7 +9,7 @@ export default defineComponent({
   props: {
     hora: {
       required: true,
-      type: String,
+      type: Date,
     },
     aparencia: {
       type: String,
@@ -19,9 +19,7 @@ export default defineComponent({
   setup(props) {
     props = reactive(props);
 
-    // eslint-disable-next-line vue/no-setup-props-destructure
-    const dataRecebida = props.hora;
-    const data = new Date(dataRecebida);
+    const data =  props.hora;
     const horaSimples = data.getHours();
     const minutos = data.getMinutes();
     const horaString = `${horaSimples}:${minutos.toString().padStart(2, '0')}`;

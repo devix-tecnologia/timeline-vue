@@ -29,9 +29,12 @@ import Hora from '../atomos/Hora.vue';
 export default defineComponent({
   props: {
     horaPrevista: {
+      type: Date,
       required: true,
     },
-    horaRealizada: {},
+    horaRealizada: {
+      type: Date,
+    },
     // aparencia: {
     //   type: String,
     // },
