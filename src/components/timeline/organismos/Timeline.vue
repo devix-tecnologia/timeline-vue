@@ -24,6 +24,7 @@
           <EventoTimeline
             :dadosEvento="evento"
             :selecionado="evento.selecionado"
+            :scroll="isScroll(evento.key)"
           />
         </section>
       </div>
@@ -122,8 +123,19 @@ export default defineComponent({
       }
     });
 
+    function isScroll(key: number) {
+      return eventosPorTipo.value.length > 0
+        ? eventosPorTipo.value[9].key === key
+        : false;
+    }
+
+    //  let isActive(id: number) {
+    //   return this.scrollToEvents.some(e => e.id === id);
+    // }
+
     return {
       eventosPorTipo,
+      isScroll,
     };
   },
 });

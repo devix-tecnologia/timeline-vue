@@ -25,8 +25,8 @@ export const dadosEventos: Evento[] = [
     acao: true,
   },
   {
-    data: new Date("2023-05-26T18:10Z"),
-    previsto: new Date("2023-05-26T18:10Z"),
+    data: new Date("2022-12-26T18:10Z"),
+    previsto: new Date("2022-12-26T18:10Z"),
     realizado: null,
     duracao: null,
     tolerancia: null,

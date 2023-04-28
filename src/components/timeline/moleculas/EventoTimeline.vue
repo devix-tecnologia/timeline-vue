@@ -8,12 +8,6 @@
         eventoSelecionado,
       ]"
     >
-      <!-- TODO: É preciso fazer uma função que adicione a classe "atual" no article.  -->
-
-      <!-- TODO: Opção 1) pegar a previsto do evento, a previsto do evento seguinte e determine o intervalo e depois verifique se a hora_atual está nesse intervalo. Em caso positivo ela adiciona a classe "atual" no article. -->
-
-      <!-- TODO: Opção 2) a cada x tempo uma função verifica qual previsto é menor que a hora_atual, pega a que está mais próxima e verifica se a previsto do evento seguinte é maior a a hora_atual. -->
-
       <IconeStatus :status="dadosEvento.valor.status" />
       <HoraEvento
         :horaPrevista="dadosEvento.valor.previsto"
@@ -46,6 +40,7 @@ export default defineComponent({
       type: Object,
     },
     selecionado: {},
+    scroll: {},
   },
   components: {
     IconeStatus,
@@ -62,9 +57,14 @@ export default defineComponent({
 
     return {
       // TODO: Adiciona classe no objeto atual.
+      // eventoSelecionado: computed(() => ({
+      //   "bg-selecionado": props.selecionado == true,
+      //   "bg-padrao": props.selecionado == false,
+      // })),
+
       eventoSelecionado: computed(() => ({
-        "bg-selecionado": props.selecionado == true,
-        "bg-padrao": props.selecionado == false,
+        "bg-selecionado": props.scroll == true,
+        "bg-padrao": props.scroll == false,
       })),
       // evento,
     };
