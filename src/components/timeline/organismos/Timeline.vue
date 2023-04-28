@@ -5,6 +5,7 @@
         v-if="perfilTimeline !== null"
         :nomePerfil="perfilTimeline.nome"
         :imagemPerfil="perfilTimeline.imagem"
+        :iconePerfil="perfilTimeline.icone"
       />
     </div>
 
@@ -20,7 +21,10 @@
       <div v-if="evento.tipo === 'evento'">
         <section class="timeline">
           <!--loop-->
-          <EventoTimeline :dadosEvento="evento" :selecionado="selecionado" />
+          <EventoTimeline
+            :dadosEvento="evento"
+            :selecionado="evento.selecionado"
+          />
         </section>
       </div>
     </div>
@@ -36,7 +40,7 @@ import { Evento } from "../type";
 
 type TipoEventoTimeline =
   | { tipo: "dia"; valor: Date; key: number }
-  | { tipo: "evento"; valor: Evento; key: number }
+  | { tipo: "evento"; valor: Evento; key: number; selecionado: boolean }
   | { tipo: "eventos"; valor: Evento[]; key: number };
 
 // type Ordem = 'ascendente' | 'descendente';
@@ -83,6 +87,7 @@ export default defineComponent({
       if (dadosEventosTimeline) {
         let result: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
+        let dataAgora: Date | null = null;
         let idx = 0;
 
         for (const evento of eventosOrdenados) {
@@ -96,10 +101,19 @@ export default defineComponent({
               key: ++idx,
             });
           }
+
+          dataAgora = new Date();
+          let resp = false;
+          if (dataEvento > dataAgora) {
+            resp = true;
+          } else {
+            resp = false;
+          }
           result.push({
             tipo: "evento",
             valor: evento,
             key: ++idx,
+            selecionado: resp,
           });
         }
         return result;
@@ -108,11 +122,7 @@ export default defineComponent({
       }
     });
 
-    // TODO: Envia para o evento a informação se ele é o evento atual. em caso verdadeiro, será adicionada uma classe css no evento
-    let selecionado = false;
-
     return {
-      selecionado,
       eventosPorTipo,
     };
   },

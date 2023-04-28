@@ -7,7 +7,7 @@
   >
     <!-- :class="{ fixed: isFixed }" -->
     <AvatarTimeline v-if="imagemPerfil" :imagem="imagemPerfil" />
-    <AvatarTimeline v-else-if="icone" :icone="icone" />
+    <AvatarTimeline v-else-if="iconePerfil" :icone="iconePerfil" />
     <h2 class="nome">{{ nomePerfil }}</h2>
   </div>
 </template>
@@ -20,8 +20,8 @@ import {
   onUnmounted,
   reactive,
   computed,
-} from 'vue';
-import AvatarTimeline from '../atomos/AvatarTimeline.vue';
+} from "vue";
+import AvatarTimeline from "../atomos/AvatarTimeline.vue";
 
 export default defineComponent({
   components: { AvatarTimeline },
@@ -32,12 +32,12 @@ export default defineComponent({
     nomePerfil: {
       type: String,
     },
-    icone: {
+    iconePerfil: {
       type: String,
     },
     backgroundColor: {
       type: String,
-      default: 'var(--cor-primaria)',
+      default: "var(--cor-primaria)",
     },
   },
   setup(props) {
@@ -60,10 +60,10 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener("scroll", handleScroll);
     });
     onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     });
 
     return {

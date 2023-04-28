@@ -1,18 +1,13 @@
 <template>
   <div class="avatar">
-    <!-- <img
-      src="https://images.unsplash.com/photo-1534180477871-5d6cc81f3920?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-    /> -->
-
     <img v-if="imagem" :src="imagem" />
     <span v-else-if="icone" class="material-symbols-outlined">
       {{ icone }}
     </span>
-    <span v-else class="material-symbols-outlined"> person </span>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 export default defineComponent({
   props: {
     imagem: {
