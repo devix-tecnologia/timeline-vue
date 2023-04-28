@@ -28,16 +28,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive } from 'vue';
-import EventoTimeline from '../moleculas/EventoTimeline.vue';
-import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
-import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
-import { Evento } from '../type';
+import { defineComponent, computed, reactive } from "vue";
+import EventoTimeline from "../moleculas/EventoTimeline.vue";
+import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
+import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
+import { Evento } from "../type";
 
 type TipoEventoTimeline =
-  | { tipo: 'dia'; valor: Date; key: number }
-  | { tipo: 'evento'; valor: Evento; key: number }
-  | { tipo: 'eventos'; valor: Evento[]; key: number };
+  | { tipo: "dia"; valor: Date; key: number }
+  | { tipo: "evento"; valor: Evento; key: number }
+  | { tipo: "eventos"; valor: Evento[]; key: number };
 
 // type Ordem = 'ascendente' | 'descendente';
 
@@ -91,13 +91,13 @@ export default defineComponent({
           if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
             dataAtual = dataEvento;
             result.push({
-              tipo: 'dia',
+              tipo: "dia",
               valor: evento.data,
               key: ++idx,
             });
           }
           result.push({
-            tipo: 'evento',
+            tipo: "evento",
             valor: evento,
             key: ++idx,
           });
@@ -108,7 +108,7 @@ export default defineComponent({
       }
     });
 
-    // TODO: Faz o que, essa variável
+    // TODO: Envia para o evento a informação se ele é o evento atual. em caso verdadeiro, será adicionada uma classe css no evento
     let selecionado = false;
 
     return {

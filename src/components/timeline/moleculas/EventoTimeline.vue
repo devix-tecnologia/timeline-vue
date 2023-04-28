@@ -5,7 +5,7 @@
       :class="[
         dadosEvento.valor.status,
         'criticidade-' + dadosEvento.valor.criticidade,
-        false,
+        eventoSelecionado,
       ]"
     >
       <!-- TODO: É preciso fazer uma função que adicione a classe "atual" no article.  -->
@@ -32,12 +32,12 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import IconeCategoria from '../atomos/IconeCategoria.vue';
-import IconeStatus from '../atomos/IconeStatus.vue';
-import DescricaoEvento from './DescricaoEvento.vue';
-import HoraEvento from './HoraEvento.vue';
-import Destaque from '../atomos/Destaque.vue';
+import { defineComponent, computed } from "vue";
+import IconeCategoria from "../atomos/IconeCategoria.vue";
+import IconeStatus from "../atomos/IconeStatus.vue";
+import DescricaoEvento from "./DescricaoEvento.vue";
+import HoraEvento from "./HoraEvento.vue";
+import Destaque from "../atomos/Destaque.vue";
 
 export default defineComponent({
   props: {
@@ -54,18 +54,18 @@ export default defineComponent({
     DescricaoEvento,
     Destaque,
   },
-  setup() {
+  setup(props) {
     // TODO: O que faz essas variaveis.
     // eslint-disable-next-line vue/no-setup-props-destructure
     // let eventoRecebido = ref(props.dadosEvento);
     // let evento = eventoRecebido.value as Evento;
 
     return {
-      // TODO: O que faz esse método.
-      // eventoSelecionado: computed(() => ({
-      //   'bg-selecionado': props.selecionado == true,
-      //   'bg-padrao': props.selecionado == false,
-      // })),
+      // TODO: Adiciona classe no objeto atual.
+      eventoSelecionado: computed(() => ({
+        "bg-selecionado": props.selecionado == true,
+        "bg-padrao": props.selecionado == false,
+      })),
       // evento,
     };
   },
@@ -102,7 +102,7 @@ export default defineComponent({
 /* box com as informações */
 
 .eventoTimeline:before {
-  content: '';
+  content: "";
   background: var(--cor-linha);
   display: block;
   position: absolute;
@@ -113,7 +113,7 @@ export default defineComponent({
 }
 
 .eventoTimeline:after {
-  content: '';
+  content: "";
   background: var(--cor-linha);
   display: block;
   position: absolute;
