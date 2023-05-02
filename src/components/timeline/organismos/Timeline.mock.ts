@@ -8,6 +8,7 @@ export const dadosPerfil: Perfil = {
 
 export const dadosEventos: Evento[] = [
   {
+    id: 1,
     data: new Date("2023-05-26T19:00Z"),
     previsto: new Date("2023-05-26T19:00Z"),
     realizado: null,
@@ -25,6 +26,7 @@ export const dadosEventos: Evento[] = [
     acao: true,
   },
   {
+    id: 2,
     data: new Date("2022-12-26T18:10Z"),
     previsto: new Date("2022-12-26T18:10Z"),
     realizado: null,
@@ -42,6 +44,7 @@ export const dadosEventos: Evento[] = [
     acao: false,
   },
   {
+    id: 3,
     data: new Date("2023-05-02T17:00Z"),
     previsto: new Date("2023-05-02T17:00Z"),
     realizado: null,
@@ -59,6 +62,7 @@ export const dadosEventos: Evento[] = [
     acao: false,
   },
   {
+    id: 4,
     data: new Date("2023-05-02T19:00Z"),
     previsto: new Date("2023-05-02T19:00Z"),
     realizado: null,
@@ -76,8 +80,9 @@ export const dadosEventos: Evento[] = [
     acao: false,
   },
   {
-    data: new Date("2023-04-19T11:00Z"),
-    previsto: new Date("2023-04-19T11:00Z"),
+    id: 5,
+    data: new Date("2023-05-02T13:00Z"),
+    previsto: new Date("2023-05-02T13:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: null,
@@ -93,8 +98,9 @@ export const dadosEventos: Evento[] = [
     acao: false,
   },
   {
-    data: new Date("2023-04-19T10:00Z"),
-    previsto: new Date("2023-04-19T10:00Z"),
+    id: 6,
+    data: new Date("2023-05-15T12:00Z"),
+    previsto: new Date("2023-05-15T12:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: null,
@@ -105,13 +111,14 @@ export const dadosEventos: Evento[] = [
       nome: "Tele consulta",
       icone: "call",
     },
-    status: "realizado",
+    status: "planejado",
     criticidade: "alta",
     acao: false,
   },
   {
-    data: new Date("2023-04-19T18:00Z"),
-    previsto: new Date("2023-04-19T18:00Z"),
+    id: 7,
+    data: new Date("2023-05-02T13:00Z"),
+    previsto: new Date("2023-05-02T13:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: null,
@@ -122,11 +129,12 @@ export const dadosEventos: Evento[] = [
       nome: "Cardiologista",
       icone: "cardiology",
     },
-    status: "adiado",
+    status: "planejado",
     criticidade: "alta",
     acao: false,
   },
   {
+    id: 8,
     data: new Date("2023-04-20T12:30Z"),
     previsto: new Date("2023-04-20T12:30Z"),
     realizado: null,
@@ -139,7 +147,7 @@ export const dadosEventos: Evento[] = [
       nome: "Vacina",
       icone: "vaccines",
     },
-    status: "atrasado",
+    status: "realizado",
     criticidade: "media",
     acao: false,
   },

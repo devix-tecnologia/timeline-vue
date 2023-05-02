@@ -5,6 +5,7 @@ export type Perfil = {
 };
 
 export type Evento = {
+  id: number;
   data: Date;
   previsto: Date;
   duracao: number | null;
