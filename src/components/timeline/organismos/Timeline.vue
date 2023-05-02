@@ -41,7 +41,7 @@ import { Evento } from "../type";
 
 type TipoEventoTimeline =
   | { tipo: "dia"; valor: Date; key: number }
-  | { tipo: "evento"; valor: Evento; key: number; selecionado: boolean }
+  | { tipo: "evento"; valor: Evento; key: number; ativo: boolean }
   | { tipo: "eventos"; valor: Evento[]; key: number };
 
 // type Ordem = 'ascendente' | 'descendente';
@@ -88,7 +88,6 @@ export default defineComponent({
       if (dadosEventosTimeline) {
         let result: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
-        let dataAgora: Date | null = null;
         let idx = 0;
 
         for (const evento of eventosOrdenados) {
@@ -103,18 +102,11 @@ export default defineComponent({
             });
           }
 
-          dataAgora = new Date();
-          let resp = false;
-          if (dataEvento > dataAgora) {
-            resp = true;
-          } else {
-            resp = false;
-          }
           result.push({
             tipo: "evento",
             valor: evento,
             key: ++idx,
-            selecionado: resp,
+            ativo: false,
           });
         }
         return result;
@@ -123,9 +115,45 @@ export default defineComponent({
       }
     });
 
+    function currentEvents(evento) {
+      if (evento) {
+        console.log(evento);
+        const agora = Date.now();
+        let minDiff = null;
+        let currents = [];
+        for (const e of evento) {
+          const t = e.data.getTime();
+          const diff = Math.abs(agora - e.data);
+
+          console.log("agora", agora);
+
+          if (minDiff === null || diff < minDiff) {
+            minDiff = diff;
+            currents.length = 0;
+            console.log("minDiff", minDiff);
+            console.log("currents", minDiff);
+            e.ativo = true;
+          } else if (diff > minDiff) {
+            console.log("diff", diff, ">", "minDiff", minDiff);
+            console.log("continue", e);
+          }
+          currents.push(e);
+        }
+        return currents;
+      } else {
+        console.log("vazio.. ", []);
+        return [];
+      }
+    }
+
+    const result: Evento[] = currentEvents(eventosOrdenados);
+
+    console.log("Result", result);
+    console.log("Result[0]", result[0].titulo);
+
     function isScroll(key: number) {
       return eventosPorTipo.value.length > 0
-        ? eventosPorTipo.value[9].key === key
+        ? eventosPorTipo.value[1].key === key
         : false;
     }
 
