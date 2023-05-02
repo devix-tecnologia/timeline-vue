@@ -143,6 +143,18 @@ export default defineComponent({
       eventosPorTipo,
     };
   },
+  methods: {
+    scrollParaItemAtual() {
+      const itemAtual = document.querySelector(".atual");
+      itemAtual?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    },
+  },
+  mounted() {
+    this.scrollParaItemAtual();
+  },
 });
 </script>
 

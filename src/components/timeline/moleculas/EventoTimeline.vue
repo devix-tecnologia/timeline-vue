@@ -48,8 +48,8 @@ export default defineComponent({
   setup(props) {
     return {
       eventoSelecionado: computed(() => ({
-        "bg-selecionado": props.dadosEvento.atual == true,
-        "bg-padrao": props.dadosEvento.atual == false,
+        atual: props.dadosEvento.atual == true,
+        padrao: props.dadosEvento.atual == false,
       })),
     };
   },
@@ -68,11 +68,11 @@ export default defineComponent({
   background: #f9f9f9;
 }
 
-.bg-selecionado {
+.atual {
   background: var(--cor-selecao);
 }
 
-.bg-selecionado:hover {
+.atual:hover {
   background: var(--cor-selecao);
 }
 
