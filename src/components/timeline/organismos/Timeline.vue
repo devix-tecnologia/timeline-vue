@@ -21,11 +21,7 @@
       <div v-if="evento.tipo === 'evento'">
         <section class="timeline">
           <!--loop-->
-          <EventoTimeline
-            :dadosEvento="evento"
-            :selecionado="evento.selecionado"
-            :scroll="isScroll(evento.key)"
-          />
+          <EventoTimeline :dadosEvento="evento" :scroll="evento.ativo" />
         </section>
       </div>
     </div>
@@ -84,37 +80,7 @@ export default defineComponent({
       return mesmo_dia && mesmo_mes && mesmo_ano;
     };
 
-    const eventosPorTipo = computed(() => {
-      if (dadosEventosTimeline) {
-        let result: Array<TipoEventoTimeline> = [];
-        let dataAtual: Date | null = null;
-        let idx = 0;
-
-        for (const evento of eventosOrdenados) {
-          const dataEvento = evento.data;
-
-          if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
-            dataAtual = dataEvento;
-            result.push({
-              tipo: "dia",
-              valor: evento.data,
-              key: ++idx,
-            });
-          }
-
-          result.push({
-            tipo: "evento",
-            valor: evento,
-            key: ++idx,
-            ativo: false,
-          });
-        }
-        return result;
-      } else {
-        return [];
-      }
-    });
-
+    //verifica qual evento está mais próximo da hora atual
     function currentEvents(evento) {
       if (evento) {
         console.log(evento);
@@ -145,17 +111,44 @@ export default defineComponent({
         return [];
       }
     }
+    const eventosAtivos: Evento[] = currentEvents(eventosOrdenados);
 
-    const result: Evento[] = currentEvents(eventosOrdenados);
+    const eventosPorTipo = computed(() => {
+      if (dadosEventosTimeline) {
+        let result: Array<TipoEventoTimeline> = [];
+        let dataAtual: Date | null = null;
+        let idx = 0;
 
-    console.log("Result", result);
-    console.log("Result[0]", result[0].titulo);
+        for (const evento of eventosAtivos) {
+          const dataEvento = evento.data;
 
-    function isScroll(key: number) {
-      return eventosPorTipo.value.length > 0
-        ? eventosPorTipo.value[1].key === key
-        : false;
-    }
+          if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
+            dataAtual = dataEvento;
+            result.push({
+              tipo: "dia",
+              valor: evento.data,
+              key: ++idx,
+            });
+          }
+
+          result.push({
+            tipo: "evento",
+            valor: evento,
+            key: ++idx,
+            ativo: false,
+          });
+        }
+        return result;
+      } else {
+        return [];
+      }
+    });
+
+    // function isScroll(key: number) {
+    //   return eventosPorTipo.value.length > 0
+    //     ? eventosPorTipo.value[1].key === key
+    //     : false;
+    // }
 
     //  let isActive(id: number) {
     //   return this.scrollToEvents.some(e => e.id === id);
@@ -163,7 +156,6 @@ export default defineComponent({
 
     return {
       eventosPorTipo,
-      isScroll,
     };
   },
 });
@@ -176,6 +168,13 @@ export default defineComponent({
   max-width: 850px;
   margin: 0 auto;
 } */
+
+.areaEvento {
+  display: table-row;
+  min-height: 8rem;
+  position: relative !important;
+  width: 100%;
+}
 
 .timeline {
   display: table;

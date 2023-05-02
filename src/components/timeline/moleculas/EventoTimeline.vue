@@ -1,29 +1,27 @@
 <template>
-  <div class="areaEvento">
-    <article
-      class="eventoTimeline"
-      :class="[
-        dadosEvento.valor.status,
-        'criticidade-' + dadosEvento.valor.criticidade,
-        eventoSelecionado,
-      ]"
-    >
-      <IconeStatus :status="dadosEvento.valor.status" />
-      <HoraEvento
-        :horaPrevista="dadosEvento.valor.previsto"
-        :horaRealizada="dadosEvento.valor.realizado"
-      />
-      <IconeCategoria
-        :iconeCategoria="dadosEvento.valor.categoria.icone"
-        :categoria="dadosEvento.valor.categoria.nome"
-      />
-      <DescricaoEvento
-        :titulo="dadosEvento.valor.titulo"
-        :subtitulo="dadosEvento.valor.subtitulo"
-      />
-      <Destaque :destaque="dadosEvento.valor.destaque" />
-    </article>
-  </div>
+  <article
+    class="eventoTimeline"
+    :class="[
+      dadosEvento.valor.status,
+      'criticidade-' + dadosEvento.valor.criticidade,
+      eventoSelecionado,
+    ]"
+  >
+    <IconeStatus :status="dadosEvento.valor.status" />
+    <HoraEvento
+      :horaPrevista="dadosEvento.valor.previsto"
+      :horaRealizada="dadosEvento.valor.realizado"
+    />
+    <IconeCategoria
+      :iconeCategoria="dadosEvento.valor.categoria.icone"
+      :categoria="dadosEvento.valor.categoria.nome"
+    />
+    <DescricaoEvento
+      :titulo="dadosEvento.valor.titulo"
+      :subtitulo="dadosEvento.valor.subtitulo"
+    />
+    <Destaque :destaque="dadosEvento.valor.destaque" />
+  </article>
 </template>
 <script lang="ts">
 import { defineComponent, computed } from "vue";
@@ -39,8 +37,6 @@ export default defineComponent({
       required: true,
       type: Object,
     },
-    selecionado: {},
-    scroll: {},
   },
   components: {
     IconeStatus,
@@ -63,8 +59,8 @@ export default defineComponent({
       // })),
 
       eventoSelecionado: computed(() => ({
-        "bg-selecionado": props.scroll == true,
-        "bg-padrao": props.scroll == false,
+        "bg-selecionado": props.dadosEvento.valor.ativo == true,
+        "bg-padrao": props.dadosEvento.valor.ativo == false,
       })),
       // evento,
     };
@@ -73,13 +69,6 @@ export default defineComponent({
 </script>
 <style scoped>
 /* BOX DO EVENTO */
-
-.areaEvento {
-  display: table-row;
-  min-height: 8rem;
-  position: relative !important;
-  width: 100%;
-}
 
 .eventoTimeline {
   position: relative;
