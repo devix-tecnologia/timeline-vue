@@ -37,7 +37,7 @@ import { Evento } from "../type";
 
 type TipoEventoTimeline =
   | { tipo: "dia"; valor: Date; key: number }
-  | { tipo: "evento"; valor: Evento; key: number; ativo: boolean }
+  | { tipo: "evento"; valor: Evento; key: number; atual: boolean }
   | { tipo: "eventos"; valor: Evento[]; key: number };
 
 // type Ordem = 'ascendente' | 'descendente';
@@ -81,29 +81,31 @@ export default defineComponent({
     };
 
     //verifica qual evento está mais próximo da hora atual e coloca ele numa nova lista na primeira posição
-    function currentEvents(evento: Evento[]) {
-      if (evento) {
+    function filtraEventoAtual(eventos: Evento[]) {
+      if (eventos) {
         const agora = Date.now();
         let minDiff = null;
-        let currents = [];
-        for (const e of evento) {
+        let listaEventos = [];
+        for (const e of eventos) {
           const t = e.data.getTime();
           const diff = Math.abs(agora - t);
           if (minDiff === null || diff < minDiff) {
             minDiff = diff;
-            currents.length = 0;
-          } else if (diff > minDiff) {
+            listaEventos.length = 0;
           }
-          currents.push(e);
+          //se o evento já estiver marcado como realizado, cancelado ou adiado, ele pula para o próximo da lista.
+          if (e.status === "planejado" || e.status === "atrasado") {
+            listaEventos.push(e);
+          }
         }
-        return currents;
+        return listaEventos;
       } else {
         console.log("vazio.. ", []);
         return [];
       }
     }
-    const eventosAtivos: Evento[] = currentEvents(eventosOrdenados);
-    const eventoAtual = eventosAtivos[0];
+    const eventosFiltrados: Evento[] = filtraEventoAtual(eventosOrdenados);
+    const eventoAtual = eventosFiltrados[0];
 
     //lista de eventos
     const eventosPorTipo = computed(() => {
@@ -128,7 +130,7 @@ export default defineComponent({
             tipo: "evento",
             valor: evento,
             key: ++idx,
-            ativo: evento.id === eventoAtual.id,
+            atual: evento.id === eventoAtual.id,
           });
         }
         return result;

@@ -46,23 +46,11 @@ export default defineComponent({
     Destaque,
   },
   setup(props) {
-    // TODO: O que faz essas variaveis.
-    // eslint-disable-next-line vue/no-setup-props-destructure
-    // let eventoRecebido = ref(props.dadosEvento);
-    // let evento = eventoRecebido.value as Evento;
-
     return {
-      // TODO: Adiciona classe no objeto atual.
-      // eventoSelecionado: computed(() => ({
-      //   "bg-selecionado": props.selecionado == true,
-      //   "bg-padrao": props.selecionado == false,
-      // })),
-
       eventoSelecionado: computed(() => ({
-        "bg-selecionado": props.dadosEvento.ativo == true,
-        "bg-padrao": props.dadosEvento.ativo == false,
+        "bg-selecionado": props.dadosEvento.atual == true,
+        "bg-padrao": props.dadosEvento.atual == false,
       })),
-      // evento,
     };
   },
 });
