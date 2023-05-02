@@ -81,7 +81,7 @@ export default defineComponent({
     };
 
     //verifica qual evento está mais próximo da hora atual
-    function currentEvents(evento) {
+    function currentEvents(evento: Evento[]) {
       if (evento) {
         console.log(evento);
         const agora = Date.now();
@@ -89,7 +89,7 @@ export default defineComponent({
         let currents = [];
         for (const e of evento) {
           const t = e.data.getTime();
-          const diff = Math.abs(agora - e.data);
+          const diff = Math.abs(agora - t);
 
           console.log("agora", agora);
 
@@ -98,7 +98,7 @@ export default defineComponent({
             currents.length = 0;
             console.log("minDiff", minDiff);
             console.log("currents", minDiff);
-            e.ativo = true;
+            // e.ativo = true;
           } else if (diff > minDiff) {
             console.log("diff", diff, ">", "minDiff", minDiff);
             console.log("continue", e);
