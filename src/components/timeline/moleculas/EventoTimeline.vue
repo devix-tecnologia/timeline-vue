@@ -59,8 +59,8 @@ export default defineComponent({
       // })),
 
       eventoSelecionado: computed(() => ({
-        "bg-selecionado": props.dadosEvento.valor.ativo == true,
-        "bg-padrao": props.dadosEvento.valor.ativo == false,
+        "bg-selecionado": props.dadosEvento.ativo == true,
+        "bg-padrao": props.dadosEvento.ativo == false,
       })),
       // evento,
     };

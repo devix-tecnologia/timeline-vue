@@ -21,7 +21,7 @@
       <div v-if="evento.tipo === 'evento'">
         <section class="timeline">
           <!--loop-->
-          <EventoTimeline :dadosEvento="evento" :scroll="evento.ativo" />
+          <EventoTimeline :dadosEvento="evento" />
         </section>
       </div>
     </div>
@@ -80,28 +80,19 @@ export default defineComponent({
       return mesmo_dia && mesmo_mes && mesmo_ano;
     };
 
-    //verifica qual evento está mais próximo da hora atual
+    //verifica qual evento está mais próximo da hora atual e coloca ele numa nova lista na primeira posição
     function currentEvents(evento: Evento[]) {
       if (evento) {
-        console.log(evento);
         const agora = Date.now();
         let minDiff = null;
         let currents = [];
         for (const e of evento) {
           const t = e.data.getTime();
           const diff = Math.abs(agora - t);
-
-          console.log("agora", agora);
-
           if (minDiff === null || diff < minDiff) {
             minDiff = diff;
             currents.length = 0;
-            console.log("minDiff", minDiff);
-            console.log("currents", minDiff);
-            // e.ativo = true;
           } else if (diff > minDiff) {
-            console.log("diff", diff, ">", "minDiff", minDiff);
-            console.log("continue", e);
           }
           currents.push(e);
         }
@@ -112,14 +103,16 @@ export default defineComponent({
       }
     }
     const eventosAtivos: Evento[] = currentEvents(eventosOrdenados);
+    const eventoAtual = eventosAtivos[0];
 
+    //lista de eventos
     const eventosPorTipo = computed(() => {
       if (dadosEventosTimeline) {
         let result: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
         let idx = 0;
 
-        for (const evento of eventosAtivos) {
+        for (const evento of eventosOrdenados) {
           const dataEvento = evento.data;
 
           if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
@@ -135,7 +128,7 @@ export default defineComponent({
             tipo: "evento",
             valor: evento,
             key: ++idx,
-            ativo: false,
+            ativo: evento.id === eventoAtual.id,
           });
         }
         return result;
@@ -143,16 +136,6 @@ export default defineComponent({
         return [];
       }
     });
-
-    // function isScroll(key: number) {
-    //   return eventosPorTipo.value.length > 0
-    //     ? eventosPorTipo.value[1].key === key
-    //     : false;
-    // }
-
-    //  let isActive(id: number) {
-    //   return this.scrollToEvents.some(e => e.id === id);
-    // }
 
     return {
       eventosPorTipo,
