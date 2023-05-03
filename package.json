@@ -1,6 +1,6 @@
 {
-  "name": "timeline-vue",
-  "private": true,
+  "name": "@devix-tecnologia/timeline-vue",
+  "private": false,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

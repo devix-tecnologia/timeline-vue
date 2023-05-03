@@ -27,7 +27,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/index.js"
+    "src/index.ts"
   ],
   "exclude": [
     "src/**/*.stories.ts"
