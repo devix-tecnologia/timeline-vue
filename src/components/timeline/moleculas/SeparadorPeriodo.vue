@@ -3,16 +3,16 @@
     <div class="areaData">
       <BoxData :dataNumero="dia" :aparencia="aparencia" />
     </div>
-    <h3 class="titulo" :class="aparencia">{{ mes }}</h3>
+    <h3 class="titulo" :class="aparencia">{{ mes }} de {{ ano }}</h3>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import BoxData from '../atomos/BoxData.vue';
+import { defineComponent } from "vue";
+import BoxData from "../atomos/BoxData.vue";
 
 export default defineComponent({
-  name: 'SeparadorPeriodo',
+  name: "SeparadorPeriodo",
   props: {
     dataSeparador: {
       required: true,
@@ -25,18 +25,18 @@ export default defineComponent({
   components: { BoxData },
   setup(props) {
     const numeroMes = [
-      'janeiro',
-      'fevereiro',
-      'março',
-      'abril',
-      'maio',
-      'junho',
-      'julho',
-      'agosto',
-      'setembro',
-      'outubro',
-      'novembro',
-      'dezembro',
+      "janeiro",
+      "fevereiro",
+      "março",
+      "abril",
+      "maio",
+      "junho",
+      "julho",
+      "agosto",
+      "setembro",
+      "outubro",
+      "novembro",
+      "dezembro",
     ];
 
     // eslint-disable-next-line vue/no-setup-props-destructure
@@ -68,7 +68,7 @@ export default defineComponent({
 }
 
 .areaData:before {
-  content: '';
+  content: "";
   background: var(--cor-linha);
   display: block;
   position: absolute;
@@ -79,7 +79,7 @@ export default defineComponent({
 }
 
 .areaData:after {
-  content: '';
+  content: "";
   background: var(--cor-linha);
   display: block;
   position: absolute;

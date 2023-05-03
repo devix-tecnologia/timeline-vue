@@ -1,9 +1,11 @@
 export type Perfil = {
   nome: string;
-  imagem: string;
+  imagem: string | null;
+  icone: string | null;
 };
 
 export type Evento = {
+  id: string;
   data: Date;
   previsto: Date;
   duracao: number | null;
@@ -17,12 +19,12 @@ export type Evento = {
     icone: string;
   };
   status:
-    | 'atrasado'
-    | 'adiantado'
-    | 'adiado'
-    | 'realizado'
-    | 'planejado'
-    | 'cancelado';
+    | "atrasado"
+    | "adiantado"
+    | "adiado"
+    | "realizado"
+    | "planejado"
+    | "cancelado";
   criticidade: string;
   acao: boolean;
 };

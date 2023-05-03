@@ -1,43 +1,35 @@
 <template>
-  <div class="areaEvento">
-    <article
-      class="eventoTimeline"
-      :class="[
-        dadosEvento.valor.status,
-        'criticidade-' + dadosEvento.valor.criticidade,
-        false,
-      ]"
-    >
-      <!-- TODO: É preciso fazer uma função que adicione a classe "atual" no article.  -->
-
-      <!-- TODO: Opção 1) pegar a previsto do evento, a previsto do evento seguinte e determine o intervalo e depois verifique se a hora_atual está nesse intervalo. Em caso positivo ela adiciona a classe "atual" no article. -->
-
-      <!-- TODO: Opção 2) a cada x tempo uma função verifica qual previsto é menor que a hora_atual, pega a que está mais próxima e verifica se a previsto do evento seguinte é maior a a hora_atual. -->
-
-      <IconeStatus :status="dadosEvento.valor.status" />
-      <HoraEvento
-        :horaPrevista="dadosEvento.valor.previsto"
-        :horaRealizada="dadosEvento.valor.realizado"
-      />
-      <IconeCategoria
-        :iconeCategoria="dadosEvento.valor.categoria.icone"
-        :categoria="dadosEvento.valor.categoria.nome"
-      />
-      <DescricaoEvento
-        :titulo="dadosEvento.valor.titulo"
-        :subtitulo="dadosEvento.valor.subtitulo"
-      />
-      <Destaque :destaque="dadosEvento.valor.destaque" />
-    </article>
-  </div>
+  <article
+    class="eventoTimeline"
+    :class="[
+      dadosEvento.valor.status,
+      'criticidade-' + dadosEvento.valor.criticidade,
+      eventoSelecionado,
+    ]"
+  >
+    <IconeStatus :status="dadosEvento.valor.status" />
+    <HoraEvento
+      :horaPrevista="dadosEvento.valor.previsto"
+      :horaRealizada="dadosEvento.valor.realizado"
+    />
+    <IconeCategoria
+      :iconeCategoria="dadosEvento.valor.categoria.icone"
+      :categoria="dadosEvento.valor.categoria.nome"
+    />
+    <DescricaoEvento
+      :titulo="dadosEvento.valor.titulo"
+      :subtitulo="dadosEvento.valor.subtitulo"
+    />
+    <Destaque :destaque="dadosEvento.valor.destaque" />
+  </article>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import IconeCategoria from '../atomos/IconeCategoria.vue';
-import IconeStatus from '../atomos/IconeStatus.vue';
-import DescricaoEvento from './DescricaoEvento.vue';
-import HoraEvento from './HoraEvento.vue';
-import Destaque from '../atomos/Destaque.vue';
+import { defineComponent, computed } from "vue";
+import IconeCategoria from "../atomos/IconeCategoria.vue";
+import IconeStatus from "../atomos/IconeStatus.vue";
+import DescricaoEvento from "./DescricaoEvento.vue";
+import HoraEvento from "./HoraEvento.vue";
+import Destaque from "../atomos/Destaque.vue";
 
 export default defineComponent({
   props: {
@@ -45,7 +37,6 @@ export default defineComponent({
       required: true,
       type: Object,
     },
-    selecionado: {},
   },
   components: {
     IconeStatus,
@@ -54,32 +45,18 @@ export default defineComponent({
     DescricaoEvento,
     Destaque,
   },
-  setup() {
-    // TODO: O que faz essas variaveis.
-    // eslint-disable-next-line vue/no-setup-props-destructure
-    // let eventoRecebido = ref(props.dadosEvento);
-    // let evento = eventoRecebido.value as Evento;
-
+  setup(props) {
     return {
-      // TODO: O que faz esse método.
-      // eventoSelecionado: computed(() => ({
-      //   'bg-selecionado': props.selecionado == true,
-      //   'bg-padrao': props.selecionado == false,
-      // })),
-      // evento,
+      eventoSelecionado: computed(() => ({
+        atual: props.dadosEvento.atual == true,
+        padrao: props.dadosEvento.atual == false,
+      })),
     };
   },
 });
 </script>
 <style scoped>
 /* BOX DO EVENTO */
-
-.areaEvento {
-  display: table-row;
-  min-height: 8rem;
-  position: relative !important;
-  width: 100%;
-}
 
 .eventoTimeline {
   position: relative;
@@ -91,18 +68,18 @@ export default defineComponent({
   background: #f9f9f9;
 }
 
-.bg-selecionado {
+.atual {
   background: var(--cor-selecao);
 }
 
-.bg-selecionado:hover {
+.atual:hover {
   background: var(--cor-selecao);
 }
 
 /* box com as informações */
 
 .eventoTimeline:before {
-  content: '';
+  content: "";
   background: var(--cor-linha);
   display: block;
   position: absolute;
@@ -113,7 +90,7 @@ export default defineComponent({
 }
 
 .eventoTimeline:after {
-  content: '';
+  content: "";
   background: var(--cor-linha);
   display: block;
   position: absolute;
