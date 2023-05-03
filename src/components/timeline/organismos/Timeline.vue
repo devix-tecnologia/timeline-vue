@@ -105,7 +105,9 @@ export default defineComponent({
       }
     }
     const eventosFiltrados: Evento[] = filtraEventoAtual(eventosOrdenados);
-    const eventoAtual = eventosFiltrados[0];
+    const eventoAtual = eventosFiltrados[0]
+      ? (eventosFiltrados[0] as Evento)
+      : null;
 
     //lista de eventos
     const eventosPorTipo = computed(() => {
@@ -130,7 +132,12 @@ export default defineComponent({
             tipo: "evento",
             valor: evento,
             key: ++idx,
-            atual: evento.id === eventoAtual.id,
+            atual:
+              eventoAtual === null
+                ? false
+                : evento.id === eventoAtual.id
+                ? true
+                : false,
           });
         }
         return result;
