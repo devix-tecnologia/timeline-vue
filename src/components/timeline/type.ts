@@ -5,7 +5,7 @@ export type Perfil = {
 };
 
 export type Evento = {
-  id: number;
+  id: string;
   data: Date;
   previsto: Date;
   duracao: number | null;
