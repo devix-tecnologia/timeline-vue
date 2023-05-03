@@ -208,8 +208,8 @@ export const dadosEventos: Evento[] = [
   },
   {
     id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f12",
-    data: new Date("2023-05-03T17:30Z"),
-    previsto: new Date("2023-05-03T17:30Z"),
+    data: new Date("2023-05-03T17:00Z"),
+    previsto: new Date("2023-05-03T17:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: null,
