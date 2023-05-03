@@ -7,13 +7,17 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@fontsource/material-icons": "^4.5.4",
     "vue": "^3.0.0"
   },
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.7",
+    "@semantic-release/npm": "^9.0.1",
     "@storybook/addon-essentials": "^7.0.7",
     "@storybook/addon-interactions": "^7.0.7",
     "@storybook/addon-links": "^7.0.7",
@@ -25,6 +29,7 @@
     "@vitejs/plugin-vue": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "semantic-release": "^19.0.5",
     "storybook": "^7.0.7",
     "typescript": "^5.0.2",
     "vite": "^4.3.0",
