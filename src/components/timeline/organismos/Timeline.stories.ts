@@ -41,8 +41,6 @@ function atualizarDatas() {
       numeroHoraEvento +
       ":00Z";
 
-    console.log(new Date(dataEvento));
-
     if (mesEvento >= mesAtual) {
       evento.data = new Date(dataEvento);
       evento.previsto = new Date(dataEvento);
