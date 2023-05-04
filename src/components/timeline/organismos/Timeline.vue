@@ -161,6 +161,7 @@ export default defineComponent({
   },
   mounted() {
     this.scrollParaItemAtual();
+    setInterval(this.scrollParaItemAtual, 60000);
   },
 });
 </script>
