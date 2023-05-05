@@ -89,7 +89,7 @@ export default defineComponent({
         for (const e of eventos) {
           const t = e.data.getTime();
           const diff = Math.abs(agora - t);
-          if (minDiff === null || diff < minDiff) {
+          if (minDiff === null || (diff < minDiff && t <= agora)) {
             minDiff = diff;
             listaEventos.length = 0;
           }
