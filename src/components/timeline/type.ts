@@ -4,6 +4,11 @@ export type Perfil = {
   icone: string | null;
 };
 
+export type Categoria = {
+  nome: string;
+  icone: string;
+};
+
 export type Evento = {
   id: string;
   data: Date;
@@ -14,10 +19,7 @@ export type Evento = {
   titulo: string;
   subtitulo: string;
   destaque: string;
-  categoria: {
-    nome: string;
-    icone: string;
-  };
+  categoria: Categoria;
   status:
     | "atrasado"
     | "adiantado"
@@ -25,6 +27,6 @@ export type Evento = {
     | "realizado"
     | "planejado"
     | "cancelado";
-  criticidade: string;
+  criticidade: "baixa" | "media" | "alta";
   acao: boolean;
 };

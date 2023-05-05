@@ -1,6 +1,7 @@
 import Timeline from "./Timeline.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 import { dadosEventos, dadosPerfil } from "./Timeline.mock";
+import { Evento } from "../type";
 
 export default {
   title: "Devix/Timeline/Organismos/Timeline",
@@ -15,39 +16,21 @@ const perfilMock = dadosPerfil;
 
 const eventosPorDataMock = dadosEventos;
 
-function atualizarDatas() {
+function atualizarDatas(eventos: Evento[]) {
   const agora = new Date();
-  const diaAtual = agora.getDay();
   const mesAtual = agora.getMonth() + 1;
-  const anoAtual = agora.getFullYear();
-  const numeroMesAtual = mesAtual < 10 ? `0${mesAtual}` : mesAtual;
-  const numeroDiaAtual = diaAtual < 10 ? `0${diaAtual}` : diaAtual;
 
-  for (let i = 0; i < dadosEventos.length; i++) {
-    const evento = dadosEventos[i];
-    const diaEvento = evento.data.getDay();
+  for (let i = 0; i < eventos.length; i++) {
+    const evento = eventos[i];
     const mesEvento = evento.data.getMonth() + 1;
-    const anoEvento = evento.data.getFullYear();
-    const horaEvento = evento.data.getUTCHours();
-    const numeroHoraEvento = horaEvento < 10 ? `0${horaEvento}` : horaEvento;
-
-    const dataEvento =
-      anoAtual +
-      "-" +
-      numeroMesAtual +
-      "-" +
-      numeroDiaAtual +
-      "T" +
-      numeroHoraEvento +
-      ":00Z";
 
     if (mesEvento >= mesAtual) {
-      evento.data = new Date(dataEvento);
-      evento.previsto = new Date(dataEvento);
+      evento.data.setMonth(agora.getMonth(), agora.getDate());
+      evento.previsto.setMonth(agora.getMonth(), agora.getDate());
     }
   }
 }
-atualizarDatas();
+atualizarDatas(dadosEventos);
 
 const Template: StoryFn<typeof Timeline> = (args) => ({
   components: { Timeline: Timeline },

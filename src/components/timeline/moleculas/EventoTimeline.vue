@@ -1,26 +1,16 @@
 <template>
   <article
     class="eventoTimeline"
-    :class="[
-      dadosEvento.valor.status,
-      'criticidade-' + dadosEvento.valor.criticidade,
-      eventoSelecionado,
-    ]"
+    :class="[status, 'criticidade-' + criticidade, eventoSelecionado]"
   >
-    <IconeStatus :status="dadosEvento.valor.status" />
-    <HoraEvento
-      :horaPrevista="dadosEvento.valor.previsto"
-      :horaRealizada="dadosEvento.valor.realizado"
-    />
+    <IconeStatus :status="status" />
+    <HoraEvento :horaPrevista="previsto" :horaRealizada="realizado" />
     <IconeCategoria
-      :iconeCategoria="dadosEvento.valor.categoria.icone"
-      :categoria="dadosEvento.valor.categoria.nome"
+      :iconeCategoria="categoria.icone"
+      :categoria="categoria.nome"
     />
-    <DescricaoEvento
-      :titulo="dadosEvento.valor.titulo"
-      :subtitulo="dadosEvento.valor.subtitulo"
-    />
-    <Destaque :destaque="dadosEvento.valor.destaque" />
+    <DescricaoEvento :titulo="titulo" :subtitulo="subtitulo" />
+    <Destaque :destaque="destaque" />
   </article>
 </template>
 <script lang="ts">
@@ -30,12 +20,49 @@ import IconeStatus from "../atomos/IconeStatus.vue";
 import DescricaoEvento from "./DescricaoEvento.vue";
 import HoraEvento from "./HoraEvento.vue";
 import Destaque from "../atomos/Destaque.vue";
+// import { Evento, Categoria } from "../type";
+
+interface Categoria {
+  nome: string;
+  icone: string;
+}
 
 export default defineComponent({
   props: {
-    dadosEvento: {
+    status: {
       required: true,
-      type: Object,
+      type: String,
+    },
+    criticidade: {
+      required: true,
+      type: String,
+    },
+    ehAtual: {
+      required: true,
+    },
+    previsto: {
+      required: true,
+      type: Date,
+    },
+    realizado: {
+      required: true,
+      type: Date || null,
+    },
+    categoria: {
+      required: true,
+      type: Object as () => Categoria,
+    },
+    titulo: {
+      required: true,
+      type: String,
+    },
+    subtitulo: {
+      required: true,
+      type: String,
+    },
+    destaque: {
+      required: true,
+      type: String,
     },
   },
   components: {
@@ -48,8 +75,8 @@ export default defineComponent({
   setup(props) {
     return {
       eventoSelecionado: computed(() => ({
-        atual: props.dadosEvento.atual == true,
-        padrao: props.dadosEvento.atual == false,
+        atual: props.ehAtual == true,
+        padrao: props.ehAtual == false,
       })),
     };
   },

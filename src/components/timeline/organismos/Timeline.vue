@@ -21,7 +21,17 @@
       <div v-if="evento.tipo === 'evento'">
         <section class="timeline">
           <!--loop-->
-          <EventoTimeline :dadosEvento="evento" />
+          <EventoTimeline
+            :status="evento.valor.status"
+            :criticidade="evento.valor.criticidade"
+            :previsto="evento.valor.previsto"
+            :realizado="evento.valor.realizado"
+            :categoria="evento.valor.categoria"
+            :titulo="evento.valor.titulo"
+            :subtitulo="evento.valor.subtitulo"
+            :destaque="evento.valor.destaque"
+            :ehAtual="evento.atual"
+          />
         </section>
       </div>
     </div>
