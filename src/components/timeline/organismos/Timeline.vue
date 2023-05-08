@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive } from "vue";
+import { defineComponent, computed, reactive, onMounted } from "vue";
 import EventoTimeline from "../moleculas/EventoTimeline.vue";
 import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
 import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
@@ -125,9 +125,20 @@ export default defineComponent({
         let result: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
         let idx = 0;
+        let statusEvento;
 
         for (const evento of eventosOrdenados) {
+          const agora = new Date();
           const dataEvento = evento.data;
+          statusEvento = evento.status;
+          const toleranciaEvento = evento.tolerancia * 60 * 1000;
+
+          if (
+            statusEvento === "planejado" &&
+            dataEvento.getTime() + toleranciaEvento < agora.getTime()
+          ) {
+            evento.status = "atrasado";
+          }
 
           if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
             dataAtual = dataEvento;
@@ -156,22 +167,21 @@ export default defineComponent({
       }
     });
 
-    return {
-      eventosPorTipo,
-    };
-  },
-  methods: {
-    scrollParaItemAtual() {
+    // rolagem automática a cada minuto para o evento atual
+    function scrollParaItemAtual() {
       const itemAtual = document.querySelector(".atual");
       itemAtual?.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
-    },
-  },
-  mounted() {
-    this.scrollParaItemAtual();
-    setInterval(this.scrollParaItemAtual, 60000);
+    }
+
+    onMounted(scrollParaItemAtual);
+    setInterval(scrollParaItemAtual, 60000);
+
+    return {
+      eventosPorTipo,
+    };
   },
 });
 </script>

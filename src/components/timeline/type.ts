@@ -15,7 +15,7 @@ export type Evento = {
   previsto: Date;
   duracao: number | null;
   realizado: Date | null;
-  tolerancia: number | null;
+  tolerancia: number;
   titulo: string;
   subtitulo: string;
   destaque: string;
