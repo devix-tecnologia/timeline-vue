@@ -30,7 +30,7 @@
             :titulo="evento.valor.titulo"
             :subtitulo="evento.valor.subtitulo"
             :destaque="evento.valor.destaque"
-            :ehAtual="evento.atual"
+            :ehAtual="evento.valor === eventoAtual"
           />
         </section>
       </div>
@@ -39,7 +39,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, onMounted } from "vue";
+import {
+  defineComponent,
+  computed,
+  reactive,
+  onMounted,
+  ref,
+  watchEffect,
+} from "vue";
 import EventoTimeline from "../moleculas/EventoTimeline.vue";
 import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
 import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
@@ -47,7 +54,7 @@ import { Evento } from "../type";
 
 type TipoEventoTimeline =
   | { tipo: "dia"; valor: Date; key: number }
-  | { tipo: "evento"; valor: Evento; key: number; atual: boolean }
+  | { tipo: "evento"; valor: Evento; key: number }
   | { tipo: "eventos"; valor: Evento[]; key: number };
 
 // type Ordem = 'ascendente' | 'descendente';
@@ -91,15 +98,15 @@ export default defineComponent({
     };
 
     //verifica qual evento está mais próximo da hora atual e coloca ele numa nova lista na primeira posição
-    function filtraEventoAtual(eventos: Evento[]) {
+    function filtraEventoAtual(eventos: Evento[], dataReferencia: Date) {
       if (eventos) {
-        const agora = Date.now();
+        const referencia = dataReferencia.getTime();
         let minDiff = null;
         let listaEventos = [];
         for (const e of eventos) {
           const t = e.data.getTime();
-          const diff = Math.abs(agora - t);
-          if (minDiff === null || (diff < minDiff && t <= agora)) {
+          const diff = Math.abs(referencia - t);
+          if (minDiff === null || (diff < minDiff && t <= referencia)) {
             minDiff = diff;
             listaEventos.length = 0;
           }
@@ -114,10 +121,21 @@ export default defineComponent({
         return [];
       }
     }
-    const eventosFiltrados: Evento[] = filtraEventoAtual(eventosOrdenados);
-    const eventoAtual = eventosFiltrados[0]
-      ? (eventosFiltrados[0] as Evento)
-      : null;
+    let _dataReferencia = new Date();
+
+    setInterval(() => {
+      _dataReferencia = new Date();
+
+      console.log(_dataReferencia);
+    }, 1000);
+
+    const eventoAtual = computed(() => {
+      const eventosFiltrados: Evento[] = filtraEventoAtual(
+        eventosOrdenados,
+        _dataReferencia
+      );
+      return eventosFiltrados[0] ? (eventosFiltrados[0] as Evento) : null;
+    });
 
     //lista de eventos
     const eventosPorTipo = computed(() => {
@@ -153,12 +171,6 @@ export default defineComponent({
             tipo: "evento",
             valor: evento,
             key: ++idx,
-            atual:
-              eventoAtual === null
-                ? false
-                : evento.id === eventoAtual.id
-                ? true
-                : false,
           });
         }
         return result;
@@ -177,10 +189,11 @@ export default defineComponent({
     }
 
     onMounted(scrollParaItemAtual);
-    setInterval(scrollParaItemAtual, 60000);
+    setInterval(scrollParaItemAtual, 5000);
 
     return {
       eventosPorTipo,
+      eventoAtual,
     };
   },
 });
