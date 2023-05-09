@@ -1,5 +1,5 @@
 <template>
-  <div
+  <section
     class="perfilTimeline"
     ref="elementoFixo"
     :style="style"
@@ -9,7 +9,7 @@
     <AvatarTimeline v-if="imagemPerfil" :imagem="imagemPerfil" />
     <AvatarTimeline v-else-if="iconePerfil" :icone="iconePerfil" />
     <h2 class="nome">{{ nomePerfil }}</h2>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
