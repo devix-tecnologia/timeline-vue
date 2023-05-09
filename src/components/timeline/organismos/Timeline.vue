@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, ref } from "vue";
+import { defineComponent, computed, reactive } from "vue";
 import EventoTimeline from "../moleculas/EventoTimeline.vue";
 import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
 import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
@@ -84,7 +84,7 @@ export default defineComponent({
             resp.atual = true;
             resp.scroll = true;
             void scrollParaItemAtual();
-          }else {
+          } else {
             resp.atual = false;
             resp.scroll = false;
           }
@@ -109,9 +109,10 @@ export default defineComponent({
         let minDiff: number | null = null;
         let listaEventos = [];
         for (const e of eventos) {
+          const t = e.data.getTime();
           if (e.status === "planejado" || e.status === "atrasado") {
             const diff: number = Math.abs(agora - e.data.getTime());
-            if (minDiff === null || diff < minDiff) {
+            if (minDiff === null || (diff < minDiff && t <= agora)) {
               minDiff = diff;
               listaEventos.length = 0;
             } else if (diff > minDiff) {
@@ -125,6 +126,7 @@ export default defineComponent({
         return [];
       }
     };
+
     const scrollParaItemAtual = () => {
       const itemAtual = document.querySelector(".atual");
       itemAtual?.scrollIntoView({
@@ -146,9 +148,21 @@ export default defineComponent({
         let result: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
         let idx = 0;
+        let statusEvento;
 
         for (const evento of eventosOrdenados) {
+          const agora = new Date();
           const dataEvento = evento.data;
+          statusEvento = evento.status;
+          const toleranciaEvento = evento.tolerancia * 60 * 1000;
+
+          //altera status para atrasado
+          if (
+            statusEvento === "planejado" &&
+            dataEvento.getTime() + toleranciaEvento < agora.getTime()
+          ) {
+            evento.status = "atrasado";
+          }
           if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
             dataAtual = dataEvento;
             result.push({
@@ -170,7 +184,6 @@ export default defineComponent({
     });
     return {
       eventosPorTipo,
-      dadosEventosTimelineClone,
     };
   },
 });

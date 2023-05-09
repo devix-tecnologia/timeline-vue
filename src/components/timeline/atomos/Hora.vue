@@ -1,11 +1,13 @@
 <template>
-  <div class="hora" :class="classes">{{ hora.getHours() }} : {{ hora.getMinutes().toString().padStart(2, '0') }}</div>
+  <div class="hora" :class="classes">
+    {{ hora.getHours() }}:{{ hora.getMinutes().toString().padStart(2, "0") }}
+  </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed, ref } from 'vue';
+import { defineComponent, reactive, computed, ref } from "vue";
 
 export default defineComponent({
-  name: 'hora',
+  name: "hora",
   props: {
     hora: {
       required: true,
@@ -21,7 +23,7 @@ export default defineComponent({
 
     return {
       classes: computed(() => ({
-        [`hora-${propsAparecia || ''}`]: true,
+        [`hora-${propsAparecia || ""}`]: true,
       })),
     };
   },

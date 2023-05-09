@@ -135,4 +135,12 @@ export default defineComponent({
 .eventoTimeline.atrasado:after {
   background: var(--cor-alerta);
 }
+
+.eventoTimeline.atrasado:before {
+  background: var(--cor-alerta);
+}
+
+.eventoTimeline.atrasado:after {
+  background: var(--cor-alerta);
+}
 </style>
