@@ -14,7 +14,7 @@
   </article>
 </template>
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, PropType } from "vue";
 import IconeCategoria from "../atomos/IconeCategoria.vue";
 import IconeStatus from "../atomos/IconeStatus.vue";
 import DescricaoEvento from "./DescricaoEvento.vue";
@@ -46,8 +46,8 @@ export default defineComponent({
       type: Date,
     },
     realizado: {
-      required: true,
-      type: Date || null,
+      required: false,
+      type: Date as PropType<Date | null>,
     },
     categoria: {
       required: true,
