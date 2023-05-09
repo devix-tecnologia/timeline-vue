@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>{{ eventosPorTipo }}</div>
     <div>
       <PerfilTimeline
         v-if="perfilTimeline !== null"
@@ -17,7 +16,6 @@
     >
       <!-- SEPARADOR -->
       <div v-if="evento.tipo === 'dia'">
-        <div>{{ evento.valor }}</div>
         <SeparadorPeriodo :dataSeparador="evento.valor" />
       </div>
       <div v-if="evento.tipo === 'evento'">
@@ -86,6 +84,9 @@ export default defineComponent({
             resp.atual = true;
             resp.scroll = true;
             void scrollParaItemAtual();
+          }else {
+            resp.atual = false;
+            resp.scroll = false;
           }
           return {
             evento: resp,
@@ -172,19 +173,6 @@ export default defineComponent({
       dadosEventosTimelineClone,
     };
   },
-  // methods: {
-  //   scrollParaItemAtual() {
-  //     const itemAtual = document.querySelector(".atual");
-  //     itemAtual?.scrollIntoView({
-  //       behavior: "smooth",
-  //       block: "center",
-  //     });
-  //   },
-  // },
-  // mounted() {
-  //   this.scrollParaItemAtual();
-  //   setInterval(this.scrollParaItemAtual, 60000);
-  // },
 });
 </script>
 
