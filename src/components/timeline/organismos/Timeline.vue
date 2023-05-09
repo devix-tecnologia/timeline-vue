@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div>{{ eventosPorTipo }}</div>
     <div>
       <PerfilTimeline
         v-if="perfilTimeline !== null"
@@ -16,7 +17,8 @@
     >
       <!-- SEPARADOR -->
       <div v-if="evento.tipo === 'dia'">
-        <SeparadorPeriodo :dataSeparador="evento.valor.toDateString()" />
+        <div>{{ evento.valor }}</div>
+        <SeparadorPeriodo :dataSeparador="evento.valor" />
       </div>
       <div v-if="evento.tipo === 'evento'">
         <section class="timeline">
@@ -30,7 +32,7 @@
             :titulo="evento.valor.titulo"
             :subtitulo="evento.valor.subtitulo"
             :destaque="evento.valor.destaque"
-            :ehAtual="evento.atual"
+            :ehAtual="evento.valor.atual"
           />
         </section>
       </div>
@@ -39,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, onMounted } from "vue";
+import { defineComponent, computed, reactive, ref } from "vue";
 import EventoTimeline from "../moleculas/EventoTimeline.vue";
 import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
 import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
@@ -47,10 +49,8 @@ import { Evento } from "../type";
 
 type TipoEventoTimeline =
   | { tipo: "dia"; valor: Date; key: number }
-  | { tipo: "evento"; valor: Evento; key: number; atual: boolean }
+  | { tipo: "evento"; valor: Evento; key: number }
   | { tipo: "eventos"; valor: Evento[]; key: number };
-
-// type Ordem = 'ascendente' | 'descendente';
 
 export default defineComponent({
   props: {
@@ -62,10 +62,6 @@ export default defineComponent({
       required: true,
       type: Object,
     },
-    // ordem: {
-    //   required: false,
-    //   type: Ordem,
-    // },
   },
   components: {
     PerfilTimeline,
@@ -76,12 +72,27 @@ export default defineComponent({
     const dadosEventosTimeline: Evento[] = reactive(
       props.eventosTimeline as Array<Evento>
     );
+    let dadosEventosTimelineClone: Evento[] = reactive(dadosEventosTimeline);
 
-    const eventosOrdenados = dadosEventosTimeline.sort(
-      (a: Evento, b: Evento) => {
-        return a.data.getTime() - b.data.getTime();
-      }
-    );
+    const eventosPorTipoTime = () => {
+      setInterval(function () {
+        dadosEventosTimelineClone = dadosEventosTimeline;
+
+        const resultado: Evento[] = filtraEventoAtual(
+          dadosEventosTimelineClone
+        );
+        dadosEventosTimelineClone.map((resp) => {
+          if (resultado[0].id === resp.id) {
+            resp.atual = true;
+            resp.scroll = true;
+            void scrollParaItemAtual();
+          }
+          return {
+            evento: resp,
+          };
+        });
+      }, 60000);
+    };
 
     const verifica_mesmo_dia = (a: Date, b: Date) => {
       const mesmo_dia = a.getDay() === b.getDay();
@@ -91,55 +102,52 @@ export default defineComponent({
     };
 
     //verifica qual evento está mais próximo da hora atual e coloca ele numa nova lista na primeira posição
-    function filtraEventoAtual(eventos: Evento[]) {
+    const filtraEventoAtual = (eventos: Evento[]) => {
       if (eventos) {
         const agora = Date.now();
-        let minDiff = null;
+        let minDiff: number | null = null;
         let listaEventos = [];
         for (const e of eventos) {
-          const t = e.data.getTime();
-          const diff = Math.abs(agora - t);
-          if (minDiff === null || (diff < minDiff && t <= agora)) {
-            minDiff = diff;
-            listaEventos.length = 0;
-          }
-          //se o evento já estiver marcado como realizado, cancelado ou adiado, ele pula para o próximo da lista.
           if (e.status === "planejado" || e.status === "atrasado") {
+            const diff: number = Math.abs(agora - e.data.getTime());
+            if (minDiff === null || diff < minDiff) {
+              minDiff = diff;
+              listaEventos.length = 0;
+            } else if (diff > minDiff) {
+              continue;
+            }
             listaEventos.push(e);
           }
         }
         return listaEventos;
       } else {
-        console.log("vazio.. ", []);
         return [];
       }
-    }
-    const eventosFiltrados: Evento[] = filtraEventoAtual(eventosOrdenados);
-    const eventoAtual = eventosFiltrados[0]
-      ? (eventosFiltrados[0] as Evento)
-      : null;
+    };
+    const scrollParaItemAtual = () => {
+      const itemAtual = document.querySelector(".atual");
+      itemAtual?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    };
 
-    //lista de eventos
+    // lista de eventos por tipos
     const eventosPorTipo = computed(() => {
-      if (dadosEventosTimeline) {
+      void eventosPorTipoTime();
+
+      const eventosOrdenados = dadosEventosTimelineClone.sort(
+        (a: Evento, b: Evento) => {
+          return a.data.getTime() - b.data.getTime();
+        }
+      );
+      if (eventosOrdenados) {
         let result: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
         let idx = 0;
-        let statusEvento;
 
         for (const evento of eventosOrdenados) {
-          const agora = new Date();
           const dataEvento = evento.data;
-          statusEvento = evento.status;
-          const toleranciaEvento = evento.tolerancia * 60 * 1000;
-
-          if (
-            statusEvento === "planejado" &&
-            dataEvento.getTime() + toleranciaEvento < agora.getTime()
-          ) {
-            evento.status = "atrasado";
-          }
-
           if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
             dataAtual = dataEvento;
             result.push({
@@ -148,17 +156,10 @@ export default defineComponent({
               key: ++idx,
             });
           }
-
           result.push({
             tipo: "evento",
             valor: evento,
             key: ++idx,
-            atual:
-              eventoAtual === null
-                ? false
-                : evento.id === eventoAtual.id
-                ? true
-                : false,
           });
         }
         return result;
@@ -166,23 +167,24 @@ export default defineComponent({
         return [];
       }
     });
-
-    // rolagem automática a cada minuto para o evento atual
-    function scrollParaItemAtual() {
-      const itemAtual = document.querySelector(".atual");
-      itemAtual?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-
-    onMounted(scrollParaItemAtual);
-    setInterval(scrollParaItemAtual, 60000);
-
     return {
       eventosPorTipo,
+      dadosEventosTimelineClone,
     };
   },
+  // methods: {
+  //   scrollParaItemAtual() {
+  //     const itemAtual = document.querySelector(".atual");
+  //     itemAtual?.scrollIntoView({
+  //       behavior: "smooth",
+  //       block: "center",
+  //     });
+  //   },
+  // },
+  // mounted() {
+  //   this.scrollParaItemAtual();
+  //   setInterval(this.scrollParaItemAtual, 60000);
+  // },
 });
 </script>
 
