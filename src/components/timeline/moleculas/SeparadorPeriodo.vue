@@ -4,7 +4,8 @@
       <BoxData :dataNumero="dataSeparador.getDate()" :aparencia="aparencia" />
     </div>
     <h3 class="titulo" :class="aparencia">
-      {{ mesCorrente(dataSeparador.getMonth()) }} de {{ dataSeparador.getFullYear() }}
+      {{ mesCorrente(dataSeparador.getMonth()) }} de
+      {{ dataSeparador.getFullYear() }}
     </h3>
   </div>
 </template>
@@ -41,9 +42,7 @@ export default defineComponent({
     arrayMes[11] = "Dezembro";
 
     const mesCorrente = (mes: number) => {
-
       return arrayMes[mes];
-
     };
     return { mesCorrente };
   },
@@ -75,7 +74,7 @@ export default defineComponent({
   width: 2px;
   height: 2.5rem;
   top: 0;
-  left: 11.7rem;
+  left: 11.9rem;
 }
 
 .areaData:after {
@@ -86,7 +85,7 @@ export default defineComponent({
   width: 2px;
   height: 2.5rem;
   bottom: 0;
-  left: 11.7rem;
+  left: 11.9rem;
 }
 
 .separadorPeriodo .titulo {

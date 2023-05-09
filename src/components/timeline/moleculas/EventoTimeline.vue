@@ -126,7 +126,7 @@ export default defineComponent({
   width: 2px;
   top: 0;
   height: 1.5rem;
-  left: 11.7rem;
+  left: 11.9rem;
 }
 
 .eventoTimeline:after {
@@ -137,7 +137,7 @@ export default defineComponent({
   width: 2px;
   top: 5.1rem;
   bottom: 0;
-  left: 11.7rem;
+  left: 11.9rem;
 }
 
 .eventoTimeline.atrasado:before {
