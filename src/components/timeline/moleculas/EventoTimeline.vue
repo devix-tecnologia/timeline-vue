@@ -39,6 +39,7 @@ export default defineComponent({
     },
     ehAtual: {
       required: true,
+      type: Boolean,
     },
     previsto: {
       required: true,
@@ -75,8 +76,8 @@ export default defineComponent({
   setup(props) {
     return {
       eventoSelecionado: computed(() => ({
-        atual: props.ehAtual == true,
-        padrao: props.ehAtual == false,
+        atual: props.ehAtual,
+        padrao: props.ehAtual,
       })),
     };
   },
