@@ -125,7 +125,7 @@ export default defineComponent({
   position: absolute;
   width: 2px;
   top: 0;
-  height: 1.5rem;
+  height: 2.5rem;
   left: 11.9rem;
 }
 
@@ -135,7 +135,7 @@ export default defineComponent({
   display: block;
   position: absolute;
   width: 2px;
-  top: 5.1rem;
+  top: 6.1rem;
   bottom: 0;
   left: 11.9rem;
 }

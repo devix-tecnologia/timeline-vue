@@ -31,9 +31,9 @@ export default defineComponent({
   color: var(--cor-secundaria);
   width: 1.6rem;
   display: table-cell;
-  padding: 1.4rem;
+  padding: 2.4rem 1.4rem;
   vertical-align: top;
-  padding-top: 2.7rem;
+  padding-top: 3.7rem;
 }
 
 .realizado.iconeStatus {
