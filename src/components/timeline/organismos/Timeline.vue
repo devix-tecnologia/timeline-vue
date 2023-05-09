@@ -72,27 +72,26 @@ export default defineComponent({
     );
     let dadosEventosTimelineClone: Evento[] = reactive(dadosEventosTimeline);
 
-    const eventosPorTipoTime = () => {
-      setInterval(function () {
-        dadosEventosTimelineClone = dadosEventosTimeline;
+    function carregarListaEventos() {
+      dadosEventosTimelineClone = dadosEventosTimeline;
+      const resultado: Evento[] = filtraEventoAtual(dadosEventosTimelineClone);
+      dadosEventosTimelineClone.map((resp) => {
+        if (resultado[0].id === resp.id) {
+          resp.atual = true;
+          resp.scroll = true;
+          void scrollParaItemAtual();
+        } else {
+          resp.atual = false;
+          resp.scroll = false;
+        }
+        return {
+          evento: resp,
+        };
+      });
+    }
 
-        const resultado: Evento[] = filtraEventoAtual(
-          dadosEventosTimelineClone
-        );
-        dadosEventosTimelineClone.map((resp) => {
-          if (resultado[0].id === resp.id) {
-            resp.atual = true;
-            resp.scroll = true;
-            void scrollParaItemAtual();
-          } else {
-            resp.atual = false;
-            resp.scroll = false;
-          }
-          return {
-            evento: resp,
-          };
-        });
-      }, 60000);
+    const atualizarEventoAtual = () => {
+      setInterval(carregarListaEventos, 60000);
     };
 
     const verifica_mesmo_dia = (a: Date, b: Date) => {
@@ -127,17 +126,9 @@ export default defineComponent({
       }
     };
 
-    const scrollParaItemAtual = () => {
-      const itemAtual = document.querySelector(".atual");
-      itemAtual?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    };
-
-    // lista de eventos por tipos
-    const eventosPorTipo = computed(() => {
-      void eventosPorTipoTime();
+    // lista de eventos por tipo
+    const eventosTimeline = computed(() => {
+      void atualizarEventoAtual();
 
       const eventosOrdenados = dadosEventosTimelineClone.sort(
         (a: Evento, b: Evento) => {
@@ -145,7 +136,7 @@ export default defineComponent({
         }
       );
       if (eventosOrdenados) {
-        let result: Array<TipoEventoTimeline> = [];
+        let resultado: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
         let idx = 0;
         let statusEvento;
@@ -165,26 +156,41 @@ export default defineComponent({
           }
           if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
             dataAtual = dataEvento;
-            result.push({
+            resultado.push({
               tipo: "dia",
               valor: evento.data,
               key: ++idx,
             });
           }
-          result.push({
+          resultado.push({
             tipo: "evento",
             valor: evento,
             key: ++idx,
           });
         }
-        return result;
+        return resultado;
       } else {
         return [];
       }
     });
-    return {
-      eventosPorTipo,
+
+    const scrollParaItemAtual = () => {
+      const itemAtual = document.querySelector(".atual");
+      itemAtual?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     };
+
+    carregarListaEventos();
+    return {
+      eventosPorTipo: eventosTimeline,
+      scrollParaItemAtual,
+    };
+  },
+  mounted() {
+    // Aguardando a renderização para fazer scroll
+    this.scrollParaItemAtual();
   },
 });
 </script>
