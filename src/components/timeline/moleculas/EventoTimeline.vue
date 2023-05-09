@@ -1,7 +1,7 @@
 <template>
   <article
     class="eventoTimeline"
-    :class="[status, 'criticidade-' + criticidade, eventoSelecionado]"
+    :class="[status, 'criticidade-' + criticidade, eventoSelecionado, clicavel]"
     :onclick="aoCLicar"
   >
     <IconeStatus :status="status" />
@@ -84,6 +84,9 @@ export default defineComponent({
         atual: props.ehAtual,
         padrao: props.ehAtual,
       })),
+      clicavel: computed(() => ({
+        clicavel: props.aoCLicar !== undefined,
+      })),
     };
   },
 });
@@ -95,6 +98,10 @@ export default defineComponent({
   position: relative;
   width: 100%;
   border-radius: 1rem;
+}
+
+.clicavel {
+  cursor: pointer;
 }
 
 .eventoTimeline:hover {
