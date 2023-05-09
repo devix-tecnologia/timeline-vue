@@ -24,7 +24,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "realizado",
     criticidade: "media",
-    acao: false,
+
     atual: false,
     scroll: false,
   },
@@ -44,7 +44,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "cancelado",
     criticidade: "baixa",
-    acao: false,
+
     atual: false,
     scroll: false,
   },
@@ -64,7 +64,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    acao: true,
+
     atual: false,
     scroll: false,
   },
@@ -84,7 +84,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    acao: false,
+
     atual: false,
     scroll: false,
   },
@@ -104,7 +104,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "media",
-    acao: true,
+
     atual: false,
     scroll: false,
   },
@@ -124,7 +124,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "adiado",
     criticidade: "baixa",
-    acao: false,
+
     atual: false,
     scroll: false,
   },
@@ -144,7 +144,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "realizado",
     criticidade: "alta",
-    acao: true,
+
     atual: false,
     scroll: false,
   },
@@ -164,7 +164,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    acao: false,
+
     atual: false,
     scroll: false,
   },
@@ -184,14 +184,14 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "alta",
-    acao: true,
+
     atual: false,
     scroll: false,
   },
   {
     id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f10",
-    data: new Date("2023-05-03T14:30Z"),
-    previsto: new Date("2023-05-03T14:30Z"),
+    data: new Date("2023-05-03T14:27Z"),
+    previsto: new Date("2023-05-03T14:27Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -204,7 +204,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "alta",
-    acao: false,
+
     atual: false,
     scroll: false,
   },
@@ -224,7 +224,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    acao: true,
+
     atual: false,
     scroll: false,
   },
@@ -244,7 +244,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    acao: false,
+
     atual: false,
     scroll: false,
   },
@@ -264,10 +264,9 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    acao: true,
+
     atual: false,
     scroll: false,
-
   },
   {
     id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f14",
@@ -285,7 +284,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    acao: false,
+    aoCLicar: () => alert("Olá, mundo!"),
     atual: false,
     scroll: false,
   },
@@ -305,7 +304,7 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    acao: true,
+
     atual: false,
     scroll: false,
   },

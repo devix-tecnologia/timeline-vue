@@ -31,6 +31,7 @@
             :subtitulo="evento.valor.subtitulo"
             :destaque="evento.valor.destaque"
             :ehAtual="evento.valor.atual"
+            :aoCLicar="evento.valor.aoCLicar"
           />
         </section>
       </div>

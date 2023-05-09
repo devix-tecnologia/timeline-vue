@@ -28,7 +28,7 @@ export type Evento = {
     | "planejado"
     | "cancelado";
   criticidade: "baixa" | "media" | "alta";
-  acao: boolean;
+  aoCLicar?: VoidFunction;
   atual: boolean;
   scroll: boolean;
 };

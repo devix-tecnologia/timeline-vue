@@ -2,6 +2,7 @@
   <article
     class="eventoTimeline"
     :class="[status, 'criticidade-' + criticidade, eventoSelecionado]"
+    :onclick="aoCLicar"
   >
     <IconeStatus :status="status" />
     <HoraEvento :horaPrevista="previsto" :horaRealizada="realizado" />
@@ -64,6 +65,10 @@ export default defineComponent({
     destaque: {
       required: true,
       type: String,
+    },
+    aoCLicar: {
+      required: false,
+      type: Function as PropType<VoidFunction>,
     },
   },
   components: {
