@@ -29,4 +29,6 @@ export type Evento = {
     | "cancelado";
   criticidade: "baixa" | "media" | "alta";
   acao: boolean;
+  atual: boolean;
+  scroll: boolean;
 };
