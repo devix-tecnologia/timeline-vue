@@ -1,14 +1,16 @@
 <template>
   <div class="separadorPeriodo">
     <div class="areaData">
-      <BoxData :dataNumero="dia" :aparencia="aparencia" />
+      <BoxData :dataNumero="dataSeparador.getDate()" :aparencia="aparencia" />
     </div>
-    <h3 class="titulo" :class="aparencia">{{ mes }} de {{ ano }}</h3>
+    <h3 class="titulo" :class="aparencia">
+      {{ mesCorrente(dataSeparador.getMonth()) }} de {{ dataSeparador.getFullYear() }}
+    </h3>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import BoxData from "../atomos/BoxData.vue";
 
 export default defineComponent({
@@ -16,7 +18,7 @@ export default defineComponent({
   props: {
     dataSeparador: {
       required: true,
-      type: String,
+      type: Date,
     },
     aparencia: {
       type: String,
@@ -24,28 +26,26 @@ export default defineComponent({
   },
   components: { BoxData },
   setup(props) {
-    const numeroMes = [
-      "janeiro",
-      "fevereiro",
-      "março",
-      "abril",
-      "maio",
-      "junho",
-      "julho",
-      "agosto",
-      "setembro",
-      "outubro",
-      "novembro",
-      "dezembro",
-    ];
+    const arrayMes = new Array(12);
+    arrayMes[0] = "Janeiro";
+    arrayMes[1] = "Fevereiro";
+    arrayMes[2] = "Março";
+    arrayMes[3] = "Abril";
+    arrayMes[4] = "Maio";
+    arrayMes[5] = "Junho";
+    arrayMes[6] = "Julho";
+    arrayMes[7] = "Agosto";
+    arrayMes[8] = "Setembro";
+    arrayMes[9] = "Outubro";
+    arrayMes[10] = "Novembro";
+    arrayMes[11] = "Dezembro";
 
-    // eslint-disable-next-line vue/no-setup-props-destructure
-    const dataRecebida = props.dataSeparador;
-    const data = new Date(dataRecebida);
-    const ano = data.getFullYear();
-    const mes = numeroMes[data.getMonth()];
-    const dia = data.getDate();
-    return { dataRecebida, ano, mes, dia };
+    const mesCorrente = (mes: number) => {
+
+      return arrayMes[mes];
+
+    };
+    return { mesCorrente };
   },
 });
 </script>
