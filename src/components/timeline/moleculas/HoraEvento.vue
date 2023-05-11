@@ -23,7 +23,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import Hora from "../atomos/Hora.vue";
 
 export default defineComponent({
@@ -33,7 +33,8 @@ export default defineComponent({
       required: true,
     },
     horaRealizada: {
-      type: Date,
+      required: false,
+      type: Date as PropType<Date | null>,
     },
     // aparencia: {
     //   type: String,
