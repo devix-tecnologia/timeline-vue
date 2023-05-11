@@ -1,11 +1,5 @@
 <template>
-  <section
-    class="perfilTimeline"
-    ref="elementoFixo"
-    :style="style"
-    :class="{ fixed: isFixed }"
-  >
-    <!-- :class="{ fixed: isFixed }" -->
+  <section class="perfilTimeline fixed" ref="elementoFixo" :style="style">
     <AvatarTimeline v-if="imagemPerfil" :imagem="imagemPerfil" />
     <AvatarTimeline v-else-if="iconePerfil" :icone="iconePerfil" />
     <h2 class="nome">{{ nomePerfil }}</h2>
@@ -46,29 +40,9 @@ export default defineComponent({
     const style = computed(() => ({
       backgroundColor: props.backgroundColor,
     }));
-    // fixando o box no topo da página
-    const elementoFixo = ref<HTMLElement | null>(null);
-    const isFixed = ref(false);
-
-    const handleScroll = () => {
-      if (elementoFixo.value) {
-        const scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop;
-        const offset = elementoFixo.value.offsetTop;
-        isFixed.value = scrollTop > offset;
-      }
-    };
-
-    onMounted(() => {
-      window.addEventListener("scroll", handleScroll);
-    });
-    onUnmounted(() => {
-      window.removeEventListener("scroll", handleScroll);
-    });
 
     return {
       style,
-      isFixed,
     };
   },
 });
