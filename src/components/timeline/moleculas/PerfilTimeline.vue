@@ -68,7 +68,6 @@ export default defineComponent({
 
     return {
       style,
-      elementoFixo,
       isFixed,
     };
   },
