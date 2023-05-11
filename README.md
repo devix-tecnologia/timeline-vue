@@ -1,11 +1,13 @@
-![TimelineDevix](docs/timeline_topo.png)
+![TimelineDevix](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/timeline_topo.png)
+
+
 
 # Timeline de Eventos DEVIX
 
 Este é um projeto implementando uma linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico. 
 
 
-![TimelineDevixExemplo](docs/timeline01.gif)
+![TimelineDevixExemplo](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/timeline01.gif)
 
 
 ## 🛠 Como usar
@@ -24,7 +26,7 @@ yarn add @devix-tecnologia/timeline-vue
 //exemplo.vue
 
 <template>
-  <Timeline :dadosTimeLine="ListaEventos" />
+  <Timeline :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos" />  
 </template>
 
 <script lang="ts">
@@ -33,7 +35,14 @@ import { Timeline } from "@devix-tecnologia/timeline-vue";
 
 export default defineComponent({
   setup() {
-    const ListaEventos = [
+
+  const perfilTimeline = {
+      nome: "Maria do Socorro",
+      imagem:
+        "https://this-person-does-not-exist.com/img/avatar-gen11071f8e0802a35d66684ee9376722b2.jpg",
+      icone: "person",
+    };
+    const listaEventos = [
       {
         id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f2",
         data: new Date("2023-04-26T18:10Z"),
@@ -70,7 +79,7 @@ export default defineComponent({
         aoCLicar: () => alert("Olá, mundo!"),
       },
     ];
-    return { ListaEventos };
+    return {perfilTimeline, listaEventos };
   },
 });
 </script>
@@ -124,7 +133,8 @@ A Timeline da DEVIX ordena e lista Eventos de forma crescente de acordo com a da
 Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título, subtítulo, ícone de categoria, ícone de status, indicação de criticidade e campo para informação em destaque.
 
 
-![TimelineDevixExemplo](docs/evento.png)
+![TimelineDevixExemploEvento](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/evento.png)
+
 
 ## 🚀  Contribuindo
 ---
