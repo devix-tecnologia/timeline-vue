@@ -7,7 +7,7 @@
 Este é um projeto implementando uma linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico. 
 
 
-![TimelineDevixExemplo](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/timeline01.gif)
+![TimelineDevixExemplo](https://github.com/devix-tecnologia/timeline-vue/blob/91c3b94c6167ca02364507d58dc59bb804b3b51f/docs/timeline01.gif)
 
 
 ## 🛠 Como usar
@@ -38,8 +38,7 @@ export default defineComponent({
 
   const perfilTimeline = {
       nome: "Maria do Socorro",
-      imagem:
-        "https://this-person-does-not-exist.com/img/avatar-gen11071f8e0802a35d66684ee9376722b2.jpg",
+      imagem: "https://this-person-does-not-exist.com/img/avatar-gen11071f8e0802a35d66684ee9376722b2.jpg",
       icone: "person",
     };
     const listaEventos = [
