@@ -1,30 +1,34 @@
 <template>
-  <div>
-    <div>
-      <PerfilTimeline
-        v-if="perfilTimeline !== null"
-        :nomePerfil="perfilTimeline.nome"
-        :imagemPerfil="perfilTimeline.imagem"
-        :iconePerfil="perfilTimeline.icone"
-      />
-    </div>
-
-    <div
-      v-for="evento in eventosPorTipo"
-      :key="evento.key"
-      class="areaTimeline"
-    >
+  <div class="areaTimeline">
+    <PerfilTimeline
+      v-if="perfilTimeline !== null"
+      :nomePerfil="perfilTimeline.nome"
+      :imagemPerfil="perfilTimeline.imagem"
+      :iconePerfil="perfilTimeline.icone"
+    />
+    <section class="timeline">
       <!-- SEPARADOR -->
-      <div v-if="evento.tipo === 'dia'">
-        <SeparadorPeriodo :dataSeparador="evento.valor.toDateString()" />
+      <div v-for="evento in eventosPorTipo" :key="evento.key">
+        <SeparadorPeriodo
+          v-if="evento.tipo === 'dia'"
+          :dataSeparador="evento.valor"
+        />
+        <!--loop-->
+        <EventoTimeline
+          v-if="evento.tipo === 'evento'"
+          :status="evento.valor.status"
+          :criticidade="evento.valor.criticidade"
+          :previsto="evento.valor.previsto"
+          :realizado="evento.valor.realizado"
+          :categoria="evento.valor.categoria"
+          :titulo="evento.valor.titulo"
+          :subtitulo="evento.valor.subtitulo"
+          :destaque="evento.valor.destaque"
+          :ehAtual="evento.valor.atual"
+          :aoCLicar="evento.valor.aoCLicar"
+        />
       </div>
-      <div v-if="evento.tipo === 'evento'">
-        <section class="timeline">
-          <!--loop-->
-          <EventoTimeline :dadosEvento="evento" />
-        </section>
-      </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -37,10 +41,8 @@ import { Evento } from "../type";
 
 type TipoEventoTimeline =
   | { tipo: "dia"; valor: Date; key: number }
-  | { tipo: "evento"; valor: Evento; key: number; atual: boolean }
+  | { tipo: "evento"; valor: Evento; key: number }
   | { tipo: "eventos"; valor: Evento[]; key: number };
-
-// type Ordem = 'ascendente' | 'descendente';
 
 export default defineComponent({
   props: {
@@ -52,10 +54,6 @@ export default defineComponent({
       required: true,
       type: Object,
     },
-    // ordem: {
-    //   required: false,
-    //   type: Ordem,
-    // },
   },
   components: {
     PerfilTimeline,
@@ -66,12 +64,29 @@ export default defineComponent({
     const dadosEventosTimeline: Evento[] = reactive(
       props.eventosTimeline as Array<Evento>
     );
+    let dadosEventosTimelineClone: Evento[] = reactive(dadosEventosTimeline);
 
-    const eventosOrdenados = dadosEventosTimeline.sort(
-      (a: Evento, b: Evento) => {
-        return a.data.getTime() - b.data.getTime();
-      }
-    );
+    function carregarListaEventos() {
+      dadosEventosTimelineClone = dadosEventosTimeline;
+      const resultado: Evento[] = filtraEventoAtual(dadosEventosTimelineClone);
+      dadosEventosTimelineClone.map((resp) => {
+        if (resultado[0].id === resp.id) {
+          resp.atual = true;
+          resp.scroll = true;
+          void scrollParaItemAtual();
+        } else {
+          resp.atual = false;
+          resp.scroll = false;
+        }
+        return {
+          evento: resp,
+        };
+      });
+    }
+
+    const atualizarEventoAtual = () => {
+      setInterval(carregarListaEventos, 60000);
+    };
 
     const verifica_mesmo_dia = (a: Date, b: Date) => {
       const mesmo_dia = a.getDay() === b.getDay();
@@ -81,85 +96,94 @@ export default defineComponent({
     };
 
     //verifica qual evento está mais próximo da hora atual e coloca ele numa nova lista na primeira posição
-    function filtraEventoAtual(eventos: Evento[]) {
+    const filtraEventoAtual = (eventos: Evento[]) => {
       if (eventos) {
         const agora = Date.now();
-        let minDiff = null;
+        let minDiff: number | null = null;
         let listaEventos = [];
         for (const e of eventos) {
           const t = e.data.getTime();
-          const diff = Math.abs(agora - t);
-          if (minDiff === null || (diff < minDiff && t <= agora)) {
-            minDiff = diff;
-            listaEventos.length = 0;
-          }
-          //se o evento já estiver marcado como realizado, cancelado ou adiado, ele pula para o próximo da lista.
           if (e.status === "planejado" || e.status === "atrasado") {
+            const diff: number = Math.abs(agora - e.data.getTime());
+            if (minDiff === null || (diff < minDiff && t <= agora)) {
+              minDiff = diff;
+              listaEventos.length = 0;
+            } else if (diff > minDiff) {
+              continue;
+            }
             listaEventos.push(e);
           }
         }
         return listaEventos;
       } else {
-        console.log("vazio.. ", []);
         return [];
       }
-    }
-    const eventosFiltrados: Evento[] = filtraEventoAtual(eventosOrdenados);
-    const eventoAtual = eventosFiltrados[0]
-      ? (eventosFiltrados[0] as Evento)
-      : null;
+    };
 
-    //lista de eventos
-    const eventosPorTipo = computed(() => {
-      if (dadosEventosTimeline) {
-        let result: Array<TipoEventoTimeline> = [];
+    // lista de eventos por tipo
+    const eventosTimeline = computed(() => {
+      void atualizarEventoAtual();
+
+      const eventosOrdenados = dadosEventosTimelineClone.sort(
+        (a: Evento, b: Evento) => {
+          return a.data.getTime() - b.data.getTime();
+        }
+      );
+      if (eventosOrdenados) {
+        let resultado: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
         let idx = 0;
+        let statusEvento;
 
         for (const evento of eventosOrdenados) {
+          const agora = new Date();
           const dataEvento = evento.data;
+          statusEvento = evento.status;
+          const toleranciaEvento = evento.tolerancia * 60 * 1000;
 
+          //altera status para atrasado
+          if (
+            statusEvento === "planejado" &&
+            dataEvento.getTime() + toleranciaEvento < agora.getTime()
+          ) {
+            evento.status = "atrasado";
+          }
           if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
             dataAtual = dataEvento;
-            result.push({
+            resultado.push({
               tipo: "dia",
               valor: evento.data,
               key: ++idx,
             });
           }
-
-          result.push({
+          resultado.push({
             tipo: "evento",
             valor: evento,
             key: ++idx,
-            atual:
-              eventoAtual === null
-                ? false
-                : evento.id === eventoAtual.id
-                ? true
-                : false,
           });
         }
-        return result;
+        return resultado;
       } else {
         return [];
       }
     });
 
-    return {
-      eventosPorTipo,
-    };
-  },
-  methods: {
-    scrollParaItemAtual() {
+    const scrollParaItemAtual = () => {
       const itemAtual = document.querySelector(".atual");
       itemAtual?.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
-    },
+    };
+
+    carregarListaEventos();
+    return {
+      eventosPorTipo: eventosTimeline,
+      scrollParaItemAtual,
+    };
   },
   mounted() {
+    // Aguardando a renderização para fazer scroll
     this.scrollParaItemAtual();
   },
 });

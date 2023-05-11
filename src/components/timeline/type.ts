@@ -4,20 +4,22 @@ export type Perfil = {
   icone: string | null;
 };
 
+export type Categoria = {
+  nome: string;
+  icone: string;
+};
+
 export type Evento = {
   id: string;
   data: Date;
   previsto: Date;
   duracao: number | null;
   realizado: Date | null;
-  tolerancia: number | null;
+  tolerancia: number;
   titulo: string;
   subtitulo: string;
   destaque: string;
-  categoria: {
-    nome: string;
-    icone: string;
-  };
+  categoria: Categoria;
   status:
     | "atrasado"
     | "adiantado"
@@ -25,6 +27,8 @@ export type Evento = {
     | "realizado"
     | "planejado"
     | "cancelado";
-  criticidade: string;
-  acao: boolean;
+  criticidade: "baixa" | "media" | "alta";
+  aoCLicar?: VoidFunction;
+  atual: boolean;
+  scroll: boolean;
 };

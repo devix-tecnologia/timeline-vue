@@ -23,8 +23,8 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Hora from '../atomos/Hora.vue';
+import { defineComponent, PropType } from "vue";
+import Hora from "../atomos/Hora.vue";
 
 export default defineComponent({
   props: {
@@ -33,7 +33,8 @@ export default defineComponent({
       required: true,
     },
     horaRealizada: {
-      type: Date,
+      required: false,
+      type: Date as PropType<Date | null>,
     },
     // aparencia: {
     //   type: String,
@@ -56,7 +57,7 @@ export default defineComponent({
   display: table-cell;
   vertical-align: top;
   text-align: right;
-  padding: 1.4rem 0;
+  padding: 2.4rem 0;
 }
 .horaEvento {
   line-height: 1.4rem;

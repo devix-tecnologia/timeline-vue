@@ -11,9 +11,9 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive, computed } from "vue";
 export default defineComponent({
-  name: 'categoria',
+  name: "categoria",
   props: {
     iconeCategoria: {
       type: String,
@@ -40,9 +40,9 @@ export default defineComponent({
     props = reactive(props);
     return {
       classes: computed(() => ({
-        'bg-escuro': props.escuro,
-        'bg-claro': !props.escuro,
-        [`borda-${props.tipo || 'padrao'}`]: true,
+        "bg-escuro": props.escuro,
+        "bg-claro": !props.escuro,
+        [`borda-${props.tipo || "padrao"}`]: true,
       })),
       style: computed(() => ({
         borderColor: props.borderColor,
@@ -59,7 +59,7 @@ export default defineComponent({
   display: table-cell;
   align-items: center;
   width: 3rem;
-  padding: 1.8rem 1.4rem;
+  padding: 2.8rem 1.4rem;
 }
 
 .bg-escuro,

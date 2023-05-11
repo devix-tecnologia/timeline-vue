@@ -1,18 +1,145 @@
-# Vue 3 + TypeScript + Vite
+![TimelineDevix](docs/timeline_topo.png)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Timeline de Eventos DEVIX
 
-## Recommended IDE Setup
+Este é um projeto implementando uma linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico. 
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Type Support For `.vue` Imports in TS
+![TimelineDevixExemplo](docs/timeline01.gif)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## 🛠 Como usar
+---
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Instalação
+  
+
+```sh
+yarn add @devix-tecnologia/timeline-vue
+```
+
+### Exemplo de código
+  
+```ts
+//exemplo.vue
+
+<template>
+  <Timeline :dadosTimeLine="ListaEventos" />
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { Timeline } from "@devix-tecnologia/timeline-vue";
+
+export default defineComponent({
+  setup() {
+    const ListaEventos = [
+      {
+        id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f2",
+        data: new Date("2023-04-26T18:10Z"),
+        previsto: new Date("2023-04-26T18:10Z"),
+        realizado: new Date("2023-04-26T18:15Z"),
+        duracao: null,
+        tolerancia: 20,
+        titulo: "Vacina da gripe",
+        subtitulo: "Posto de saúde do bairro",
+        destaque: "",
+        categoria: {
+          nome: "Vacina",
+          icone: "vaccines",
+        },
+        status: "realizado",
+        criticidade: "alta",
+      },
+      {
+        id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f14",
+        data: new Date("2023-05-09T17:00Z"),
+        previsto: new Date("2023-05-09T17:00Z"),
+        realizado: null,
+        duracao: null,
+        tolerancia: 10,
+        titulo: "Vitamina D",
+        subtitulo: "2 comprimidos",
+        destaque: "",
+        categoria: {
+          nome: "Remédio",
+          icone: "pill",
+        },
+        status: "planejado",
+        criticidade: "baixa",
+        aoCLicar: () => alert("Olá, mundo!"),
+      },
+    ];
+    return { ListaEventos };
+  },
+});
+</script>
+
+<style>
+:root {
+  --cor-primaria: #00e01d;
+}
+</style>
+```
+
+
+### ✨ Customização de estilos
+
+Para customizar o visual da Timeline de acordo com a identidade visual da aplicação basta adicionar o código a seguir no CSS e alterar de acordo com a necessidade.
+
+```css
+:root {
+  --fonte: 'Work Sans', sans-serif;
+  font-size: 62.5%;
+
+  --cor-primaria: #00e01d;
+  --cor-secundaria: #1b2f39;
+  --cor-terciaria: #ebf1f2;
+
+  --cor-fundo: #fff;
+
+  --cor-selecao: #ccf9d2;
+  --cor-texto-selecao: #1b2f39;
+  --cor-texto: #1b2f39;
+
+  --cor-apoio: #57676f;
+  --cor-linha: #e9eaeb;
+
+  --cor-importante: #bb0202;
+  --cor-alerta: #f0cc0d;
+  --cor-sucesso: #00a816;
+}
+
+body {
+  font-family: var(--fonte);
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+```
+
+### Propriedades:
+  
+A Timeline da DEVIX ordena e lista Eventos de forma crescente de acordo com a data/hora cadastrada.
+
+Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título, subtítulo, ícone de categoria, ícone de status, indicação de criticidade e campo para informação em destaque.
+
+
+![TimelineDevixExemplo](docs/evento.png)
+
+## 🚀  Contribuindo
+---
+
+Faça um fork do projeto, crie uma nova branch e faça seus commits.
+
+### Importante:
+- Os componentes da Timeline Devix são divididos em átomos, moléculas e organismos, seguindo os padrões do Design Atômico;
+- Cada componente vem acompanhado de documentação no storybook;
+- A timeline de demonstração utiliza dados mock;
+- Dê uma olhada no arquivo ``` type.ts ``` também, ele é o arquivo de tipos com influência sobre toda a aplicação.
+- Para ver o projeto funcionando no Storybook basta rodar:
+
+```sh 
+yarn storybook 
+```
+
+## 😉

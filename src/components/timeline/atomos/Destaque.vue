@@ -2,10 +2,10 @@
   <div class="destaqueEvento texto-pequeno">{{ destaque }}</div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'destaque',
+  name: "destaque",
   props: {
     destaque: {
       type: String,
@@ -29,7 +29,7 @@ export default defineComponent({
   width: 15%;
   line-height: 1em;
   color: var(--cor-texto);
-  padding: 1.4rem;
+  padding: 2.4rem 1.4rem;
   vertical-align: middle;
 }
 

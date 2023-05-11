@@ -1,41 +1,74 @@
 <template>
   <article
     class="eventoTimeline"
-    :class="[
-      dadosEvento.valor.status,
-      'criticidade-' + dadosEvento.valor.criticidade,
-      eventoSelecionado,
-    ]"
+    :class="[status, 'criticidade-' + criticidade, eventoSelecionado, clicavel]"
+    :onclick="aoCLicar"
   >
-    <IconeStatus :status="dadosEvento.valor.status" />
-    <HoraEvento
-      :horaPrevista="dadosEvento.valor.previsto"
-      :horaRealizada="dadosEvento.valor.realizado"
-    />
+    <IconeStatus :status="status" />
+    <HoraEvento :horaPrevista="previsto" :horaRealizada="realizado" />
     <IconeCategoria
-      :iconeCategoria="dadosEvento.valor.categoria.icone"
-      :categoria="dadosEvento.valor.categoria.nome"
+      :iconeCategoria="categoria.icone"
+      :categoria="categoria.nome"
     />
-    <DescricaoEvento
-      :titulo="dadosEvento.valor.titulo"
-      :subtitulo="dadosEvento.valor.subtitulo"
-    />
-    <Destaque :destaque="dadosEvento.valor.destaque" />
+    <DescricaoEvento :titulo="titulo" :subtitulo="subtitulo" />
+    <Destaque :destaque="destaque" />
   </article>
 </template>
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, PropType } from "vue";
 import IconeCategoria from "../atomos/IconeCategoria.vue";
 import IconeStatus from "../atomos/IconeStatus.vue";
 import DescricaoEvento from "./DescricaoEvento.vue";
 import HoraEvento from "./HoraEvento.vue";
 import Destaque from "../atomos/Destaque.vue";
+// import { Evento, Categoria } from "../type";
+
+interface Categoria {
+  nome: string;
+  icone: string;
+}
 
 export default defineComponent({
   props: {
-    dadosEvento: {
+    status: {
       required: true,
-      type: Object,
+      type: String,
+    },
+    criticidade: {
+      required: true,
+      type: String,
+    },
+    ehAtual: {
+      required: true,
+      type: Boolean,
+    },
+    previsto: {
+      required: true,
+      type: Date,
+    },
+    realizado: {
+      required: false,
+      type: Date as PropType<Date | null>,
+    },
+    categoria: {
+      required: true,
+      type: Object as () => Categoria,
+    },
+    titulo: {
+      required: true,
+      type: String,
+    },
+    subtitulo: {
+      required: true,
+      type: String,
+    },
+    destaque: {
+      required: true,
+      type: String,
+    },
+    aoCLicar: {
+      required: false,
+      type: Function as PropType<VoidFunction>,
     },
   },
   components: {
@@ -48,8 +81,11 @@ export default defineComponent({
   setup(props) {
     return {
       eventoSelecionado: computed(() => ({
-        atual: props.dadosEvento.atual == true,
-        padrao: props.dadosEvento.atual == false,
+        atual: props.ehAtual,
+        padrao: props.ehAtual,
+      })),
+      clicavel: computed(() => ({
+        clicavel: props.aoCLicar !== undefined,
       })),
     };
   },
@@ -62,6 +98,10 @@ export default defineComponent({
   position: relative;
   width: 100%;
   border-radius: 1rem;
+}
+
+.clicavel {
+  cursor: pointer;
 }
 
 .eventoTimeline:hover {
@@ -85,8 +125,8 @@ export default defineComponent({
   position: absolute;
   width: 2px;
   top: 0;
-  height: 1.5rem;
-  left: 11.7rem;
+  height: 2.5rem;
+  left: 11.9rem;
 }
 
 .eventoTimeline:after {
@@ -95,8 +135,24 @@ export default defineComponent({
   display: block;
   position: absolute;
   width: 2px;
-  top: 5.1rem;
+  top: 6.1rem;
   bottom: 0;
-  left: 11.7rem;
+  left: 11.9rem;
+}
+
+.eventoTimeline.atrasado:before {
+  background: var(--cor-alerta);
+}
+
+.eventoTimeline.atrasado:after {
+  background: var(--cor-alerta);
+}
+
+.eventoTimeline.atrasado:before {
+  background: var(--cor-alerta);
+}
+
+.eventoTimeline.atrasado:after {
+  background: var(--cor-alerta);
 }
 </style>
