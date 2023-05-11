@@ -6,7 +6,8 @@
       :imagemPerfil="perfilTimeline.imagem"
       :iconePerfil="perfilTimeline.icone"
     />
-    <section class="timeline">
+
+    <section class="timeline" :class="{ marginTop: perfilTimeline !== null }">
       <!-- SEPARADOR -->
       <div v-for="evento in eventosPorTipo" :key="evento.key">
         <SeparadorPeriodo
@@ -208,5 +209,9 @@ export default defineComponent({
   display: table;
   width: 100%;
   position: relative;
+}
+
+.marginTop {
+  margin-top: 8rem;
 }
 </style>
