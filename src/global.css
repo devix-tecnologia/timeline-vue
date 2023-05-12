@@ -1,4 +1,15 @@
 /* GERAIS */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+@import 'material-symbols';
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
 * {
   margin: 0;
   padding: 0;
