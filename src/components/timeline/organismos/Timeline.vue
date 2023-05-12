@@ -190,13 +190,13 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 /* TIMELINE */
 
-/* .areaTimeline {
-  max-width: 850px;
-  margin: 0 auto;
-} */
+.areaTimeline {
+  background-color: var(--cor-fundo);
+  position: relative;
+}
 
 .areaEvento {
   display: table-row;
@@ -209,9 +209,5 @@ export default defineComponent({
   display: table;
   width: 100%;
   position: relative;
-}
-
-.marginTop {
-  margin-top: 8rem;
 }
 </style>

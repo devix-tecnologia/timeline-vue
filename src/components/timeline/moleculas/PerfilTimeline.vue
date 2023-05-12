@@ -1,5 +1,5 @@
 <template>
-  <section class="perfilTimeline fixed" ref="elementoFixo" :style="style">
+  <section class="perfilTimeline" :style="style">
     <AvatarTimeline v-if="imagemPerfil" :imagem="imagemPerfil" />
     <AvatarTimeline v-else-if="iconePerfil" :icone="iconePerfil" />
     <h2 class="nome">{{ nomePerfil }}</h2>
@@ -48,7 +48,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 .perfilTimeline {
   background: var(--cor-primaria);
   padding: 1.4rem;
@@ -61,16 +61,12 @@ export default defineComponent({
   width: 100%;
   min-height: 8rem;
   transition: all 0.3s;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .nome {
   color: var(--cor-secundaria);
-}
-
-.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transition: all 0.3s;
 }
 </style>

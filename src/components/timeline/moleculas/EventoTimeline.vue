@@ -91,13 +91,14 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
+<style>
 /* BOX DO EVENTO */
 
 .eventoTimeline {
   position: relative;
   width: 100%;
   border-radius: 1rem;
+  background-color: var(--cor-fundo);
 }
 
 .clicavel {
@@ -105,22 +106,22 @@ export default defineComponent({
 }
 
 .eventoTimeline:hover {
-  background: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .atual {
-  background: var(--cor-selecao);
+  background-color: var(--cor-selecao);
 }
 
 .atual:hover {
-  background: var(--cor-selecao);
+  background-color: var(--cor-selecao);
 }
 
 /* box com as informações */
 
 .eventoTimeline:before {
   content: "";
-  background: var(--cor-linha);
+  background-color: var(--cor-linha);
   display: block;
   position: absolute;
   width: 2px;
@@ -131,7 +132,7 @@ export default defineComponent({
 
 .eventoTimeline:after {
   content: "";
-  background: var(--cor-linha);
+  background-color: var(--cor-linha);
   display: block;
   position: absolute;
   width: 2px;
@@ -141,18 +142,18 @@ export default defineComponent({
 }
 
 .eventoTimeline.atrasado:before {
-  background: var(--cor-alerta);
+  background-color: var(--cor-alerta);
 }
 
 .eventoTimeline.atrasado:after {
-  background: var(--cor-alerta);
+  background-color: var(--cor-alerta);
 }
 
 .eventoTimeline.atrasado:before {
-  background: var(--cor-alerta);
+  background-color: var(--cor-alerta);
 }
 
 .eventoTimeline.atrasado:after {
-  background: var(--cor-alerta);
+  background-color: var(--cor-alerta);
 }
 </style>
