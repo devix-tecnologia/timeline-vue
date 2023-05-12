@@ -39,6 +39,7 @@ import EventoTimeline from "../moleculas/EventoTimeline.vue";
 import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
 import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
 import { Evento } from "../type";
+import "material-symbols/outlined.css";
 
 type TipoEventoTimeline =
   | { tipo: "dia"; valor: Date; key: number }
@@ -190,13 +191,13 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 /* TIMELINE */
 
-/* .areaTimeline {
-  max-width: 850px;
-  margin: 0 auto;
-} */
+.areaTimeline {
+  background-color: var(--cor-fundo);
+  position: relative;
+}
 
 .areaEvento {
   display: table-row;
@@ -209,9 +210,5 @@ export default defineComponent({
   display: table;
   width: 100%;
   position: relative;
-}
-
-.marginTop {
-  margin-top: 8rem;
 }
 </style>
