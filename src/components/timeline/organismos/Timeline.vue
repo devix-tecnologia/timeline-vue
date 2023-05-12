@@ -39,6 +39,7 @@ import EventoTimeline from "../moleculas/EventoTimeline.vue";
 import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
 import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
 import { Evento } from "../type";
+import "material-symbols/outlined.css";
 
 type TipoEventoTimeline =
   | { tipo: "dia"; valor: Date; key: number }
