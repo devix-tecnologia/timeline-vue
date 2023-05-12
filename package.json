@@ -36,7 +36,6 @@
     "vue-tsc": "^1.2.0"
   },
   "files": [
-    "src",
     "dist"
   ],
   "types": "./dist/types/index.d.ts",
