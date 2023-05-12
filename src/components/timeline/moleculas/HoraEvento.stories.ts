@@ -1,8 +1,8 @@
-import HoraEvento from './HoraEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import HoraEvento from "./HoraEvento.vue";
+import { Meta, StoryFn } from "@storybook/vue3";
 
 export default {
-  title: 'Devix/Timeline/Moleculas/HoraEvento',
+  title: "Devix/Timeline/Moleculas/HoraEvento",
   component: HoraEvento,
   argTypes: {
     // aparencia: {
@@ -11,8 +11,6 @@ export default {
     // },
   },
 } as Meta<typeof HoraEvento>;
-
-const horaMock = '2023-12-10T11:00Z';
 
 const Template: StoryFn<typeof HoraEvento> = (args) => ({
   components: { HoraEvento: HoraEvento },
@@ -24,14 +22,14 @@ const Template: StoryFn<typeof HoraEvento> = (args) => ({
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  horaPrevista: horaMock,
-  horaRealizada: '',
+  horaPrevista: new Date("2023-05-03T15:00Z"),
+  horaRealizada: "",
   // aparencia: 'padrao',
 };
 
 export const Atrasado = Template.bind({});
 Atrasado.args = {
-  horaPrevista: horaMock,
-  horaRealizada: '2023-12-10T12:00Z',
+  horaPrevista: new Date("2023-05-03T15:00Z"),
+  horaRealizada: new Date("2023-05-03T16:00Z"),
   // aparencia: 'riscada',
 };
