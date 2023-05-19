@@ -9,7 +9,6 @@ export const dadosPerfil: Perfil = {
 
 export const dadosEventos: Evento[] = [
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f1",
     data: new Date("2023-04-26T19:00Z"),
     previsto: new Date("2023-04-26T19:00Z"),
     realizado: new Date("2023-04-26T19:30Z"),
@@ -29,7 +28,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f2",
     data: new Date("2023-04-26T18:10Z"),
     previsto: new Date("2023-04-26T18:10Z"),
     realizado: new Date("2023-04-26T18:15Z"),
@@ -49,7 +47,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f3",
     data: new Date("2023-05-03T11:00Z"),
     previsto: new Date("2023-05-03T11:00Z"),
     realizado: null,
@@ -69,7 +66,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f4",
     data: new Date("2023-05-03T15:00Z"),
     previsto: new Date("2023-05-03T15:00Z"),
     realizado: null,
@@ -89,7 +85,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f5",
     data: new Date("2023-05-03T20:00Z"),
     previsto: new Date("2023-05-03T20:00Z"),
     realizado: null,
@@ -109,7 +104,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f6",
     data: new Date("2023-04-01T12:00Z"),
     previsto: new Date("2023-04-01T12:00Z"),
     realizado: null,
@@ -129,7 +123,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f7",
     data: new Date("2023-04-01T13:00Z"),
     previsto: new Date("2023-04-01T13:00Z"),
     realizado: null,
@@ -149,7 +142,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f8",
     data: new Date("2023-05-03T12:00Z"),
     previsto: new Date("2023-05-03T12:00Z"),
     realizado: null,
@@ -169,7 +161,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f9",
     data: new Date("2023-05-03T13:00Z"),
     previsto: new Date("2023-05-03T13:00Z"),
     realizado: null,
@@ -189,7 +180,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f10",
     data: new Date("2023-05-03T14:27Z"),
     previsto: new Date("2023-05-03T14:27Z"),
     realizado: null,
@@ -209,7 +199,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f11",
     data: new Date("2023-05-03T15:00Z"),
     previsto: new Date("2023-05-03T15:00Z"),
     realizado: null,
@@ -229,7 +218,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f12",
     data: new Date("2023-05-08T16:00Z"),
     previsto: new Date("2023-05-08T16:00Z"),
     realizado: null,
@@ -249,7 +237,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f13",
     data: new Date("2023-05-09T19:00Z"),
     previsto: new Date("2023-05-09T19:00Z"),
     realizado: null,
@@ -269,7 +256,6 @@ export const dadosEventos: Evento[] = [
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f14",
     data: new Date("2023-05-09T17:00Z"),
     previsto: new Date("2023-05-09T17:00Z"),
     realizado: null,
@@ -284,12 +270,11 @@ export const dadosEventos: Evento[] = [
     },
     status: "planejado",
     criticidade: "baixa",
-    aoCLicar: () => alert("Olá, mundo!"),
+    aoClicar: (evento) => alert("Olá, mundo!"),
     atual: false,
     scroll: false,
   },
   {
-    id: "15ea7863-2402-4b84-8a8d-10a00ba07e2f15",
     data: new Date("2023-05-09T18:01Z"),
     previsto: new Date("2023-05-09T18:00Z"),
     realizado: null,

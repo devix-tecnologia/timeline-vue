@@ -9,8 +9,9 @@ export type Categoria = {
   icone: string;
 };
 
+export type AoClicarEvento = (evento: Evento) => void;
+
 export type Evento = {
-  id: string;
   data: Date;
   previsto: Date;
   duracao: number | null;
@@ -28,7 +29,7 @@ export type Evento = {
     | "planejado"
     | "cancelado";
   criticidade: "baixa" | "media" | "alta";
-  aoCLicar?: VoidFunction;
+  aoClicar?: AoClicarEvento;
   atual: boolean;
   scroll: boolean;
 };

@@ -2,7 +2,7 @@
   <article
     class="eventoTimeline"
     :class="[status, 'criticidade-' + criticidade, eventoSelecionado, clicavel]"
-    :onclick="aoCLicar"
+    :onclick="aoClicar"
   >
     <IconeStatus :status="status" />
     <HoraEvento :horaPrevista="previsto" :horaRealizada="realizado" />
@@ -21,12 +21,12 @@ import IconeStatus from "../atomos/IconeStatus.vue";
 import DescricaoEvento from "./DescricaoEvento.vue";
 import HoraEvento from "./HoraEvento.vue";
 import Destaque from "../atomos/Destaque.vue";
-// import { Evento, Categoria } from "../type";
+import { Categoria, AoClicarEvento } from "../type";
 
-interface Categoria {
-  nome: string;
-  icone: string;
-}
+// interface Categoria {
+//   nome: string;
+//   icone: string;
+// }
 
 export default defineComponent({
   props: {
@@ -66,9 +66,9 @@ export default defineComponent({
       required: true,
       type: String,
     },
-    aoCLicar: {
+    aoClicar: {
       required: false,
-      type: Function as PropType<VoidFunction>,
+      type: Function as PropType<AoClicarEvento>,
     },
   },
   components: {
@@ -85,7 +85,7 @@ export default defineComponent({
         padrao: props.ehAtual,
       })),
       clicavel: computed(() => ({
-        clicavel: props.aoCLicar !== undefined,
+        clicavel: props.aoClicar !== undefined,
       })),
     };
   },
