@@ -5,7 +5,7 @@
 import { defineComponent, reactive, computed } from 'vue';
 
 export default defineComponent({
-  name: 'BoxData',
+  name: 'Box Data',
   props: {
     dataNumero: {
       required: true,
@@ -15,7 +15,6 @@ export default defineComponent({
       type: String,
     },
   },
-  components: {},
   setup(props) {
     props = reactive(props);
     return {
