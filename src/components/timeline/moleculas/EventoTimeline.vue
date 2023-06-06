@@ -11,7 +11,7 @@
       :categoria="categoria.nome"
     />
     <DescricaoEvento :titulo="titulo" :subtitulo="subtitulo" />
-    <Destaque :destaque="destaque" />
+    <Destaque :texto="destaque" />
   </article>
 </template>
 <script lang="ts">

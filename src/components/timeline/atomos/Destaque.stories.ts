@@ -21,4 +21,4 @@ const Template: StoryFn<typeof Destaque> = (args) => ({
 });
 
 export const Padrao = Template.bind({});
-Padrao.args = { destaque: DestaqueoMock };
+Padrao.args = { texto: DestaqueoMock };
