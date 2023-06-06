@@ -28,5 +28,8 @@ Imagem.args = {
 
 export const Icone = Template.bind({});
 Icone.args = {
-  icone: 'person',
+  icone: 'browse_activity',
 };
+
+export const Padrao = Template.bind({});
+
