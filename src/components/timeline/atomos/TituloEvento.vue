@@ -5,15 +5,12 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+  name: "Título Evento",
   props: {
     titulo: {
       required: true,
       type: String,
     },
-  },
-  components: {},
-  setup() {
-    return {};
   },
 });
 </script>

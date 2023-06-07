@@ -5,14 +5,13 @@
 import { defineComponent, reactive, computed } from "vue";
 
 export default defineComponent({
-  name: "status",
+  name: "Icone Status",
   props: {
     status: {
       required: true,
       type: String,
     },
   },
-  components: {},
   setup(props) {
     props = reactive(props);
     return {

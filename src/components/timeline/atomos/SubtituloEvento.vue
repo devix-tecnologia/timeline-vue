@@ -5,17 +5,13 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+  name: "Subtítulo Evento",
   props: {
     subtitulo: {
       required: true,
       type: String,
     },
-  },
-
-  components: {},
-  setup() {
-    return {};
-  },
+  }
 });
 </script>
 
