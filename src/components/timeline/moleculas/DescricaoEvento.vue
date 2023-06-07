@@ -1,10 +1,7 @@
 <template>
-  <div v-if="subtitulo" class="descricaoEvento">
+  <div class="descricaoEvento" :style="`${subtitulo? '' : 'padding-top: 3.3rem'}`">
     <TituloEvento :titulo="titulo" />
-    <SubtituloEvento :subtitulo="subtitulo" />
-  </div>
-  <div v-else class="descricaoEvento" style="padding-top: 3.3rem">
-    <TituloEvento :titulo="titulo" />
+    <SubtituloEvento v-if="subtitulo" :subtitulo="subtitulo" />
   </div>
 </template>
 <script lang="ts">
@@ -13,20 +10,18 @@ import SubtituloEvento from "../atomos/SubtituloEvento.vue";
 import TituloEvento from "../atomos/TituloEvento.vue";
 
 export default defineComponent({
+  name: "Descrição Evento",
   props: {
     titulo: {
       required: true,
       type: String,
     },
     subtitulo: {
-      required: true,
+      required: false,
       type: String,
     },
   },
   components: { TituloEvento, SubtituloEvento },
-  setup() {
-    return {};
-  },
 });
 </script>
 
