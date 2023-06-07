@@ -21,7 +21,6 @@ import IconeStatus from "../atomos/IconeStatus.vue";
 import DescricaoEvento from "./DescricaoEvento.vue";
 import HoraEvento from "./HoraEvento.vue";
 import Destaque from "../atomos/Destaque.vue";
-// import { Evento, Categoria } from "../type";
 
 interface Categoria {
   nome: string;
@@ -29,6 +28,7 @@ interface Categoria {
 }
 
 export default defineComponent({
+  name: "Evento Timeline",
   props: {
     status: {
       required: true,
@@ -59,11 +59,11 @@ export default defineComponent({
       type: String,
     },
     subtitulo: {
-      required: true,
+      required: false,
       type: String,
     },
     destaque: {
-      required: true,
+      required: false,
       type: String,
     },
     aoCLicar: {
