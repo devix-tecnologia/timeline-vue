@@ -7,7 +7,7 @@
 import { defineComponent, reactive, computed, ref } from "vue";
 
 export default defineComponent({
-  name: "hora",
+  name: "Hora",
   props: {
     hora: {
       required: true,
@@ -15,6 +15,10 @@ export default defineComponent({
     },
     aparencia: {
       type: String,
+      default: 'padrao',
+      validator(aparencia: string) {
+      return ['padrao', 'riscada'].includes(aparencia)
+    }
     },
   },
   components: {},
@@ -23,7 +27,7 @@ export default defineComponent({
 
     return {
       classes: computed(() => ({
-        [`hora-${propsAparecia || ""}`]: true,
+        [`hora-${propsAparecia.value || ""}`]: true,
       })),
     };
   },
@@ -37,13 +41,11 @@ export default defineComponent({
 .bg-selecionado .hora {
   color: var(--cor-texto-selecao);
 }
-.hora-padrao,
-.horaRealizada {
+.hora-padrao {
   font-weight: 500;
   font-size: 1.4rem;
 }
-.hora-riscada,
-.horaPlanejada {
+.hora-riscada {
   text-decoration: line-through;
   font-size: 1rem;
 }

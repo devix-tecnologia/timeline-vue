@@ -5,7 +5,7 @@ export default {
   title: 'Devix/Timeline/Atomos/Hora',
   component: Hora,
   argTypes: {
-    // hora: { control: { type: String } },
+    hora: { control: { type: 'date'} },
     aparencia: {
       control: { type: 'select' },
       options: ['padrao', 'riscada'],
@@ -13,7 +13,7 @@ export default {
   },
 } as Meta<typeof Hora>;
 
-const horaMock = '2023-12-10T09:00Z';
+const horaMock = new Date();
 
 const Template: StoryFn<typeof Hora> = (args) => ({
   components: { Hora },
