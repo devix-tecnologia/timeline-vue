@@ -1,13 +1,13 @@
 <template>
   <div class="areaTimeline">
     <PerfilTimeline
-      v-if="perfilTimeline !== null"
+      v-if="perfilTimeline"
       :nomePerfil="perfilTimeline.nome"
       :imagemPerfil="perfilTimeline.imagem"
       :iconePerfil="perfilTimeline.icone"
     />
 
-    <section class="timeline" :class="{ marginTop: perfilTimeline !== null }">
+    <section class="timeline">
       <!-- SEPARADOR -->
       <div v-for="evento in eventosPorTipo" :key="evento.key">
         <SeparadorPeriodo
