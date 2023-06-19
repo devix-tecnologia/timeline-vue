@@ -82,5 +82,6 @@ export default defineComponent({
 
 .formato-reduzido .nome {
   font-size: small;
+  font-weight: normal;
 }
 </style>
