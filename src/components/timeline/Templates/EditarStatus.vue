@@ -21,10 +21,12 @@
     </template>
 
     <template #salvamento>
-      <div v-if="selecionado === 'adiado'" class="nova-data">
-        <h2>Nova Data:</h2>
-        <p>componente de seleção de data deve entrar aqui.</p>
-      </div>
+      <transition name="fadeBaixo" mode="out-in" appear>
+        <div v-if="selecionado === 'adiado'" class="nova-data">
+          <h2>Nova Data:</h2>
+          <p>componente de seleção de data deve entrar aqui.</p>
+        </div>
+      </transition>
     </template>
   </EditarEvento>
 </template>

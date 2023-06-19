@@ -1,13 +1,18 @@
 <template>
   <div class="editar-evento">
-    <div class="area-conteudo">
-      <slot name="conteudo"> </slot>
-    </div>
-    <div class="salvar">
-      <AreaSalvamento :aoClicar="aoClicar" :class="classes">
-        <slot name="salvamento"></slot>
-      </AreaSalvamento>
-    </div>
+    <transition name="fadeTopo" mode="out-in" appear>
+      <div class="area-conteudo">
+        <slot name="conteudo"> </slot>
+      </div>
+    </transition>
+
+    <transition name="fadeBaixo" mode="out-in" appear>
+      <div class="salvar">
+        <AreaSalvamento :aoClicar="aoClicar" :class="classes">
+          <slot name="salvamento"></slot>
+        </AreaSalvamento>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -42,6 +47,9 @@ export default defineComponent({
 </script>
 
 <style>
+::-webkit-scrollbar {
+  display: none;
+}
 .editar-evento {
   display: flex;
   flex-direction: column;

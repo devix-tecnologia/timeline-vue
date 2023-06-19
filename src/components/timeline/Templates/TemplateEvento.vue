@@ -1,6 +1,8 @@
 <template>
-  <topo :titulo="dadosEvento.categoria.nome" :escuro="false" />
-  <Evento :perfilEvento="perfilEvento" :dadosEvento="dadosEvento" />
+  <div class="pagina">
+    <topo :titulo="dadosEvento.categoria.nome" :escuro="false" />
+    <Evento :perfilEvento="perfilEvento" :dadosEvento="dadosEvento" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -31,6 +33,13 @@ export default defineComponent({
 </script>
 
 <style>
+::-webkit-scrollbar {
+  display: none;
+}
+.pagina {
+  width: 100%;
+  height: 100%;
+}
 .evento {
   padding: 1.4rem;
   display: flex;

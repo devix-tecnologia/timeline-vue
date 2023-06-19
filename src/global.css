@@ -76,3 +76,24 @@ h4 {
 .texto-grande {
   font-size: 1.4rem;
 }
+
+.fadeBaixo-enter-active,
+.fadeBaixo-leave-active,
+.fadeTopo-enter-active,
+.fadeTopo-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease-in-out;
+  transform: translateY(0px);
+}
+
+.fadeTopo-enter-from,
+.fadeTopo-leave-to {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+
+
+.fadeBaixo-enter-from,
+.fadeBaixo-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
+}

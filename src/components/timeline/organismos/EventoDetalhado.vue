@@ -1,27 +1,36 @@
 <template>
   <div class="evento">
-    <CabecalhoEventoDetalhado
-      :perfilEvento="perfilEvento"
-      :dadosEvento="dadosEvento"
-      :aoClicar="dadosEvento.aoClicar"
-    />
+    <transition name="fadeBaixo" mode="out-in" appear>
+      <CabecalhoEventoDetalhado
+        :perfilEvento="perfilEvento"
+        :dadosEvento="dadosEvento"
+        :aoClicar="dadosEvento.aoClicar"
+      />
+    </transition>
 
-    <section class="descricao">
-      <slot name="descricao">
-        {{ dadosEvento.subtitulo }}
-      </slot>
-    </section>
-    <Observacoes
-      :observacoes="dadosEvento.observacoes"
-      :tituloBotao="`Inserir observação`"
-      :aoClicar="dadosEvento.aoClicar"
-    />
+    <transition name="fadeBaixo" mode="out-in" appear>
+      <section class="descricao">
+        <slot name="descricao">
+          {{ dadosEvento.subtitulo }}
+        </slot>
+      </section>
+    </transition>
 
-    <StatusEvento
-      :aparencia="`preenchido`"
-      :aoClicar="dadosEvento.aoClicar"
-      :status="dadosEvento.status"
-    />
+    <transition name="fadeBaixo" mode="out-in" appear>
+      <Observacoes
+        :observacoes="dadosEvento.observacoes"
+        :tituloBotao="`Inserir observação`"
+        :aoClicar="dadosEvento.aoClicar"
+      />
+    </transition>
+
+    <transition name="fadeBaixo" mode="out-in" appear>
+      <StatusEvento
+        :aparencia="`preenchido`"
+        :aoClicar="dadosEvento.aoClicar"
+        :status="dadosEvento.status"
+      />
+    </transition>
   </div>
 </template>
 
