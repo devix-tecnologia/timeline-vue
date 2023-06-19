@@ -78,11 +78,10 @@ export default defineComponent({
 .btn.vazio {
   background: transparent;
   padding: 1.4rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   border: 0;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .btn.vazio:hover {
