@@ -1,0 +1,1 @@
+.area-conteudo{padding:1.4rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.4rem;text-align:center}.area-conteudo textarea{width:100%;min-height:20rem;border:1px solid var(--cor-linha);border-radius:10px;padding:1.4rem}.area-conteudo textarea:focus{border-color:var(--cor-acao)}
