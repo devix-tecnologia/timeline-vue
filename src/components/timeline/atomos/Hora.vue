@@ -1,10 +1,10 @@
 <template>
   <div class="hora" :class="classes">
-    {{ hora.getHours() }}:{{ hora.getMinutes().toString().padStart(2, "0") }}
+    {{ horas.getHours() }}:{{ horas.getMinutes().toString().padStart(2, "0") }}
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed, ref } from "vue";
+import { defineComponent, watchEffect, computed, ref } from "vue";
 
 export default defineComponent({
   name: "Hora",
@@ -23,7 +23,10 @@ export default defineComponent({
   },
   components: {},
   setup(props) {
+    const horas = ref(new Date(props.hora));
+
     return {
+      horas,
       classes: computed(() => ({
         [`hora-${props.aparencia || ""}`]: true,
       })),
