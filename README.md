@@ -49,7 +49,6 @@ export default defineComponent({
     }
     const listaEventos = [
       {
-        id: '15ea7863-2402-4b84-8a8d-10a00ba07e2f2',
         data: new Date('2023-04-26T18:10Z'),
         previsto: new Date('2023-04-26T18:10Z'),
         realizado: new Date('2023-04-26T18:15Z'),
@@ -66,7 +65,6 @@ export default defineComponent({
         criticidade: 'alta'
       },
       {
-        id: '15ea7863-2402-4b84-8a8d-10a00ba07e2f14',
         data: new Date('2023-05-09T17:00Z'),
         previsto: new Date('2023-05-09T17:00Z'),
         realizado: null,
@@ -81,7 +79,7 @@ export default defineComponent({
         },
         status: 'planejado',
         criticidade: 'baixa',
-        aoCLicar: () => alert('Olá, mundo!')
+        aoClicar: () => alert('Olá, mundo!')
       }
     ]
     return { perfilTimeline, listaEventos }
