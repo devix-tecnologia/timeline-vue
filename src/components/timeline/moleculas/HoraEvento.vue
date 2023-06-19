@@ -27,10 +27,10 @@ export default defineComponent({
     },
     horaRealizada: {
       required: false,
-      type: Date,
-    }
+      type: Date as PropType<Date | null>,
+    },
   },
-  components: { Hora }
+  components: { Hora },
 });
 </script>
 <style scoped>

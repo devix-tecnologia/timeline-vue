@@ -55,7 +55,7 @@ type TipoEventoTimeline =
 export default defineComponent({
   props: {
     perfilTimeline: {
-      required: true,
+      required: false,
       type: Object,
     },
     eventosTimeline: {
