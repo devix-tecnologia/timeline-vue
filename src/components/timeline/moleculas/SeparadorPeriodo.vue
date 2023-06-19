@@ -56,7 +56,7 @@ export default defineComponent({
   display: table-row;
   width: 100%;
   position: relative;
-  background: #fff;
+  background: var(--cor-fundo);
 }
 
 .areaData {

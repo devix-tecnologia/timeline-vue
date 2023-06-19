@@ -23,11 +23,6 @@ import HoraEvento from "./HoraEvento.vue";
 import Destaque from "../atomos/Destaque.vue";
 import { Categoria, AoClicarEvento } from "../type";
 
-// interface Categoria {
-//   nome: string;
-//   icone: string;
-// }
-
 export default defineComponent({
   name: "Evento Timeline",
   props: {
@@ -107,11 +102,17 @@ export default defineComponent({
 }
 
 .eventoTimeline:hover {
-  background-color: #f9f9f9;
+  background-color: var(--cor-terciaria);
 }
 
 .atual {
   background-color: var(--cor-selecao);
+}
+.atual .titulo,
+.atual .subtitulo,
+.atual .hora,
+.atual .destaqueEvento {
+  color: var(--cor-texto-selecao) !important;
 }
 
 .atual:hover {

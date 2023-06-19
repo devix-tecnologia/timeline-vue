@@ -60,7 +60,7 @@ export default defineComponent({
 }
 
 .nome {
-  color: var(--cor-secundaria);
+  color: var(--cor-fundo);
 }
 
 .formato-reduzido {
