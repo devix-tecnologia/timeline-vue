@@ -1,27 +1,27 @@
-import EventoDetalhado from "./EventoDetalhado.vue";
+import TemplateEvento from "./TemplateEvento.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 import { dadosEventoDetalhado, dadosPerfil } from "../EventoDetalhado.mock";
 
 export default {
-  title: "Devix/Eventos/Organismos/EventoDetalhado",
-  component: EventoDetalhado,
+  title: "Devix/Eventos/Templates/TemplateEvento",
+  component: TemplateEvento,
   parameters: {
     componentSubtitle: "Tela de detalhes do evento.",
   },
   argTypes: {},
-} as Meta<typeof EventoDetalhado>;
+} as Meta<typeof TemplateEvento>;
 
 const perfilMock = dadosPerfil;
 const eventoUmMock = dadosEventoDetalhado[0];
 const eventoDoisMock = dadosEventoDetalhado[1];
 
-const Template: StoryFn<typeof EventoDetalhado> = (args) => ({
-  components: { EventoDetalhado },
+const Template: StoryFn<typeof TemplateEvento> = (args) => ({
+  components: { TemplateEvento },
   setup() {
     return { args };
   },
   template:
-    '<EventoDetalhado :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" />',
+    '<TemplateEvento :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" />',
 });
 
 export const Padrao = Template.bind({});

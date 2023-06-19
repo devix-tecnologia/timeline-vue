@@ -1,5 +1,5 @@
-import { Perfil } from "../type";
-import { EventoDetalhado } from "../typeDetalhado";
+import { Perfil } from "./type";
+import { EventoDetalhado } from "./typeDetalhado";
 
 export const dadosPerfil: Perfil = {
   nome: "Maria do Socorro",

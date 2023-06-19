@@ -1,5 +1,4 @@
 <template>
-  <topo :titulo="dadosEvento.categoria.nome" :escuro="false" />
   <div class="evento">
     <CabecalhoEventoDetalhado
       :perfilEvento="perfilEvento"
@@ -15,6 +14,7 @@
     <Observacoes
       :observacoes="dadosEvento.observacoes"
       :tituloBotao="`Inserir observação`"
+      :aoClicar="dadosEvento.aoClicar"
     />
 
     <StatusEvento
@@ -31,7 +31,6 @@ import "material-symbols/outlined.css";
 
 import { Perfil } from "../type";
 import { EventoDetalhado } from "../typeDetalhado";
-import Topo from "../moleculas/Topo.vue";
 import CabecalhoEventoDetalhado from "../moleculas/CabecalhoEventoDetalhado.vue";
 import Observacoes from "../moleculas/Observacoes.vue";
 import StatusEvento from "../moleculas/StatusEvento.vue";
@@ -47,7 +46,7 @@ export default defineComponent({
       type: Object as PropType<EventoDetalhado>,
     },
   },
-  components: { Topo, CabecalhoEventoDetalhado, Observacoes, StatusEvento },
+  components: { CabecalhoEventoDetalhado, Observacoes, StatusEvento },
   setup(props) {
     return {};
   },
