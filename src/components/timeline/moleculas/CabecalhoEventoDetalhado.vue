@@ -10,7 +10,9 @@
       :iconePerfil="perfilEvento?.icone"
       :formatoReduzido="true"
     />
-    <div class="criticidade">Criticidade: {{ dadosEvento.criticidade }}</div>
+    <div v-if="dadosEvento.criticidade !== 'baixa'" class="criticidade">
+      Criticidade: {{ dadosEvento.criticidade }}
+    </div>
     <div class="titulo">
       <IconeCategoria
         :iconeCategoria="dadosEvento.categoria.icone"
