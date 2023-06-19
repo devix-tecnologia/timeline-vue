@@ -16,7 +16,7 @@ const Template: StoryFn<typeof Observacoes> = (args) => ({
     return { args };
   },
   template:
-    '<Observacoes :titulo="args.tituloBotao" :aoClicar="args.aoClicarBotao" :observacoes="args.observacoes" />',
+    '<Observacoes :tituloBotao="args.tituloBotao" :aoClicar="args.aoClicarBotao" :observacoes="args.observacoes" />',
 });
 
 export const Padrao = Template.bind({});

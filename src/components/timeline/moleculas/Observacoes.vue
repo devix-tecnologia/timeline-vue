@@ -13,7 +13,7 @@
       </li>
     </ul>
     <Botao
-      :titulo="titulo"
+      :titulo="tituloBotao"
       :aoClicar="aoClicar"
       :icone="`add`"
       :aparencia="`preenchido`"
@@ -33,7 +33,7 @@ export default defineComponent({
   components: { Botao },
   name: "Observacoes",
   props: {
-    titulo: {
+    tituloBotao: {
       type: String,
     },
     aoClicar: {
