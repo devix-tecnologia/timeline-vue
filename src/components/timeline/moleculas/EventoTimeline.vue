@@ -94,7 +94,7 @@ export default defineComponent({
   position: relative;
   width: 100%;
   border-radius: 1rem;
-  background-color: var(--cor-fundo);
+  background-color: transparente;
 }
 
 .clicavel {

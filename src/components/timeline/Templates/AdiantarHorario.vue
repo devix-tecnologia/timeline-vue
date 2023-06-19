@@ -75,16 +75,18 @@ export default defineComponent({
   align-items: center;
   gap: 2.4rem;
   text-align: center;
+  color: var(--cor-texto);
 }
-.area-conteudo textarea {
+.area-conteudo input {
   width: 100%;
-  min-height: 20rem;
   border: 1px solid var(--cor-linha);
   border-radius: 10px;
   padding: 1.4rem;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
-.area-conteudo textarea:focus {
+.area-conteudo input:focus {
   border-color: var(--cor-acao);
 }
 #horario {

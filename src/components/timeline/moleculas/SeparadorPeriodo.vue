@@ -1,9 +1,9 @@
 <template>
   <div class="separadorPeriodo">
     <div class="areaData">
-      <BoxData :dataNumero="dataSeparador.getDate()" :aparencia="aparencia" />
+      <BoxData :dataNumero="dataSeparador.getDate()" />
     </div>
-    <h3 class="titulo" :class="aparencia">
+    <h3 class="titulo">
       {{ mesCorrente(dataSeparador.getMonth()) }} de
       {{ dataSeparador.getFullYear() }}
     </h3>
@@ -20,9 +20,6 @@ export default defineComponent({
     dataSeparador: {
       required: true,
       type: Date,
-    },
-    aparencia: {
-      type: String,
     },
   },
   components: { BoxData },
@@ -56,7 +53,7 @@ export default defineComponent({
   display: table-row;
   width: 100%;
   position: relative;
-  background: var(--cor-fundo);
+  background: transparent;
 }
 
 .areaData {
@@ -92,9 +89,5 @@ export default defineComponent({
   text-transform: uppercase;
   padding-bottom: 3.45rem;
   color: var(--cor-texto);
-}
-
-.separadorPeriodo .titulo.claro {
-  color: var(--cor-apoio);
 }
 </style>

@@ -43,9 +43,10 @@ export default defineComponent({
 
 .box {
   padding: 1.4rem;
-  background: var(--cor-fundo);
+  background: transparent;
   box-shadow: 0px 0px 15px rgba(27, 47, 57, 0.15);
   border-radius: 1rem;
+  color: var(--cor-texto);
 }
 
 .box-status {

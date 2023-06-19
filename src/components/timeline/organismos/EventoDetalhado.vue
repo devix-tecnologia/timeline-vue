@@ -72,5 +72,6 @@ export default defineComponent({
 
 .descricao {
   font-size: 1.4rem;
+  color: var(--cor-texto);
 }
 </style>

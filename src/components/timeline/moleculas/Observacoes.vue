@@ -64,9 +64,10 @@ export default defineComponent({
 
 .box {
   padding: 1.4rem;
-  background: var(--cor-fundo);
-  box-shadow: 0px 0px 15px rgba(27, 47, 57, 0.15);
+  background: transparent;
+  box-shadow: 0px 0px 15px var(--cor-sombra);
   border-radius: 1rem;
+  color: var(--cor-texto);
 }
 
 .box-observacoes {
@@ -83,7 +84,7 @@ export default defineComponent({
 
 .btn:hover,
 .btn:active {
-  color: var(--cor-acao);
+  background: var(--cor-acao);
 }
 
 .lista-obs {

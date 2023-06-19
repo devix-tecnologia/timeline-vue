@@ -67,11 +67,11 @@ export default defineComponent({
 .btn.realizado:active,
 .btn.preenchido.realizado {
   background: var(--cor-sucesso);
-  color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 .btn.realizado:active .icone::before,
 .btn.preenchido.realizado .icone::before {
-  color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
 .btn.cancelado {
@@ -81,11 +81,11 @@ export default defineComponent({
 .btn.cancelado:active,
 .btn.preenchido.cancelado {
   background: var(--cor-importante);
-  color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 .btn.cancelado:active .icone::before,
 .btn.preenchido.cancelado .icone::before {
-  color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
 .btn.atrasado {
@@ -96,11 +96,11 @@ export default defineComponent({
 .btn.atrasado:active,
 .btn.preenchido.atrasado {
   background: var(--cor-alerta);
-  color: var(--cor-secundaria);
+  color: var(--cor-texto-selecao);
 }
 .btn.atrasado:active .icone::before,
 .btn.preenchido.atrasado .icone::before {
-  color: var(--cor-secundaria);
+  color: var(--cor-texto-selecao);
 }
 
 .btn.adiado {

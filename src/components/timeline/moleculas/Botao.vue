@@ -51,14 +51,14 @@ export default defineComponent({
   font-size: 2.6rem;
 }
 .btn {
-  background: var(--cor-fundo);
+  background: transparent;
   padding: 1.4rem;
-  color: var(--cor-secundaria);
+  color: var(--cor-texto);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--cor-secundaria);
+  border: 1px solid var(--cor-texto);
   border-radius: 10px;
   cursor: pointer;
   line-height: 0;

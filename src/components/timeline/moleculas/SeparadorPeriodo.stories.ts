@@ -7,7 +7,6 @@ export default {
   argTypes: {
     aparencia: {
       control: { type: "select" },
-      options: ["padrao", "escuro", "claro"],
     },
   },
 } as Meta<typeof SeparadorPeriodo>;
@@ -24,19 +23,4 @@ export const Padrao = Template.bind({});
 Padrao.args = {
   dataSeparador: new Date("2023-05-03T15:00Z"),
   mesNome: "Janeiro",
-  aparencia: "padrao",
-};
-
-export const Escuro = Template.bind({});
-Escuro.args = {
-  dataSeparador: new Date("2023-05-03T15:00Z"),
-  mesNome: "Janeiro",
-  aparencia: "escuro",
-};
-
-export const Claro = Template.bind({});
-Claro.args = {
-  dataSeparador: new Date("2023-05-03T15:00Z"),
-  mesNome: "Janeiro",
-  aparencia: "claro",
 };

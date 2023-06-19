@@ -60,11 +60,11 @@ export default defineComponent({
 }
 
 .nome {
-  color: var(--cor-fundo);
+  color: var(--cor-texto-selecao);
 }
 
 .formato-reduzido {
-  background: var(--cor-fundo);
+  background: transparent;
   min-height: 0;
   padding: 0;
   justify-content: left;
@@ -84,5 +84,6 @@ export default defineComponent({
 .formato-reduzido .nome {
   font-size: small;
   font-weight: normal;
+  color: var(--cor-texto);
 }
 </style>

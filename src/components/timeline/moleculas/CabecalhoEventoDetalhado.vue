@@ -5,9 +5,9 @@
   >
     <PerfilTimeline
       v-if="perfilEvento"
-      :nomePerfil="perfilEvento?.nome"
-      :imagemPerfil="perfilEvento?.imagem"
-      :iconePerfil="perfilEvento?.icone"
+      :nomePerfil="perfilEvento.nome"
+      :imagemPerfil="perfilEvento.imagem"
+      :iconePerfil="perfilEvento.icone"
       :formatoReduzido="true"
     />
     <div v-if="dadosEvento.criticidade !== 'baixa'" class="criticidade">
@@ -74,7 +74,8 @@ export default defineComponent({
   name: "CabecalhoEventoDetalhado",
   props: {
     perfilEvento: {
-      type: Object as PropType<Perfil>,
+      required: true,
+      type: Object,
     },
     dadosEvento: {
       required: true,
@@ -145,6 +146,7 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   gap: 1.4rem;
+  color: var(--cor-texto);
 }
 .dataHora .box {
   padding: 1.4rem;
@@ -158,10 +160,11 @@ export default defineComponent({
   align-items: center;
   gap: 1rem;
   cursor: pointer;
+  color: var(--cor-texto);
 }
 
 .dataHora .box:hover {
-  background: var(--cor-linha);
+  background: var(--cor-apoio);
 }
 
 .horaRealizada {

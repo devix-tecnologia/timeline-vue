@@ -79,5 +79,6 @@ export default defineComponent({
   padding-right: 1.4rem;
   background-color: transparent;
   line-height: 0;
+  color: var(--cor-texto);
 }
 </style>
