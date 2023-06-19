@@ -1,0 +1,53 @@
+import Botao from "./Botao.vue";
+import { Meta, StoryFn } from "@storybook/vue3";
+
+export default {
+  title: "Devix/Timeline/Moleculas/Botao",
+  component: Botao,
+  argTypes: {
+    aparencia: {
+      control: { type: "select" },
+      options: ["outline", "preenchido"],
+    },
+    tamanho: {
+      control: { type: "select" },
+      options: ["pequeno", "medio", "grande"],
+    },
+  },
+} as Meta<typeof Botao>;
+
+const Template: StoryFn<typeof Botao> = (args) => ({
+  components: { Topo: Botao },
+  setup() {
+    return { args };
+  },
+  template: '<Topo v-bind="args"  />',
+});
+
+export const outline = Template.bind({});
+outline.args = {
+  titulo: "Botao claro",
+  aparencia: "outline",
+  tamanho: "medio",
+};
+
+export const preenchido = Template.bind({});
+preenchido.args = {
+  titulo: "Botao escuro",
+  aparencia: "preenchido",
+  tamanho: "medio",
+};
+
+export const Pequeno = Template.bind({});
+Pequeno.args = {
+  titulo: "Botao escuro",
+  aparencia: "outline",
+  tamanho: "pequeno",
+};
+
+export const Grande = Template.bind({});
+Grande.args = {
+  titulo: "Botao escuro",
+  aparencia: "outline",
+  tamanho: "grande",
+};
