@@ -21,7 +21,8 @@ const Template: StoryFn<typeof BotaoStatus> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<BotaoStatus v-bind="args"  />',
+  template:
+    '<BotaoStatus :aparencia="args.aparencia" :aoClicar="args.aoClicar" :status="args.status" />',
 });
 
 export const Planejado = Template.bind({});

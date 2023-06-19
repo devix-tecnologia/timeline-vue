@@ -12,7 +12,7 @@ const Template: StoryFn<typeof Topo> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<Topo v-bind="args"  />',
+  template: '<Topo :titulo="args.titulo" :escuro="args.escuro"  />',
 });
 
 export const Claro = Template.bind({});

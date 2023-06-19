@@ -21,7 +21,8 @@ const Template: StoryFn<typeof Botao> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<Botao v-bind="args"  />',
+  template:
+    '<Botao :titulo="args.titulo" :icone="args.icone" :aparencia="args.aparencia" :tamanho="args.tamanho" :aoClicar="args.aoClicar" />',
 });
 
 export const outline = Template.bind({});
