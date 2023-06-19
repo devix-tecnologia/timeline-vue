@@ -25,6 +25,6 @@ const Template: StoryFn<typeof EditarDataHora> = (args) => ({
 export const Padrao = Template.bind({});
 Padrao.args = {
   dadosEvento: eventoUmMock,
-  salvarVisivel: false,
+  salvarVisivel: true,
   aoClicar: (evento) => alert("Olá!"),
 };
