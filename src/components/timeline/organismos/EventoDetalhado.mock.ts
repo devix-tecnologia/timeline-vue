@@ -19,7 +19,7 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
       {
         mensagem: "Hoje ela tomou o remédio normalmente.",
         autor: { nome: "Maria" },
-        criadaEm: new Date("2023-05-10T17:00Z"),
+        criadaEm: new Date("2023-05-10T18:00Z"),
       },
     ],
     data: new Date("2023-05-09T17:00Z"),

@@ -2,17 +2,14 @@
   <section class="box box-observacoes">
     <h3>Obervações:</h3>
     <ul class="lista-obs">
-      <li class="lista-item">
-        <p class="texto">
-          Todo dia antes de dormir ela não quer tomar. Se der com suco ela toma.
-        </p>
-        <div class="autor">Joana em 15/05/2023 às 16:35</div>
-      </li>
-      <li class="lista-item">
-        <p class="texto">
-          Todo dia antes de dormir ela não quer tomar. Se der com suco ela toma.
-        </p>
-        <div class="autor">Joana em 15/05/2023 às 16:35</div>
+      <li v-for="(item, index) of observacoes" :key="index" class="lista-item">
+        <p class="texto">{{ item.mensagem }}</p>
+        <div class="autor">
+          {{ item.autor.nome }} em {{ item.criadaEm.toLocaleDateString() }} às
+          {{ item.criadaEm.getHours() }}:{{
+            item.criadaEm.getMinutes().toString().padStart(2, "0")
+          }}
+        </div>
       </li>
     </ul>
     <Botao
@@ -30,10 +27,11 @@ import "material-symbols/outlined.css";
 import { defineComponent, reactive, PropType } from "vue";
 import { AoClicarEvento } from "../type";
 import Botao from "./Botao.vue";
+import { EventoDetalhado, Observacao } from "../typeDetalhado";
 
 export default defineComponent({
   components: { Botao },
-  name: "StatusEvento",
+  name: "Observacoes",
   props: {
     titulo: {
       type: String,
@@ -45,10 +43,17 @@ export default defineComponent({
       required: false,
       type: Function as PropType<AoClicarEvento>,
     },
+    observacoes: {
+      required: true,
+      type: Object as PropType<Observacao[]>,
+    },
   },
   setup(props) {
+    // Ordenando observações pela mais recente
+    props.observacoes.sort(
+      (a, b) => b.criadaEm.getTime() - a.criadaEm.getTime()
+    );
     props = reactive(props);
-
     return {};
   },
 });
