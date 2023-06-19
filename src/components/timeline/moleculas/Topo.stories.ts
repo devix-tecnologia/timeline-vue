@@ -2,7 +2,7 @@ import Topo from "./Topo.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 
 export default {
-  title: "Devix/Timeline/Moleculas/Topo",
+  title: "Devix/Eventos/Moleculas/Topo",
   component: Topo,
   argTypes: {},
 } as Meta<typeof Topo>;

@@ -2,7 +2,7 @@ import SeparadorPeriodo from "./SeparadorPeriodo.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 
 export default {
-  title: "Devix/Timeline/Moleculas/SeparadorPeriodo",
+  title: "Devix/Eventos/Moleculas/SeparadorPeriodo",
   component: SeparadorPeriodo,
   argTypes: {
     aparencia: {

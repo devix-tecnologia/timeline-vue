@@ -2,7 +2,7 @@ import PerfilTimeline from "./PerfilTimeline.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 
 export default {
-  title: "Devix/Timeline/Moleculas/PerfilTimeline",
+  title: "Devix/Eventos/Moleculas/PerfilTimeline",
   component: PerfilTimeline,
   argTypes: {},
 } as Meta<typeof PerfilTimeline>;

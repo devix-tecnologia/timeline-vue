@@ -6,7 +6,7 @@ import {
 } from "../organismos/EventoDetalhado.mock";
 
 export default {
-  title: "Devix/Timeline/Moleculas/CabecalhoEventoDetalhado",
+  title: "Devix/Eventos/Moleculas/CabecalhoEventoDetalhado",
   component: CabecalhoEventoDetalhado,
   argTypes: {},
 } as Meta<typeof CabecalhoEventoDetalhado>;
@@ -14,8 +14,6 @@ export default {
 const perfilMock = dadosPerfil;
 const CabecalhoMock = dadosEventoDetalhado[0];
 const CabecalhoMock2 = dadosEventoDetalhado[1];
-
-console.log(CabecalhoMock);
 
 const Template: StoryFn<typeof CabecalhoEventoDetalhado> = (args) => ({
   components: { CabecalhoEventoDetalhado },

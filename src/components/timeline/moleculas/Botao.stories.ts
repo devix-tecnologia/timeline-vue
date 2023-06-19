@@ -2,7 +2,7 @@ import Botao from "./Botao.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 
 export default {
-  title: "Devix/Timeline/Moleculas/Botao",
+  title: "Devix/Eventos/Moleculas/Botao",
   component: Botao,
   argTypes: {
     aparencia: {

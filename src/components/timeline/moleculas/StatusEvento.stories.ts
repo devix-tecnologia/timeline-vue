@@ -2,7 +2,7 @@ import StatusEvento from "./StatusEvento.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 
 export default {
-  title: "Devix/Timeline/Moleculas/StatusEvento",
+  title: "Devix/Eventos/Moleculas/StatusEvento",
   component: StatusEvento,
   argTypes: {
     aparencia: {

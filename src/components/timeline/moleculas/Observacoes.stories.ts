@@ -3,7 +3,7 @@ import { Meta, StoryFn } from "@storybook/vue3";
 import { dadosEventoDetalhado } from "../organismos/EventoDetalhado.mock";
 
 export default {
-  title: "Devix/Timeline/Moleculas/Observacoes",
+  title: "Devix/Eventos/Moleculas/Observacoes",
   component: Observacoes,
   argTypes: {},
 } as Meta<typeof Observacoes>;
