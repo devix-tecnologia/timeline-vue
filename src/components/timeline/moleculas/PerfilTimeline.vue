@@ -9,6 +9,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from "vue";
 import AvatarTimeline from "../atomos/AvatarTimeline.vue";
+import "material-symbols/outlined.css";
 
 export default defineComponent({
   components: { AvatarTimeline },
