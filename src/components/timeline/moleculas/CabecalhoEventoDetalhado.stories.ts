@@ -21,18 +21,18 @@ const Template: StoryFn<typeof CabecalhoEventoDetalhado> = (args) => ({
     return { args };
   },
   template:
-    '<CabecalhoEventoDetalhado :perfilTimeline="args.perfilTimeline" :cabecalhoEventoDetalhado="args.cabecalhoEventoDetalhado" :aoClicar="args.aoClicar" />',
+    '<CabecalhoEventoDetalhado :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" :aoClicar="args.aoClicar" />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  perfilTimeline: perfilMock,
-  cabecalhoEventoDetalhado: CabecalhoMock,
+  perfilEvento: perfilMock,
+  dadosEvento: CabecalhoMock,
   aoClicar: (evento) => alert("Olá, Botão data-hora!"),
 };
 
 export const SemPerfil = Template.bind({});
 SemPerfil.args = {
-  cabecalhoEventoDetalhado: CabecalhoMock2,
+  dadosEvento: CabecalhoMock2,
   aoClicar: (evento) => alert("Olá, Botão data-hora!"),
 };

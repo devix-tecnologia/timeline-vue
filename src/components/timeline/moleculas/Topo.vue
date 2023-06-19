@@ -48,7 +48,7 @@ export default defineComponent({
   font-size: 2.6rem;
 }
 .topo {
-  background: var(--cor-terciaria);
+  background: var(--cor-fundo);
   padding: 1.4rem;
   color: var(--cor-secundaria);
   display: flex;
@@ -62,10 +62,6 @@ export default defineComponent({
   flex-direction: row;
   justify-content: left;
   align-items: center;
-}
-
-.titulo {
-  padding-left: 1.4rem;
 }
 
 .topo.bg-escuro {

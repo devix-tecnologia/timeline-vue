@@ -1,43 +1,35 @@
 <template>
   <PerfilTimeline
-    v-if="perfilTimeline !== null"
-    :nomePerfil="perfilTimeline?.nome"
-    :imagemPerfil="perfilTimeline?.imagem"
-    :iconePerfil="perfilTimeline?.icone"
+    v-if="perfilEvento"
+    :nomePerfil="perfilEvento?.nome"
+    :imagemPerfil="perfilEvento?.imagem"
+    :iconePerfil="perfilEvento?.icone"
     :formatoReduzido="true"
   />
   <section
     class="cabecalho-evento"
-    :class="[`criticidade-` + cabecalhoEventoDetalhado.criticidade]"
+    :class="[`criticidade-` + dadosEvento.criticidade]"
   >
-    <div class="criticidade">
-      Criticidade: {{ cabecalhoEventoDetalhado.criticidade }}
-    </div>
+    <div class="criticidade">Criticidade: {{ dadosEvento.criticidade }}</div>
     <div class="titulo">
       <IconeCategoria
-        :iconeCategoria="cabecalhoEventoDetalhado.categoria.icone"
-        :categoria="cabecalhoEventoDetalhado.categoria.nome"
+        :iconeCategoria="dadosEvento.categoria.icone"
+        :categoria="dadosEvento.categoria.nome"
       />
-      <h1>{{ cabecalhoEventoDetalhado.titulo }}</h1>
+      <h1>{{ dadosEvento.titulo }}</h1>
     </div>
     <div class="dataHora">
       <div :onclick="aoClicar" class="box">
         <span class="material-symbols-outlined"> calendar_month </span>
         <div class="horaEvento">
-          <div
-            v-if="cabecalhoEventoDetalhado.realizado"
-            class="horaRealizada texto-grande"
-          >
-            {{ cabecalhoEventoDetalhado.realizado.toLocaleDateString() }}
+          <div v-if="dadosEvento.realizado" class="horaRealizada texto-grande">
+            {{ dadosEvento.realizado.toLocaleDateString() }}
           </div>
-          <div
-            v-if="cabecalhoEventoDetalhado.realizado"
-            class="horaPlanejada texto-pequeno"
-          >
-            {{ cabecalhoEventoDetalhado.realizado.toLocaleDateString() }}
+          <div v-if="dadosEvento.realizado" class="horaPlanejada texto-pequeno">
+            {{ dadosEvento.realizado.toLocaleDateString() }}
           </div>
           <div v-else class="horaRealizada texto-grande">
-            {{ cabecalhoEventoDetalhado.previsto.toLocaleDateString() }}
+            {{ dadosEvento.previsto.toLocaleDateString() }}
           </div>
         </div>
       </div>
@@ -45,19 +37,19 @@
         <span class="material-symbols-outlined"> schedule </span>
         <div class="horaEvento">
           <Hora
-            v-if="cabecalhoEventoDetalhado.realizado"
+            v-if="dadosEvento.realizado"
             class="horaRealizada texto-grande"
-            :hora="cabecalhoEventoDetalhado.realizado"
+            :hora="dadosEvento.realizado"
           />
           <Hora
-            v-if="cabecalhoEventoDetalhado.realizado"
+            v-if="dadosEvento.realizado"
             class="horaPlanejada texto-pequeno"
-            :hora="cabecalhoEventoDetalhado.previsto"
+            :hora="dadosEvento.previsto"
           />
           <Hora
             v-else
             class="horaRealizada texto-grande"
-            :hora="cabecalhoEventoDetalhado.previsto"
+            :hora="dadosEvento.previsto"
           />
         </div>
       </div>
@@ -79,10 +71,10 @@ export default defineComponent({
   components: { Botao, PerfilTimeline, IconeCategoria, Hora },
   name: "CabecalhoEventoDetalhado",
   props: {
-    perfilTimeline: {
+    perfilEvento: {
       type: Object as PropType<Perfil>,
     },
-    cabecalhoEventoDetalhado: {
+    dadosEvento: {
       required: true,
       type: Object as PropType<EventoDetalhado>,
     },
@@ -103,8 +95,12 @@ export default defineComponent({
   font-size: 2.6rem;
 }
 
+.perfilTimeline {
+  margin-bottom: 1rem;
+}
+
 .cabecalho-evento {
-  padding: 1.4rem 0;
+  margin-bottom: 1.4rem;
 }
 
 .criticidade {

@@ -65,7 +65,7 @@ export default defineComponent({
 
 .formato-reduzido {
   background: var(--cor-fundo);
-  min-height: 1rem;
+  min-height: 0;
   padding: 0;
   justify-content: left;
   gap: 1rem;
