@@ -1,6 +1,6 @@
 import Observacoes from "./Observacoes.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
-import { dadosEventoDetalhado } from "../organismos/EventoDetalhado.mock";
+import { dadosEventoDetalhado } from "../EventoDetalhado.mock";
 
 export default {
   title: "Devix/Eventos/Moleculas/Observacoes",
