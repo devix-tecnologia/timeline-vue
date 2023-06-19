@@ -73,6 +73,10 @@ export default defineComponent({
   color: var(--cor-terciaria);
 }
 
+.topo.bg-escuro span {
+  color: var(--cor-terciaria);
+}
+
 .btn_voltar {
   border: 0;
   cursor: pointer;
