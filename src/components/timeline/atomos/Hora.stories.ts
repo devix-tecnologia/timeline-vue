@@ -1,14 +1,14 @@
-import Hora from './Hora.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import Hora from "./Hora.vue";
+import { Meta, StoryFn } from "@storybook/vue3";
 
 export default {
-  title: 'Devix/Timeline/Atomos/Hora',
+  title: "Devix/Timeline/Atomos/Hora",
   component: Hora,
   argTypes: {
-    hora: { control: { type: 'date'} },
+    hora: { control: { type: "date" } },
     aparencia: {
-      control: { type: 'select' },
-      options: ['padrao', 'riscada'],
+      control: { type: "select" },
+      options: ["padrao", "riscada"],
     },
   },
 } as Meta<typeof Hora>;
@@ -20,17 +20,17 @@ const Template: StoryFn<typeof Hora> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<Hora v-bind="args"  />',
+  template: '<Hora :hora="args.hora" :aparencia="args.aparencia" />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
   hora: horaMock,
-  aparencia: 'padrao',
+  aparencia: "padrao",
 };
 
 export const Riscada = Template.bind({});
 Riscada.args = {
   hora: horaMock,
-  aparencia: 'riscada',
+  aparencia: "riscada",
 };

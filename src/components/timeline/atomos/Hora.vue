@@ -15,19 +15,17 @@ export default defineComponent({
     },
     aparencia: {
       type: String,
-      default: 'padrao',
+      default: "padrao",
       validator(aparencia: string) {
-      return ['padrao', 'riscada'].includes(aparencia)
-    }
+        return ["padrao", "riscada"].includes(aparencia);
+      },
     },
   },
   components: {},
   setup(props) {
-    const propsAparecia = ref(props.aparencia);
-
     return {
       classes: computed(() => ({
-        [`hora-${propsAparecia.value || ""}`]: true,
+        [`hora-${props.aparencia || ""}`]: true,
       })),
     };
   },
