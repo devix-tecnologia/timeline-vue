@@ -1,12 +1,14 @@
 <template>
-  <button class="btn" @click="acaoBotao()" :class="classes">
-    <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span
-    >{{ titulo }}
+  <button class="btn" :onclick="aoClicar" :class="classes">
+    <slot></slot>
+    <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
+    {{ titulo }}
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed } from "vue";
+import { defineComponent, reactive, computed, PropType } from "vue";
+import { AoClicarEvento } from "../type";
 import "material-symbols/outlined.css";
 
 export default defineComponent({
@@ -24,15 +26,15 @@ export default defineComponent({
     tamanho: {
       type: String,
     },
+    aoClicar: {
+      required: false,
+      type: Function as PropType<AoClicarEvento>,
+    },
   },
   setup(props) {
     props = reactive(props);
 
-    function acaoBotao() {
-      alert("Ação do botão");
-    }
     return {
-      acaoBotao,
       classes: computed(() => ({
         [`${props.aparencia || "outline"}`]: true,
         [`${props.tamanho || "medio"}`]: true,

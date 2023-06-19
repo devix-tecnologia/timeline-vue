@@ -30,6 +30,7 @@ outline.args = {
   aparencia: "outline",
   tamanho: "medio",
   icone: "add",
+  aoClicar: (evento) => alert("Olá, outline!"),
 };
 
 export const preenchido = Template.bind({});
@@ -38,6 +39,7 @@ preenchido.args = {
   aparencia: "preenchido",
   tamanho: "medio",
   icone: "home",
+  aoClicar: (evento) => alert("Olá, Preenchido!"),
 };
 
 export const Pequeno = Template.bind({});
@@ -46,6 +48,7 @@ Pequeno.args = {
   aparencia: "outline",
   tamanho: "pequeno",
   icone: "",
+  aoClicar: (evento) => alert("Olá, Pequeno!"),
 };
 
 export const Grande = Template.bind({});
@@ -54,4 +57,5 @@ Grande.args = {
   aparencia: "outline",
   tamanho: "grande",
   icone: "",
+  aoClicar: (evento) => alert("Olá, Grande!"),
 };
