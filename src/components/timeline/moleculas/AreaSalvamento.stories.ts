@@ -20,5 +20,5 @@ const Template: StoryFn<typeof AreaSalvamento> = (args) => ({
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  aoClicar: (evento) => alert("Olá, Botão data-hora!"),
+  aoClicar: (evento) => alert("Olá!"),
 };
