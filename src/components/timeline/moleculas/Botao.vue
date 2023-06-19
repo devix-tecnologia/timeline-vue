@@ -50,7 +50,7 @@ export default defineComponent({
   font-size: 2.6rem;
 }
 .btn {
-  background: var(--cor-clara);
+  background: var(--cor-fundo);
   padding: 1.4rem;
   color: var(--cor-secundaria);
   display: flex;
@@ -73,6 +73,20 @@ export default defineComponent({
 .btn.preenchido {
   background: var(--cor-secundaria);
   color: var(--cor-terciaria);
+}
+
+.btn.vazio {
+  background: transparent;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+}
+
+.btn.vazio:hover {
+  text-decoration: underline;
 }
 
 .btn.pequeno {

@@ -7,7 +7,7 @@ export default {
   argTypes: {
     aparencia: {
       control: { type: "select" },
-      options: ["outline", "preenchido"],
+      options: ["outline", "preenchido", "vazio"],
     },
     tamanho: {
       control: { type: "select" },
@@ -59,4 +59,13 @@ Grande.args = {
   tamanho: "grande",
   icone: "",
   aoClicar: (evento) => alert("Olá, Grande!"),
+};
+
+export const Vazio = Template.bind({});
+Vazio.args = {
+  titulo: "Botao como link",
+  aparencia: "vazio",
+  tamanho: "pequeno",
+  icone: "",
+  aoClicar: (evento) => alert("Olá, Vazio!"),
 };
