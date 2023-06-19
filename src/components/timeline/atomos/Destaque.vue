@@ -1,20 +1,16 @@
 <template>
-  <div class="destaqueEvento texto-pequeno">{{ destaque }}</div>
+  <div class="destaqueEvento texto-pequeno">{{ texto }}</div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "destaque",
+  name: "Destaque",
   props: {
-    destaque: {
+    texto: {
       type: String,
     },
-  },
-  components: {},
-  setup() {
-    return {};
-  },
+  }
 });
 </script>
 <style scoped>

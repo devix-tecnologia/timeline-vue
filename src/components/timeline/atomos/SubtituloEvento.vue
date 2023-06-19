@@ -2,26 +2,22 @@
   <h4 class="subtitulo">{{ subtitulo }}</h4>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
+  name: "Subtítulo Evento",
   props: {
     subtitulo: {
       required: true,
       type: String,
     },
-  },
-
-  components: {},
-  setup() {
-    return {};
-  },
+  }
 });
 </script>
 
 <style scoped>
 /* descrição do evento */
-.descricaoEvento .subtitulo {
+.subtitulo {
   line-height: 1.4rem;
   margin: 0;
   color: var(--cor-texto);

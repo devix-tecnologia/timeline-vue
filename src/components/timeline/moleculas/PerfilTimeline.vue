@@ -1,5 +1,5 @@
 <template>
-  <section class="perfilTimeline" :style="style">
+  <section class="perfilTimeline" :class="classes">
     <AvatarTimeline v-if="imagemPerfil" :imagem="imagemPerfil" />
     <AvatarTimeline v-else-if="iconePerfil" :icone="iconePerfil" />
     <h2 class="nome">{{ nomePerfil }}</h2>
@@ -7,15 +7,9 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  onMounted,
-  onUnmounted,
-  reactive,
-  computed,
-} from "vue";
+import { defineComponent, reactive, computed } from "vue";
 import AvatarTimeline from "../atomos/AvatarTimeline.vue";
+import "material-symbols/outlined.css";
 
 export default defineComponent({
   components: { AvatarTimeline },
@@ -29,20 +23,19 @@ export default defineComponent({
     iconePerfil: {
       type: String,
     },
-    backgroundColor: {
-      type: String,
-      default: "var(--cor-primaria)",
+    formatoReduzido: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
     props = reactive(props);
-    // passando o background por props no style
-    const style = computed(() => ({
-      backgroundColor: props.backgroundColor,
-    }));
 
     return {
-      style,
+      classes: computed(() => ({
+        "formato-reduzido": props.formatoReduzido,
+        "formato-normal": !props.formatoReduzido,
+      })),
     };
   },
 });
@@ -67,6 +60,30 @@ export default defineComponent({
 }
 
 .nome {
-  color: var(--cor-secundaria);
+  color: var(--cor-texto-selecao);
+}
+
+.formato-reduzido {
+  background: transparent;
+  min-height: 0;
+  padding: 0;
+  justify-content: left;
+  gap: 1rem;
+}
+
+.formato-reduzido .avatar {
+  width: 2rem;
+  height: 2rem;
+}
+
+.formato-reduzido .avatar span {
+  color: var(--cor-apoio);
+  font-size: 1.6rem;
+}
+
+.formato-reduzido .nome {
+  font-size: small;
+  font-weight: normal;
+  color: var(--cor-texto);
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="areaTimeline">
     <PerfilTimeline
-      v-if="perfilTimeline !== null"
+      v-if="perfilTimeline"
       :nomePerfil="perfilTimeline.nome"
       :imagemPerfil="perfilTimeline.imagem"
       :iconePerfil="perfilTimeline.icone"
     />
 
-    <section class="timeline" :class="{ marginTop: perfilTimeline !== null }">
+    <section class="timeline">
       <!-- SEPARADOR -->
       <div v-for="evento in eventosPorTipo" :key="evento.key">
         <SeparadorPeriodo
@@ -26,7 +26,13 @@
           :subtitulo="evento.valor.subtitulo"
           :destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
-          :aoCLicar="evento.valor.aoCLicar"
+          :aoClicar="
+            () => {
+              if (evento && evento.valor && evento.valor.aoClicar) {
+                evento.valor.aoClicar(evento.valor);
+              }
+            }
+          "
         />
       </div>
     </section>
@@ -38,7 +44,7 @@ import { defineComponent, computed, reactive } from "vue";
 import EventoTimeline from "../moleculas/EventoTimeline.vue";
 import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
 import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
-import { Evento } from "../type";
+import { AoClicarEvento, Evento } from "../type";
 import "material-symbols/outlined.css";
 
 type TipoEventoTimeline =
@@ -72,7 +78,7 @@ export default defineComponent({
       dadosEventosTimelineClone = dadosEventosTimeline;
       const resultado: Evento[] = filtraEventoAtual(dadosEventosTimelineClone);
       dadosEventosTimelineClone.map((resp) => {
-        if (resultado[0].id === resp.id) {
+        if (resultado[0] === resp) {
           resp.atual = true;
           resp.scroll = true;
           void scrollParaItemAtual();
@@ -178,10 +184,17 @@ export default defineComponent({
       });
     };
 
+    // const clicar: AoClicarEvento = function (evento: Evento): void {
+    //   if (evento && evento.aoClicar) {
+    //     evento.aoClicar(evento);
+    //   }
+    // };
+
     carregarListaEventos();
     return {
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
+      // clicar,
     };
   },
   mounted() {

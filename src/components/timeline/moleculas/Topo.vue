@@ -1,22 +1,43 @@
 <template>
-  <div class="topo">
-    <div class="Topo">
-      <!-- iconeSeta -->
-      <span class="material-symbols-outlined"> arrow_back </span>
-      <!-- titulo -->
-      <h2 class="titulo">Linha do tempo</h2>
-      <!-- menu -->
-      <span class="material-symbols-outlined"> more_vert </span>
+  <div class="topo" :class="classes">
+    <div class="conteudoTitulo">
+      <button class="btn_voltar" @click="telaAnterior()">
+        <span class="material-symbols-outlined"> arrow_back </span>
+      </button>
+      <h3 class="titulo">{{ titulo }}</h3>
     </div>
+    <!-- <span class="material-symbols-outlined"> more_vert </span> -->
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive, computed } from "vue";
+import "material-symbols/outlined.css";
 
 export default defineComponent({
-  setup() {
-    return {};
+  name: "Topo",
+  props: {
+    titulo: {
+      type: String,
+    },
+    escuro: {
+      type: Boolean,
+      default: true,
+    },
+    link: {},
+  },
+  setup(props) {
+    function telaAnterior() {
+      alert("Volta para a tela anterior");
+    }
+    props = reactive(props);
+    return {
+      telaAnterior,
+      classes: computed(() => ({
+        "bg-escuro": props.escuro,
+        "bg-claro": !props.escuro,
+      })),
+    };
   },
 });
 </script>
@@ -26,13 +47,38 @@ export default defineComponent({
 .material-symbols-outlined {
   font-size: 2.6rem;
 }
-.Topo {
-  background: var(--cor-secundaria);
+.topo {
+  background: var(--cor-fundo);
   padding: 1.4rem;
-  color: var(--cor-terciaria);
+  color: var(--cor-secundaria);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.conteudoTitulo {
+  padding-right: 1.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.topo.bg-escuro {
+  background: var(--cor-secundaria);
+  color: var(--cor-terciaria);
+}
+
+.topo.bg-escuro span {
+  color: var(--cor-terciaria);
+}
+
+.btn_voltar {
+  border: 0;
+  cursor: pointer;
+  padding-right: 1.4rem;
+  background-color: transparent;
+  line-height: 0;
+  color: var(--cor-texto);
 }
 </style>

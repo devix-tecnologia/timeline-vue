@@ -3,21 +3,13 @@
     <div class="horaEvento">
       <Hora
         v-if="horaRealizada"
-        class="horaRealizada texto-grande"
         :hora="horaRealizada"
         style="padding-top: 0.3rem"
       />
       <Hora
-        v-if="horaRealizada"
-        class="horaPlanejada texto-pequeno"
         :hora="horaPrevista"
-      />
-
-      <Hora
-        v-else
-        class="horaRealizada texto-grande"
-        :hora="horaPrevista"
-        style="padding-top: 1.2rem"
+        :aparencia="horaRealizada ? 'riscada' : 'padrao'"
+        :style="horaRealizada ? '' : 'padding-top: 1.2rem'"
       />
     </div>
   </div>
@@ -27,6 +19,7 @@ import { defineComponent, PropType } from "vue";
 import Hora from "../atomos/Hora.vue";
 
 export default defineComponent({
+  name: "Hora Evento",
   props: {
     horaPrevista: {
       type: Date,
@@ -34,16 +27,10 @@ export default defineComponent({
     },
     horaRealizada: {
       required: false,
-      type: Date as PropType<Date | null>,
-    },
-    // aparencia: {
-    //   type: String,
-    // },
+      type: Date,
+    }
   },
-  components: { Hora },
-  setup() {
-    return {};
-  },
+  components: { Hora }
 });
 </script>
 <style scoped>
@@ -64,11 +51,5 @@ export default defineComponent({
   text-align: right;
   display: flex;
   flex-direction: column;
-}
-.horaRealizada {
-  font-weight: 500;
-}
-.horaPlanejada {
-  text-decoration: line-through;
 }
 </style>

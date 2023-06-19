@@ -2,10 +2,10 @@
   <h3 class="boxData padrao" :class="classes">{{ dataNumero }}</h3>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive, computed } from "vue";
 
 export default defineComponent({
-  name: 'BoxData',
+  name: "Box Data",
   props: {
     dataNumero: {
       required: true,
@@ -15,12 +15,11 @@ export default defineComponent({
       type: String,
     },
   },
-  components: {},
   setup(props) {
     props = reactive(props);
     return {
       classes: computed(() => ({
-        [`${props.aparencia || 'padrao'}`]: true,
+        [`${props.aparencia || "padrao"}`]: true,
       })),
     };
   },
@@ -32,7 +31,7 @@ export default defineComponent({
   line-height: 3.5rem;
   border-radius: 0.5rem;
   background: var(--cor-primaria);
-  color: var(--cor-secundaria);
+  color: var(--cor-texto-selecao);
   margin: 0;
   width: 3.5rem;
   height: 3.5rem;
@@ -41,7 +40,7 @@ export default defineComponent({
 
 .padrao {
   background: var(--cor-primaria);
-  color: var(--cor-secundaria);
+  color: var(--cor-texto-selecao);
 }
 
 .escuro {

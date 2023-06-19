@@ -30,32 +30,39 @@
   --cor-apoio: #57676f;
   --cor-linha: #e9eaeb;
 
-  --cor-importante: #bb0202;
-  --cor-alerta: #f0cc0d;
-  --cor-sucesso: #00a816;
+  --cor-importante: #FC3636;
+  --cor-alerta: #F0CC0D;
+  --cor-sucesso: #00A816;
+  --cor-acao: #0187B1;
+
+  --cor-sombra: rgba(27, 47, 57, 0.15);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fonte: 'Work Sans', sans-serif;
+    font-size: 62.5%;
 
-:root .tema-escuro {
-  --fonte: 'Work Sans', sans-serif;
-  font-size: 62.5%;
+    --cor-primaria: #00e01d;
+    --cor-secundaria: #ebf1f2;
+    --cor-terciaria: #1b2f39;
 
-  --cor-primaria: #00e01d;
-  --cor-secundaria: #ebf1f2;
-  --cor-terciaria: #1b2f39;
+    --cor-fundo: #0d1117;
 
-  --cor-fundo: #1b2f39;
+    --cor-selecao: #ccf9d2;
+    --cor-texto-selecao: #1b2f39;
+    --cor-texto: #f9f9f9;
 
-  --cor-selecao: #ccf9d2;
-  --cor-texto-selecao: #1b2f39;
-  --cor-texto: #f9f9f9;
+    --cor-apoio: #81949c;
+    --cor-linha: #e9eaeb;
 
-  --cor-apoio: #57676f;
-  --cor-linha: #e9eaeb;
+    --cor-importante: #bb0202;
+    --cor-alerta: #f0cc0d;
+    --cor-sucesso: #00a816;
 
-  --cor-importante: #bb0202;
-  --cor-alerta: #f0cc0d;
-  --cor-sucesso: #00a816;
+
+    --cor-sombra: rgba(252, 252, 253, 0.224);
+  }
 }
 
 body {
@@ -97,4 +104,25 @@ h4 {
 
 .texto-grande {
   font-size: 1.4rem;
+}
+
+.fadeBaixo-enter-active,
+.fadeBaixo-leave-active,
+.fadeTopo-enter-active,
+.fadeTopo-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease-in-out;
+  transform: translateY(0px);
+}
+
+.fadeTopo-enter-from,
+.fadeTopo-leave-to {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+
+
+.fadeBaixo-enter-from,
+.fadeBaixo-leave-to {
+  opacity: 0;
+  transform: translateY(100px);
 }

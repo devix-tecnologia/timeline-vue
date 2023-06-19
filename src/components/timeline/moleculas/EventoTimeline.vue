@@ -2,7 +2,7 @@
   <article
     class="eventoTimeline"
     :class="[status, 'criticidade-' + criticidade, eventoSelecionado, clicavel]"
-    :onclick="aoCLicar"
+    :onclick="aoClicar"
   >
     <IconeStatus :status="status" />
     <HoraEvento :horaPrevista="previsto" :horaRealizada="realizado" />
@@ -11,7 +11,7 @@
       :categoria="categoria.nome"
     />
     <DescricaoEvento :titulo="titulo" :subtitulo="subtitulo" />
-    <Destaque :destaque="destaque" />
+    <Destaque :texto="destaque" />
   </article>
 </template>
 <script lang="ts">
@@ -21,14 +21,10 @@ import IconeStatus from "../atomos/IconeStatus.vue";
 import DescricaoEvento from "./DescricaoEvento.vue";
 import HoraEvento from "./HoraEvento.vue";
 import Destaque from "../atomos/Destaque.vue";
-// import { Evento, Categoria } from "../type";
-
-interface Categoria {
-  nome: string;
-  icone: string;
-}
+import { Categoria, AoClicarEvento } from "../type";
 
 export default defineComponent({
+  name: "Evento Timeline",
   props: {
     status: {
       required: true,
@@ -59,16 +55,16 @@ export default defineComponent({
       type: String,
     },
     subtitulo: {
-      required: true,
+      required: false,
       type: String,
     },
     destaque: {
-      required: true,
+      required: false,
       type: String,
     },
-    aoCLicar: {
+    aoClicar: {
       required: false,
-      type: Function as PropType<VoidFunction>,
+      type: Function as PropType<AoClicarEvento>,
     },
   },
   components: {
@@ -85,7 +81,7 @@ export default defineComponent({
         padrao: props.ehAtual,
       })),
       clicavel: computed(() => ({
-        clicavel: props.aoCLicar !== undefined,
+        clicavel: props.aoClicar !== undefined,
       })),
     };
   },
@@ -98,7 +94,7 @@ export default defineComponent({
   position: relative;
   width: 100%;
   border-radius: 1rem;
-  background-color: var(--cor-fundo);
+  background-color: transparente;
 }
 
 .clicavel {
@@ -106,11 +102,17 @@ export default defineComponent({
 }
 
 .eventoTimeline:hover {
-  background-color: #f9f9f9;
+  background-color: var(--cor-terciaria);
 }
 
 .atual {
   background-color: var(--cor-selecao);
+}
+.atual .titulo,
+.atual .subtitulo,
+.atual .hora,
+.atual .destaqueEvento {
+  color: var(--cor-texto-selecao) !important;
 }
 
 .atual:hover {

@@ -4,7 +4,7 @@ import { dadosEventos, dadosPerfil } from "./Timeline.mock";
 import { Evento } from "../type";
 
 export default {
-  title: "Devix/Timeline/Organismos/Timeline",
+  title: "Devix/Eventos/Organismos/Timeline",
   component: Timeline,
   parameters: {
     componentSubtitle: "Linha do tempo padrão com identidade da Devix",
