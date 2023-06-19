@@ -21,7 +21,7 @@ const Template: StoryFn<typeof EditarEvento> = (args) => ({
     return { args };
   },
   template:
-    '<EditarEvento :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" :aoClicar="args.aoClicar" :salvarVisivel="args.salvarVisivel" />',
+    '<EditarEvento :dadosEvento="args.dadosEvento" :aoClicar="args.aoClicar" :salvarVisivel="args.salvarVisivel" />',
 });
 
 export const Padrao = Template.bind({});

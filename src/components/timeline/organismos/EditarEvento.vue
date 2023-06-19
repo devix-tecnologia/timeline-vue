@@ -29,10 +29,6 @@ export default defineComponent({
     salvarVisivel: {
       type: Boolean,
     },
-    aoClicarConteudo: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
   },
   components: { AreaSalvamento, Botao },
   setup(props) {
@@ -55,25 +51,28 @@ export default defineComponent({
   height: 100vh;
 }
 
-.salvar,
 .area-conteudo,
 .area-salvamento {
   height: 100%;
 }
 
 .salvar {
-  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .visivel {
-  position: relative;
+  /* position: relative;
   transition: all 10s ease-out;
-  top: 0;
+  top: 0; */
+  display: flex;
 }
 
 .invisivel {
-  position: relative;
+  /* position: relative;
   transition: all 10s ease-out;
-  top: 100%;
+  top: 100%; */
+  display: none !important;
 }
 </style>
