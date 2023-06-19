@@ -63,6 +63,7 @@ export default defineComponent({
   line-height: 0;
   font: var(--fonte);
   width: 100%;
+  transition: all 0.1s ease-in;
 }
 
 .btn span {
@@ -86,5 +87,14 @@ export default defineComponent({
   font-size: large;
   font-weight: bold;
   padding: 2rem;
+}
+
+.btn:hover {
+  opacity: 0.7;
+  transition: all 0.1s ease-in;
+}
+.btn:active {
+  opacity: 0.7;
+  transition: all 0.1s ease-in;
 }
 </style>
