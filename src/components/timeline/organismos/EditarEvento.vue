@@ -18,8 +18,6 @@ import "material-symbols/outlined.css";
 import { AoClicarEvento } from "../type";
 import AreaSalvamento from "../moleculas/AreaSalvamento.vue";
 
-import Botao from "../moleculas/Botao.vue";
-
 export default defineComponent({
   props: {
     aoClicar: {
@@ -30,7 +28,7 @@ export default defineComponent({
       type: Boolean,
     },
   },
-  components: { AreaSalvamento, Botao },
+  components: { AreaSalvamento },
   setup(props) {
     props = reactive(props);
     return {
