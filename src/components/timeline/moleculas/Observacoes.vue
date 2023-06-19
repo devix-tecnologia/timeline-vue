@@ -1,6 +1,6 @@
 <template>
   <section class="box box-observacoes">
-    <h3>Obervações:</h3>
+    <h3>Observações:</h3>
     <ul class="lista-obs">
       <li v-for="(item, index) of observacoes" :key="index" class="lista-item">
         <p class="texto">{{ item.mensagem }}</p>
@@ -27,16 +27,13 @@ import "material-symbols/outlined.css";
 import { defineComponent, reactive, PropType } from "vue";
 import { AoClicarEvento } from "../type";
 import Botao from "./Botao.vue";
-import { EventoDetalhado, Observacao } from "../typeDetalhado";
+import { Observacao } from "../typeDetalhado";
 
 export default defineComponent({
   components: { Botao },
   name: "Observacoes",
   props: {
     titulo: {
-      type: String,
-    },
-    icone: {
       type: String,
     },
     aoClicar: {

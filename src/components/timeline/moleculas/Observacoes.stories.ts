@@ -15,12 +15,13 @@ const Template: StoryFn<typeof Observacoes> = (args) => ({
   setup() {
     return { args };
   },
-  template: '<Observacoes v-bind="args"  />',
+  template:
+    '<Observacoes :titulo="args.tituloBotao" :aoClicar="args.aoClicarBotao" :observacoes="args.observacoes" />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  titulo: "Inserir observação",
+  tituloBotao: "Inserir observação",
   observacoes: observacoesMock,
-  aoClicar: (evento) => alert("Inserir observação!"),
+  aoClicarBotao: (evento) => alert("Inserir observação!"),
 };
