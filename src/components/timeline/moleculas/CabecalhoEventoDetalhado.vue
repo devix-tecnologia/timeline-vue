@@ -1,15 +1,15 @@
 <template>
-  <PerfilTimeline
-    v-if="perfilEvento"
-    :nomePerfil="perfilEvento?.nome"
-    :imagemPerfil="perfilEvento?.imagem"
-    :iconePerfil="perfilEvento?.icone"
-    :formatoReduzido="true"
-  />
   <section
     class="cabecalho-evento"
     :class="[`criticidade-` + dadosEvento.criticidade]"
   >
+    <PerfilTimeline
+      v-if="perfilEvento"
+      :nomePerfil="perfilEvento?.nome"
+      :imagemPerfil="perfilEvento?.imagem"
+      :iconePerfil="perfilEvento?.icone"
+      :formatoReduzido="true"
+    />
     <div class="criticidade">Criticidade: {{ dadosEvento.criticidade }}</div>
     <div class="titulo">
       <IconeCategoria

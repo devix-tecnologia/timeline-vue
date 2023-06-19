@@ -28,13 +28,13 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
     duracao: null,
     tolerancia: 10,
     titulo: "Dar vitamina D para a paciente",
-    subtitulo: "2 comprimidos",
+    subtitulo: "Dar 2 comprimidos",
     destaque: "",
     categoria: {
       nome: "Remédio",
       icone: "pill",
     },
-    status: "planejado",
+    status: "realizado",
     criticidade: "alta",
     aoClicar: (evento) => alert("Olá, mundo!"),
     atual: false,
@@ -43,14 +43,9 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
   {
     observacoes: [
       {
-        mensagem: "Todo dia antes de dormir ela não quer tomar",
-        autor: { nome: "Joana" },
+        mensagem: "Caminhamos parte do tempo no sol e parte do tempo na sombra",
+        autor: { nome: "João" },
         criadaEm: new Date("2023-05-09T17:00Z"),
-      },
-      {
-        mensagem: "Hoje ela tomou o remédio normalmente.",
-        autor: { nome: "Maria" },
-        criadaEm: new Date("2023-05-10T18:00Z"),
       },
     ],
     data: new Date("2023-05-09T17:00Z"),
@@ -59,10 +54,11 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
     duracao: null,
     tolerancia: 10,
     titulo: "Caminhada no Parque",
-    subtitulo: "2 comprimidos",
+    subtitulo:
+      "Ter atenção para as condições do tempo, lembrar de levar guarda-chuva.",
     destaque: "",
     categoria: {
-      nome: "passeio",
+      nome: "Passeio",
       icone: "tour",
     },
     status: "atrasado",
