@@ -64,10 +64,12 @@ export default defineComponent({
   border: 1px solid var(--cor-sucesso);
   color: var(--cor-sucesso);
 }
+.btn.realizado:active,
 .btn.preenchido.realizado {
   background: var(--cor-sucesso);
   color: var(--cor-fundo);
 }
+.btn.realizado:active .icone::before,
 .btn.preenchido.realizado .icone::before {
   color: var(--cor-fundo);
 }
@@ -76,10 +78,12 @@ export default defineComponent({
   border: 1px solid var(--cor-importante);
   color: var(--cor-importante);
 }
+.btn.cancelado:active,
 .btn.preenchido.cancelado {
   background: var(--cor-importante);
   color: var(--cor-fundo);
 }
+.btn.cancelado:active .icone::before,
 .btn.preenchido.cancelado .icone::before {
   color: var(--cor-fundo);
 }
@@ -88,11 +92,13 @@ export default defineComponent({
   border: 1px solid var(--cor-alerta);
   color: var(--cor-alerta);
 }
+
+.btn.atrasado:active,
 .btn.preenchido.atrasado {
   background: var(--cor-alerta);
   color: var(--cor-secundaria);
 }
-
+.btn.atrasado:active .icone::before,
 .btn.preenchido.atrasado .icone::before {
   color: var(--cor-secundaria);
 }
@@ -101,12 +107,15 @@ export default defineComponent({
   border: 1px solid var(--cor-apoio);
   color: var(--cor-apoio);
 }
+
+.btn.adiado:active,
 .btn.preenchido.adiado {
   background: var(--cor-apoio);
   color: var(--cor-fundo);
 }
 
-.btn.preenchido.adiado .icone {
+.btn.adiado:active .icone::before,
+.btn.preenchido.adiado .icone::before {
   color: var(--cor-fundo);
 }
 </style>
