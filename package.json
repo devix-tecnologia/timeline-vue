@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fontsource/material-icons": "^4.5.4",
+    "date-fns": "^2.30.0",
     "material-symbols": "^0.5.5",
     "vue": "^3.0.0"
   },
