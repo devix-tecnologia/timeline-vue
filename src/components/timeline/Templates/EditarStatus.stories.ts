@@ -7,12 +7,7 @@ export default {
   parameters: {
     componentSubtitle: "Tela de edição de Status",
   },
-  argTypes: {
-    aparencia: {
-      control: { type: "select" },
-      options: ["outline", "preenchido"],
-    },
-  },
+  argTypes: {},
 } as Meta<typeof EditarStatus>;
 
 const Template: StoryFn<typeof EditarStatus> = (args) => ({
@@ -21,12 +16,11 @@ const Template: StoryFn<typeof EditarStatus> = (args) => ({
     return { args };
   },
   template:
-    '<EditarStatus :aoClicar="args.aoClicar" :salvarVisivel="args.salvarVisivel" :aparencia="args.aparencia"  />',
+    '<EditarStatus :aoClicar="args.aoClicar" :salvarVisivel="args.salvarVisivel"  />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  aparencia: "preenchido",
   salvarVisivel: false,
   aoClicar: (evento) => alert("Olá!"),
 };
