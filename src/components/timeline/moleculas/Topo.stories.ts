@@ -1,4 +1,3 @@
-import "@fontsource/material-icons";
 import Topo from "./Topo.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 

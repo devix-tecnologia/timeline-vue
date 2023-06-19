@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, computed } from "vue";
+import "material-symbols/outlined.css";
 
 export default defineComponent({
   name: "Topo",
