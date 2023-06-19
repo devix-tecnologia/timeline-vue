@@ -17,11 +17,11 @@ export default {
 } as Meta<typeof Botao>;
 
 const Template: StoryFn<typeof Botao> = (args) => ({
-  components: { Topo: Botao },
+  components: { Botao },
   setup() {
     return { args };
   },
-  template: '<Topo v-bind="args"  />',
+  template: '<Botao v-bind="args"  />',
 });
 
 export const outline = Template.bind({});
