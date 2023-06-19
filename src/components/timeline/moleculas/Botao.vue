@@ -1,6 +1,7 @@
 <template>
   <button class="btn" @click="acaoBotao()" :class="classes">
-    <span class="material-symbols-outlined"> arrow_back </span>{{ titulo }}
+    <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span
+    >{{ titulo }}
   </button>
 </template>
 
@@ -12,6 +13,9 @@ export default defineComponent({
   name: "Botao",
   props: {
     titulo: {
+      type: String,
+    },
+    icone: {
       type: String,
     },
     aparencia: {
