@@ -6,7 +6,8 @@ export default {
   title: "Devix/Eventos/Organismos/EventoDetalhado",
   component: EventoDetalhado,
   parameters: {
-    componentSubtitle: "Tela de detalhes do evento.",
+    componentSubtitle:
+      "Tela de detalhes do evento. Este componente possui um slot que altera o conteúdo da área de descrição. Para usá-lo basta acrescentar <template #descricao></template> na tela que for usar o componente.",
   },
   argTypes: {},
 } as Meta<typeof EventoDetalhado>;

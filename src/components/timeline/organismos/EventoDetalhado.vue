@@ -7,7 +7,7 @@
     />
 
     <section class="descricao">
-      <slot id="descricao">
+      <slot name="descricao">
         {{ dadosEvento.subtitulo }}
       </slot>
     </section>

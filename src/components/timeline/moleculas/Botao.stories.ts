@@ -4,6 +4,10 @@ import { Meta, StoryFn } from "@storybook/vue3";
 export default {
   title: "Devix/Eventos/Moleculas/Botao",
   component: Botao,
+  parameters: {
+    componentSubtitle:
+      "Este componente possui um <slot> padrão que carrega conteúdo dentro do botão. Por padrão, ícone e título são passados por props, mas podem ser sobrescritos pelo conteúdo do slot.",
+  },
   argTypes: {
     aparencia: {
       control: { type: "select" },

@@ -1,8 +1,9 @@
 <template>
   <button class="btn" :onclick="aoClicar" :class="classes">
-    <slot></slot>
-    <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
-    {{ titulo }}
+    <slot
+      ><span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
+      {{ titulo }}
+    </slot>
   </button>
 </template>
 
