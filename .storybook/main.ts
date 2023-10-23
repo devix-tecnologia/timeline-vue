@@ -5,14 +5,7 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    {
-      name: "@storybook/addon-styling",
-      options: {
-        postCss: {
-          implementation: require("postcss"),
-        },
-      },
-    },
+    "@storybook/vue3/preview",
   ],
   framework: {
     name: "@storybook/vue3-vite",
