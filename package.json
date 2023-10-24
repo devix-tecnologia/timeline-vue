@@ -38,6 +38,9 @@
     "vite": "^4.3.0",
     "vue-tsc": "^1.2.0"
   },
+  "resolutions": {
+    "wrap-ansi": "npm:wrap-ansi@^7.0.0"
+  },
   "files": [
     "dist"
   ],
