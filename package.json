@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
+    "test:unit": "vitest",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -15,7 +16,8 @@
     "@fontsource/material-icons": "^4.5.4",
     "date-fns": "^2.30.0",
     "material-symbols": "^0.5.5",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "wrap-ansi": "npm:wrap-ansi@^7.0.0"
   },
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
@@ -29,14 +31,20 @@
     "@storybook/testing-library": "^0.0.14-next.2",
     "@storybook/vue3": "^7.5.1",
     "@storybook/vue3-vite": "^7.0.7",
+    "@testing-library/vue": "^7.0.0",
     "@vitejs/plugin-vue": "^4.1.0",
+    "@vue/test-utils": "^2.4.1",
+    "add": "^2.0.6",
+    "happy-dom": "^12.10.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "semantic-release": "^19.0.5",
     "storybook": "^7.0.7",
     "typescript": "^5.0.2",
     "vite": "^4.3.0",
-    "vue-tsc": "^1.2.0"
+    "vitest": "^0.34.6",
+    "vue-tsc": "^1.8.22",
+    "yarn": "^1.22.19"
   },
   "resolutions": {
     "wrap-ansi": "npm:wrap-ansi@^7.0.0"
