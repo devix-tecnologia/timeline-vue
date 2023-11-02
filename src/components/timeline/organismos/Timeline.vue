@@ -5,6 +5,7 @@
       :nomePerfil="perfilTimeline.nome"
       :imagemPerfil="perfilTimeline.imagem"
       :iconePerfil="perfilTimeline.icone"
+      data-testid="perfilTimeline"
     />
 
     <section class="timeline">
@@ -33,6 +34,7 @@
               }
             }
           "
+          data-testid="eventoTimeline"
         />
       </div>
     </section>
