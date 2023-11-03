@@ -28,58 +28,14 @@ const Template: StoryFn<typeof TemplateTimeline> = (args) => ({
   template: '<TemplateTimeline :perfil="args.perfil" :eventos="args.eventos" />',
 });
 
-export const Padrao = Template.bind({});
-Padrao.args = {
+export const Timeline = Template.bind({});
+Timeline.args = {
   perfil: perfilTimelineMock,
-  eventos: eventoDetalhado,
+  eventos: eventosTimeline,
 };
 
-export const DetalheEvento = Template.bind({});
-DetalheEvento.args = {
+export const EventoDetalhado = Template.bind({});
+EventoDetalhado.args = {
   perfil: perfilEventoMock,
-  eventos: eventosTimeline,  
+  eventos: eventoDetalhado,  
 };
-
-
-
-// import TemplateTimeline from "./TemplateTimeline.vue";
-// import { Meta, StoryFn } from "@storybook/vue3";
-// import { dadosEventoDetalhado, dadosPerfil as dadosPerfilEvento } from "../EventoDetalhado.mock";
-// import { dadosEventos, dadosPerfil as dadosPerfilTimeline } from "../organismos/Timeline.mock";
-
-// export default {
-//   title: "Devix/Eventos/Templates/TemplateTimeline",
-//   component: TemplateTimeline,
-//   parameters: {
-//     componentSubtitle: "Timeline com tela de detalhes do evento.",
-//   },
-//   argTypes: {},
-// } as Meta<typeof TemplateTimeline>;
-
-// const perfilEventoMock = dadosPerfilTimeline;
-// const eventoDetalhado = dadosEventoDetalhado[0];
-
-// const perfilTimelineMock = dadosPerfilTimeline;
-// const eventosTimeline = dadosEventos;
-
-// const Template: StoryFn<typeof TemplateTimeline> = (args) => ({
-
-//   components: { TemplateTimeline },
-//   setup() {
-
-//     return { args };
-//   },
-//   template: '<TemplateTimeline :perfil="args.perfil" :eventos="args.eventos" />',
-// });
-
-// export const Padrao = Template.bind({});
-// Padrao.args = {
-//   perfil: perfilTimelineMock,
-//   eventos: eventoDetalhado,
-// };
-
-// export const DetalheEvento = Template.bind({});
-// DetalheEvento.args = {
-//   perfil: perfilEventoMock,
-//   eventos: eventosTimeline,  
-// };

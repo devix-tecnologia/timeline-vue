@@ -37,20 +37,17 @@ export default defineComponent({
   setup(props) {
     props = reactive(props);
 
+    debugger;
+
     const _perfil = toRef(props, 'perfil');
-    const strPerfil = JSON.stringify( _perfil.value );
-
     const _eventos = toRef(props, 'eventos');
-    const strEventos = JSON.stringify( _eventos.value );
-
-    // Analisar a string JSON em um objeto JavaScript
-    const eventosData = JSON.parse( strEventos );
 
     // Mapear os campos da string JSON diretamente para o tipo Perfil
-    const perfilEvento : Perfil = JSON.parse( strPerfil );
-    const perfilTimeline : Perfil = JSON.parse( strPerfil );
-    const dadosEvento :  EventoDetalhado = { ...eventosData };
-    const dadosTimeline : TipoEvento[] = { ...eventosData };
+    const perfilEvento : Perfil = _perfil.value;
+    const dadosEvento :  EventoDetalhado = _eventos.value;
+    
+    const perfilTimeline : Perfil = _perfil.value;
+    const dadosTimeline : TipoEvento[] = _eventos.value;
 
     const showTimeline = dadosTimeline.length > 1 ? true : false;
     const showDetail =  !showTimeline; 
