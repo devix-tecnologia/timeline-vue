@@ -7,6 +7,10 @@ export default {
   title: "Devix/Eventos/Organismos/Timeline",
   component: Timeline,
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/Eb4gpZ5HsK3xPAErpd8TQl/timeline-ui?type=design&node-id=226-2538&mode=design&t=gtygrUm9znRhEPR6-4",
+    },
     componentSubtitle: "Linha do tempo padrão com identidade da Devix",
   },
   argTypes: {},

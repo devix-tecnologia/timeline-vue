@@ -6,6 +6,10 @@ export default {
   title: "Devix/Eventos/Organismos/EventoDetalhado",
   component: EventoDetalhado,
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/Eb4gpZ5HsK3xPAErpd8TQl/timeline-ui?type=design&node-id=226-2078&mode=design&t=gtygrUm9znRhEPR6-4",
+    },
     componentSubtitle:
       "Tela de detalhes do evento. Este componente possui um slot que altera o conteúdo da área de descrição. Para usá-lo basta acrescentar <template #descricao></template> na tela que for usar o componente.",
   },
@@ -22,7 +26,7 @@ const Template: StoryFn<typeof EventoDetalhado> = (args) => ({
     return { args };
   },
   template:
-    '<EventoDetalhado :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" />',
+    '<EventoDetalhado :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" />'
 });
 
 export const Padrao = Template.bind({});
