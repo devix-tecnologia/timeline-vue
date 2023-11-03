@@ -142,8 +142,6 @@ Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título,
 ## 🚀  Contribuindo
 ---
 
-Faça um fork do projeto, crie uma nova branch e faça seus commits.
-
 ### Importante:
 - Os componentes da Timeline Devix são divididos em átomos, moléculas e organismos, seguindo os padrões do Design Atômico;
 - Cada componente vem acompanhado de documentação no storybook;
@@ -155,4 +153,23 @@ Faça um fork do projeto, crie uma nova branch e faça seus commits.
 yarn storybook 
 ```
 
-## 😉
+Faça um fork do projeto, crie uma nova branch e faça seus commits. Seguem passos para bons commits:
+
+1) **Criar um Fork:** Acesse o repositório de origem no GitHub e clique em "Fork". Isso criará uma cópia do projeto na sua conta pessoal do GitHub.
+1) **Clonar ou Atualizar o Seu Fork:** Se ainda não clonou o seu fork para a máquina local, faça-o com `git clone [URL_DO_SEU_FORK]`. Se já possui o projeto clonado, certifique-se de que seu fork esteja atualizado em relação ao projeto de origem usando os comandos:
+   ```
+   git remote add upstream [URL_DO_REPOSITORIO_ORIGEM]
+   git fetch upstream
+   git merge upstream/branch_de_referencia
+   ```
+1) **Atualizar Referências Remotas:** O comando `git remote update` atualiza as referências locais em relação aos repositórios remotos.
+1) **Selecionar o Branch de Partida:** Em geral, utiliza-se o `develop` como branch base, mas verifique sempre no git graph ou em instruções específicas da tarefa qual branch deve ser utilizado.
+1) **Sincronizar Mudanças Remotas:** Antes de iniciar as modificações, é uma boa prática sincronizar o branch local com o remoto usando `git pull origin branch_de_referencia`.
+1) **Criar um Novo Branch:** Ao trabalhar em uma nova funcionalidade ou correção, crie um novo branch com um nome descritivo, como `feature-relatorio-cliente`, usando o comando `git checkout -b nome_do_branch`.
+1) **Fazer Alterações e Commit:** Realize as alterações necessárias no código. Ao terminar, faça um commit seguindo um padrão de mensagens semânticas e imperativas. Lembre-se de criar e/ou executar testes automatizados para garantir que nada foi quebrado.
+1) **Enviar Alterações para o GitHub:** Envie as alterações para o seu fork com o comando `git push origin nome_do_branch`.
+1) **Abrir um Pull Request:** Acesse seu fork no GitHub e clique em "New Pull Request". Escolha os branches de origem e destino corretos e envie sua solicitação. O desenvolvedor ou equipe responsável pelo projeto de origem revisará suas alterações e, se aprovadas, fará o merge no projeto principal.
+
+---
+
+Código-fonte bom é código compartilhado! Contribua melhorando esse importante projeto. 😉
