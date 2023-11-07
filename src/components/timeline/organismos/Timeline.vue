@@ -27,6 +27,7 @@
           :subtitulo="evento.valor.subtitulo"
           :destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
+          @click="handleEventoClick(evento)"
           :aoClicar="
             () => {
               if (evento && evento.valor && evento.valor.aoClicar) {
@@ -42,17 +43,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive } from "vue";
-import EventoTimeline from "../moleculas/EventoTimeline.vue";
-import SeparadorPeriodo from "../moleculas/SeparadorPeriodo.vue";
-import PerfilTimeline from "../moleculas/PerfilTimeline.vue";
-import { AoClicarEvento, Evento } from "../type";
-import "material-symbols/outlined.css";
+import { defineComponent, computed, reactive } from 'vue';
+import EventoTimeline from '../moleculas/EventoTimeline.vue';
+import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
+import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
+import { AoClicarEvento, Evento } from '../type';
+import 'material-symbols/outlined.css';
 
 type TipoEventoTimeline =
-  | { tipo: "dia"; valor: Date; key: number }
-  | { tipo: "evento"; valor: Evento; key: number }
-  | { tipo: "eventos"; valor: Evento[]; key: number };
+  | { tipo: 'dia'; valor: Date; key: number }
+  | { tipo: 'evento'; valor: Evento; key: number }
+  | { tipo: 'eventos'; valor: Evento[]; key: number };
 
 export default defineComponent({
   props: {
@@ -70,7 +71,16 @@ export default defineComponent({
     SeparadorPeriodo,
     EventoTimeline,
   },
-  setup(props) {
+
+  emits: {
+    eventoTimelineClicked: (evento: TipoEventoTimeline) => true,
+  },
+
+  setup(props, ctx) {
+    const handleEventoClick = (evento: TipoEventoTimeline) => {
+      ctx.emit('eventoTimelineClicked', evento);
+    };
+
     const dadosEventosTimeline: Evento[] = reactive(
       props.eventosTimeline as Array<Evento>
     );
@@ -113,7 +123,7 @@ export default defineComponent({
         let listaEventos = [];
         for (const e of eventos) {
           const t = e.data.getTime();
-          if (e.status === "planejado" || e.status === "atrasado") {
+          if (e.status === 'planejado' || e.status === 'atrasado') {
             const diff: number = Math.abs(agora - e.data.getTime());
             if (minDiff === null || (diff < minDiff && t <= agora)) {
               minDiff = diff;
@@ -153,21 +163,21 @@ export default defineComponent({
 
           //altera status para atrasado
           if (
-            statusEvento === "planejado" &&
+            statusEvento === 'planejado' &&
             dataEvento.getTime() + toleranciaEvento < agora.getTime()
           ) {
-            evento.status = "atrasado";
+            evento.status = 'atrasado';
           }
           if (!dataAtual || !verifica_mesmo_dia(dataAtual, dataEvento)) {
             dataAtual = dataEvento;
             resultado.push({
-              tipo: "dia",
+              tipo: 'dia',
               valor: evento.data,
               key: ++idx,
             });
           }
           resultado.push({
-            tipo: "evento",
+            tipo: 'evento',
             valor: evento,
             key: ++idx,
           });
@@ -179,29 +189,26 @@ export default defineComponent({
     });
 
     const scrollParaItemAtual = () => {
-      const itemAtual = document.querySelector(".atual");
-      itemAtual?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+      const itemAtual = document.querySelector('.atual');
+      if (itemAtual) {
+        itemAtual?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }
     };
-
-    // const clicar: AoClicarEvento = function (evento: Evento): void {
-    //   if (evento && evento.aoClicar) {
-    //     evento.aoClicar(evento);
-    //   }
-    // };
 
     carregarListaEventos();
     return {
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
+      handleEventoClick,
       // clicar,
     };
   },
   mounted() {
     // Aguardando a renderização para fazer scroll
-    this.scrollParaItemAtual();
+    //this.scrollParaItemAtual();
   },
 });
 </script>

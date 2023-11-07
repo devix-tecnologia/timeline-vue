@@ -25,3 +25,5 @@ export type EventoDetalhado = Evento & {
   aoAdicionarObservacao?: AoAdicionarObservacao;
   aoFechar?: AoFechar;
 };
+
+export type EventosDetalhados = EventoDetalhado | EventoDetalhado[];

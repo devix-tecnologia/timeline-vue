@@ -34,8 +34,8 @@ Timeline.args = {
   eventos: eventosTimeline,
 };
 
-export const EventoDetalhado = Template.bind({});
-EventoDetalhado.args = {
-  perfil: perfilEventoMock,
-  eventos: eventoDetalhado,  
-};
+// export const EventoDetalhado = Template.bind({});
+// EventoDetalhado.args = {
+//   perfil: perfilEventoMock,
+//   eventos: eventoDetalhado,  
+// };
