@@ -48,12 +48,11 @@ import EventoTimeline from '../moleculas/EventoTimeline.vue';
 import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
 import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
 import { AoClicarEvento, Evento } from '../type';
-import { EventoDetalhado } from '../typeDetalhado';
 import 'material-symbols/outlined.css';
 
 type TipoEventoTimeline =
   | { tipo: 'dia'; valor: Date; key: number }
-  | { tipo: 'evento'; valor: EventoDetalhado; key: number }
+  | { tipo: 'evento'; valor: Evento; key: number }
   | { tipo: 'eventos'; valor: Evento[]; key: number };
 
 export default defineComponent({
@@ -79,10 +78,6 @@ export default defineComponent({
 
   setup(props, ctx) {
     const handleEventoClick = (evento: TipoEventoTimeline) => {
-      dadosEventosTimeline.forEach((evento) => {
-        evento.atual = false;
-      });
-
       ctx.emit('eventoTimelineClicked', evento);
     };
 
@@ -136,7 +131,7 @@ export default defineComponent({
             } else if (diff > minDiff) {
               continue;
             }
-            listaEventos.push({ ...e });
+            listaEventos.push(e);
           }
         }
         return listaEventos;
@@ -154,7 +149,6 @@ export default defineComponent({
           return a.data.getTime() - b.data.getTime();
         }
       );
-
       if (eventosOrdenados) {
         let resultado: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;
@@ -184,7 +178,7 @@ export default defineComponent({
           }
           resultado.push({
             tipo: 'evento',
-            valor: { ...evento } as EventoDetalhado,
+            valor: evento,
             key: ++idx,
           });
         }
@@ -214,7 +208,7 @@ export default defineComponent({
   },
   mounted() {
     // Aguardando a renderização para fazer scroll
-    this.scrollParaItemAtual();
+    //this.scrollParaItemAtual();
   },
 });
 </script>
