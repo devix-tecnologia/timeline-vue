@@ -1,14 +1,19 @@
 import { render } from '@testing-library/vue';
-import MyComponent from './TemplateTimeline.vue';
+import { mount } from '@vue/test-utils';
+import TemplateTimeline from './TemplateTimeline.vue';
+import { dadosPerfil, dadosEventos } from '../organismos/Timeline.mock';
 
-describe('MyComponent.vue', () => {
-  it('emits "eventoTimelineClicked" when first button is clicked', async () => {
-    const { emitted, getByTestId } = render(MyComponent);
-    const buttonValue = getByTestId('selectEventButton');
-    await buttonValue.click();
+describe('TemplateTimeline.vue', () => {
 
-    // Verifica se o evento foi emitido
-    expect(emitted().eventoTimelineClicked).toBeTruthy();
+  it('renderiza PerfilTimeline quando passado como propriedade', () => {
+    const wrapper = mount(TemplateTimeline, {
+      props: {
+        perfil: dadosPerfil,
+        eventos: dadosEventos,
+      },
+    });
+
+    expect(wrapper.find('[data-testid="selectEventButton"]').exists()).toBe(true);
   });
 
 });

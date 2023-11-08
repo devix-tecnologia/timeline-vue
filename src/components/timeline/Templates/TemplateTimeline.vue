@@ -1,14 +1,16 @@
 <template>
   <div class="pagina">
     <Timeline
-    v-if="exibirTimeline"
+      v-if="exibirTimeline"
       data-testid="selectEventButton"
       :perfilTimeline="perfil"
       :eventosTimeline="dadosTimeline"
       @eventoTimelineClicked="exibirEventoDetalhado"
     />
+  </div>
+  <div class="detalhe">
     <Evento
-      v-else
+      v-if="!exibirTimeline"
       data-testid="editEventButton"
       :perfilEvento="perfil"
       :dadosEvento="dadosEvento"
@@ -21,12 +23,13 @@ import { defineComponent, PropType, toRef } from 'vue';
 import 'material-symbols/outlined.css';
 
 import { Perfil } from '../type';
-import { EventoDetalhado } from '../typeDetalhado';
+import { EventoDetalhado, EventosDetalhados, Observacao } from '../typeDetalhado';
 import { Evento as TipoEvento } from '../type';
 
 import Topo from '../moleculas/Topo.vue';
 import Evento from '../organismos/EventoDetalhado.vue';
 import Timeline from '../organismos/Timeline.vue';
+
 
 type TipoEventoTimeline =
   | { tipo: 'dia'; valor: Date; key: number }
@@ -41,7 +44,7 @@ export default defineComponent({
     },
     eventos: {
       required: true,
-      type: Object as PropType<TipoEvento[]>,
+      type: Object as PropType<EventosDetalhados[]>,
     },
   },
 
@@ -78,12 +81,22 @@ export default defineComponent({
 
 
     let exibirTimeline: Boolean = true;
-    let dadosEvento = filtraEventoAtual(_eventos.value) as unknown as EventoDetalhado;
-    let dadosTimeline = _eventos.value as unknown as TipoEvento;
+      
+      let obs = { observacoes: [] } as unknown as Observacao;
+      let eventoAtual = filtraEventoAtual(_eventos.value as TipoEvento[] ) as unknown as EventoDetalhado;
+      let dadosEvento = { ...eventoAtual, ...obs } as EventoDetalhado;
+      let dadosTimeline = _eventos.value as unknown as TipoEvento;
 
-    const exibirEventoDetalhado = (evento: TipoEventoTimeline) => {
+    const exibirEventoDetalhado = (evento: TipoEventoTimeline ) => {
+
       exibirTimeline = false;
-      dadosEvento = evento.valor as unknown as EventoDetalhado;
+      dadosEvento = { ...evento.valor } as EventoDetalhado;
+      dadosEvento.atual = true;
+      return {
+        exibirTimeline,
+        dadosEvento,
+      }
+    
     };
 
 
