@@ -16,6 +16,7 @@ describe('Timeline.vue', () => {
 
   it('renderiza EventoTimeline quando passado como propriedade', () => {
     const props = {
+      perfilTimeline: dadosPerfil,
       eventosTimeline: dadosEventos,
     };
 

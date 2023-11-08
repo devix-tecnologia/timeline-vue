@@ -2,39 +2,33 @@
   <div class="pagina">
     <Timeline
       v-if="exibirTimeline"
-      data-testid="selectEventButton"
+      data-testid="timeline"
       :perfilTimeline="perfil"
-      :eventosTimeline="dadosTimeline"
-      @eventoTimelineClicked="exibirEventoDetalhado"
+      :eventosTimeline="eventosTimeline"
+      @eventoTimelineClicked="exibirEvento"
     />
   </div>
-  <div class="detalhe">
+  <!-- <div class="detalhe">
     <Evento
       v-if="!exibirTimeline"
       data-testid="editEventButton"
       :perfilEvento="perfil"
-      :dadosEvento="dadosEvento"
+      :dadosEvento="eventoDetalhado"
     />
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, toRef } from 'vue';
+import { defineComponent, PropType, toRef, reactive, computed } from 'vue';
 import 'material-symbols/outlined.css';
 
 import { Perfil } from '../type';
-import { EventoDetalhado, EventosDetalhados, Observacao } from '../typeDetalhado';
+import { EventoDetalhado } from '../typeDetalhado';
 import { Evento as TipoEvento } from '../type';
 
 import Topo from '../moleculas/Topo.vue';
 import Evento from '../organismos/EventoDetalhado.vue';
 import Timeline from '../organismos/Timeline.vue';
-
-
-type TipoEventoTimeline =
-  | { tipo: 'dia'; valor: Date; key: number }
-  | { tipo: 'evento'; valor: TipoEvento; key: number }
-  | { tipo: 'eventos'; valor: TipoEvento[]; key: number };
 
 export default defineComponent({
   props: {
@@ -44,68 +38,94 @@ export default defineComponent({
     },
     eventos: {
       required: true,
-      type: Object as PropType<EventosDetalhados[]>,
+      type: Array as PropType<EventoDetalhado[]>,
     },
   },
 
   components: { Topo, Evento, Timeline },
 
-  setup(props, ctx) {
+  setup(props, { emit }) {
+    const eventos = toRef(props, 'eventos');
+    const perfil = toRef(props, 'perfil');
 
-    //verifica qual evento está mais próximo da hora atual e coloca ele numa nova lista na primeira posição
-    const filtraEventoAtual = (eventos: TipoEvento[]) => {
-      if (eventos) {
-        const agora = Date.now();
-        let minDiff: number | null = null;
-        let listaEventos = [];
-        for (const e of eventos) {
-          const t = e.data.getTime();
-          if (e.status === 'planejado' || e.status === 'atrasado') {
-            const diff: number = Math.abs(agora - e.data.getTime());
-            if (minDiff === null || (diff < minDiff && t <= agora)) {
-              minDiff = diff;
-              listaEventos.length = 0;
-            } else if (diff > minDiff) {
-              continue;
-            }
-            listaEventos.push(e);
-          }
-        }
-        return listaEventos;
-      } else {
-        return [];
+    let exibirTimeline = toRef<boolean>(true);
+    let eventoAtual = toRef<TipoEvento | null>(null);
+
+    const eventosTimeline = computed((): TipoEvento[] => {
+      // console.log('eventos', eventos.value);
+      // const e = {
+      //   data: new Date('2023-04-26T19:00Z'),
+      //   previsto: new Date('2023-04-26T19:00Z'),
+      //   realizado: new Date('2023-04-26T19:30Z'),
+      //   duracao: null,
+      //   tolerancia: 10,
+      //   titulo: 'Vacina da Covid',
+      //   subtitulo: 'Posto de saúde do bairro',
+      //   destaque: '',
+      //   categoria: {
+      //     nome: 'Vacina',
+      //     icone: 'vaccines',
+      //   },
+      //   status: 'realizado',
+      //   criticidade: 'media',
+      //   atual: false,
+      //   scroll: false,
+      //   observacoes: [
+      //     {
+      //       mensagem: 'Atraso de 10 minutos',
+      //       autor: { nome: 'Maria do Socorro' },
+      //       criadaEm: new Date('2023-04-26T19:10Z'),
+      //     },
+      //   ],
+      // } satisfies EventoDetalhado;
+
+      // const { observacoes, ...eventoSimples } = e;
+      // return [eventoSimples satisfies TipoEvento];
+
+      return eventos.value.map((evento) => {
+        //desestruturando o eventoDetalhado para transforma-lo em um evento simples
+        const {
+          observacoes,
+          aoAlterarEvento,
+          aoAdicionarObservacao,
+          aoFechar,
+          ...eventoSimples
+        } = evento;
+        return eventoSimples satisfies TipoEvento as TipoEvento;
+      }) satisfies TipoEvento[];
+    });
+
+    const eventoDetalhado = computed(() => {
+      if (!eventoAtual.value) {
+        return undefined;
       }
+
+      const e: EventoDetalhado = {
+        ...eventoAtual.value,
+        titulo: 'Evento',
+        subtitulo: 'Subtitulo',
+        observacoes: [
+          {
+            mensagem: 'teste',
+            autor: { nome: 'José da Silva' },
+            criadaEm: new Date(),
+          },
+        ],
+      } satisfies EventoDetalhado;
+      return e;
+    });
+
+    const exibirEvento = (evento: TipoEvento): void => {
+      // exibirTimeline = false;
+      alert('teste sidarta');
     };
-
-    const _eventos = toRef(props, 'eventos');
-
-
-    let exibirTimeline: Boolean = true;
-      
-      let obs = { observacoes: [] } as unknown as Observacao;
-      let eventoAtual = filtraEventoAtual(_eventos.value as TipoEvento[] ) as unknown as EventoDetalhado;
-      let dadosEvento = { ...eventoAtual, ...obs } as EventoDetalhado;
-      let dadosTimeline = _eventos.value as unknown as TipoEvento;
-
-    const exibirEventoDetalhado = (evento: TipoEventoTimeline ) => {
-
-      exibirTimeline = false;
-      dadosEvento = { ...evento.valor } as EventoDetalhado;
-      dadosEvento.atual = true;
-      return {
-        exibirTimeline,
-        dadosEvento,
-      }
-    
-    };
-
 
     return {
-      dadosEvento,
-      dadosTimeline,
+      eventosTimeline,
+      perfil,
       exibirTimeline,
-      exibirEventoDetalhado,
-      props,
+      exibirEvento,
+      eventoDetalhado,
     };
   },
 });

@@ -51,7 +51,7 @@ export default defineComponent({
       type: Object as PropType<Perfil>,
     },
     dadosEvento: {
-      required: true,
+      required: false,
       type: Object as PropType<EventoDetalhado>,
     },
   },

@@ -60,7 +60,7 @@ export default defineComponent({
     },
     eventosTimeline: {
       required: true,
-      type: Object as PropType<Evento[]>,
+      type: Array as PropType<Evento[]>,
     },
   },
   components: {
@@ -79,7 +79,7 @@ export default defineComponent({
     };
 
     const dadosEventosTimeline: Evento[] = reactive(
-      props.eventosTimeline as Array<Evento>
+      props.eventosTimeline
     );
     let dadosEventosTimelineClone: Evento[] = reactive(dadosEventosTimeline);
 
