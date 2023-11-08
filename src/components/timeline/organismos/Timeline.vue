@@ -10,10 +10,14 @@
 
     <section class="timeline">
       <!-- SEPARADOR -->
-      <div v-for="evento in eventosPorTipo" :key="evento.key">
+      <div
+        v-for="(evento, index) in eventosPorTipo"
+        :key="evento.key"
+      >
         <SeparadorPeriodo
           v-if="evento.tipo === 'dia'"
           :dataSeparador="evento.valor"
+          :data-testid="`evento-timeline-${index}`"
         />
         <!--loop-->
         <EventoTimeline
@@ -27,15 +31,8 @@
           :subtitulo="evento.valor.subtitulo"
           :destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
-          @click="handleEventoClick(evento)"
-          :aoClicar="
-            () => {
-              if (evento && evento.valor && evento.valor.aoClicar) {
-                evento.valor.aoClicar(evento.valor);
-              }
-            }
-          "
-          data-testid="eventoTimeline"
+          @click="emitEventoClicado(evento.valor)"
+          :data-testid="`evento-timeline-${index}`"
         />
       </div>
     </section>
@@ -43,11 +40,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive } from 'vue';
+import { defineComponent, computed, reactive, nextTick, PropType } from 'vue';
 import EventoTimeline from '../moleculas/EventoTimeline.vue';
 import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
 import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
-import { AoClicarEvento, Evento } from '../type';
+import { AoClicarEvento, Evento, Perfil } from '../type';
 import 'material-symbols/outlined.css';
 
 type TipoEventoTimeline =
@@ -59,11 +56,11 @@ export default defineComponent({
   props: {
     perfilTimeline: {
       required: false,
-      type: Object,
+      type: Object as PropType<Perfil>,
     },
     eventosTimeline: {
       required: true,
-      type: Object,
+      type: Object as PropType<Evento[]>,
     },
   },
   components: {
@@ -73,12 +70,12 @@ export default defineComponent({
   },
 
   emits: {
-    eventoTimelineClicked: (evento: TipoEventoTimeline) => true,
+    eventoTimelineClicked: (evento: Evento) => true,
   },
 
-  setup(props, ctx) {
-    const handleEventoClick = (evento: TipoEventoTimeline) => {
-      ctx.emit('eventoTimelineClicked', evento);
+  setup(props, { emit }) {
+    const emitEventoClicado = (evento: Evento) => {
+      emit('eventoTimelineClicked', evento);
     };
 
     const dadosEventosTimeline: Evento[] = reactive(
@@ -87,21 +84,13 @@ export default defineComponent({
     let dadosEventosTimelineClone: Evento[] = reactive(dadosEventosTimeline);
 
     function carregarListaEventos() {
-      dadosEventosTimelineClone = dadosEventosTimeline;
-      const resultado: Evento[] = filtraEventoAtual(dadosEventosTimelineClone);
-      dadosEventosTimelineClone.map((resp) => {
-        if (resultado[0] === resp) {
-          resp.atual = true;
-          resp.scroll = true;
-          void scrollParaItemAtual();
-        } else {
-          resp.atual = false;
-          resp.scroll = false;
-        }
-        return {
-          evento: resp,
-        };
+      const eventosAtuais: Evento[] = filtraEventoAtual(dadosEventosTimeline);
+      dadosEventosTimeline.forEach((evento) => {
+        const ehAtual = eventosAtuais.length > 0 && eventosAtuais[0] === evento;
+        evento.atual = ehAtual;
+        evento.scroll = ehAtual;
       });
+      scrollParaItemAtual();
     }
 
     const atualizarEventoAtual = () => {
@@ -190,25 +179,33 @@ export default defineComponent({
 
     const scrollParaItemAtual = () => {
       const itemAtual = document.querySelector('.atual');
-      if (itemAtual) {
-        itemAtual?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-        });
-      }
+      if (!itemAtual || !itemAtual.scrollIntoView) {
+        return;
+      }    
+
+      itemAtual.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
     };
+
+    // const clicar: AoClicarEvento = function (evento: Evento): void {
+    //   if (evento && evento.aoClicar) {
+    //     evento.aoClicar(evento);
+    //   }
+    // };
 
     carregarListaEventos();
     return {
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
-      handleEventoClick,
+      emitEventoClicado,
       // clicar,
     };
   },
   mounted() {
     // Aguardando a renderização para fazer scroll
-    //this.scrollParaItemAtual();
+    this.scrollParaItemAtual();
   },
 });
 </script>
