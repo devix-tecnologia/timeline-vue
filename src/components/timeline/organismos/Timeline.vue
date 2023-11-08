@@ -86,7 +86,7 @@ export default defineComponent({
     function carregarListaEventos() {
       const eventosAtuais: Evento[] = filtraEventoAtual(dadosEventosTimeline);
       dadosEventosTimeline.forEach((evento) => {
-        const ehAtual = evento === eventosAtuais[0];
+        const ehAtual = eventosAtuais.length > 0 && eventosAtuais[0] === evento;
         evento.atual = ehAtual;
         evento.scroll = ehAtual;
       });
@@ -181,7 +181,7 @@ export default defineComponent({
       const itemAtual = document.querySelector('.atual');
       if (!itemAtual || !itemAtual.scrollIntoView) {
         return;
-      }
+      }    
 
       itemAtual.scrollIntoView({
         behavior: 'smooth',
