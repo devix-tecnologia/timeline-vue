@@ -39,10 +39,13 @@ atualizarDatas(dadosEventos);
 const Template: StoryFn<typeof Timeline> = (args) => ({
   components: { Timeline: Timeline },
   setup() {
-    return { args };
+    const emitEventoClicado = (evento: Evento) => {
+      alert(`foi clicado no evento ${evento.titulo}`);
+    };
+    return { args, emitEventoClicado };
   },
   template:
-    '<Timeline :perfilTimeline="args.perfilTimeline" :eventosTimeline="args.eventosTimeline" style="position: relative" />',
+    '<Timeline @eventoTimelineClicked="emitEventoClicado" :perfilTimeline="args.perfilTimeline" :eventosTimeline="args.eventosTimeline" style="position: relative" />',
 });
 
 export const Padrao = Template.bind({});
