@@ -11,6 +11,12 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    options: {
+      storySort: {
+        order: ['Exemplos', ['Atomos', 'Moleculas', 'Organismos', 'Templates'], 'Eventos'], // Define a ordem dos grupos de histórias
+        method: 'alphabetical', // Ordena as histórias dentro de cada grupo em ordem alfabética
+      },
+    },
   },
 };
 
