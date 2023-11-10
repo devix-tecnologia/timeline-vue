@@ -200,7 +200,6 @@ export default defineComponent({
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
       emitEventoClicado,
-      // clicar,
     };
   },
   mounted() {
