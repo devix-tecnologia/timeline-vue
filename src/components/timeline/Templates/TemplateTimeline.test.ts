@@ -1,34 +1,33 @@
-import { render } from '@testing-library/vue';
-import { mount } from '@vue/test-utils';
+import { render, fireEvent } from '@testing-library/vue';
 import TemplateTimeline from './TemplateTimeline.vue';
 import { dadosPerfil, dadosEventosDetalhados } from './TemplateTimeline.mock';
 
 describe('TemplateTimeline.vue', () => {
-
   it('renderiza PerfilTimeline quando passado como propriedade', () => {
-    const wrapper = mount(TemplateTimeline, {
-      props: {
-        perfil: dadosPerfil,
-        eventos: dadosEventosDetalhados,
-      },
-    });
-
-    expect(wrapper.find('[data-testid="timeline"]').exists()).toBe(true);
-  });
-
-  it('renderiza EventoTimeline quando passado como propriedade', () => {
     const props = {
-      perfilTimeline: dadosPerfil,
-      eventosTimeline: dadosEventosDetalhados,
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
     };
 
     const { getByTestId } = render(TemplateTimeline, { props });
 
-    props.eventosTimeline.forEach((evento, index) => {
-      const testid = `evento-timeline-${index}`;
-      const elemento = getByTestId(testid);
-      expect(elemento).toBeTruthy();
-    });
+    expect(getByTestId('timeline')).toBeTruthy();
   });
 
+  it('renderiza EventoTimeline quando passado como propriedade', async () => {
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { emitted, getByTestId, debug } = render(TemplateTimeline, { props });
+    //obtém o evento 1 ao invés do zero, pois o zero é o separador de data
+    const elemento = getByTestId('evento-timeline-1');
+    expect(elemento).toBeTruthy();
+    await fireEvent.click(elemento);
+    // Verifica se o evento foi emitido
+    // expect(emitted().eventoTimelineClicked).toBeTruthy();
+
+    expect(getByTestId('evento')).toBeTruthy();
+  });
 });

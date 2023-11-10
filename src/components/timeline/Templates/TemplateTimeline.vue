@@ -8,14 +8,14 @@
       @eventoTimelineClicked="exibirEvento"
     />
   </div>
-  <!-- <div class="detalhe">
+  <div class="detalhe">
     <Evento
       v-if="!exibirTimeline"
-      data-testid="editEventButton"
+      data-testid="evento"
       :perfilEvento="perfil"
       :dadosEvento="eventoDetalhado"
     />
-  </div> -->
+  </div>
 </template>
 
 <script lang="ts">
@@ -52,36 +52,6 @@ export default defineComponent({
     let eventoAtual = toRef<TipoEvento | null>(null);
 
     const eventosTimeline = computed((): TipoEvento[] => {
-      // console.log('eventos', eventos.value);
-      // const e = {
-      //   data: new Date('2023-04-26T19:00Z'),
-      //   previsto: new Date('2023-04-26T19:00Z'),
-      //   realizado: new Date('2023-04-26T19:30Z'),
-      //   duracao: null,
-      //   tolerancia: 10,
-      //   titulo: 'Vacina da Covid',
-      //   subtitulo: 'Posto de saúde do bairro',
-      //   destaque: '',
-      //   categoria: {
-      //     nome: 'Vacina',
-      //     icone: 'vaccines',
-      //   },
-      //   status: 'realizado',
-      //   criticidade: 'media',
-      //   atual: false,
-      //   scroll: false,
-      //   observacoes: [
-      //     {
-      //       mensagem: 'Atraso de 10 minutos',
-      //       autor: { nome: 'Maria do Socorro' },
-      //       criadaEm: new Date('2023-04-26T19:10Z'),
-      //     },
-      //   ],
-      // } satisfies EventoDetalhado;
-
-      // const { observacoes, ...eventoSimples } = e;
-      // return [eventoSimples satisfies TipoEvento];
-
       return eventos.value.map((evento) => {
         //desestruturando o eventoDetalhado para transforma-lo em um evento simples
         const {
@@ -112,12 +82,13 @@ export default defineComponent({
           },
         ],
       } satisfies EventoDetalhado;
+
       return e;
     });
 
     const exibirEvento = (evento: TipoEvento): void => {
-      // exibirTimeline = false;
-      alert('teste sidarta');
+      exibirTimeline.value = false;
+      eventoAtual.value = evento;
     };
 
     return {
