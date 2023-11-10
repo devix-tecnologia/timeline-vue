@@ -1,14 +1,14 @@
 <template>
   <div class="pagina">
+    <topo v-if="!exibirTimeline" :titulo="perfil.nome" :escuro="false" 
+     @emit-tela-anterior="voltarParaTelaAnterior"/>
     <Timeline
       v-if="exibirTimeline"
       data-testid="timeline"
       :perfilTimeline="perfil"
       :eventosTimeline="eventosTimeline"
-      @eventoTimelineClicked="exibirEvento"
+      @eventoTimelineClicked="selecionarEvento"
     />
-  </div>
-  <div class="detalhe">
     <Evento
       v-if="!exibirTimeline"
       data-testid="evento"
@@ -72,8 +72,6 @@ export default defineComponent({
 
       const e: EventoDetalhado = {
         ...eventoAtual.value,
-        titulo: 'Evento',
-        subtitulo: 'Subtitulo',
         observacoes: [
           {
             mensagem: 'teste',
@@ -86,16 +84,21 @@ export default defineComponent({
       return e;
     });
 
-    const exibirEvento = (evento: TipoEvento): void => {
+    const selecionarEvento = (evento: TipoEvento): void => {
       exibirTimeline.value = false;
       eventoAtual.value = evento;
     };
+
+    const voltarParaTelaAnterior = (): void => {
+      exibirTimeline.value = !exibirTimeline.value;
+    }
 
     return {
       eventosTimeline,
       perfil,
       exibirTimeline,
-      exibirEvento,
+      selecionarEvento,
+      voltarParaTelaAnterior,
       eventoDetalhado,
     };
   },

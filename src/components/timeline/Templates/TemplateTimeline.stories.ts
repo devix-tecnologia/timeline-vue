@@ -14,9 +14,8 @@ export default {
 
 
 // Corrigir as datas inválidas em dadosEventoDetalhado[0] antes de usá-las
-const eventoDetalhado = dadosEventoDetalhado[0];
-const perfilEventoMock = dadosPerfilTimeline;
 
+const perfilSemTitulo = { nome: "",  imagem: "", icone: "" };
 const perfilTimelineMock = dadosPerfilTimeline;
 const eventosTimeline = dadosEventos;
 
@@ -34,8 +33,8 @@ Timeline.args = {
   eventos: eventosTimeline,
 };
 
-// export const EventoDetalhado = Template.bind({});
-// EventoDetalhado.args = {
-//   perfil: perfilEventoMock,
-//   eventos: eventoDetalhado,  
-// };
+export const semTitulo = Template.bind({});
+semTitulo.args = {
+  perfil: perfilSemTitulo,
+  eventos: eventosTimeline,  
+};
