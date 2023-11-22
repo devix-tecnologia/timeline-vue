@@ -1,5 +1,10 @@
 <template>
-  <EditarEvento :aoClicar="aoClicar" :salvarVisivel="salvarVisivel">
+  <EditarEvento
+    :aoClicar="aoClicar"
+    :salvarVisivel="salvarVisivel"
+    @onEditarEventoSalvarClicked="aoSalvar"
+    @onEditarEventoCancelarClicked="aoCancelar"
+  >
     <template #conteudo>
       <h2>Alterar o Status para:</h2>
 
@@ -32,15 +37,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, reactive, computed } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, PropType, ref, reactive, computed } from 'vue';
+import 'material-symbols/outlined.css';
 
-import { AoClicarEvento } from "../type";
-import { EventoDetalhado } from "../typeDetalhado";
-import EditarEvento from "../organismos/EditarEvento.vue";
-import IconeStatus from "../atomos/IconeStatus.vue";
+import { AoClicarEvento } from '../type';
+import { EventoDetalhado } from '../typeDetalhado';
+import EditarEvento from '../organismos/EditarEvento.vue';
+import IconeStatus from '../atomos/IconeStatus.vue';
 
-import BotaoStatus from "../moleculas/BotaoStatus.vue";
+import BotaoStatus from '../moleculas/BotaoStatus.vue';
 
 export default defineComponent({
   props: {
@@ -56,33 +61,51 @@ export default defineComponent({
       type: Object as PropType<EventoDetalhado>,
     },
   },
+
   components: { EditarEvento, IconeStatus, BotaoStatus },
-  setup(props) {
+
+  emits: {
+    onEditarStatusSalvarClicked: (status: string): boolean => true,
+    onEditarStatusCancelarClicked: () => true,
+  },
+
+  setup(props, { emit }) {
+    const aoSalvar = () => {
+      emit('onEditarStatusSalvarClicked', selecionado.value);
+    };
+
+    const aoCancelar = () => {
+      emit('onEditarStatusCancelarClicked');
+    };
+
     props = reactive(props);
 
     let selecionado = ref(props.dadosEvento.status);
 
     function atualizarSelecionado(
       novoValor:
-        | "atrasado"
-        | "adiantado"
-        | "adiado"
-        | "realizado"
-        | "planejado"
-        | "cancelado"
+        | 'atrasado'
+        | 'adiantado'
+        | 'adiado'
+        | 'realizado'
+        | 'planejado'
+        | 'cancelado'
     ) {
       selecionado.value = novoValor;
     }
 
     const getAparencia = computed(() => {
       return (botao: string) => {
-        return selecionado.value === botao ? "preenchido" : "outline";
+        return selecionado.value === botao ? 'preenchido' : 'outline';
       };
     });
 
     return {
-      selecionado,
+      aoSalvar,
+      aoCancelar,
       atualizarSelecionado,
+
+      selecionado,
       getAparencia,
     };
   },

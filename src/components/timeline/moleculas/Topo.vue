@@ -1,7 +1,7 @@
 <template>
   <div class="topo" :class="classes">
     <div class="conteudoTitulo">
-      <button class="btn_voltar" @click="emitTelaAnterior" >
+      <button class="btn_voltar" @click="aoVoltarParaTelaAnterior" >
         <span class="material-symbols-outlined"> arrow_back </span>
       </button>
       <h3 class="titulo">{{ titulo }}</h3>
@@ -28,18 +28,18 @@ export default defineComponent({
   },
 
   emits: {
-    emitTelaAnterior: () => true,
+    onTopoTelaAnteriorClicked: () => true,
   },
 
   setup(props, { emit }) {
     
-    const emitTelaAnterior = () => {
-      emit('emitTelaAnterior');
+    const aoVoltarParaTelaAnterior = () => {
+      emit('onTopoTelaAnteriorClicked');
     };
 
     props = reactive(props);
     return {
-      emitTelaAnterior,
+      aoVoltarParaTelaAnterior,
       classes: computed(() => ({
         "bg-escuro": props.escuro,
         "bg-claro": !props.escuro,

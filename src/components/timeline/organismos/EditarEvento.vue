@@ -8,7 +8,9 @@
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <div class="salvar">
-        <AreaSalvamento :aoClicar="aoClicar" :class="classes">
+        <AreaSalvamento :aoClicar="aoClicar" :class="classes" 
+        @onAreaSalvamentoBtnSalvarClicked="aoSalvar"
+        @onAreaSalvamentoBtnCancelarClicked="aoCancelar" >
           <slot name="salvamento"></slot>
         </AreaSalvamento>
       </div>
@@ -34,9 +36,24 @@ export default defineComponent({
     },
   },
   components: { AreaSalvamento },
-  setup(props) {
+  emits: {
+    onEditarEventoSalvarClicked: () => true,
+    onEditarEventoCancelarClicked: () => true,
+  },
+
+  setup(props, { emit }) {
+    const aoSalvar = () => {
+      emit('onEditarEventoSalvarClicked');
+    };
+
+    const aoCancelar = () => {
+      emit('onEditarEventoCancelarClicked');
+    };
+
     props = reactive(props);
     return {
+      aoSalvar,
+      aoCancelar,
       classes: computed(() => ({
         visivel: props.salvarVisivel,
         invisivel: !props.salvarVisivel,

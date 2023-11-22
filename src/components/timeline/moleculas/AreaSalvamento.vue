@@ -6,32 +6,53 @@
       :titulo="`Salvar`"
       :tamanho="`grande`"
       :aoClicar="aoClicar"
+      @click="aoSalvar()"
     />
     <Botao
       :aparencia="`vazio`"
       :titulo="`Cancelar`"
       :tamanho="`pequeno`"
       :aoClicar="aoClicar"
+      @click="aoCancelar"
     />
   </section>
 </template>
 
 <script lang="ts">
-import "material-symbols/outlined.css";
-import { defineComponent, PropType } from "vue";
-import { AoClicarEvento } from "../type";
-import Botao from "./Botao.vue";
+import 'material-symbols/outlined.css';
+import { defineComponent, PropType } from 'vue';
+import { AoClicarEvento } from '../type';
+import Botao from './Botao.vue';
 export default defineComponent({
+  name: 'AreaSalvamento',
+
   components: { Botao },
-  name: "AreaSalvamento",
+
   props: {
     aoClicar: {
       required: false,
       type: Function as PropType<AoClicarEvento>,
     },
   },
-  setup(props) {
-    return {};
+
+  emits: {
+    onAreaSalvamentoBtnSalvarClicked: () => true,
+    onAreaSalvamentoBtnCancelarClicked: () => true,
+  },
+
+  setup(props, { emit }) {
+    const aoSalvar = () => {
+      emit('onAreaSalvamentoBtnSalvarClicked');
+    };
+
+    const aoCancelar = () => {
+      emit('onAreaSalvamentoBtnCancelarClicked');
+    };
+
+    return {
+      aoSalvar,
+      aoCancelar,
+    };
   },
 });
 </script>

@@ -1,19 +1,24 @@
 <template>
   <section class="box box-status">
     <h3>Status:</h3>
-    <BotaoStatus :aparencia="aparencia" :aoClicar="aoClicar" :status="status" />
+    <BotaoStatus
+      :aparencia="aparencia"
+      :aoClicar="aoClicar"
+      :status="status"
+      @click="aoEditarEvento"
+    />
   </section>
 </template>
 
 <script lang="ts">
-import "material-symbols/outlined.css";
-import { defineComponent, reactive, PropType } from "vue";
-import { AoClicarEvento } from "../type";
-import BotaoStatus from "./BotaoStatus.vue";
+import 'material-symbols/outlined.css';
+import { defineComponent, reactive, PropType } from 'vue';
+import { AoClicarEvento } from '../type';
+import BotaoStatus from './BotaoStatus.vue';
 
 export default defineComponent({
   components: { BotaoStatus },
-  name: "StatusEvento",
+  name: 'StatusEvento',
   props: {
     aparencia: {
       type: String,
@@ -27,10 +32,21 @@ export default defineComponent({
       type: Function as PropType<AoClicarEvento>,
     },
   },
-  setup(props) {
+
+  emits: {
+    onStatusEventoEditClicked: () => true,
+  },
+
+  setup(props, { emit }) {
+    const aoEditarEvento = () => {
+      emit('onStatusEventoEditClicked');
+    };
+
     props = reactive(props);
 
-    return {};
+    return {
+      aoEditarEvento,
+    };
   },
 });
 </script>

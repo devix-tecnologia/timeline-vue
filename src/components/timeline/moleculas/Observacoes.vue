@@ -18,6 +18,7 @@
       :icone="`add`"
       :aparencia="`preenchido`"
       :tamanho="`pequeno`"
+      @click="aoAdicionarObservacao()"
     />
   </section>
 </template>
@@ -45,13 +46,24 @@ export default defineComponent({
       type: Object as PropType<Observacao[]>,
     },
   },
-  setup(props) {
+
+  emits: {
+    onObservacoesAddClicked: () => true,
+  },
+
+  setup(props, { emit }) {
+    const aoAdicionarObservacao = () => {
+      emit('onObservacoesAddClicked');
+    };
+
+
     // Ordenando observações pela mais recente
     props.observacoes.sort(
       (a, b) => b.criadaEm.getTime() - a.criadaEm.getTime()
     );
     props = reactive(props);
-    return {};
+
+    return {aoAdicionarObservacao};
   },
 });
 </script>

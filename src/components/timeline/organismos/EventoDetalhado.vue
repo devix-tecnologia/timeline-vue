@@ -21,6 +21,7 @@
         :observacoes="dadosEvento.observacoes"
         :tituloBotao="`Inserir observação`"
         :aoClicar="dadosEvento.aoClicar"
+        @on-observacoes-add-clicked="aoAdicionarObservacao"
       />
     </transition>
 
@@ -29,20 +30,21 @@
         :aparencia="`preenchido`"
         :aoClicar="dadosEvento.aoClicar"
         :status="dadosEvento.status"
+        @on-status-evento-edit-clicked="aoEditarEvento"
       />
     </transition>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, PropType, reactive } from 'vue';
+import 'material-symbols/outlined.css';
 
-import { Perfil } from "../type";
-import { EventoDetalhado } from "../typeDetalhado";
-import CabecalhoEventoDetalhado from "../moleculas/CabecalhoEventoDetalhado.vue";
-import Observacoes from "../moleculas/Observacoes.vue";
-import StatusEvento from "../moleculas/StatusEvento.vue";
+import { Perfil } from '../type';
+import { EventoDetalhado } from '../typeDetalhado';
+import CabecalhoEventoDetalhado from '../moleculas/CabecalhoEventoDetalhado.vue';
+import Observacoes from '../moleculas/Observacoes.vue';
+import StatusEvento from '../moleculas/StatusEvento.vue';
 
 export default defineComponent({
   props: {
@@ -56,8 +58,25 @@ export default defineComponent({
     },
   },
   components: { CabecalhoEventoDetalhado, Observacoes, StatusEvento },
-  setup(props) {
-    return {};
+
+  emits: {
+    onEventoDetalhadoStatusEditClicked: () => true,
+    onEventoDetalhadoObservacoesAddClicked: () => true,
+  },
+
+  setup(props, { emit }) {
+    const aoEditarEvento = () => {
+      emit('onEventoDetalhadoStatusEditClicked');
+    };
+
+    const aoAdicionarObservacao = () => {
+      emit('onEventoDetalhadoObservacoesAddClicked');
+    };
+
+    return {
+      aoEditarEvento,
+      aoAdicionarObservacao,
+    };
   },
 });
 </script>

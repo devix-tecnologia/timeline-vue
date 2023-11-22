@@ -70,12 +70,12 @@ export default defineComponent({
   },
 
   emits: {
-    eventoTimelineClicked: (evento: Evento) => true,
+    onEventoTimelineClicked: (evento: Evento) => true,
   },
 
   setup(props, { emit }) {
     const emitEventoClicado = (evento: Evento) => {
-      emit('eventoTimelineClicked', evento);
+      emit('onEventoTimelineClicked', evento);
     };
 
     const dadosEventosTimeline: Evento[] = reactive(
