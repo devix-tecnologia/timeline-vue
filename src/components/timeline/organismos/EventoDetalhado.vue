@@ -2,8 +2,8 @@
   <div class="evento">
     <transition name="fadeBaixo" mode="out-in" appear>
       <CabecalhoEventoDetalhado
-        :perfilEvento="perfilEvento"
-        :dadosEvento="dadosEvento"
+        :perfil="perfilEvento"
+        :evento="dadosEvento"
         :aoClicar="dadosEvento.aoClicar"
       />
     </transition>

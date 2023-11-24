@@ -21,7 +21,4 @@ export type AoFechar = () => void;
 
 export type EventoDetalhado = Evento & {
   observacoes: Observacao[];
-  aoAlterarEvento?: AoAlterarEvento;
-  aoAdicionarObservacao?: AoAdicionarObservacao;
-  aoFechar?: AoFechar;
 };

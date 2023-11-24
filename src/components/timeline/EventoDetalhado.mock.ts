@@ -36,7 +36,6 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
     },
     status: "realizado",
     criticidade: "alta",
-    aoClicar: (evento) => alert("Olá, mundo!"),
     atual: false,
     scroll: false,
   },
@@ -68,7 +67,6 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
     },
     status: "atrasado",
     criticidade: "media",
-    aoClicar: (evento) => alert("Olá, mundo!"),
     atual: false,
     scroll: false,
   }

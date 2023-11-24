@@ -9,8 +9,8 @@
     <transition name="fadeBaixo" mode="out-in" appear>
       <div class="salvar">
         <AreaSalvamento :aoClicar="aoClicar" :class="classes" 
-        @onAreaSalvamentoBtnSalvarClicked="aoSalvar"
-        @onAreaSalvamentoBtnCancelarClicked="aoCancelar" >
+        @salvarClick="aoSalvar"
+        @cancelarClick="aoCancelar" >
           <slot name="salvamento"></slot>
         </AreaSalvamento>
       </div>

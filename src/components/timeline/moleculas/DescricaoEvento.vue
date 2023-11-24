@@ -1,16 +1,16 @@
 <template>
-  <div class="descricaoEvento" :style="`${subtitulo? '' : 'padding-top: 3.3rem'}`">
+  <div class="descricaoEvento" :style="`${subtitulo ? '' : 'padding-top: 3.3rem'}`">
     <TituloEvento :titulo="titulo" />
     <SubtituloEvento v-if="subtitulo" :subtitulo="subtitulo" />
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
-import SubtituloEvento from "../atomos/SubtituloEvento.vue";
-import TituloEvento from "../atomos/TituloEvento.vue";
+import { defineComponent } from 'vue';
+import SubtituloEvento from '../atomos/SubtituloEvento.vue';
+import TituloEvento from '../atomos/TituloEvento.vue';
 
 export default defineComponent({
-  name: "Descrição Evento",
+  name: 'Descrição Evento',
   props: {
     titulo: {
       required: true,

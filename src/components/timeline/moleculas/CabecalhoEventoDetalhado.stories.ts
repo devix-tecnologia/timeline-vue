@@ -1,9 +1,9 @@
-import CabecalhoEventoDetalhado from "./CabecalhoEventoDetalhado.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
-import { dadosEventoDetalhado, dadosPerfil } from "../EventoDetalhado.mock";
+import CabecalhoEventoDetalhado from './CabecalhoEventoDetalhado.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
+import { dadosEventoDetalhado, dadosPerfil } from '../EventoDetalhado.mock';
 
 export default {
-  title: "Devix/Eventos/Moleculas/CabecalhoEventoDetalhado",
+  title: 'Devix/Eventos/Moleculas/CabecalhoEventoDetalhado',
   component: CabecalhoEventoDetalhado,
   argTypes: {},
 } as Meta<typeof CabecalhoEventoDetalhado>;
@@ -18,18 +18,18 @@ const Template: StoryFn<typeof CabecalhoEventoDetalhado> = (args) => ({
     return { args };
   },
   template:
-    '<CabecalhoEventoDetalhado :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" :aoClicar="args.aoClicar" />',
+    '<CabecalhoEventoDetalhado :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
   perfilEvento: perfilMock,
   dadosEvento: CabecalhoMock,
-  aoClicar: (evento) => alert("Olá, Botão data-hora!"),
+  aoClicar: (evento) => alert('Olá, Botão data-hora!'),
 };
 
 export const SemPerfil = Template.bind({});
 SemPerfil.args = {
   dadosEvento: CabecalhoMock2,
-  aoClicar: (evento) => alert("Olá, Botão data-hora!"),
+  aoClicar: (evento) => alert('Olá, Botão data-hora!'),
 };

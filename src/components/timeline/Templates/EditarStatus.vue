@@ -40,7 +40,7 @@
 import { defineComponent, PropType, ref, reactive, computed } from 'vue';
 import 'material-symbols/outlined.css';
 
-import { AoClicarEvento } from '../type';
+import { AoClicarEvento, Status } from '../type';
 import { EventoDetalhado } from '../typeDetalhado';
 import EditarEvento from '../organismos/EditarEvento.vue';
 import IconeStatus from '../atomos/IconeStatus.vue';
@@ -56,7 +56,7 @@ export default defineComponent({
     salvarVisivel: {
       type: Boolean,
     },
-    dadosEvento: {
+    evento: {
       required: true,
       type: Object as PropType<EventoDetalhado>,
     },
@@ -65,7 +65,7 @@ export default defineComponent({
   components: { EditarEvento, IconeStatus, BotaoStatus },
 
   emits: {
-    onEditarStatusSalvarClicked: (status: string): boolean => true,
+    onEditarStatusSalvarClicked: (status: Status) => true,
     onEditarStatusCancelarClicked: () => true,
   },
 
@@ -80,17 +80,9 @@ export default defineComponent({
 
     props = reactive(props);
 
-    let selecionado = ref(props.dadosEvento.status);
+    let selecionado = ref(props.evento.status);
 
-    function atualizarSelecionado(
-      novoValor:
-        | 'atrasado'
-        | 'adiantado'
-        | 'adiado'
-        | 'realizado'
-        | 'planejado'
-        | 'cancelado'
-    ) {
+    function atualizarSelecionado(novoValor: Status) {
       selecionado.value = novoValor;
     }
 
@@ -104,7 +96,6 @@ export default defineComponent({
       aoSalvar,
       aoCancelar,
       atualizarSelecionado,
-
       selecionado,
       getAparencia,
     };

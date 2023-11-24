@@ -1,19 +1,21 @@
 <template>
-  <button class="btn" :onclick="aoClicar" :class="classes">
-    <slot
-      ><span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
+  <button class="btn" data-testid="botao" :class="classes" @click="handleClick">
+    <slot>
+      <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
       {{ titulo }}
     </slot>
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed, PropType } from "vue";
-import { AoClicarEvento } from "../type";
-import "material-symbols/outlined.css";
+import { defineComponent, reactive, computed, PropType } from 'vue';
+import 'material-symbols/outlined.css';
+
+type Tamanho = 'pequeno' | 'medio' | 'grande';
+type Aparencia = 'outline' | 'preenchido' | 'vazio';
 
 export default defineComponent({
-  name: "Botao",
+  name: 'Botao',
   props: {
     titulo: {
       type: String,
@@ -22,23 +24,31 @@ export default defineComponent({
       type: String,
     },
     aparencia: {
-      type: String,
+      type: String as PropType<Aparencia>,
+      default: 'outline',
     },
     tamanho: {
-      type: String,
-    },
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
+      type: String as PropType<Tamanho>,
+      default: 'medio',
     },
   },
-  setup(props) {
+
+  emits: {
+    click: (mouseEvent: MouseEvent) => true,
+  },
+
+  setup(props, { emit }) {
     props = reactive(props);
 
+    const handleClick = (mouseEvent: MouseEvent) => {
+      emit('click', mouseEvent);
+    };
+
     return {
+      handleClick,
       classes: computed(() => ({
-        [`${props.aparencia || "outline"}`]: true,
-        [`${props.tamanho || "medio"}`]: true,
+        [`${props.aparencia}`]: true,
+        [`${props.tamanho}`]: true,
       })),
     };
   },
@@ -46,7 +56,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* CABEÇALHO */
+/* BOTAO */
+
 .material-symbols-outlined {
   font-size: 2.6rem;
 }

@@ -12,22 +12,22 @@
       data-testid="timeline"
       :perfilTimeline="TemplateTimeline.dados.perfil"
       :eventosTimeline="TemplateTimeline.dados.eventosTimeline"
-      @on-evento-timeline-clicked="aoSelecionarEvento"
+      @eventoClick="aoSelecionarEvento"
     />
 
     <Evento
       v-if="TemplateTimeline.evento.exibir"
       data-testid="evento"
       :perfilEvento="TemplateTimeline.dados.perfil"
-      :dadosEvento="TemplateTimeline.dados.eventoDetalhado"
+      :dadosEvento="TemplateTimeline.dados.eventoAtual"
       @on-evento-detalhado-status-edit-clicked="aoEditarEvento"
       @on-evento-detalhado-observacoes-add-clicked="aoAdicionarObservacao"
     />
 
     <EditarStatus
-      v-if="TemplateTimeline.editarStatus.exibir"
+      v-if="TemplateTimeline.dados.eventoAtual && TemplateTimeline.editarStatus.exibir"
       :salvarVisivel="TemplateTimeline.editarStatus.exibir"
-      :dadosEvento="TemplateTimeline.dados.eventoDetalhado"
+      :evento="TemplateTimeline.dados.eventoAtual"
       @on-editar-status-salvar-clicked="aoSalvarStatus"
       @on-editar-status-cancelar-clicked="aoCancelarStatus"
     />
@@ -45,7 +45,7 @@
 import { defineComponent, PropType, toRef, reactive, computed } from 'vue';
 import 'material-symbols/outlined.css';
 
-import { Perfil } from '../type';
+import { Perfil, Status } from '../type';
 import { EventoDetalhado } from '../typeDetalhado';
 import { Evento as TipoEvento } from '../type';
 
@@ -70,11 +70,10 @@ export default defineComponent({
   components: { Topo, Evento, Timeline, EditarStatus, AdicionarObservacao },
 
   emits: {
-    
-    onEventoTimelineClicked: () => true,
+    onEventoTimelineClicked: (evento: EventoDetalhado) => true,
     onEventoDetalhadoStatusEditClicked: () => true,
     onEventoDetalhadoObservacoesAddClicked: () => true,
-    onEditarStatusSalvarClicked: () => true,  
+    onEditarStatusSalvarClicked: () => true,
     onEditarStatusCancelarClicked: () => true,
     onAdicionarObservacaoSalvarClicked: () => true,
     onAdicionarObservacaoCancelarClicked: () => true,
@@ -83,39 +82,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const eventos = toRef(props, 'eventos');
 
-    const eventoAtual = toRef<TipoEvento | null>(null);
-
-    const eventoDetalhado = computed(() => {
-      if (!eventoAtual.value) {
-        return undefined;
-      }
-
-      const e: EventoDetalhado = {
-        ...eventoAtual.value,
-        observacoes: [
-          {
-            mensagem: 'teste',
-            autor: { nome: 'José da Silva' },
-            criadaEm: new Date(),
-          },
-        ],
-      };
-
-      return e;
-    });
-
-    const eventosTimeline = computed((): TipoEvento[] => {
-      return eventos.value.map((evento) => {
-        const {
-          observacoes,
-          aoAlterarEvento,
-          aoAdicionarObservacao,
-          aoFechar,
-          ...eventoSimples
-        } = evento;
-        return eventoSimples;
-      });
-    });
+    const eventoAtual = toRef<EventoDetalhado | null>(null);
 
     const TemplateTimeline = reactive({
       topo: { exibir: true },
@@ -126,11 +93,16 @@ export default defineComponent({
       dados: {
         eventos: toRef(props, 'eventos'),
         perfil: toRef(props, 'perfil'),
-        eventoDetalhado: eventoDetalhado,
-        eventosTimeline: eventosTimeline,
+        eventosTimeline: eventos,
         eventoAtual: eventoAtual,
       },
     });
+
+    const isEventoDetalhado = (
+      evento: TipoEvento | EventoDetalhado
+    ): evento is EventoDetalhado => {
+      return (evento as EventoDetalhado).observacoes !== undefined;
+    };
 
     const aoSelecionarEvento = (evento: TipoEvento): void => {
       TemplateTimeline.topo.exibir = true;
@@ -138,8 +110,10 @@ export default defineComponent({
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = false;
-      TemplateTimeline.dados.eventoAtual = evento;
-      emit('onEventoTimelineClicked', evento);
+      if (isEventoDetalhado(evento)) {
+        TemplateTimeline.dados.eventoAtual = evento;
+        emit('onEventoTimelineClicked', evento);
+      }
     };
 
     const aoVoltarParaTelaAnterior = (): void => {
@@ -159,15 +133,7 @@ export default defineComponent({
       emit('onEventoDetalhadoStatusEditClicked');
     };
 
-    const aoSalvarStatus = (
-      novoValor:
-        | 'atrasado'
-        | 'adiantado'
-        | 'adiado'
-        | 'realizado'
-        | 'planejado'
-        | 'cancelado'
-    ): void => {
+    const aoSalvarStatus = (novoValor: Status): void => {
       TemplateTimeline.topo.exibir = true;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = true;

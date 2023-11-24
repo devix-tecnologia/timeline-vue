@@ -1,58 +1,48 @@
 <template>
-  <section
-    class="cabecalho-evento"
-    :class="[`criticidade-` + dadosEvento.criticidade]"
-  >
+  <section class="cabecalho-evento" :class="[`criticidade-` + evento.criticidade]">
     <PerfilTimeline
-      v-if="perfilEvento"
-      :nomePerfil="perfilEvento.nome"
-      :imagemPerfil="perfilEvento.imagem"
-      :iconePerfil="perfilEvento.icone"
+      v-if="perfil"
+      :nomePerfil="perfil.nome"
+      :imagemPerfil="perfil.imagem"
+      :iconePerfil="perfil.icone"
       :formatoReduzido="true"
     />
-    <div v-if="dadosEvento.criticidade !== 'baixa'" class="criticidade">
-      Criticidade: {{ dadosEvento.criticidade }}
+    <div v-if="evento.criticidade !== 'baixa'" class="criticidade">
+      Criticidade: {{ evento.criticidade }}
     </div>
     <div class="titulo">
-      <IconeCategoria
-        :iconeCategoria="dadosEvento.categoria.icone"
-        :categoria="dadosEvento.categoria.nome"
-      />
-      <h1>{{ dadosEvento.titulo }}</h1>
+      <IconeCategoria :iconeCategoria="evento.categoria.icone" :categoria="evento.categoria.nome" />
+      <h1>{{ evento.titulo }}</h1>
     </div>
     <div class="dataHora">
-      <div :onclick="aoClicar" class="box">
+      <div class="box">
         <span class="material-symbols-outlined"> calendar_month </span>
         <div class="horaEvento">
-          <div v-if="dadosEvento.realizado" class="horaRealizada texto-grande">
-            {{ dadosEvento.realizado.toLocaleDateString() }}
+          <div v-if="evento.realizado" class="horaRealizada texto-grande">
+            {{ evento.realizado.toLocaleDateString() }}
           </div>
-          <div v-if="dadosEvento.realizado" class="horaPlanejada texto-pequeno">
-            {{ dadosEvento.realizado.toLocaleDateString() }}
+          <div v-if="evento.realizado" class="horaPlanejada texto-pequeno">
+            {{ evento.realizado.toLocaleDateString() }}
           </div>
           <div v-else class="horaRealizada texto-grande">
-            {{ dadosEvento.previsto.toLocaleDateString() }}
+            {{ evento.previsto.toLocaleDateString() }}
           </div>
         </div>
       </div>
-      <div :onclick="aoClicar" class="box">
+      <div class="box">
         <span class="material-symbols-outlined"> schedule </span>
         <div class="horaEvento">
           <Hora
-            v-if="dadosEvento.realizado"
+            v-if="evento.realizado"
             class="horaRealizada texto-grande"
-            :hora="dadosEvento.realizado"
+            :hora="evento.realizado"
           />
           <Hora
-            v-if="dadosEvento.realizado"
+            v-if="evento.realizado"
             class="horaPlanejada texto-pequeno"
-            :hora="dadosEvento.previsto"
+            :hora="evento.previsto"
           />
-          <Hora
-            v-else
-            class="horaRealizada texto-grande"
-            :hora="dadosEvento.previsto"
-          />
+          <Hora v-else class="horaRealizada texto-grande" :hora="evento.previsto" />
         </div>
       </div>
     </div>
@@ -60,30 +50,26 @@
 </template>
 
 <script lang="ts">
-import "material-symbols/outlined.css";
-import { defineComponent, reactive, PropType } from "vue";
-import { Perfil, AoClicarEvento } from "../type";
-import Botao from "./Botao.vue";
-import { EventoDetalhado } from "../typeDetalhado";
-import PerfilTimeline from "./PerfilTimeline.vue";
-import IconeCategoria from "../atomos/IconeCategoria.vue";
-import Hora from "../atomos/Hora.vue";
+import 'material-symbols/outlined.css';
+import { defineComponent, PropType } from 'vue';
+import Botao from './Botao.vue';
+import { EventoDetalhado } from '../typeDetalhado';
+import { Perfil } from '../type';
+import PerfilTimeline from './PerfilTimeline.vue';
+import IconeCategoria from '../atomos/IconeCategoria.vue';
+import Hora from '../atomos/Hora.vue';
 
 export default defineComponent({
   components: { Botao, PerfilTimeline, IconeCategoria, Hora },
-  name: "CabecalhoEventoDetalhado",
+  name: 'CabecalhoEventoDetalhado',
   props: {
-    perfilEvento: {
+    perfil: {
       required: true,
-      type: Object,
+      type: Object as PropType<Perfil>,
     },
-    dadosEvento: {
+    evento: {
       required: true,
       type: Object as PropType<EventoDetalhado>,
-    },
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
     },
   },
   setup(props) {

@@ -29,7 +29,10 @@ yarn add @devix-tecnologia/timeline-vue
 <template>
   <main>
     <div class="telaTimeline">
-      <Timeline :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos" />
+      <Timeline 
+      :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos"
+      @eventoClick="emitEventoClick"
+    />
     </div>
   </main>
 </template>
@@ -42,6 +45,9 @@ import '@devix-tecnologia/timeline-vue/dist/style.css'
 export default defineComponent({
   components: { Timeline },
   setup() {
+    const emitEventoClick = (evento: Evento) => {
+      alert(`foi clicado no evento ${evento.titulo}`);
+    };
     const perfilTimeline = {
       nome: 'Maria do Socorro',
       imagem: 'https://this-person-does-not-exist.com/img/avatar-gen11071f8e0802a35d66684ee9376722b2.jpg',
@@ -79,10 +85,9 @@ export default defineComponent({
         },
         status: 'planejado',
         criticidade: 'baixa',
-        aoClicar: () => alert('Olá, mundo!')
       }
     ]
-    return { perfilTimeline, listaEventos }
+    return { emitEventoClick, perfilTimeline, listaEventos }
   }
 })
 </script>
@@ -131,7 +136,7 @@ body {
 
 ### Propriedades:
   
-A Timeline da DEVIX ordena e lista Eventos de forma crescente de acordo com a data/hora cadastrada.
+A Timeline ordena e lista Eventos de forma crescente de acordo com a data/hora cadastrada.
 
 Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título, subtítulo, ícone de categoria, ícone de status, indicação de criticidade e campo para informação em destaque.
 
@@ -143,7 +148,7 @@ Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título,
 ---
 
 ### Importante:
-- Os componentes da Timeline Devix são divididos em átomos, moléculas e organismos, seguindo os padrões do Design Atômico;
+- Os componentes da Timeline são divididos em átomos, moléculas e organismos, seguindo os padrões do Design Atômico;
 - Cada componente vem acompanhado de documentação no storybook;
 - A timeline de demonstração utiliza dados mock;
 - Dê uma olhada no arquivo ``` type.ts ``` também, ele é o arquivo de tipos com influência sobre toda a aplicação.

@@ -10,10 +10,7 @@
 
     <section class="timeline">
       <!-- SEPARADOR -->
-      <div
-        v-for="(evento, index) in eventosPorTipo"
-        :key="evento.key"
-      >
+      <div v-for="(evento, index) in eventosPorTipo" :key="evento.key">
         <SeparadorPeriodo
           v-if="evento.tipo === 'dia'"
           :dataSeparador="evento.valor"
@@ -70,17 +67,15 @@ export default defineComponent({
   },
 
   emits: {
-    onEventoTimelineClicked: (evento: Evento) => true,
+    eventoClick: (evento: Evento) => true,
   },
 
   setup(props, { emit }) {
-    const emitEventoClicado = (evento: Evento) => {
-      emit('onEventoTimelineClicked', evento);
+    const emitEventoClick = (evento: Evento) => {
+      emit('eventoClick', evento);
     };
 
-    const dadosEventosTimeline: Evento[] = reactive(
-      props.eventosTimeline
-    );
+    const dadosEventosTimeline: Evento[] = reactive(props.eventosTimeline);
     let dadosEventosTimelineClone: Evento[] = reactive(dadosEventosTimeline);
 
     function carregarListaEventos() {
@@ -181,7 +176,7 @@ export default defineComponent({
       const itemAtual = document.querySelector('.atual');
       if (!itemAtual || !itemAtual.scrollIntoView) {
         return;
-      }    
+      }
 
       itemAtual.scrollIntoView({
         behavior: 'smooth',
@@ -189,17 +184,11 @@ export default defineComponent({
       });
     };
 
-    // const clicar: AoClicarEvento = function (evento: Evento): void {
-    //   if (evento && evento.aoClicar) {
-    //     evento.aoClicar(evento);
-    //   }
-    // };
-
     carregarListaEventos();
     return {
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
-      emitEventoClicado,
+      emitEventoClicado: emitEventoClick,
     };
   },
   mounted() {

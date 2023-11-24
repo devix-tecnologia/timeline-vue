@@ -1,7 +1,7 @@
 export type Perfil = {
   nome: string;
-  imagem: string | null;
-  icone: string | null;
+  imagem?: string;
+  icone?: string;
 };
 
 export type Categoria = {
@@ -9,27 +9,31 @@ export type Categoria = {
   icone: string;
 };
 
+export type Status =
+  | 'atrasado'
+  | 'adiantado'
+  | 'adiado'
+  | 'realizado'
+  | 'planejado'
+  | 'cancelado';
+
+export type Criticidade = 'baixa' | 'media' | 'alta';
+
 export type AoClicarEvento = (evento: Evento) => void;
 
 export type Evento = {
   data: Date;
   previsto: Date;
-  duracao: number | null;
-  realizado: Date | null;
+  duracao?: number;
+  realizado?: Date;
   tolerancia: number;
   titulo: string;
   subtitulo: string;
   destaque: string;
   categoria: Categoria;
-  status:
-    | "atrasado"
-    | "adiantado"
-    | "adiado"
-    | "realizado"
-    | "planejado"
-    | "cancelado";
-  criticidade: "baixa" | "media" | "alta";
-  aoClicar?: AoClicarEvento;
+  status: Status;
+  criticidade: Criticidade;
   atual: boolean;
   scroll: boolean;
+  clicavel?: boolean;
 };

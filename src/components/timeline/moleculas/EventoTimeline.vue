@@ -2,7 +2,7 @@
   <article
     class="eventoTimeline"
     :class="[status, 'criticidade-' + criticidade, eventoSelecionado, clicavel]"
-    :onclick="aoClicar"
+    :onclick="emitEventoClicado"
   >
     <IconeStatus :status="status" />
     <HoraEvento :horaPrevista="previsto" :horaRealizada="realizado" />
@@ -15,16 +15,16 @@
   </article>
 </template>
 <script lang="ts">
-import { defineComponent, computed, PropType } from "vue";
-import IconeCategoria from "../atomos/IconeCategoria.vue";
-import IconeStatus from "../atomos/IconeStatus.vue";
-import DescricaoEvento from "./DescricaoEvento.vue";
-import HoraEvento from "./HoraEvento.vue";
-import Destaque from "../atomos/Destaque.vue";
-import { Categoria, AoClicarEvento } from "../type";
+import { defineComponent, computed, PropType } from 'vue';
+import IconeCategoria from '../atomos/IconeCategoria.vue';
+import IconeStatus from '../atomos/IconeStatus.vue';
+import DescricaoEvento from './DescricaoEvento.vue';
+import HoraEvento from './HoraEvento.vue';
+import Destaque from '../atomos/Destaque.vue';
+import { Categoria, AoClicarEvento, Evento } from '../type';
 
 export default defineComponent({
-  name: "Evento Timeline",
+  name: 'Evento Timeline',
   props: {
     status: {
       required: true,
@@ -62,9 +62,10 @@ export default defineComponent({
       required: false,
       type: String,
     },
-    aoClicar: {
+    clicavel: {
       required: false,
-      type: Function as PropType<AoClicarEvento>,
+      type: Boolean,
+      default: true,
     },
   },
   components: {
@@ -74,15 +75,22 @@ export default defineComponent({
     DescricaoEvento,
     Destaque,
   },
-  setup(props) {
+  emits: {
+    aoClicar: (evento: Evento) => true,
+  },
+  setup(props, { emit }) {
+    const emitEventoClicado = (evento: Evento) => {
+      if (evento.clicavel === true) {
+        emit('aoClicar', evento);
+      }
+    };
+
     return {
       eventoSelecionado: computed(() => ({
         atual: props.ehAtual,
         padrao: props.ehAtual,
       })),
-      clicavel: computed(() => ({
-        clicavel: props.aoClicar !== undefined,
-      })),
+      emitEventoClicado,
     };
   },
 });
@@ -122,7 +130,7 @@ export default defineComponent({
 /* box com as informações */
 
 .eventoTimeline:before {
-  content: "";
+  content: '';
   background-color: var(--cor-linha);
   display: block;
   position: absolute;
@@ -133,7 +141,7 @@ export default defineComponent({
 }
 
 .eventoTimeline:after {
-  content: "";
+  content: '';
   background-color: var(--cor-linha);
   display: block;
   position: absolute;

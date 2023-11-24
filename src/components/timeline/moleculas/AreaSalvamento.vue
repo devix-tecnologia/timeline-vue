@@ -5,14 +5,12 @@
       :aparencia="`preenchido`"
       :titulo="`Salvar`"
       :tamanho="`grande`"
-      :aoClicar="aoClicar"
       @click="aoSalvar()"
     />
     <Botao
       :aparencia="`vazio`"
       :titulo="`Cancelar`"
       :tamanho="`pequeno`"
-      :aoClicar="aoClicar"
       @click="aoCancelar"
     />
   </section>
@@ -36,17 +34,17 @@ export default defineComponent({
   },
 
   emits: {
-    onAreaSalvamentoBtnSalvarClicked: () => true,
-    onAreaSalvamentoBtnCancelarClicked: () => true,
+    salvarClick: () => true,
+    cancelarClick: () => true,
   },
 
   setup(props, { emit }) {
     const aoSalvar = () => {
-      emit('onAreaSalvamentoBtnSalvarClicked');
+      emit('salvarClick');
     };
 
     const aoCancelar = () => {
-      emit('onAreaSalvamentoBtnCancelarClicked');
+      emit('cancelarClick');
     };
 
     return {
