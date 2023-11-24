@@ -1,7 +1,7 @@
 <template>
   <div class="pagina">
     <topo :titulo="dadosEvento.categoria.nome" :escuro="false" />
-    <Evento :perfilEvento="perfilEvento" :dadosEvento="dadosEvento" />
+    <Evento :perfil="perfilEvento" :evento="dadosEvento" />
   </div>
 </template>
 

@@ -18,8 +18,8 @@
     <Evento
       v-if="TemplateTimeline.evento.exibir"
       data-testid="evento"
-      :perfilEvento="TemplateTimeline.dados.perfil"
-      :dadosEvento="TemplateTimeline.dados.eventoAtual"
+      :perfil="TemplateTimeline.dados.perfil"
+      :evento="TemplateTimeline.dados.eventoAtual"
       @on-evento-detalhado-status-edit-clicked="aoEditarEvento"
       @on-evento-detalhado-observacoes-add-clicked="aoAdicionarObservacao"
     />

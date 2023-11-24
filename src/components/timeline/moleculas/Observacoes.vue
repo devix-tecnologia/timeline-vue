@@ -7,39 +7,34 @@
         <div class="autor">
           {{ item.autor.nome }} em {{ item.criadaEm.toLocaleDateString() }} às
           {{ item.criadaEm.getHours() }}:{{
-            item.criadaEm.getMinutes().toString().padStart(2, "0")
+            item.criadaEm.getMinutes().toString().padStart(2, '0')
           }}
         </div>
       </li>
     </ul>
     <Botao
       :titulo="tituloBotao"
-      :aoClicar="aoClicar"
       :icone="`add`"
       :aparencia="`preenchido`"
       :tamanho="`pequeno`"
-      @click="aoAdicionarObservacao()"
+      @adicionarClick="emitirAdicionarClick"
     />
   </section>
 </template>
 
 <script lang="ts">
-import "material-symbols/outlined.css";
-import { defineComponent, reactive, PropType } from "vue";
-import { AoClicarEvento } from "../type";
-import Botao from "./Botao.vue";
-import { Observacao } from "../typeDetalhado";
+import 'material-symbols/outlined.css';
+import { defineComponent, reactive, PropType } from 'vue';
+import { AoClicarEvento } from '../type';
+import Botao from './Botao.vue';
+import { Observacao } from '../typeDetalhado';
 
 export default defineComponent({
   components: { Botao },
-  name: "Observacoes",
+  name: 'Observacoes',
   props: {
     tituloBotao: {
       type: String,
-    },
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
     },
     observacoes: {
       required: true,
@@ -48,22 +43,19 @@ export default defineComponent({
   },
 
   emits: {
-    onObservacoesAddClicked: () => true,
+    adicionarClick: () => true,
   },
 
   setup(props, { emit }) {
-    const aoAdicionarObservacao = () => {
-      emit('onObservacoesAddClicked');
+    const emitirAdicionarClick = () => {
+      emit('adicionarClick');
     };
 
-
     // Ordenando observações pela mais recente
-    props.observacoes.sort(
-      (a, b) => b.criadaEm.getTime() - a.criadaEm.getTime()
-    );
+    props.observacoes.sort((a, b) => b.criadaEm.getTime() - a.criadaEm.getTime());
     props = reactive(props);
 
-    return {aoAdicionarObservacao};
+    return { emitirAdicionarClick };
   },
 });
 </script>

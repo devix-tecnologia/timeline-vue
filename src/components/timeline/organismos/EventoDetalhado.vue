@@ -2,34 +2,31 @@
   <div class="evento">
     <transition name="fadeBaixo" mode="out-in" appear>
       <CabecalhoEventoDetalhado
-        :perfil="perfilEvento"
-        :evento="dadosEvento"
-        :aoClicar="dadosEvento.aoClicar"
+        :perfil="perfil"
+        :evento="evento"
       />
     </transition>
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <section class="descricao">
         <slot name="descricao">
-          {{ dadosEvento.subtitulo }}
+          {{ evento.subtitulo }}
         </slot>
       </section>
     </transition>
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <Observacoes
-        :observacoes="dadosEvento.observacoes"
+        :observacoes="evento.observacoes"
         :tituloBotao="`Inserir observação`"
-        :aoClicar="dadosEvento.aoClicar"
-        @on-observacoes-add-clicked="aoAdicionarObservacao"
+        @adicionarClick="aoAdicionarObservacao"
       />
     </transition>
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <StatusEvento
         :aparencia="`preenchido`"
-        :aoClicar="dadosEvento.aoClicar"
-        :status="dadosEvento.status"
+        :status="evento.status"
         @on-status-evento-edit-clicked="aoEditarEvento"
       />
     </transition>
@@ -48,29 +45,29 @@ import StatusEvento from '../moleculas/StatusEvento.vue';
 
 export default defineComponent({
   props: {
-    perfilEvento: {
+    perfil: {
       required: true,
       type: Object as PropType<Perfil>,
     },
-    dadosEvento: {
-      required: false,
+    evento: {
+      required: true,
       type: Object as PropType<EventoDetalhado>,
     },
   },
   components: { CabecalhoEventoDetalhado, Observacoes, StatusEvento },
 
   emits: {
-    onEventoDetalhadoStatusEditClicked: () => true,
-    onEventoDetalhadoObservacoesAddClicked: () => true,
+    statusEditClick: () => true,
+    observacaoAddClick: () => true,
   },
 
   setup(props, { emit }) {
     const aoEditarEvento = () => {
-      emit('onEventoDetalhadoStatusEditClicked');
+      emit('statusEditClick');
     };
 
     const aoAdicionarObservacao = () => {
-      emit('onEventoDetalhadoObservacoesAddClicked');
+      emit('observacaoAddClick');
     };
 
     return {
