@@ -23,10 +23,14 @@ export default {
 const Template: StoryFn<typeof Botao> = (args) => ({
   components: { Botao },
   setup() {
-    return { args };
+    const handleClick = () => {
+      alert('Clicado no botão.');
+    };
+
+    return { args, handleClick };
   },
   template:
-    '<Botao :titulo="args.titulo" :icone="args.icone" :aparencia="args.aparencia" :tamanho="args.tamanho" @clicked="args.aoClicar" />',
+    '<Botao :titulo="args.titulo" :icone="args.icone" :aparencia="args.aparencia" :tamanho="args.tamanho" @click="handleClick" />',
 });
 
 export const outline = Template.bind({});
@@ -35,7 +39,6 @@ outline.args = {
   aparencia: 'outline',
   tamanho: 'medio',
   icone: 'add',
-  aoClicar: (evento) => alert('Olá, outline!'),
 };
 
 export const preenchido = Template.bind({});
@@ -44,7 +47,6 @@ preenchido.args = {
   aparencia: 'preenchido',
   tamanho: 'medio',
   icone: 'home',
-  aoClicar: (evento) => alert('Olá, Preenchido!'),
 };
 
 export const Pequeno = Template.bind({});
@@ -53,7 +55,6 @@ Pequeno.args = {
   aparencia: 'outline',
   tamanho: 'pequeno',
   icone: '',
-  aoClicar: (evento) => alert('Olá, Pequeno!'),
 };
 
 export const Grande = Template.bind({});
@@ -62,7 +63,6 @@ Grande.args = {
   aparencia: 'outline',
   tamanho: 'grande',
   icone: '',
-  aoClicar: (evento) => alert('Olá, Grande!'),
 };
 
 export const Vazio = Template.bind({});
@@ -71,5 +71,4 @@ Vazio.args = {
   aparencia: 'vazio',
   tamanho: 'pequeno',
   icone: '',
-  aoClicar: (evento) => alert('Olá, Vazio!'),
 };

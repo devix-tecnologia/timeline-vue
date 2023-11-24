@@ -25,11 +25,9 @@ export const Padrao = Template.bind({});
 Padrao.args = {
   perfilEvento: perfilMock,
   dadosEvento: CabecalhoMock,
-  aoClicar: (evento) => alert('Olá, Botão data-hora!'),
 };
 
 export const SemPerfil = Template.bind({});
 SemPerfil.args = {
   dadosEvento: CabecalhoMock2,
-  aoClicar: (evento) => alert('Olá, Botão data-hora!'),
 };

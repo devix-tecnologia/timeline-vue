@@ -1,5 +1,6 @@
 <template>
-  <button class="btn" data-testid="botao" :class="classes" @click="handleClick">
+  olá mundo
+  <button class="btn" data-testid="botao" @click="handleClick">
     <slot>
       <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
       {{ titulo }}
@@ -11,14 +12,15 @@
 import { defineComponent, reactive, computed, PropType } from 'vue';
 import 'material-symbols/outlined.css';
 
-type Tamanho = 'pequeno' | 'medio' | 'grande';
-type Aparencia = 'outline' | 'preenchido' | 'vazio';
+export type Tamanho = 'pequeno' | 'medio' | 'grande';
+export type Aparencia = 'outline' | 'preenchido' | 'vazio';
 
 export default defineComponent({
   name: 'Botao',
   props: {
     titulo: {
       type: String,
+      default: '',
     },
     icone: {
       type: String,
@@ -44,12 +46,14 @@ export default defineComponent({
       emit('click', mouseEvent);
     };
 
+    const classes = computed(() => ({
+      [`${props.aparencia}`]: true,
+      [`${props.tamanho}`]: true,
+    }));
+
     return {
       handleClick,
-      classes: computed(() => ({
-        [`${props.aparencia}`]: true,
-        [`${props.tamanho}`]: true,
-      })),
+      classes,
     };
   },
 });

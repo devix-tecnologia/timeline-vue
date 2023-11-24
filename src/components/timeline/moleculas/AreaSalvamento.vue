@@ -1,55 +1,48 @@
 <template>
-  <section class="area-salvamento">
+  <section class="area-salvamento" data-testid="area-salvamento">
     <slot></slot>
     <Botao
+      data-testid="botao-salvar"
       :aparencia="`preenchido`"
       :titulo="`Salvar`"
       :tamanho="`grande`"
-      @click="aoSalvar()"
+      @click="emitSalvarClick"
     />
     <Botao
+      data-testid="botao-cancelar"
       :aparencia="`vazio`"
       :titulo="`Cancelar`"
       :tamanho="`pequeno`"
-      @click="aoCancelar"
+      @click="emitCancelarClick"
     />
   </section>
 </template>
 
 <script lang="ts">
 import 'material-symbols/outlined.css';
-import { defineComponent, PropType } from 'vue';
-import { AoClicarEvento } from '../type';
+import { defineComponent } from 'vue';
 import Botao from './Botao.vue';
 export default defineComponent({
   name: 'AreaSalvamento',
-
   components: { Botao },
-
-  props: {
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
-  },
-
+  props: {},
   emits: {
-    salvarClick: () => true,
-    cancelarClick: () => true,
+    salvarClick: (mouseEvent: MouseEvent) => true,
+    cancelarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const aoSalvar = () => {
-      emit('salvarClick');
+    const emitSalvarClick = (mouseEvent: MouseEvent) => {
+      emit('salvarClick', mouseEvent);
     };
 
-    const aoCancelar = () => {
-      emit('cancelarClick');
+    const emitCancelarClick = (mouseEvent: MouseEvent) => {
+      emit('cancelarClick', mouseEvent);
     };
 
     return {
-      aoSalvar,
-      aoCancelar,
+      emitSalvarClick,
+      emitCancelarClick,
     };
   },
 });

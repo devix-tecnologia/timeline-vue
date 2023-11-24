@@ -17,7 +17,7 @@
       :icone="`add`"
       :aparencia="`preenchido`"
       :tamanho="`pequeno`"
-      @adicionarClick="emitirAdicionarClick"
+      @click="emitirAdicionarClick"
     />
   </section>
 </template>
@@ -25,7 +25,6 @@
 <script lang="ts">
 import 'material-symbols/outlined.css';
 import { defineComponent, reactive, PropType } from 'vue';
-import { AoClicarEvento } from '../type';
 import Botao from './Botao.vue';
 import { Observacao } from '../typeDetalhado';
 
@@ -43,12 +42,12 @@ export default defineComponent({
   },
 
   emits: {
-    adicionarClick: () => true,
+    adicionarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const emitirAdicionarClick = () => {
-      emit('adicionarClick');
+    const emitirAdicionarClick = (mouseEvent: MouseEvent) => {
+      emit('adicionarClick', mouseEvent);
     };
 
     // Ordenando observações pela mais recente

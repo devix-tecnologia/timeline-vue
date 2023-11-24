@@ -9,17 +9,9 @@ export type Categoria = {
   icone: string;
 };
 
-export type Status =
-  | 'atrasado'
-  | 'adiantado'
-  | 'adiado'
-  | 'realizado'
-  | 'planejado'
-  | 'cancelado';
+export type Status = 'atrasado' | 'adiantado' | 'adiado' | 'realizado' | 'planejado' | 'cancelado';
 
 export type Criticidade = 'baixa' | 'media' | 'alta';
-
-export type AoClicarEvento = (evento: Evento) => void;
 
 export type Evento = {
   data: Date;

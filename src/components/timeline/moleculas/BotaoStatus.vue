@@ -1,39 +1,46 @@
 <template>
-  <Botao :aparencia="aparencia" :class="classes" :aoClicar="aoClicar">
+  <Botao :aparencia="aparencia" :class="classes" @click="emitClick">
     <IconeStatus class="icone" :status="status" /> {{ status }}
   </Botao>
 </template>
 
 <script lang="ts">
-import "material-symbols/outlined.css";
-import { defineComponent, reactive, computed, PropType } from "vue";
-import { AoClicarEvento } from "../type";
-import Botao from "./Botao.vue";
-import IconeStatus from "../atomos/IconeStatus.vue";
+import 'material-symbols/outlined.css';
+import { defineComponent, reactive, computed, PropType } from 'vue';
+import { Status } from '../type';
+import Botao, { Aparencia } from './Botao.vue';
+import IconeStatus from '../atomos/IconeStatus.vue';
 
 export default defineComponent({
   components: { Botao, IconeStatus },
-  name: "BotaoStatus",
+  name: 'BotaoStatus',
   props: {
     aparencia: {
-      type: String,
+      type: String as PropType<Aparencia>,
     },
     status: {
       required: true,
-      type: String,
-    },
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
+      type: String as PropType<Status>,
     },
   },
-  setup(props) {
+  emits: {
+    click: (mouseEvent: MouseEvent) => true,
+  },
+  setup(props, { emit }) {
     props = reactive(props);
 
+    const classes = computed(() => ({
+      [`${props.status}`]: true,
+    }));
+
+
+    const emitClick = (mouseEvent: MouseEvent) => {
+      emit('click', mouseEvent);
+    };
+
     return {
-      classes: computed(() => ({
-        [`${props.status || "planejado"}`]: true,
-      })),
+      emitClick,
+      classes,
     };
   },
 });

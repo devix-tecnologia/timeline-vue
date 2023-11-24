@@ -1,17 +1,15 @@
 <template>
   <article
+    data-testid="evento"
     class="eventoTimeline"
     :class="[status, 'criticidade-' + criticidade, eventoSelecionado, clicavel]"
-    :onclick="emitEventoClicado"
+    @click="handleClick"
   >
     <IconeStatus :status="status" />
-    <HoraEvento :horaPrevista="previsto" :horaRealizada="realizado" />
-    <IconeCategoria
-      :iconeCategoria="categoria.icone"
-      :categoria="categoria.nome"
-    />
+    <HoraEvento :horaPrevista="previstoPara" :horaRealizada="realizadoEm" />
+    <IconeCategoria :iconeCategoria="categoria.icone" :categoria="categoria.nome" />
     <DescricaoEvento :titulo="titulo" :subtitulo="subtitulo" />
-    <Destaque :texto="destaque" />
+    <Destaque :texto="textoDestaque" />
   </article>
 </template>
 <script lang="ts">
@@ -21,34 +19,35 @@ import IconeStatus from '../atomos/IconeStatus.vue';
 import DescricaoEvento from './DescricaoEvento.vue';
 import HoraEvento from './HoraEvento.vue';
 import Destaque from '../atomos/Destaque.vue';
-import { Categoria, AoClicarEvento, Evento } from '../type';
+import { Categoria, Status, Criticidade } from '../type';
 
 export default defineComponent({
   name: 'Evento Timeline',
   props: {
     status: {
       required: true,
-      type: String,
+      type: String as PropType<Status>,
     },
     criticidade: {
       required: true,
-      type: String,
+      type: String as PropType<Criticidade>,
     },
     ehAtual: {
-      required: true,
+      required: false,
       type: Boolean,
+      default: false,
     },
-    previsto: {
+    previstoPara: {
       required: true,
       type: Date,
     },
-    realizado: {
+    realizadoEm: {
       required: false,
       type: Date as PropType<Date | null>,
     },
     categoria: {
       required: true,
-      type: Object as () => Categoria,
+      type: Object as PropType<Categoria>,
     },
     titulo: {
       required: true,
@@ -58,7 +57,7 @@ export default defineComponent({
       required: false,
       type: String,
     },
-    destaque: {
+    textoDestaque: {
       required: false,
       type: String,
     },
@@ -76,21 +75,21 @@ export default defineComponent({
     Destaque,
   },
   emits: {
-    aoClicar: (evento: Evento) => true,
+    click: (mouseEvent: MouseEvent) => true,
   },
   setup(props, { emit }) {
-    const emitEventoClicado = (evento: Evento) => {
-      if (evento.clicavel === true) {
-        emit('aoClicar', evento);
+    const handleClick = (mouseEvent: MouseEvent) => {
+      if (props.clicavel) {
+        emit('click', mouseEvent);
       }
     };
 
     return {
+      handleClick,
       eventoSelecionado: computed(() => ({
         atual: props.ehAtual,
         padrao: props.ehAtual,
       })),
-      emitEventoClicado,
     };
   },
 });

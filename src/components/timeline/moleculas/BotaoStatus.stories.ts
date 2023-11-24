@@ -1,17 +1,17 @@
-import BotaoStatus from "./BotaoStatus.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
+import BotaoStatus from './BotaoStatus.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: "Devix/Eventos/Moleculas/BotaoStatus",
+  title: 'Devix/Eventos/Moleculas/BotaoStatus',
   component: BotaoStatus,
   argTypes: {
     aparencia: {
-      control: { type: "select" },
-      options: ["outline", "preenchido"],
+      control: { type: 'select' },
+      options: ['outline', 'preenchido'],
     },
     status: {
-      control: { type: "select" },
-      options: ["planejado", "atrasado", "realizado", "cancelado", "adiado"],
+      control: { type: 'select' },
+      options: ['planejado', 'atrasado', 'realizado', 'cancelado', 'adiado'],
     },
   },
 } as Meta<typeof BotaoStatus>;
@@ -19,43 +19,42 @@ export default {
 const Template: StoryFn<typeof BotaoStatus> = (args) => ({
   components: { BotaoStatus },
   setup() {
-    return { args };
+    const handleClick = () => {
+      alert('Clicado no botão.');
+    };
+
+    return { args, handleClick };
   },
   template:
-    '<BotaoStatus :aparencia="args.aparencia" :aoClicar="args.aoClicar" :status="args.status" />',
+    '<BotaoStatus :aparencia="args.aparencia" @click="handleClick" :status="args.status" />',
 });
 
 export const Planejado = Template.bind({});
 Planejado.args = {
-  status: "planejado",
-  aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, planejado!"),
+  status: 'planejado',
+  aparencia: 'outline',
 };
 
 export const Atrasado = Template.bind({});
 Atrasado.args = {
-  status: "atrasado",
-  aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, atrasado!"),
+  status: 'atrasado',
+  aparencia: 'outline',
 };
 
 export const Realizado = Template.bind({});
 Realizado.args = {
-  status: "realizado",
-  aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, relizado!"),
+  status: 'realizado',
+  aparencia: 'outline',
 };
 
 export const Cancelado = Template.bind({});
 Cancelado.args = {
-  status: "cancelado",
-  aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, cancelado!"),
+  status: 'cancelado',
+  aparencia: 'outline',
 };
 
 export const Adiado = Template.bind({});
 Adiado.args = {
-  status: "adiado",
-  aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, adiado!"),
+  status: 'adiado',
+  aparencia: 'outline',
 };
