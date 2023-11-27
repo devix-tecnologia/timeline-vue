@@ -25,7 +25,7 @@
             {{ evento.realizado.toLocaleDateString() }}
           </div>
           <div v-else class="horaRealizada texto-grande">
-            {{ evento.previsto.toLocaleDateString() }}
+            {{ evento.previstoPara.toLocaleDateString() }}
           </div>
         </div>
       </div>
@@ -40,9 +40,9 @@
           <Hora
             v-if="evento.realizado"
             class="horaPlanejada texto-pequeno"
-            :hora="evento.previsto"
+            :hora="evento.previstoPara"
           />
-          <Hora v-else class="horaRealizada texto-grande" :hora="evento.previsto" />
+          <Hora v-else class="horaRealizada texto-grande" :hora="evento.previstoPara" />
         </div>
       </div>
     </div>

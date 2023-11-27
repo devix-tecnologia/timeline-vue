@@ -10,7 +10,7 @@ export const dadosPerfil: Perfil = {
 export const dadosEventos: Evento[] = [
   {
     data: new Date("2023-04-26T19:00Z"),
-    previsto: new Date("2023-04-26T19:00Z"),
+    previstoPara: new Date("2023-04-26T19:00Z"),
     realizado: new Date("2023-04-26T19:30Z"),
     duracao: null,
     tolerancia: 10,
@@ -29,7 +29,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-04-26T18:10Z"),
-    previsto: new Date("2023-04-26T18:10Z"),
+    previstoPara: new Date("2023-04-26T18:10Z"),
     realizado: new Date("2023-04-26T18:15Z"),
     duracao: null,
     tolerancia: 10,
@@ -48,7 +48,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-03T11:00Z"),
-    previsto: new Date("2023-05-03T11:00Z"),
+    previstoPara: new Date("2023-05-03T11:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -67,7 +67,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-03T15:00Z"),
-    previsto: new Date("2023-05-03T15:00Z"),
+    previstoPara: new Date("2023-05-03T15:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -86,7 +86,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-03T20:00Z"),
-    previsto: new Date("2023-05-03T20:00Z"),
+    previstoPara: new Date("2023-05-03T20:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -105,7 +105,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-04-01T12:00Z"),
-    previsto: new Date("2023-04-01T12:00Z"),
+    previstoPara: new Date("2023-04-01T12:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -124,7 +124,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-04-01T13:00Z"),
-    previsto: new Date("2023-04-01T13:00Z"),
+    previstoPara: new Date("2023-04-01T13:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -143,7 +143,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-03T12:00Z"),
-    previsto: new Date("2023-05-03T12:00Z"),
+    previstoPara: new Date("2023-05-03T12:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -162,7 +162,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-03T13:00Z"),
-    previsto: new Date("2023-05-03T13:00Z"),
+    previstoPara: new Date("2023-05-03T13:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -181,7 +181,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-03T14:27Z"),
-    previsto: new Date("2023-05-03T14:27Z"),
+    previstoPara: new Date("2023-05-03T14:27Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -200,7 +200,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-03T15:00Z"),
-    previsto: new Date("2023-05-03T15:00Z"),
+    previstoPara: new Date("2023-05-03T15:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -219,7 +219,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-08T16:00Z"),
-    previsto: new Date("2023-05-08T16:00Z"),
+    previstoPara: new Date("2023-05-08T16:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -238,7 +238,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-09T19:00Z"),
-    previsto: new Date("2023-05-09T19:00Z"),
+    previstoPara: new Date("2023-05-09T19:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -257,7 +257,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-09T17:00Z"),
-    previsto: new Date("2023-05-09T17:00Z"),
+    previstoPara: new Date("2023-05-09T17:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,
@@ -276,7 +276,7 @@ export const dadosEventos: Evento[] = [
   },
   {
     data: new Date("2023-05-09T18:01Z"),
-    previsto: new Date("2023-05-09T18:00Z"),
+    previstoPara: new Date("2023-05-09T18:00Z"),
     realizado: null,
     duracao: null,
     tolerancia: 10,

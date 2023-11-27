@@ -1,7 +1,7 @@
 <template>
   <div class="topo" :class="classes">
     <div class="conteudoTitulo">
-      <button class="btn_voltar" @click="aoVoltarParaTelaAnterior" >
+      <button class="btn_voltar" @click="emitVoltarClick">
         <span class="material-symbols-outlined"> arrow_back </span>
       </button>
       <h3 class="titulo">{{ titulo }}</h3>
@@ -11,11 +11,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, reactive, computed } from 'vue';
+import 'material-symbols/outlined.css';
 
 export default defineComponent({
-  name: "Topo",
+  name: 'Topo',
   props: {
     titulo: {
       type: String,
@@ -28,21 +28,20 @@ export default defineComponent({
   },
 
   emits: {
-    onTopoTelaAnteriorClicked: () => true,
+    voltarClick: () => true,
   },
 
   setup(props, { emit }) {
-    
-    const aoVoltarParaTelaAnterior = () => {
-      emit('onTopoTelaAnteriorClicked');
+    const emitVoltarClick = () => {
+      emit('voltarClick');
     };
 
     props = reactive(props);
     return {
-      aoVoltarParaTelaAnterior,
+      emitVoltarClick,
       classes: computed(() => ({
-        "bg-escuro": props.escuro,
-        "bg-claro": !props.escuro,
+        'bg-escuro': props.escuro,
+        'bg-claro': !props.escuro,
       })),
     };
   },

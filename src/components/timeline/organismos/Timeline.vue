@@ -21,7 +21,7 @@
           v-if="evento.tipo === 'evento'"
           :status="evento.valor.status"
           :criticidade="evento.valor.criticidade"
-          :previsto-para="evento.valor.previsto"
+          :previstoPara="evento.valor.previstoPara"
           :realizado-em="evento.valor.realizado"
           :categoria="evento.valor.categoria"
           :titulo="evento.valor.titulo"
@@ -128,11 +128,9 @@ export default defineComponent({
     const eventosTimeline = computed(() => {
       void atualizarEventoAtual();
 
-      const eventosOrdenados = dadosEventosTimelineClone.sort(
-        (a: Evento, b: Evento) => {
-          return a.data.getTime() - b.data.getTime();
-        }
-      );
+      const eventosOrdenados = dadosEventosTimelineClone.sort((a: Evento, b: Evento) => {
+        return a.data.getTime() - b.data.getTime();
+      });
       if (eventosOrdenados) {
         let resultado: Array<TipoEventoTimeline> = [];
         let dataAtual: Date | null = null;

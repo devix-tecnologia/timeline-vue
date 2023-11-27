@@ -15,7 +15,7 @@ export type Criticidade = 'baixa' | 'media' | 'alta';
 
 export type Evento = {
   data: Date;
-  previsto: Date;
+  previstoPara: Date;
   duracao?: number;
   realizado?: Date;
   tolerancia: number;

@@ -22,12 +22,12 @@ const Template: StoryFn<typeof EventoTimeline> = (args) => ({
     return { args };
   },
   template:
-    '<EventoTimeline :status="args.status"  :criticidade="args.criticidade"  :ehAtual="args.ehAtual"  :previsto="args.previsto"  :realizado="args.realizado"  :categoria="args.categoria"  :titulo="args.titulo"  :subtitulo="args.subtitulo" :destaque="args.destaque" />',
+    '<EventoTimeline :status="args.status"  :criticidade="args.criticidade"  :ehAtual="args.ehAtual"  :previstoPara="args.previstoPara"  :realizado="args.realizado"  :categoria="args.categoria"  :titulo="args.titulo"  :subtitulo="args.subtitulo" :destaque="args.destaque" />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  previsto: new Date("2023-04-19T11:00Z"),
+  previstoPara: new Date("2023-04-19T11:00Z"),
   realizado: "",
   titulo: "Consulta Clinico geral",
   subtitulo: "Posto de saúde do bairro",
@@ -44,7 +44,7 @@ Padrao.args = {
 
 export const Atual = Template.bind({});
 Atual.args = {
-  previsto: new Date("2023-04-19T10:00Z"),
+  previstoPara: new Date("2023-04-19T10:00Z"),
   realizado: "",
   titulo: "Consulta",
   subtitulo: "Posto de saúde",
@@ -61,7 +61,7 @@ Atual.args = {
 
 export const Importante = Template.bind({});
 Importante.args = {
-  previsto: new Date("2023-04-19T18:00Z"),
+  previstoPara: new Date("2023-04-19T18:00Z"),
   realizado: "",
   titulo: "Consulta cardiologista",
   subtitulo: "Posto de saúde do bairro",
@@ -78,7 +78,7 @@ Importante.args = {
 
 export const Realizado = Template.bind({});
 Realizado.args = {
-  previsto: new Date("2023-04-20T12:30Z"),
+  previstoPara: new Date("2023-04-20T12:30Z"),
   realizado: "",
   titulo: "Vacina da gripe",
   subtitulo: "Posto de saúde do bairro",

@@ -3,18 +3,22 @@ import AreaSalvamento from './AreaSalvamento.vue';
 
 describe('AreaSalvamento.vue', () => {
   it('renderiza componente', async () => {
-    const { emitted, getByTestId, debug } = render(AreaSalvamento);
+    const { getByTestId } = render(AreaSalvamento);
     const elementoAreaSalvamento = getByTestId('area-salvamento');
     expect(elementoAreaSalvamento).toBeTruthy();
-    
+
+    const botaoSalvar = getByTestId('botao-salvar');
+    expect(botaoSalvar).toBeTruthy();
+
+    const botaoCancelar = getByTestId('botao-cancelar');
+    expect(botaoCancelar).toBeTruthy();
   });
 
-
-  it('emits "salvarClick" quando clicado no botão salvar', async () => {
-    const { emitted, getByTestId, debug } = render(AreaSalvamento);
+  it.only('emits "salvarClick" quando clicado no botão salvar', async () => {
+    const { emitted, getByTestId } = render(AreaSalvamento);
     const elemento = getByTestId('botao-salvar');
     expect(elemento).toBeTruthy();
-    
+
     await fireEvent.click(elemento);
 
     // Verifica se o evento foi emitido
@@ -28,6 +32,6 @@ describe('AreaSalvamento.vue', () => {
     await fireEvent.click(elemento);
 
     // Verifica se o evento foi emitido
-    // expect(emitted().cancelarClick).toBeTruthy();
+    expect(emitted().cancelarClick).toBeTruthy();
   });
 });

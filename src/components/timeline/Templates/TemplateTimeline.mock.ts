@@ -11,7 +11,7 @@ export const dadosPerfil: Perfil = {
 export const dadosEventosDetalhados: EventoDetalhado[] = [
   {
     data: new Date("2023-04-26T19:00Z"),
-    previsto: new Date("2023-04-26T19:00Z"),
+    previstoPara: new Date("2023-04-26T19:00Z"),
     realizado: new Date("2023-04-26T19:30Z"),
     duracao: null,
     tolerancia: 10,
@@ -37,7 +37,7 @@ export const dadosEventosDetalhados: EventoDetalhado[] = [
   },
   {
     data: new Date("2023-04-26T18:10Z"),
-    previsto: new Date("2023-04-26T18:10Z"),
+    previstoPara: new Date("2023-04-26T18:10Z"),
     realizado: new Date("2023-04-26T18:15Z"),
     duracao: null,
     tolerancia: 10,

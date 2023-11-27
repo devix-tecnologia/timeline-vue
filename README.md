@@ -56,7 +56,7 @@ export default defineComponent({
     const listaEventos = [
       {
         data: new Date('2023-04-26T18:10Z'),
-        previsto: new Date('2023-04-26T18:10Z'),
+        previstoPara: new Date('2023-04-26T18:10Z'),
         realizado: new Date('2023-04-26T18:15Z'),
         duracao: null,
         tolerancia: 20,
@@ -72,7 +72,7 @@ export default defineComponent({
       },
       {
         data: new Date('2023-05-09T17:00Z'),
-        previsto: new Date('2023-05-09T17:00Z'),
+        previstoPara: new Date('2023-05-09T17:00Z'),
         realizado: null,
         duracao: null,
         tolerancia: 10,

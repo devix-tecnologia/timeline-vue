@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, watchEffect, computed, ref } from "vue";
+import { defineComponent, computed, ref } from "vue";
 
 export default defineComponent({
   name: "Hora",

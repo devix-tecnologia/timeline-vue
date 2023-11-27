@@ -52,7 +52,7 @@ describe('Timeline.vue', () => {
       perfilTimeline: dadosPerfil,
       eventosTimeline: [{
         data: new Date("2023-04-26T19:00Z"),
-        previsto: new Date("2023-04-26T19:00Z"),
+        previstoPara: new Date("2023-04-26T19:00Z"),
         realizado: new Date("2023-04-26T19:30Z"),
         tolerancia: 10,
         titulo: "Vacina da Covid",

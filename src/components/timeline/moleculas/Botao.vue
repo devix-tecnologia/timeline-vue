@@ -1,11 +1,12 @@
 <template>
-  olá mundo
-  <button class="btn" data-testid="botao" @click="handleClick">
-    <slot>
-      <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
-      {{ titulo }}
-    </slot>
-  </button>
+  <div>
+    <button class="btn" data-testid="botao" @click="handleClick">
+      <slot>
+        <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
+        {{ titulo }}
+      </slot>
+    </button>
+  </div>
 </template>
 
 <script lang="ts">

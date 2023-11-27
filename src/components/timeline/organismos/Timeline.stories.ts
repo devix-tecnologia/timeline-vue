@@ -30,7 +30,7 @@ function atualizarDatas(eventos: Evento[]) {
 
     if (mesEvento >= mesAtual) {
       evento.data.setMonth(agora.getMonth(), agora.getDate());
-      evento.previsto.setMonth(agora.getMonth(), agora.getDate());
+      evento.previstoPara.setMonth(agora.getMonth(), agora.getDate());
     }
   }
 }

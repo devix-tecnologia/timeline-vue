@@ -47,7 +47,7 @@ export default defineComponent({
   setup(props) {
     props = reactive(props);
 
-    const horarioOriginal = ref(new Date(props.dadosEvento.previsto));
+    const horarioOriginal = ref(new Date(props.dadosEvento.previstoPara));
     const horarioAdiantado = ref(
       format(horarioOriginal.value, "dd/MM/yyyy - HH:mm")
     );

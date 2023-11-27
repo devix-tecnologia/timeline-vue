@@ -9,13 +9,12 @@ describe('Botao.vue', () => {
       titulo: 'sidarta',
     };
 
-    const { getByTestId, html } = render(Botao, { props });
-    console.log(html);
+    const { getByTestId } = render(Botao, { props });
     const buttonValue = getByTestId('botao');
     expect(buttonValue).toBeTruthy();
   });
 
-  it('emits "clicked" when button is clicked', async () => {
+  it('emits "click" when button is clicked', async () => {
     const { emitted, getByTestId } = render(Botao);
     const buttonValue = getByTestId('botao');
     expect(buttonValue).toBeTruthy();
