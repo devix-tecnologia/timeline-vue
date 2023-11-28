@@ -19,8 +19,8 @@ export default defineComponent({
       type: String as PropType<Aparencia>,
     },
     status: {
-      required: true,
       type: String as PropType<Status>,
+      default: 'planejado',
     },
   },
   emits: {
@@ -32,7 +32,6 @@ export default defineComponent({
     const classes = computed(() => ({
       [`${props.status}`]: true,
     }));
-
 
     const emitClick = (mouseEvent: MouseEvent) => {
       emit('click', mouseEvent);

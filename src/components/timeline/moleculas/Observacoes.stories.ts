@@ -13,18 +13,14 @@ const observacoesMock = dadosEventoDetalhado[0].observacoes;
 const Template: StoryFn<typeof Observacoes> = (args) => ({
   components: { Observacoes },
   setup() {
-    const salvarClick = (mouseEvent: MouseEvent) => {
-      alert('Clicou no botão salvar!');
+    const adicionarClick = (mouseEvent: MouseEvent) => {
+      alert('Clicou no botão adicionar!');
     };
 
-    const cancelarClick = (mouseEvent: MouseEvent) => {
-      alert('Clicou no botão cancelar!');
-    };
-
-    return { salvarClick, cancelarClick, args };
+    return { adicionarClick, args };
   },
   template:
-    '<Observacoes :tituloBotao="args.tituloBotao" :observacoes="args.observacoes" @salvarClick="salvarClick" @cancelarClick="cancelarClick" />',
+    '<Observacoes v-bind="args" @adicionarClick="adicionarClick" />',
 });
 
 export const Padrao = Template.bind({});

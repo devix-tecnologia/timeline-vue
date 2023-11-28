@@ -14,7 +14,8 @@
     </ul>
     <Botao
       :titulo="tituloBotao"
-      :icone="`add`"
+      data-testid="botao-adicionar"
+      icone="add"
       :aparencia="`preenchido`"
       :tamanho="`pequeno`"
       @click="emitirAdicionarClick"
