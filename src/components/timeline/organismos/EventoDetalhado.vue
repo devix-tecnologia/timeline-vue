@@ -25,6 +25,7 @@
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <StatusEvento
+        data-testid="status-evento"
         :aparencia="`preenchido`"
         :status="evento.status"
         @on-status-evento-edit-clicked="aoEditarEvento"

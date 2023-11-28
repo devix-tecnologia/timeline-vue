@@ -1,6 +1,5 @@
 <template>
   <EditarEvento
-    :aoClicar="aoClicar"
     :salvarVisivel="salvarVisivel"
     @onEditarEventoSalvarClicked="aoSalvar"
     @onEditarEventoCancelarClicked="aoCancelar"
@@ -40,7 +39,8 @@
 import { defineComponent, PropType, ref, reactive, computed } from 'vue';
 import 'material-symbols/outlined.css';
 
-import { AoClicarEvento, Status } from '../type';
+// import { AoClicarEvento } from '../type';
+import { Status } from '../type';
 import { EventoDetalhado } from '../typeDetalhado';
 import EditarEvento from '../organismos/EditarEvento.vue';
 import IconeStatus from '../atomos/IconeStatus.vue';
@@ -49,10 +49,6 @@ import BotaoStatus from '../moleculas/BotaoStatus.vue';
 
 export default defineComponent({
   props: {
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
     salvarVisivel: {
       type: Boolean,
     },

@@ -1,6 +1,8 @@
 import CabecalhoEventoDetalhado from './CabecalhoEventoDetalhado.vue';
 import { Meta, StoryFn } from '@storybook/vue3';
 import { dadosEventoDetalhado, dadosPerfil } from '../EventoDetalhado.mock';
+import { EventoDetalhado } from '../typeDetalhado';
+import { Perfil } from '../type';
 
 export default {
   title: 'Devix/Eventos/Moleculas/CabecalhoEventoDetalhado',
@@ -18,16 +20,16 @@ const Template: StoryFn<typeof CabecalhoEventoDetalhado> = (args) => ({
     return { args };
   },
   template:
-    '<CabecalhoEventoDetalhado :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" />',
+    '<CabecalhoEventoDetalhado :perfil="args.perfil" :evento="args.evento" />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  perfilEvento: perfilMock,
-  dadosEvento: CabecalhoMock,
+  perfil: perfilMock satisfies Perfil,
+  evento: CabecalhoMock satisfies EventoDetalhado,
 };
 
 export const SemPerfil = Template.bind({});
 SemPerfil.args = {
-  dadosEvento: CabecalhoMock2,
+  evento: CabecalhoMock2 satisfies EventoDetalhado,
 };

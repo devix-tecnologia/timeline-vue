@@ -1,5 +1,5 @@
 <template>
-  <Botao :aparencia="aparencia" :class="classes" @click="emitClick">
+  <Botao :aparencia="aparencia" :class="classes" @click="emitClick" data-testid="botao-status">
     <IconeStatus class="icone" :status="status" /> {{ status }}
   </Botao>
 </template>

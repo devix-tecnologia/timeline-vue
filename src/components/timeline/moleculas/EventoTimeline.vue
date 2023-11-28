@@ -3,7 +3,7 @@
     data-testid="evento"
     class="eventoTimeline"
     :class="[status, 'criticidade-' + criticidade, eventoSelecionado, clicavel]"
-    @click="clicavel ? handleClick : null"
+    @click="handleClick"
   >
     <IconeStatus :status="status" />
     <HoraEvento :horaPrevista="previstoPara" :horaRealizada="realizadoEm" />

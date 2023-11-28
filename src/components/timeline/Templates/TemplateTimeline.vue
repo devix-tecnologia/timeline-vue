@@ -4,7 +4,7 @@
       v-if="TemplateTimeline.topo.exibir"
       :titulo="TemplateTimeline.dados.perfil.nome"
       :escuro="false"
-      @on-topo-tela-anterior-clicked="aoVoltarParaTelaAnterior"
+      @voltar-click="aoVoltarParaTelaAnterior"
     />
 
     <Timeline
@@ -12,11 +12,11 @@
       data-testid="timeline"
       :perfilTimeline="TemplateTimeline.dados.perfil"
       :eventosTimeline="TemplateTimeline.dados.eventosTimeline"
-      @eventoClick="aoSelecionarEvento"
+      @evento-click="aoSelecionarEvento"
     />
 
     <Evento
-      v-if="TemplateTimeline.evento.exibir"
+      v-if="TemplateTimeline.dados.eventoAtual && TemplateTimeline.evento.exibir"
       data-testid="evento"
       :perfil="TemplateTimeline.dados.perfil"
       :evento="TemplateTimeline.dados.eventoAtual"
@@ -27,6 +27,7 @@
     <EditarStatus
       v-if="TemplateTimeline.dados.eventoAtual && TemplateTimeline.editarStatus.exibir"
       :salvarVisivel="TemplateTimeline.editarStatus.exibir"
+      :perfil="TemplateTimeline.dados.perfil"
       :evento="TemplateTimeline.dados.eventoAtual"
       @on-editar-status-salvar-clicked="aoSalvarStatus"
       @on-editar-status-cancelar-clicked="aoCancelarStatus"
@@ -54,6 +55,7 @@ import Evento from '../organismos/EventoDetalhado.vue';
 import Timeline from '../organismos/Timeline.vue';
 import EditarStatus from './EditarStatus.vue';
 import AdicionarObservacao from './AdicionarObservacao.vue';
+import TemplateEvento from './TemplateEvento.vue';
 
 export default defineComponent({
   props: {
@@ -95,13 +97,25 @@ export default defineComponent({
         perfil: toRef(props, 'perfil'),
         eventosTimeline: eventos,
         eventoAtual: eventoAtual,
+        eventoDetalhado: eventoAtual,
       },
     });
 
-    const isEventoDetalhado = (
-      evento: TipoEvento | EventoDetalhado
-    ): evento is EventoDetalhado => {
-      return (evento as EventoDetalhado).observacoes !== undefined;
+    // const isEventoDetalhado = (evento: TipoEvento | EventoDetalhado): evento is EventoDetalhado => {
+    //   return (evento as EventoDetalhado).observacoes !== undefined;
+    // };
+
+    // Type guard para verificar se um objeto é do tipo EventoDetalhado
+    const isEventoDetalhado = (evento: TipoEvento | EventoDetalhado): evento is EventoDetalhado => {
+      return 'observacoes' in evento;
+    };
+
+    // Função que converte um TipoEvento em EventoDetalhado
+    const converterParaTipoDetalhado = (evento: TipoEvento): EventoDetalhado => {
+      return {
+        ...evento,
+        observacoes: [],
+      };
     };
 
     const aoSelecionarEvento = (evento: TipoEvento): void => {
@@ -110,9 +124,14 @@ export default defineComponent({
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = false;
+
       if (isEventoDetalhado(evento)) {
+        TemplateTimeline.dados.eventoDetalhado = evento;
         TemplateTimeline.dados.eventoAtual = evento;
-        emit('onEventoTimelineClicked', evento);
+      } else {
+        TemplateTimeline.dados.eventoDetalhado = converterParaTipoDetalhado(
+          evento
+        ) satisfies EventoDetalhado;
       }
     };
 
@@ -139,10 +158,7 @@ export default defineComponent({
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = false;
-      emit('onEditarStatusSalvarClicked', novoValor);
-
-      // Remover alteração dos dados ao finalizar testes
-      TemplateTimeline.dados.eventoDetalhado!.status = novoValor;
+      emit('onEditarStatusSalvarClicked');
     };
 
     const aoCancelarStatus = (): void => {
@@ -169,14 +185,7 @@ export default defineComponent({
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = false;
-      emit('onAdicionarObservacaoSalvarClicked', mensagem);
-
-      // Remover alteração dos dados ao finalizar testes
-      TemplateTimeline.dados.eventoDetalhado!.observacoes.push({
-        mensagem: mensagem,
-        autor: { nome: 'José da Silva' },
-        criadaEm: new Date(),
-      });
+      emit('onAdicionarObservacaoSalvarClicked');
     };
 
     const aoCancelarObservacao = (): void => {

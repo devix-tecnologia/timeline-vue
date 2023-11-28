@@ -1,5 +1,5 @@
 <template>
-  <section class="box box-observacoes">
+  <section class="box box-observacoes" data-testid="observacoes">
     <h3>Observações:</h3>
     <ul class="lista-obs">
       <li v-for="(item, index) of observacoes" :key="index" class="lista-item">
@@ -18,6 +18,7 @@
       :aparencia="`preenchido`"
       :tamanho="`pequeno`"
       @click="emitirAdicionarClick"
+      data-testid="botao-adicionar-observacao"
     />
   </section>
 </template>

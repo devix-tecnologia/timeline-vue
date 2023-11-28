@@ -25,7 +25,6 @@ import Botao from './Botao.vue';
 export default defineComponent({
   name: 'AreaSalvamento',
   components: { Botao },
-  props: {},
   emits: {
     salvarClick: (mouseEvent: MouseEvent) => true,
     cancelarClick: (mouseEvent: MouseEvent) => true,

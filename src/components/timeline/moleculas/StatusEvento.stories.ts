@@ -29,33 +29,28 @@ export const Planejado = Template.bind({});
 Planejado.args = {
   status: "planejado",
   aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, planejado!"),
 };
 
 export const Atrasado = Template.bind({});
 Atrasado.args = {
   status: "atrasado",
   aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, atrasado!"),
 };
 
 export const Realizado = Template.bind({});
 Realizado.args = {
   status: "realizado",
   aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, realizado!"),
 };
 
 export const Cancelado = Template.bind({});
 Cancelado.args = {
   status: "cancelado",
   aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, cancelado!"),
 };
 
 export const Adiado = Template.bind({});
 Adiado.args = {
   status: "adiado",
   aparencia: "outline",
-  aoClicar: (evento) => alert("Olá, adiado!"),
 };

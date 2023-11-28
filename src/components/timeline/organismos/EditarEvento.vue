@@ -1,5 +1,5 @@
 <template>
-  <div class="editar-evento">
+  <div class="editar-evento" data-testid="editar-evento">
     <transition name="fadeTopo" mode="out-in" appear>
       <div class="area-conteudo">
         <slot name="conteudo"> </slot>
@@ -8,9 +8,9 @@
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <div class="salvar">
-        <AreaSalvamento :aoClicar="aoClicar" :class="classes" 
-        @salvarClick="aoSalvar"
-        @cancelarClick="aoCancelar" >
+        <AreaSalvamento  data-testid="area-salvamento"
+         @cancelar-click="aoCancelar"
+         @salvar-click="aoSalvar">
           <slot name="salvamento"></slot>
         </AreaSalvamento>
       </div>
@@ -22,15 +22,10 @@
 import { defineComponent, PropType, computed, reactive } from "vue";
 import "material-symbols/outlined.css";
 
-import { AoClicarEvento } from "../type";
 import AreaSalvamento from "../moleculas/AreaSalvamento.vue";
 
 export default defineComponent({
   props: {
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
     salvarVisivel: {
       type: Boolean,
     },

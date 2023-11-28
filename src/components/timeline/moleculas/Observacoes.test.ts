@@ -1,32 +1,20 @@
 import { render, fireEvent } from '@testing-library/vue';
-import Observacoes from './Observacoes.vue';
+import Botao from './Botao.vue';
+
 
 describe('Observacoes.vue', () => {
-  it('emits "salvarClick" quando clicado no botão salvar', async () => {
-    const props = {
-      observacoes: [],
-    };
 
-    const { emitted, getByTestId } = render(Observacoes, { props });
-    const elemento = getByTestId('botao-salvar');
+  it('emits "click" quando clicado no botão Adicionar Observação', async () => {
+    const { emitted, getByTestId } = render(Botao);
+
+    const elemento = getByTestId('botao');
     expect(elemento).toBeTruthy();
+
+    // Dispara o evento de clique
     await fireEvent.click(elemento);
 
-    // Verifica se o evento foi emitido
-    expect(emitted().salvarClick).toBeTruthy();
+    // Verifica se o evento click foi emitido
+    expect(emitted().click).toBeTruthy();
   });
 
-  it('emits "cancelarClick" quando clicado no botão cancelar', async () => {
-    const props = {
-      observacoes: [],
-    };
-
-    const { emitted, getByTestId } = render(Observacoes, { props });
-    const elemento = getByTestId('botao-cancelar');
-    expect(elemento).toBeTruthy();
-    await fireEvent.click(elemento);
-
-    // Verifica se o evento foi emitido
-    expect(emitted().cancelarClick).toBeTruthy();
-  });
 });

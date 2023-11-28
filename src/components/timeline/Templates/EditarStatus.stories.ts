@@ -1,6 +1,7 @@
 import EditarStatus from "./EditarStatus.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 import { dadosEventoDetalhado } from "../EventoDetalhado.mock";
+import { EventoDetalhado } from "../typeDetalhado";
 
 export default {
   title: "Devix/Eventos/Templates/EditarStatus",
@@ -19,12 +20,11 @@ const Template: StoryFn<typeof EditarStatus> = (args) => ({
     return { args };
   },
   template:
-    '<EditarStatus :aoClicar="args.aoClicar" :salvarVisivel="args.salvarVisivel"  :dadosEvento="args.dadosEvento"  />',
+    '<EditarStatus :aoClicar="args.aoClicar" :salvarVisivel="args.salvarVisivel"  :evento="args.evento"  />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  dadosEvento: eventoUmMock,
+  evento: eventoUmMock satisfies EventoDetalhado,
   salvarVisivel: true,
-  aoClicar: (evento) => alert("Olá!"),
 };

@@ -34,13 +34,32 @@ describe('Timeline.vue', () => {
     // Define as props que você deseja passar para o componente
     const props = {
       perfilTimeline: dadosPerfil,
-      eventosTimeline: dadosEventos,
+      eventosTimeline: [{
+        data: new Date("2023-04-26T19:00Z"),
+        previstoPara: new Date("2023-04-26T19:00Z"),
+        realizado: new Date("2023-04-26T19:30Z"),
+        tolerancia: 10,
+        titulo: "Vacina da Covid",
+        subtitulo: "Posto de saúde do bairro",
+        destaque: "",
+        categoria: {
+          nome: "Vacina",
+          icone: "vaccines",
+        },
+        status: "realizado",
+        criticidade: "media",
+        atual: false,
+        scroll: false,
+        clicavel: true, //habilita o click no evento
+      } satisfies Evento],
     };
 
-    const { emitted, getByTestId, debug } = render(Timeline, { props });
+    const { emitted, getByTestId } = render(Timeline, { props });
+
     //obtém o evento 1 ao invés do zero, pois o zero é o separador de data
     const elemento = getByTestId('evento-timeline-1');
     expect(elemento).toBeTruthy();
+    
     await fireEvent.click(elemento);
     // Verifica se o evento foi emitido
     expect(emitted().eventoClick).toBeTruthy();

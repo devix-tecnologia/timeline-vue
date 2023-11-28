@@ -1,4 +1,4 @@
-import { Perfil } from "./type";
+import { Perfil, Status } from "./type";
 import { EventoDetalhado } from "./typeDetalhado";
 
 export const dadosPerfil: Perfil = {
@@ -25,7 +25,7 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
     data: new Date("2023-11-01T10:30:00Z"),
     previstoPara: new Date("2023-11-01T10:30:00Z"),
     realizado: new Date("2023-11-01T10:30:00Z"),
-    duracao: null,
+    duracao: undefined,
     tolerancia: 10,
     titulo: "Dar vitamina D para a paciente",
     subtitulo: "Dar 2 comprimidos",
@@ -34,11 +34,11 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
       nome: "Remédio",
       icone: "pill",
     },
-    status: "realizado",
+    status: "realizado" satisfies Status,
     criticidade: "alta",
     atual: false,
     scroll: false,
-  },
+  } satisfies EventoDetalhado,
   {
     observacoes: [
       {
@@ -54,8 +54,8 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
     ],
     data: new Date("2023-11-01T10:30:00Z"),
     previstoPara: new Date("2023-11-01T10:30:00Z"),
-    realizado: null,
-    duracao: null,
+    realizado: undefined,
+    duracao: undefined,
     tolerancia: 10,
     titulo: "Caminhada no Parque",
     subtitulo:
@@ -65,9 +65,9 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
       nome: "Passeio",
       icone: "tour",
     },
-    status: "atrasado",
+    status: "atrasado" satisfies Status,
     criticidade: "media",
     atual: false,
     scroll: false,
-  }
+  } satisfies EventoDetalhado,
 ];

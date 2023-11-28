@@ -1,6 +1,6 @@
 <template>
   <EditarEvento
-    :aoClicar="aoClicar"
+    data-testid="adicionar-observacao"
     :salvarVisivel="salvarVisivel"
     v-model:observacao="state.observacaoLocal"
     @onEditarEventoSalvarClicked="aoSalvar"
@@ -17,15 +17,10 @@
 import { defineComponent, PropType, ref } from "vue";
 import "material-symbols/outlined.css";
 
-import { AoClicarEvento } from "../type";
 import EditarEvento from "../organismos/EditarEvento.vue";
 
 export default defineComponent({
   props: {
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
     salvarVisivel: {
       type: Boolean,
     },

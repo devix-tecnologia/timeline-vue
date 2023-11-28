@@ -1,5 +1,5 @@
 <template>
-  <EditarEvento :aoClicar="aoClicar" :salvarVisivel="salvarVisivel">
+  <EditarEvento :salvarVisivel="salvarVisivel">
     <template #conteudo>
       <h2>Adiantar horário:</h2>
       <div>
@@ -22,7 +22,7 @@
 import { defineComponent, PropType, reactive, ref } from "vue";
 import "material-symbols/outlined.css";
 
-import { AoClicarEvento } from "../type";
+// import { AoClicarEvento } from "../type";
 import { EventoDetalhado } from "../typeDetalhado";
 import EditarEvento from "../organismos/EditarEvento.vue";
 import Botao from "../moleculas/Botao.vue";
@@ -30,10 +30,6 @@ import { format, subMinutes } from "date-fns";
 
 export default defineComponent({
   props: {
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
     salvarVisivel: {
       type: Boolean,
     },

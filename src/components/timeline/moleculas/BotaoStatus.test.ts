@@ -3,7 +3,11 @@ import BotaoStatus from './BotaoStatus.vue';
 
 describe('BotaoStatus.vue', () => {
   it('emits "clicked" when button is clicked', async () => {
-    const { emitted, getByTestId } = render(BotaoStatus);
+    const props = {
+      status: "status",
+    };
+
+    const { emitted, getByTestId } = render(BotaoStatus, { props });
     const buttonValue = getByTestId('botao');
     expect(buttonValue).toBeTruthy();
     await buttonValue.click();

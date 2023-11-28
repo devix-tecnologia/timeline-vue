@@ -41,7 +41,7 @@ import { defineComponent, computed, reactive, nextTick, PropType } from 'vue';
 import EventoTimeline from '../moleculas/EventoTimeline.vue';
 import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
 import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
-import { AoClicarEvento, Evento, Perfil } from '../type';
+import { Evento, Perfil } from '../type';
 import 'material-symbols/outlined.css';
 
 type TipoEventoTimeline =
