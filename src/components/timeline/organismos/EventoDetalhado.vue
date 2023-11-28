@@ -27,7 +27,7 @@
       <StatusEvento
         :aparencia="`preenchido`"
         :status="evento.status"
-        @on-status-evento-edit-clicked="aoEditarEvento"
+        @editarClick="aoEditarEvento"
       />
     </transition>
   </div>

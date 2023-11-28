@@ -3,9 +3,9 @@
     <h3>Status:</h3>
     <BotaoStatus
       :aparencia="aparencia"
-      :aoClicar="aoClicar"
       :status="status"
-      @click="aoEditarEvento"
+      data-testid="status-evento"
+      @click="handleEditarClick"
     />
   </section>
 </template>
@@ -13,39 +13,36 @@
 <script lang="ts">
 import 'material-symbols/outlined.css';
 import { defineComponent, reactive, PropType } from 'vue';
-import { AoClicarEvento } from '../type';
 import BotaoStatus from './BotaoStatus.vue';
+import { Aparencia } from './Botao.vue';
+import { Status } from '../type';
 
 export default defineComponent({
   components: { BotaoStatus },
   name: 'StatusEvento',
   props: {
     aparencia: {
-      type: String,
+      type: String as PropType<Aparencia>,
     },
     status: {
       required: true,
-      type: String,
-    },
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
+      type: String as PropType<Status>,
+    }
   },
 
   emits: {
-    onStatusEventoEditClicked: () => true,
+    editarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const aoEditarEvento = () => {
-      emit('onStatusEventoEditClicked');
+    const handleEditarClick = (mouseEvent: MouseEvent) => {
+      emit('editarClick', mouseEvent);
     };
 
     props = reactive(props);
 
     return {
-      aoEditarEvento,
+      handleEditarClick,
     };
   },
 });
