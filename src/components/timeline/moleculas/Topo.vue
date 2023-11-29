@@ -1,7 +1,7 @@
 <template>
   <div class="topo" :class="classes">
     <div class="conteudoTitulo">
-      <button class="btn_voltar" @click="emitVoltarClick">
+      <button class="btn_voltar" @click="emitirVoltarClick">
         <span class="material-symbols-outlined"> arrow_back </span>
       </button>
       <h3 class="titulo">{{ titulo }}</h3>
@@ -32,13 +32,13 @@ export default defineComponent({
   },
 
   setup(props, { emit }) {
-    const emitVoltarClick = () => {
+    const emitirVoltarClick = () => {
       emit('voltarClick');
     };
 
     props = reactive(props);
     return {
-      emitVoltarClick,
+      emitirVoltarClick,
       classes: computed(() => ({
         'bg-escuro': props.escuro,
         'bg-claro': !props.escuro,

@@ -25,7 +25,6 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
     data: new Date("2023-11-01T10:30:00Z"),
     previstoPara: new Date("2023-11-01T10:30:00Z"),
     realizado: new Date("2023-11-01T10:30:00Z"),
-    duracao: null,
     tolerancia: 10,
     titulo: "Dar vitamina D para a paciente",
     subtitulo: "Dar 2 comprimidos",
@@ -54,8 +53,6 @@ export const dadosEventoDetalhado: EventoDetalhado[] = [
     ],
     data: new Date("2023-11-01T10:30:00Z"),
     previstoPara: new Date("2023-11-01T10:30:00Z"),
-    realizado: null,
-    duracao: null,
     tolerancia: 10,
     titulo: "Caminhada no Parque",
     subtitulo:

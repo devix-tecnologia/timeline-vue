@@ -11,10 +11,10 @@ describe('TemplateTimeline.vue', () => {
 
     const { getByTestId } = render(TemplateTimeline, { props });
 
-    expect(getByTestId('timeline')).toBeTruthy();
+    expect(getByTestId('template-timeline')).toBeTruthy();
   });
 
-  it.skip('renderiza EventoTimeline quando passado como propriedade', async () => {
+  it('renderiza EventoTimeline quando passado como propriedade', async () => {
     const props = {
       perfil: dadosPerfil,
       eventos: dadosEventosDetalhados,
@@ -26,8 +26,20 @@ describe('TemplateTimeline.vue', () => {
     expect(elemento).toBeTruthy();
     await fireEvent.click(elemento);
     // Verifica se o evento foi emitido
-    // expect(emitted().eventoTimelineClicked).toBeTruthy();
+    expect(emitted().eventoClick).toBeTruthy();
+  });
 
-    expect(getByTestId('evento')).toBeTruthy();
+  it('renderiza eventos na timeline', async () => {
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const {  getByTestId } = render(TemplateTimeline, { props });
+    props.eventos.forEach((evento, index) => {
+      const testid = `evento-timeline-${index}`;
+      const elemento = getByTestId(testid);
+      expect(elemento).toBeTruthy();
+    });
   });
 });

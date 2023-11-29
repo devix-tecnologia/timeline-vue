@@ -1,5 +1,5 @@
 <template>
-  <div class="editar-evento">
+  <div class="editar-evento" data-testid="editar-evento">
     <transition name="fadeTopo" mode="out-in" appear>
       <div class="area-conteudo">
         <slot name="conteudo"> </slot>
@@ -8,9 +8,7 @@
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <div class="salvar">
-        <AreaSalvamento :aoClicar="aoClicar" :class="classes" 
-        @salvarClick="aoSalvar"
-        @cancelarClick="aoCancelar" >
+        <AreaSalvamento @salvarClick="emitirSalvarClick" @cancelarClick="emitirCancelarClick">
           <slot name="salvamento"></slot>
         </AreaSalvamento>
       </div>
@@ -19,45 +17,40 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, computed, reactive } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, reactive } from 'vue';
+import 'material-symbols/outlined.css';
 
-import { AoClicarEvento } from "../type";
-import AreaSalvamento from "../moleculas/AreaSalvamento.vue";
+import AreaSalvamento from '../moleculas/AreaSalvamento.vue';
 
 export default defineComponent({
   props: {
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
     salvarVisivel: {
       type: Boolean,
     },
   },
   components: { AreaSalvamento },
   emits: {
-    onEditarEventoSalvarClicked: () => true,
-    onEditarEventoCancelarClicked: () => true,
+    salvarClick: (mouseEvent: MouseEvent) => true,
+    cancelarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const aoSalvar = () => {
-      emit('onEditarEventoSalvarClicked');
+    const emitirSalvarClick = (mouseEvent: MouseEvent) => {
+      emit('salvarClick', mouseEvent);
     };
 
-    const aoCancelar = () => {
-      emit('onEditarEventoCancelarClicked');
+    const emitirCancelarClick = (mouseEvent: MouseEvent) => {
+      emit('cancelarClick', mouseEvent);
     };
 
-    props = reactive(props);
+    // props = reactive(props);
     return {
-      aoSalvar,
-      aoCancelar,
-      classes: computed(() => ({
-        visivel: props.salvarVisivel,
-        invisivel: !props.salvarVisivel,
-      })),
+      emitirSalvarClick,
+      emitirCancelarClick,
+      // classes: computed(() => ({
+      //   visivel: props.salvarVisivel,
+      //   invisivel: !props.salvarVisivel,
+      // })),
     };
   },
 });

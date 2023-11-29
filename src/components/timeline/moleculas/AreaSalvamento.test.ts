@@ -14,7 +14,7 @@ describe('AreaSalvamento.vue', () => {
     expect(botaoCancelar).toBeTruthy();
   });
 
-  it.only('emits "salvarClick" quando clicado no botão salvar', async () => {
+  it('emits "salvarClick" quando clicado no botão salvar', async () => {
     const { emitted, getByTestId } = render(AreaSalvamento);
     const elemento = getByTestId('botao-salvar');
     expect(elemento).toBeTruthy();
@@ -22,7 +22,7 @@ describe('AreaSalvamento.vue', () => {
     await fireEvent.click(elemento);
 
     // Verifica se o evento foi emitido
-    // expect(emitted().salvarClick).toBeTruthy();
+    expect(emitted().salvarClick).toBeTruthy();
   });
 
   it('emits "cancelarClick" quando clicado no botão cancelar', async () => {

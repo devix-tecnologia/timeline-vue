@@ -1,10 +1,7 @@
 <template>
-  <div class="evento">
+  <div class="evento" data-testid="evento-detalhado">
     <transition name="fadeBaixo" mode="out-in" appear>
-      <CabecalhoEventoDetalhado
-        :perfil="perfil"
-        :evento="evento"
-      />
+      <CabecalhoEventoDetalhado :perfil="perfil" :evento="evento" />
     </transition>
 
     <transition name="fadeBaixo" mode="out-in" appear>
@@ -19,7 +16,7 @@
       <Observacoes
         :observacoes="evento.observacoes"
         :tituloBotao="`Inserir observação`"
-        @adicionarClick="aoAdicionarObservacao"
+        @adicionarClick="handleAdicionarObservacaoClick"
       />
     </transition>
 
@@ -27,7 +24,7 @@
       <StatusEvento
         :aparencia="`preenchido`"
         :status="evento.status"
-        @editarClick="aoEditarEvento"
+        @editarClick="handleEditarClick"
       />
     </transition>
   </div>
@@ -44,6 +41,7 @@ import Observacoes from '../moleculas/Observacoes.vue';
 import StatusEvento from '../moleculas/StatusEvento.vue';
 
 export default defineComponent({
+  name: 'EventoDetalhado',
   props: {
     perfil: {
       required: true,
@@ -57,22 +55,22 @@ export default defineComponent({
   components: { CabecalhoEventoDetalhado, Observacoes, StatusEvento },
 
   emits: {
-    statusEditClick: () => true,
-    observacaoAddClick: () => true,
+    statusEditarClick: (mouseEvent: MouseEvent) => true,
+    observacaoAdicionarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const aoEditarEvento = () => {
-      emit('statusEditClick');
+    const handleEditarClick = (mouseEvent: MouseEvent) => {
+      emit('statusEditarClick', mouseEvent);
     };
 
-    const aoAdicionarObservacao = () => {
-      emit('observacaoAddClick');
+    const handleAdicionarObservacaoClick = (mouseEvent: MouseEvent) => {
+      emit('observacaoAdicionarClick', mouseEvent);
     };
 
     return {
-      aoEditarEvento,
-      aoAdicionarObservacao,
+      handleEditarClick,
+      handleAdicionarObservacaoClick,
     };
   },
 });

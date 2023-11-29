@@ -28,7 +28,7 @@
           :subtitulo="evento.valor.subtitulo"
           :texto-destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
-          @click="emitEventoClicado(evento.valor)"
+          @click="emitirEventoClick(evento.valor)"
           :data-testid="`evento-timeline-${index}`"
         />
       </div>
@@ -41,7 +41,7 @@ import { defineComponent, computed, reactive, nextTick, PropType } from 'vue';
 import EventoTimeline from '../moleculas/EventoTimeline.vue';
 import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
 import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
-import { AoClicarEvento, Evento, Perfil } from '../type';
+import { Evento, Perfil } from '../type';
 import 'material-symbols/outlined.css';
 
 type TipoEventoTimeline =
@@ -71,7 +71,7 @@ export default defineComponent({
   },
 
   setup(props, { emit }) {
-    const emitEventoClick = (evento: Evento) => {
+    const emitirEventoClick = (evento: Evento) => {
       emit('eventoClick', evento);
     };
 
@@ -186,7 +186,7 @@ export default defineComponent({
     return {
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
-      emitEventoClicado: emitEventoClick,
+      emitirEventoClick,
     };
   },
   mounted() {

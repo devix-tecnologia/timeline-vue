@@ -1,17 +1,17 @@
-import Timeline from "./Timeline.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
-import { dadosEventos, dadosPerfil } from "./Timeline.mock";
-import { Evento } from "../type";
+import Timeline from './Timeline.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
+import { dadosEventos, dadosPerfil } from './Timeline.mock';
+import { Evento } from '../type';
 
 export default {
-  title: "Devix/Eventos/Organismos/Timeline",
+  title: 'Devix/Eventos/Organismos/Timeline',
   component: Timeline,
   parameters: {
     design: {
-      type: "figma",
-      url: "https://www.figma.com/file/Eb4gpZ5HsK3xPAErpd8TQl/timeline-ui?type=design&node-id=226-2538&mode=design&t=gtygrUm9znRhEPR6-4",
+      type: 'figma',
+      url: 'https://www.figma.com/file/Eb4gpZ5HsK3xPAErpd8TQl/timeline-ui?type=design&node-id=226-2538&mode=design&t=gtygrUm9znRhEPR6-4',
     },
-    componentSubtitle: "Linha do tempo padrão com identidade da Devix",
+    componentSubtitle: 'Linha do tempo padrão com identidade da Devix',
   },
   argTypes: {},
 } as Meta<typeof Timeline>;
@@ -39,13 +39,13 @@ atualizarDatas(dadosEventos);
 const Template: StoryFn<typeof Timeline> = (args) => ({
   components: { Timeline: Timeline },
   setup() {
-    const emitEventoClick = (evento: Evento) => {
+    const emitirEventoClick = (evento: Evento) => {
       alert(`foi clicado no evento ${evento.titulo}`);
     };
-    return { args, emitEventoClick };
+    return { args, emitirEventoClick };
   },
   template:
-    '<Timeline @eventoClick="emitEventoClick" :perfilTimeline="args.perfilTimeline" :eventosTimeline="args.eventosTimeline" style="position: relative" />',
+    '<Timeline v-bind="args" @eventoClick="emitirEventoClick" style="position: relative" />',
 });
 
 export const Padrao = Template.bind({});

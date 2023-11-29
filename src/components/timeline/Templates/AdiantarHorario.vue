@@ -1,13 +1,18 @@
 <template>
-  <EditarEvento :aoClicar="aoClicar" :salvarVisivel="salvarVisivel">
+  <EditarEvento
+    data-testid="adiantar-horario"
+    @salvarClick="emitirSalvarClick"
+    :salvarVisivel="salvarVisivel"
+  >
     <template #conteudo>
       <h2>Adiantar horário:</h2>
       <div>
         <div>
-          <input id="horario" type="text" v-model="horarioAdiantado" />
+          <input id="horario" type="text" data-testid="horario" value="29/11/2023 - 14:15"/>
         </div>
 
         <Botao
+          data-testid="adiantar-15-minutos"
           @click="adiantarHorario"
           :titulo="`- 15 minutos`"
           :aparencia="`preenchido`"
@@ -19,48 +24,49 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive, ref } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, PropType, reactive, ref } from 'vue';
+import 'material-symbols/outlined.css';
 
-import { AoClicarEvento } from "../type";
-import { EventoDetalhado } from "../typeDetalhado";
-import EditarEvento from "../organismos/EditarEvento.vue";
-import Botao from "../moleculas/Botao.vue";
-import { format, subMinutes } from "date-fns";
+import { EventoDetalhado } from '../typeDetalhado';
+import EditarEvento from '../organismos/EditarEvento.vue';
+import Botao from '../moleculas/Botao.vue';
+import { format, subMinutes } from 'date-fns';
 
 export default defineComponent({
   props: {
-    aoClicar: {
-      required: false,
-      type: Function as PropType<AoClicarEvento>,
-    },
     salvarVisivel: {
       type: Boolean,
     },
-    dadosEvento: {
+    evento: {
       required: true,
       type: Object as PropType<EventoDetalhado>,
     },
   },
   components: { EditarEvento, Botao },
-
-  setup(props) {
+  emmits: {
+    salvarClick: (horario: Date, mouseEvent: MouseEvent) => true,
+    cancelarClick: (mouseEvent: MouseEvent) => true,
+  },
+  setup(props, { emit }) {
     props = reactive(props);
 
-    const horarioOriginal = ref(new Date(props.dadosEvento.previstoPara));
-    const horarioAdiantado = ref(
-      format(horarioOriginal.value, "dd/MM/yyyy - HH:mm")
-    );
+    const horarioOriginal = ref(new Date(props.evento.previstoPara));
+    const horarioAdiantado = ref(format(horarioOriginal.value, 'dd/MM/yyyy - HH:mm'));
 
     const adiantarHorario = () => {
       const novoHorario = subMinutes(horarioOriginal.value, 15);
       horarioOriginal.value = novoHorario;
-      horarioAdiantado.value = format(novoHorario, "dd/MM/yyyy - HH:mm");
+      horarioAdiantado.value = format(novoHorario, 'dd/MM/yyyy - HH:mm');
+    };
+
+    const emitirSalvarClick = (mouseEvent: MouseEvent) => {
+      emit('salvarClick', horarioOriginal.value, mouseEvent);
     };
 
     return {
       horarioAdiantado,
       adiantarHorario,
+      emitirSalvarClick,
     };
   },
 });

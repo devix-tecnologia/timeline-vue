@@ -1,5 +1,5 @@
 <template>
-  <Botao :aparencia="aparencia" :class="classes" @click="emitClick">
+  <Botao :aparencia="aparencia" :class="classes" @click="emitirClick">
     <IconeStatus class="icone" :status="status" /> {{ status }}
   </Botao>
 </template>
@@ -33,12 +33,12 @@ export default defineComponent({
       [`${props.status}`]: true,
     }));
 
-    const emitClick = (mouseEvent: MouseEvent) => {
+    const emitirClick = (mouseEvent: MouseEvent) => {
       emit('click', mouseEvent);
     };
 
     return {
-      emitClick,
+      emitirClick,
       classes,
     };
   },
