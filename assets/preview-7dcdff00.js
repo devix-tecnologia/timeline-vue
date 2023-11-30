@@ -1,0 +1,1 @@
+/* empty css              */const e={parameters:{actions:{argTypesRegex:"^on[A-Z].*"},controls:{matchers:{color:/(background|color)$/i,date:/Date$/}},options:{storySort:{order:["Exemplos",["Atomos","Moleculas","Organismos","Templates"],"Eventos"],method:"alphabetical"}}}};export{e as default};
