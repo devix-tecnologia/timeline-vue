@@ -1,7 +1,7 @@
 import TemplateTimeline from './TemplateTimeline.vue';
 import { Meta, StoryFn } from '@storybook/vue3';
 import { dadosEventoDetalhado, dadosPerfil as dadosPerfilEvento } from '../EventoDetalhado.mock';
-import { dadosEventos, dadosPerfil as dadosPerfilTimeline } from '../organismos/Timeline.mock';
+import { dadosEventosDetalhados, dadosPerfil as dadosPerfilTimeline } from '../Templates//TemplateTimeline.mock';
 
 export default {
   title: 'Devix/Eventos/Templates/TemplateTimeline',
@@ -16,7 +16,7 @@ export default {
 
 const perfilSemTitulo = { nome: '', imagem: '', icone: '' };
 const perfilTimelineMock = dadosPerfilTimeline;
-const eventosTimeline = dadosEventos;
+const eventosTimeline = dadosEventosDetalhados;
 
 const Template: StoryFn<typeof TemplateTimeline> = (args) => ({
   components: { TemplateTimeline },

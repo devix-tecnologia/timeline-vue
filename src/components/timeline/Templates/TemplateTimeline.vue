@@ -4,7 +4,7 @@
       v-if="TemplateTimeline.topo.exibir"
       :titulo="TemplateTimeline.dados.perfil.nome"
       :escuro="false"
-      @voltar-click="aoVoltarParaTelaAnterior"
+      @voltar-click="handleVoltarTela"
     />
 
     <Timeline
@@ -12,7 +12,7 @@
       data-testid="timeline"
       :perfilTimeline="TemplateTimeline.dados.perfil"
       :eventos-timeline="TemplateTimeline.dados.eventosTimeline"
-      @eventoClick="aoSelecionarEvento"
+      @eventoClick="selecionarEvento"
     />
 
     <EventoDetalhado
@@ -70,6 +70,7 @@ export default defineComponent({
   components: { Topo, EventoDetalhado, Timeline, EditarStatus, AdicionarObservacao },
 
   emits: {
+    voltarClick: (mouseEvent: MouseEvent) => true,
     eventoClick: (evento: TipoEventoDetalhado) => true,
     statusEditarClick: (mouseEvent: MouseEvent) => true,
     observacaoAdicionarClick: (mouseEvent: MouseEvent) => true,
@@ -102,7 +103,7 @@ export default defineComponent({
       return (evento as TipoEventoDetalhado).observacoes !== undefined;
     };
 
-    const aoSelecionarEvento = (evento: TipoEvento): void => {
+    const selecionarEvento = (evento: TipoEvento): void => {
       TemplateTimeline.topo.exibir = true;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = true;
@@ -114,12 +115,18 @@ export default defineComponent({
       }
     };
 
-    const aoVoltarParaTelaAnterior = (): void => {
+    const handleVoltarTela = (): void => {
       TemplateTimeline.topo.exibir = true;
-      TemplateTimeline.timeline.exibir = !TemplateTimeline.timeline.exibir;
-      TemplateTimeline.evento.exibir = !TemplateTimeline.evento.exibir;
-      TemplateTimeline.editarStatus.exibir = false;
-      TemplateTimeline.adicionarObservacao.exibir = false;
+      const telaAtualTimeline = TemplateTimeline.timeline.exibir;
+      
+      if (telaAtualTimeline) {
+        emit('voltarClick', new MouseEvent('click'));
+      } else {
+        TemplateTimeline.timeline.exibir = true;
+        TemplateTimeline.evento.exibir = false;
+        TemplateTimeline.editarStatus.exibir = false;
+        TemplateTimeline.adicionarObservacao.exibir = false;
+      }
     };
 
     const handleStatusEditarClick = (mouseEvent: MouseEvent): void => {
@@ -180,8 +187,8 @@ export default defineComponent({
     };
 
     return {
-      aoSelecionarEvento,
-      aoVoltarParaTelaAnterior,
+      selecionarEvento,
+      handleVoltarTela,
       handleStatusEditarClick,
       handleStatusSalvarClick,
       handleStatusCancelarClick,
