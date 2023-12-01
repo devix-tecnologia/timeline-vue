@@ -17,4 +17,5 @@ describe('BotaoStatus.vue', () => {
     // Verifica se o evento foi emitido
     expect(emitted().click).toBeTruthy();
   });
+  
 });

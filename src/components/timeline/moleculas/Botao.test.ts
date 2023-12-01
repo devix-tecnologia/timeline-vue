@@ -2,6 +2,7 @@ import { render } from '@testing-library/vue';
 import Botao from './Botao.vue';
 
 describe('Botao.vue', () => {
+  
   it('renderiza componente', async () => {
     const props = {
       aparencia: 'outline',
@@ -23,4 +24,5 @@ describe('Botao.vue', () => {
     // Verifica se o evento foi emitido
     expect(emitted().click).toBeTruthy();
   });
+
 });

@@ -20,8 +20,8 @@
       data-testid="evento"
       :perfil="TemplateTimeline.dados.perfil"
       :evento="TemplateTimeline.dados.eventoAtual"
-      @on-evento-detalhado-status-edit-clicked="aoEditarEvento"
-      @on-evento-detalhado-observacoes-add-clicked="aoAdicionarObservacao"
+      @observacao-add-click="aoAdicionarObservacao"
+      @status-edit-click="aoEditarEvento"
     />
 
     <EditarStatus
@@ -55,7 +55,7 @@ import Evento from '../organismos/EventoDetalhado.vue';
 import Timeline from '../organismos/Timeline.vue';
 import EditarStatus from './EditarStatus.vue';
 import AdicionarObservacao from './AdicionarObservacao.vue';
-import TemplateEvento from './TemplateEvento.vue';
+
 
 export default defineComponent({
   props: {
@@ -75,9 +75,9 @@ export default defineComponent({
     onEventoTimelineClicked: (evento: EventoDetalhado) => true,
     onEventoDetalhadoStatusEditClicked: () => true,
     onEventoDetalhadoObservacoesAddClicked: () => true,
-    onEditarStatusSalvarClicked: () => true,
+    onEditarStatusSalvarClicked: (status: Status) => true,
     onEditarStatusCancelarClicked: () => true,
-    onAdicionarObservacaoSalvarClicked: () => true,
+    onAdicionarObservacaoSalvarClicked: (mensagem: string) => true,
     onAdicionarObservacaoCancelarClicked: () => true,
   },
 
@@ -152,13 +152,13 @@ export default defineComponent({
       emit('onEventoDetalhadoStatusEditClicked');
     };
 
-    const aoSalvarStatus = (novoValor: Status): void => {
+    const aoSalvarStatus = (status: Status): void => {
       TemplateTimeline.topo.exibir = true;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = false;
-      emit('onEditarStatusSalvarClicked');
+      emit('onEditarStatusSalvarClicked', status );
     };
 
     const aoCancelarStatus = (): void => {
@@ -185,7 +185,7 @@ export default defineComponent({
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = false;
-      emit('onAdicionarObservacaoSalvarClicked');
+      emit('onAdicionarObservacaoSalvarClicked', mensagem);
     };
 
     const aoCancelarObservacao = (): void => {

@@ -19,4 +19,5 @@ describe('MyComponent.vue', () => {
     // Verifica se o evento foi emitido
     expect(emitted().clicaramNoBotaoUpdateStatus).toBeTruthy();
   });
+  
 });

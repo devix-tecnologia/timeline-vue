@@ -22,9 +22,12 @@
 import 'material-symbols/outlined.css';
 import { defineComponent } from 'vue';
 import Botao from './Botao.vue';
+
 export default defineComponent({
   name: 'AreaSalvamento',
+
   components: { Botao },
+
   emits: {
     salvarClick: (mouseEvent: MouseEvent) => true,
     cancelarClick: (mouseEvent: MouseEvent) => true,

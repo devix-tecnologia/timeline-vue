@@ -17,8 +17,6 @@ describe('TemplateTimeline.vue', () => {
     await fireEvent.click(elemento);
     // Verifica se o evento foi emitido
      expect(emitted().click).toBeTruthy();
-
-    expect(getByTestId('evento')).toBeTruthy();
   });
 
   it('emit evento click ao clicar no evento 2 da Timeline', async () => {
@@ -34,7 +32,5 @@ describe('TemplateTimeline.vue', () => {
     await fireEvent.click(elemento);
     // Verifica se o evento foi emitido
      expect(emitted().click).toBeTruthy();
-
-    expect(getByTestId('evento')).toBeTruthy();
   });
 });

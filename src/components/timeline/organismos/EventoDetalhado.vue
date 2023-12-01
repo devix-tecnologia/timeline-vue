@@ -28,7 +28,7 @@
         data-testid="status-evento"
         :aparencia="`preenchido`"
         :status="evento.status"
-        @on-status-evento-edit-clicked="aoEditarEvento"
+        @click="aoEditarEvento"
       />
     </transition>
   </div>

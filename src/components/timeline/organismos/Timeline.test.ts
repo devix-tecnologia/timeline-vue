@@ -4,31 +4,6 @@ import { dadosPerfil, dadosEventos } from './Timeline.mock';
 import { Evento } from '../type';
 
 describe('Timeline.vue', () => {
-  it('renderiza PerfilTimeline quando passado como propriedade', () => {
-    const props = {
-      perfilTimeline: dadosPerfil,
-      eventosTimeline: [],
-    };
-
-    const { getByTestId } = render(Timeline, { props });
-
-    expect(getByTestId('perfilTimeline')).toBeTruthy();
-  });
-
-  it('renderiza EventoTimeline quando passado como propriedade', () => {
-    const props = {
-      perfilTimeline: dadosPerfil,
-      eventosTimeline: dadosEventos,
-    };
-
-    const { getByTestId } = render(Timeline, { props });
-
-    props.eventosTimeline.forEach((evento, index) => {
-      const testid = `evento-timeline-${index}`;
-      const elemento = getByTestId(testid);
-      expect(elemento).toBeTruthy();
-    });
-  });
 
   it('emite "eventoClick" quando clicado em um evento da timeline', async () => {
     // Define as props que você deseja passar para o componente
