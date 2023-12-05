@@ -25,7 +25,6 @@ const Template: StoryFn<typeof AdiantarHorario> = (args) => ({
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  dadosEvento: eventoUmMock,
   salvarVisivel: true,
-  aoClicar: (evento) => alert("Olá!"),
+  dadosEvento: eventoUmMock,
 };
