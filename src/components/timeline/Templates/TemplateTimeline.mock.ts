@@ -1,5 +1,5 @@
 import { Perfil } from "../type";
-import { EventoDetalhado } from "../typeDetalhado";
+import { Observacao, EventoDetalhado } from "../typeDetalhado";
 
 export const dadosPerfil: Perfil = {
   nome: "Maria do Socorro",
@@ -24,7 +24,6 @@ export const dadosEventosDetalhados: EventoDetalhado[] = [
     },
     status: "realizado",
     criticidade: "media",
-
     atual: false,
     scroll: false,
     observacoes: [
@@ -32,9 +31,9 @@ export const dadosEventosDetalhados: EventoDetalhado[] = [
         mensagem: "Atraso de 10 minutos",
         autor: { nome: "Maria do Socorro" },
         criadaEm: new Date("2023-04-26T19:10Z"),
-      }
+      } satisfies Observacao,
     ],
-  },
+  } satisfies EventoDetalhado,
   {
     data: new Date("2023-04-26T18:10Z"),
     previstoPara: new Date("2023-04-26T18:10Z"),
@@ -50,7 +49,6 @@ export const dadosEventosDetalhados: EventoDetalhado[] = [
     },
     status: "cancelado",
     criticidade: "baixa",
-
     atual: false,
     scroll: false,
     observacoes: [
@@ -58,7 +56,7 @@ export const dadosEventosDetalhados: EventoDetalhado[] = [
         mensagem: "Atraso de 10 minutos",
         autor: { nome: "Maria do Socorro" },
         criadaEm: new Date("2023-04-26T19:10Z"),
-      }
+      } satisfies Observacao,
     ],
-  }
+  } satisfies EventoDetalhado
 ];

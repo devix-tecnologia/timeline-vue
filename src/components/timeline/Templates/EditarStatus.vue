@@ -1,8 +1,8 @@
 <template>
   <EditarEvento
     :salvarVisivel="salvarVisivel"
-    @onEditarEventoSalvarClicked="aoSalvar"
-    @onEditarEventoCancelarClicked="aoCancelar"
+    @cancelarClick="aoCancelar"
+    @salvarClick="aoSalvar(selecionado)"
   >
     <template #conteudo>
       <h2>Alterar o Status para:</h2>
@@ -39,7 +39,6 @@
 import { defineComponent, PropType, ref, reactive, computed } from 'vue';
 import 'material-symbols/outlined.css';
 
-// import { AoClicarEvento } from '../type';
 import { Status } from '../type';
 import { EventoDetalhado } from '../typeDetalhado';
 import EditarEvento from '../organismos/EditarEvento.vue';
@@ -61,22 +60,20 @@ export default defineComponent({
   components: { EditarEvento, IconeStatus, BotaoStatus },
 
   emits: {
-    onEditarStatusSalvarClicked: (status: Status) => true,
-    onEditarStatusCancelarClicked: () => true,
+    salvarClick: (status: Status) => true,
+    cancelarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const aoSalvar = () => {
-      emit('onEditarStatusSalvarClicked', selecionado.value);
+    const aoSalvar = (status: Status) => {
+      emit('salvarClick', status);
     };
 
-    const aoCancelar = () => {
-      emit('onEditarStatusCancelarClicked');
+    const aoCancelar = (mouseEvent: MouseEvent) => {
+      emit('cancelarClick', mouseEvent);
     };
 
-    props = reactive(props);
-
-    let selecionado = ref(props.evento.status);
+    const selecionado = ref(props.evento.status);
 
     function atualizarSelecionado(novoValor: Status) {
       selecionado.value = novoValor;

@@ -1,10 +1,10 @@
 <template>
-  <div class="pagina">
-    <topo
+  <div class="pagina" data-testid="template-timeline">
+    <Topo
       v-if="TemplateTimeline.topo.exibir"
       :titulo="TemplateTimeline.dados.perfil.nome"
       :escuro="false"
-      @voltar-click="aoVoltarParaTelaAnterior"
+      @voltar-click="handleVoltarTela"
     />
 
     <Timeline
@@ -12,7 +12,7 @@
       data-testid="timeline"
       :perfilTimeline="TemplateTimeline.dados.perfil"
       :eventosTimeline="TemplateTimeline.dados.eventosTimeline"
-      @evento-click="aoSelecionarEvento"
+      @evento-click="selecionarEvento"
     />
 
     <Evento
@@ -20,8 +20,8 @@
       data-testid="evento"
       :perfil="TemplateTimeline.dados.perfil"
       :evento="TemplateTimeline.dados.eventoAtual"
-      @observacao-add-click="aoAdicionarObservacao"
-      @status-edit-click="aoEditarEvento"
+      @observacao-adicionar-click="handleObservacaoAdicionarClick"
+      @status-editar-click="handleStatusEditarClick"
     />
 
     <EditarStatus
@@ -29,25 +29,25 @@
       :salvarVisivel="TemplateTimeline.editarStatus.exibir"
       :perfil="TemplateTimeline.dados.perfil"
       :evento="TemplateTimeline.dados.eventoAtual"
-      @on-editar-status-salvar-clicked="aoSalvarStatus"
-      @on-editar-status-cancelar-clicked="aoCancelarStatus"
+      @salvar-click="handleStatusSalvarClick"
+      @cancelar-click="handleStatusCancelarClick"
     />
 
     <AdicionarObservacao
       v-if="TemplateTimeline.adicionarObservacao.exibir"
       :salvarVisivel="TemplateTimeline.adicionarObservacao.exibir"
-      @on-adicionar-observacao-salvar-clicked="aoSalvarObservacao"
-      @on-adicionar-observacao-cancelar-clicked="aoCancelarObservacao"
+      @adicionar-click="handleAdicionarObservacaoSalvarClick"
+      @cancelar-click="handleObservacaoAdicionarCancelarClick"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, toRef, reactive, computed } from 'vue';
+import { defineComponent, PropType, toRef, reactive } from 'vue';
 import 'material-symbols/outlined.css';
 
 import { Perfil, Status } from '../type';
-import { EventoDetalhado } from '../typeDetalhado';
+import { EventoDetalhado as TipoEventoDetalhado } from '../typeDetalhado';
 import { Evento as TipoEvento } from '../type';
 
 import Topo from '../moleculas/Topo.vue';
@@ -55,7 +55,6 @@ import Evento from '../organismos/EventoDetalhado.vue';
 import Timeline from '../organismos/Timeline.vue';
 import EditarStatus from './EditarStatus.vue';
 import AdicionarObservacao from './AdicionarObservacao.vue';
-
 
 export default defineComponent({
   props: {
@@ -65,26 +64,44 @@ export default defineComponent({
     },
     eventos: {
       required: true,
-      type: Array as PropType<EventoDetalhado[]>,
+      type: Array as PropType<TipoEventoDetalhado[]>,
     },
   },
 
   components: { Topo, Evento, Timeline, EditarStatus, AdicionarObservacao },
 
   emits: {
-    onEventoTimelineClicked: (evento: EventoDetalhado) => true,
+    onEventoTimelineClicked: (evento: TipoEventoDetalhado) => true,
     onEventoDetalhadoStatusEditClicked: () => true,
     onEventoDetalhadoObservacoesAddClicked: () => true,
     onEditarStatusSalvarClicked: (status: Status) => true,
-    onEditarStatusCancelarClicked: () => true,
+    onEditarStatusCancelarClicked: (mouseEvent: MouseEvent) => true,
     onAdicionarObservacaoSalvarClicked: (mensagem: string) => true,
-    onAdicionarObservacaoCancelarClicked: () => true,
+    onAdicionarObservacaoCancelarClicked: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const eventos = toRef(props, 'eventos');
+    const eventosDetalhados = toRef(props, 'eventos');
+    const eventoAtual = toRef<TipoEventoDetalhado | null>(null);
 
-    const eventoAtual = toRef<EventoDetalhado | null>(null);
+    // Função que converte um TipoEvento em EventoDetalhado
+    const converterParaTipoDetalhado = (evento: TipoEvento): TipoEventoDetalhado => {
+      return {
+        ...evento,
+        observacoes: [],
+      };
+    };
+
+    // Função que converte um TipoDetalhado em TipoEvento
+    const converterParaTipoEvento = (eventoDetalhado: TipoEventoDetalhado): TipoEvento => {
+      const { observacoes, ...tipoEvento } = eventoDetalhado;
+      return tipoEvento;
+    };
+
+    // Função que converte um array de TipoDetalhado em TipoEvento
+    const converterArrayParaTipoEvento = (arrayDetalhado: TipoEventoDetalhado[]): TipoEvento[] => {
+      return arrayDetalhado.map(converterParaTipoEvento);
+    };
 
     const TemplateTimeline = reactive({
       topo: { exibir: true },
@@ -95,30 +112,21 @@ export default defineComponent({
       dados: {
         eventos: toRef(props, 'eventos'),
         perfil: toRef(props, 'perfil'),
-        eventosTimeline: eventos,
+        eventosTimeline: converterArrayParaTipoEvento(eventosDetalhados.value),
+        eventosDetalhados: eventosDetalhados,
         eventoAtual: eventoAtual,
         eventoDetalhado: eventoAtual,
       },
     });
 
-    // const isEventoDetalhado = (evento: TipoEvento | EventoDetalhado): evento is EventoDetalhado => {
-    //   return (evento as EventoDetalhado).observacoes !== undefined;
-    // };
-
     // Type guard para verificar se um objeto é do tipo EventoDetalhado
-    const isEventoDetalhado = (evento: TipoEvento | EventoDetalhado): evento is EventoDetalhado => {
+    const isEventoDetalhado = (
+      evento: TipoEvento | TipoEventoDetalhado
+    ): evento is TipoEventoDetalhado => {
       return 'observacoes' in evento;
     };
 
-    // Função que converte um TipoEvento em EventoDetalhado
-    const converterParaTipoDetalhado = (evento: TipoEvento): EventoDetalhado => {
-      return {
-        ...evento,
-        observacoes: [],
-      };
-    };
-
-    const aoSelecionarEvento = (evento: TipoEvento): void => {
+    const selecionarEvento = (evento: TipoEvento): void => {
       TemplateTimeline.topo.exibir = true;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = true;
@@ -129,57 +137,53 @@ export default defineComponent({
         TemplateTimeline.dados.eventoDetalhado = evento;
         TemplateTimeline.dados.eventoAtual = evento;
       } else {
-        TemplateTimeline.dados.eventoDetalhado = converterParaTipoDetalhado(
-          evento
-        ) satisfies EventoDetalhado;
+        TemplateTimeline.dados.eventoDetalhado = converterParaTipoDetalhado(evento);
       }
     };
 
-    const aoVoltarParaTelaAnterior = (): void => {
+    const handleVoltarTela = (): void => {
       TemplateTimeline.topo.exibir = true;
-      TemplateTimeline.timeline.exibir = !TemplateTimeline.timeline.exibir;
-      TemplateTimeline.evento.exibir = !TemplateTimeline.evento.exibir;
+      TemplateTimeline.timeline.exibir = true;
+      TemplateTimeline.evento.exibir = false;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = false;
     };
 
-    const aoEditarEvento = (): void => {
+    const handleStatusEditarClick = (mouseEvent: MouseEvent): void => {
       TemplateTimeline.topo.exibir = false;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = false;
       TemplateTimeline.editarStatus.exibir = true;
       TemplateTimeline.adicionarObservacao.exibir = true;
-      emit('onEventoDetalhadoStatusEditClicked');
     };
 
-    const aoSalvarStatus = (status: Status): void => {
+    const handleStatusSalvarClick = (status: Status): void => {
       TemplateTimeline.topo.exibir = true;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = false;
-      emit('onEditarStatusSalvarClicked', status );
+      emit('onEditarStatusSalvarClicked', status);
     };
 
-    const aoCancelarStatus = (): void => {
+    const handleStatusCancelarClick = (mouseEvent: MouseEvent): void => {
       TemplateTimeline.topo.exibir = true;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.adicionarObservacao.exibir = false;
       TemplateTimeline.editarStatus.exibir = false;
-      emit('onEditarStatusCancelarClicked');
+      emit('onEditarStatusCancelarClicked', mouseEvent);
     };
 
-    const aoAdicionarObservacao = (): void => {
+    const handleObservacaoAdicionarClick = (mouseEvent: MouseEvent): void => {
       TemplateTimeline.topo.exibir = false;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = false;
       TemplateTimeline.editarStatus.exibir = false;
       TemplateTimeline.adicionarObservacao.exibir = true;
-      emit('onEventoDetalhadoObservacoesAddClicked');
     };
 
-    const aoSalvarObservacao = (mensagem: string): void => {
+    const handleAdicionarObservacaoSalvarClick = (mensagem: string): void => {
       TemplateTimeline.topo.exibir = true;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = true;
@@ -188,24 +192,24 @@ export default defineComponent({
       emit('onAdicionarObservacaoSalvarClicked', mensagem);
     };
 
-    const aoCancelarObservacao = (): void => {
+    const handleObservacaoAdicionarCancelarClick = (mouseEvent: MouseEvent): void => {
       TemplateTimeline.topo.exibir = true;
       TemplateTimeline.timeline.exibir = false;
       TemplateTimeline.evento.exibir = true;
       TemplateTimeline.adicionarObservacao.exibir = false;
       TemplateTimeline.editarStatus.exibir = false;
-      emit('onAdicionarObservacaoCancelarClicked');
+      emit('onAdicionarObservacaoCancelarClicked', mouseEvent);
     };
 
     return {
-      aoSelecionarEvento,
-      aoVoltarParaTelaAnterior,
-      aoEditarEvento,
-      aoSalvarStatus,
-      aoCancelarStatus,
-      aoAdicionarObservacao,
-      aoSalvarObservacao,
-      aoCancelarObservacao,
+      selecionarEvento,
+      handleVoltarTela,
+      handleStatusEditarClick,
+      handleStatusCancelarClick,
+      handleStatusSalvarClick,
+      handleObservacaoAdicionarClick,
+      handleAdicionarObservacaoSalvarClick,
+      handleObservacaoAdicionarCancelarClick,
       TemplateTimeline,
     };
   },

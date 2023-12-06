@@ -34,7 +34,7 @@ export default defineComponent({
     salvarVisivel: {
       type: Boolean,
     },
-    dadosEvento: {
+    evento: {
       required: true,
       type: Object as PropType<EventoDetalhado>,
     },
@@ -43,7 +43,7 @@ export default defineComponent({
 
   setup(props) {
     const salvarVisivel = toRef(props, 'salvarVisivel');
-    const dadosEvento = toRef(props, 'dadosEvento');
+    const dadosEvento = toRef(props, 'evento');
     const previstoPara = ref(dadosEvento.value.previstoPara);
 
     const AdiantarHorario = reactive({

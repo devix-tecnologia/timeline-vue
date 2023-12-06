@@ -11,7 +11,7 @@ describe('EventoDetalhado.vue', () => {
     };
 
     const { emitted, getByTestId } = render(Observacoes, { props });
-    const elemento = getByTestId('botao-adicionar-observacao');
+    const elemento = getByTestId('botao-adicionar');
     expect(elemento).toBeTruthy();
 
     await fireEvent.click(elemento);
@@ -25,7 +25,7 @@ describe('EventoDetalhado.vue', () => {
     };
 
     const { emitted, getByTestId } = render(StatusEvento, { props });
-    const elemento = getByTestId('botao');
+    const elemento = getByTestId('botao-status');
     expect(elemento).toBeTruthy();
 
     await fireEvent.click(elemento);

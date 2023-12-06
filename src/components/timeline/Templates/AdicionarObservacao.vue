@@ -3,8 +3,8 @@
     data-testid="adicionar-observacao"
     :salvarVisivel="salvarVisivel"
     v-model:observacao="state.observacaoLocal"
-    @onEditarEventoSalvarClicked="aoSalvar"
-    @onEditarEventoCancelarClicked="aoCancelar"
+    @salvarClick="salvar"
+    @cancelarClick="cancelar"
   >
     <template #conteudo>
       <h2>Observação:</h2>
@@ -31,25 +31,25 @@ export default defineComponent({
   components: { EditarEvento },
 
   emits: {
-    onAdicionarObservacaoSalvarClicked: (mensagem: string) => true,
-    onAdicionarObservacaoCancelarClicked: () => true,
+    adicionarClick: (mensagem: string, mouseEvent: MouseEvent) => true,
+    cancelarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
     const state = ref({
-      observacaoLocal: props.observacao || "",
+      observacaoLocal: props.observacao || '',
     });
 
-    const aoSalvar = () => {
+    const salvar = (mouseEvent: MouseEvent) => {
       const mensagem = state.value.observacaoLocal;
-      emit("onAdicionarObservacaoSalvarClicked", mensagem);
+      emit('adicionarClick', mensagem, mouseEvent);
     };
 
-    const aoCancelar = () => {
-      emit("onAdicionarObservacaoCancelarClicked");
+    const cancelar = (mouseEvent: MouseEvent) => {
+      emit('cancelarClick', mouseEvent);
     };
 
-    return { aoSalvar, aoCancelar, state };
+    return { salvar, cancelar, state };
   },
 });
 </script>

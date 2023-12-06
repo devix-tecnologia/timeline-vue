@@ -6,14 +6,14 @@
       :aparencia="`preenchido`"
       :titulo="`Salvar`"
       :tamanho="`grande`"
-      @click="emitSalvarClick"
+      @click="emitirSalvarClick"
     />
     <Botao
       data-testid="botao-cancelar"
       :aparencia="`vazio`"
       :titulo="`Cancelar`"
       :tamanho="`pequeno`"
-      @click="emitCancelarClick"
+      @click="emitirCancelarClick"
     />
   </section>
 </template>
@@ -27,24 +27,23 @@ export default defineComponent({
   name: 'AreaSalvamento',
 
   components: { Botao },
-
   emits: {
     salvarClick: (mouseEvent: MouseEvent) => true,
     cancelarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const emitSalvarClick = (mouseEvent: MouseEvent) => {
+    const emitirSalvarClick = (mouseEvent: MouseEvent) => {
       emit('salvarClick', mouseEvent);
     };
 
-    const emitCancelarClick = (mouseEvent: MouseEvent) => {
+    const emitirCancelarClick = (mouseEvent: MouseEvent) => {
       emit('cancelarClick', mouseEvent);
     };
 
     return {
-      emitSalvarClick,
-      emitCancelarClick,
+      emitirSalvarClick,
+      emitirCancelarClick,
     };
   },
 });

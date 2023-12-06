@@ -9,8 +9,8 @@
     <transition name="fadeBaixo" mode="out-in" appear>
       <div class="salvar">
         <AreaSalvamento  data-testid="area-salvamento"
-         @cancelar-click="aoCancelar"
-         @salvar-click="aoSalvar">
+         @cancelar-click="emitirCancelarClick"
+         @salvar-click="emitirSalvarClick">
           <slot name="salvamento"></slot>
         </AreaSalvamento>
       </div>
@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, computed, reactive } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, reactive } from 'vue';
+import 'material-symbols/outlined.css';
 
 import AreaSalvamento from "../moleculas/AreaSalvamento.vue";
 
@@ -32,27 +32,23 @@ export default defineComponent({
   },
   components: { AreaSalvamento },
   emits: {
-    onEditarEventoSalvarClicked: () => true,
-    onEditarEventoCancelarClicked: () => true,
+    salvarClick: (mouseEvent: MouseEvent) => true,
+    cancelarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const aoSalvar = () => {
-      emit('onEditarEventoSalvarClicked');
+    const emitirSalvarClick = (mouseEvent: MouseEvent) => {
+      emit('salvarClick', mouseEvent);
     };
 
-    const aoCancelar = () => {
-      emit('onEditarEventoCancelarClicked');
+    const emitirCancelarClick = (mouseEvent: MouseEvent) => {
+      emit('cancelarClick', mouseEvent);
     };
 
-    props = reactive(props);
+    // props = reactive(props);
     return {
-      aoSalvar,
-      aoCancelar,
-      classes: computed(() => ({
-        visivel: props.salvarVisivel,
-        invisivel: !props.salvarVisivel,
-      })),
+      emitirSalvarClick,
+      emitirCancelarClick,
     };
   },
 });

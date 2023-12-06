@@ -1,17 +1,17 @@
-import StatusEvento from "./StatusEvento.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
+import StatusEvento from './StatusEvento.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: "Devix/Eventos/Moleculas/StatusEvento",
+  title: 'Devix/Eventos/Moleculas/StatusEvento',
   component: StatusEvento,
   argTypes: {
     aparencia: {
-      control: { type: "select" },
-      options: ["outline", "preenchido"],
+      control: { type: 'select' },
+      options: ['outline', 'preenchido', 'vazio'],
     },
     status: {
-      control: { type: "select" },
-      options: ["planejado", "atrasado", "realizado", "cancelado", "adiado"],
+      control: { type: 'select' },
+      options: ['planejado', 'atrasado', 'adiantado', 'realizado', 'cancelado', 'adiado'],
     },
   },
 } as Meta<typeof StatusEvento>;
@@ -19,10 +19,10 @@ export default {
 const Template: StoryFn<typeof StatusEvento> = (args) => ({
   components: { StatusEvento },
   setup() {
-    return { args };
+    const editarClick = () => alert('Clicou no editar status!');
+    return { editarClick, args };
   },
-  template:
-    '<StatusEvento :aparencia="args.aparencia" :aoClicar="args.aoClicar" :status="args.status"  />',
+  template: '<StatusEvento v-bind="args" :editarClick="editarClick"  />',
 });
 
 export const Planejado = Template.bind({});

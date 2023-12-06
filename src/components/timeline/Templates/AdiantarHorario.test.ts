@@ -6,7 +6,7 @@ describe('AdiantarHorario.vue', () => {
   it('renderiza componente', async () => {
     const props = {
       salvarVisivel: true,
-      dadosEvento: dadosEventoDetalhado[0]
+      evento: dadosEventoDetalhado[0]
     };
 
     const { getByTestId } = render(AdiantarHorario, { props });
@@ -17,7 +17,7 @@ describe('AdiantarHorario.vue', () => {
   it('emite "salvarClick" quando o botao-salvar é clicado', async () => {
     const props = {
       salvarVisivel: true,
-      dadosEvento: dadosEventoDetalhado[0]
+      evento: dadosEventoDetalhado[0]
     };
 
     const { emitted, getByTestId } = render(AdiantarHorario, { props });

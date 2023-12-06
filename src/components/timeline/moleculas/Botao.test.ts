@@ -1,4 +1,4 @@
-import { render } from '@testing-library/vue';
+import { render, fireEvent } from '@testing-library/vue';
 import Botao from './Botao.vue';
 
 describe('Botao.vue', () => {
@@ -19,7 +19,7 @@ describe('Botao.vue', () => {
     const { emitted, getByTestId } = render(Botao);
     const buttonValue = getByTestId('botao');
     expect(buttonValue).toBeTruthy();
-    await buttonValue.click();
+    await fireEvent.click(buttonValue);
 
     // Verifica se o evento foi emitido
     expect(emitted().click).toBeTruthy();

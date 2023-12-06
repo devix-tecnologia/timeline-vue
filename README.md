@@ -31,7 +31,7 @@ yarn add @devix-tecnologia/timeline-vue
     <div class="telaTimeline">
       <Timeline 
       :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos"
-      @eventoClick="emitEventoClick"
+      @eventoClick="emitirEventoClick"
     />
     </div>
   </main>
@@ -45,7 +45,7 @@ import '@devix-tecnologia/timeline-vue/dist/style.css'
 export default defineComponent({
   components: { Timeline },
   setup() {
-    const emitEventoClick = (evento: Evento) => {
+    const emitirEventoClick = (evento: Evento) => {
       alert(`foi clicado no evento ${evento.titulo}`);
     };
     const perfilTimeline = {
@@ -58,7 +58,6 @@ export default defineComponent({
         data: new Date('2023-04-26T18:10Z'),
         previstoPara: new Date('2023-04-26T18:10Z'),
         realizado: new Date('2023-04-26T18:15Z'),
-        duracao: null,
         tolerancia: 20,
         titulo: 'Vacina da gripe',
         subtitulo: 'Posto de saúde do bairro',
@@ -73,8 +72,6 @@ export default defineComponent({
       {
         data: new Date('2023-05-09T17:00Z'),
         previstoPara: new Date('2023-05-09T17:00Z'),
-        realizado: null,
-        duracao: null,
         tolerancia: 10,
         titulo: 'Vitamina D',
         subtitulo: '2 comprimidos',
@@ -87,7 +84,7 @@ export default defineComponent({
         criticidade: 'baixa',
       }
     ]
-    return { emitEventoClick, perfilTimeline, listaEventos }
+    return { emitirEventoClick, perfilTimeline, listaEventos }
   }
 })
 </script>

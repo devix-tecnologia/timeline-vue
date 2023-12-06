@@ -2,7 +2,7 @@
   <section class="box box-observacoes" data-testid="observacoes">
     <h3>Observações:</h3>
     <ul class="lista-obs">
-      <li v-for="(item, index) of observacoes" :key="index" class="lista-item">
+      <li v-for="(item, index) of observacoes" :data-testid="`observacao-${index}`" :key="index" class="lista-item">
         <p class="texto">{{ item.mensagem }}</p>
         <div class="autor">
           {{ item.autor.nome }} em {{ item.criadaEm.toLocaleDateString() }} às
@@ -14,11 +14,11 @@
     </ul>
     <Botao
       :titulo="tituloBotao"
-      :icone="`add`"
+      data-testid="botao-adicionar"
+      icone="add"
       :aparencia="`preenchido`"
       :tamanho="`pequeno`"
       @click="emitirAdicionarClick"
-      data-testid="botao-adicionar-observacao"
     />
   </section>
 </template>

@@ -3,7 +3,6 @@ import EventoTimeline from './EventoTimeline.vue';
 import { Categoria } from '../type';
 
 describe('EventoTimeline.vue', () => {
-  
   it('emite o evento "click" ao clicar no evento, se o clicacável for igual a true', async () => {
     const props = {
       status: 'realizado',
@@ -30,7 +29,7 @@ describe('EventoTimeline.vue', () => {
     expect(emitted().click).toBeTruthy();
   });
 
-  it('NÃO emite o evento "click" ao clicar no evento, se o clicacável for igual a false', async () => {
+  it('clicacavel = false, então NÃO emite', async () => {
     const props = {
       status: 'realizado',
       criticidade: 'media',
@@ -55,4 +54,5 @@ describe('EventoTimeline.vue', () => {
     // Verifica se o evento NÃO foi emitido
     expect(emitted().click).toBeUndefined();
   });
+  
 });

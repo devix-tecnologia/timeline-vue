@@ -15,5 +15,4 @@ describe('Observacoes.vue', () => {
     // Verifica se o evento click foi emitido
     expect(emitted().click).toBeTruthy();
   });
-
 });

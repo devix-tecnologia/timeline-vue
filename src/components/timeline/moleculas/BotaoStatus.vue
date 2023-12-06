@@ -1,5 +1,5 @@
 <template>
-  <Botao :aparencia="aparencia" :class="classes" @click="emitClick" data-testid="botao-status">
+  <Botao :aparencia="aparencia" :class="classes" @click="emitirClick" data-testid="botao-status">
     <IconeStatus class="icone" :status="status" /> {{ status }}
   </Botao>
 </template>
@@ -19,8 +19,8 @@ export default defineComponent({
       type: String as PropType<Aparencia>,
     },
     status: {
-      required: true,
       type: String as PropType<Status>,
+      default: 'planejado',
     },
   },
   emits: {
@@ -33,13 +33,12 @@ export default defineComponent({
       [`${props.status}`]: true,
     }));
 
-
-    const emitClick = (mouseEvent: MouseEvent) => {
+    const emitirClick = (mouseEvent: MouseEvent) => {
       emit('click', mouseEvent);
     };
 
     return {
-      emitClick,
+      emitirClick,
       classes,
     };
   },
