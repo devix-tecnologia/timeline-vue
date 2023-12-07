@@ -56,6 +56,8 @@ import Timeline from '../organismos/Timeline.vue';
 import EditarStatus from './EditarStatus.vue';
 import AdicionarObservacao from './AdicionarObservacao.vue';
 
+type Tela = 'Timeline' | 'Evento' | 'EditarStatus' | 'AdicionarObservacao';
+
 export default defineComponent({
   props: {
     perfil: {
@@ -71,37 +73,28 @@ export default defineComponent({
   components: { Topo, Evento, Timeline, EditarStatus, AdicionarObservacao },
 
   emits: {
-    onEventoTimelineClicked: (evento: TipoEventoDetalhado) => true,
-    onEventoDetalhadoStatusEditClicked: () => true,
-    onEventoDetalhadoObservacoesAddClicked: () => true,
-    onEditarStatusSalvarClicked: (status: Status) => true,
-    onEditarStatusCancelarClicked: (mouseEvent: MouseEvent) => true,
-    onAdicionarObservacaoSalvarClicked: (mensagem: string) => true,
-    onAdicionarObservacaoCancelarClicked: (mouseEvent: MouseEvent) => true,
+    eventoTimelineClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true,
+    eventoStatusEditClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true,
+    eventoDetalhadoObservacoesAddClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) =>
+      true,
+    editarStatusSalvarClicked: (
+      evento: TipoEventoDetalhado,
+      status: Status,
+      mouseEvent: MouseEvent
+    ) => true,
+    editarStatusCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true,
+    adicionarObservacaoSalvarClicked: (
+      evento: TipoEventoDetalhado,
+      mensagem: String,
+      mouseEvent: MouseEvent
+    ) => true,
+    adicionarObservacaoCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) =>
+      true,
   },
 
   setup(props, { emit }) {
     const eventosDetalhados = toRef(props, 'eventos');
     const eventoAtual = toRef<TipoEventoDetalhado | null>(null);
-
-    // Função que converte um TipoEvento em EventoDetalhado
-    const converterParaTipoDetalhado = (evento: TipoEvento): TipoEventoDetalhado => {
-      return {
-        ...evento,
-        observacoes: [],
-      };
-    };
-
-    // Função que converte um TipoDetalhado em TipoEvento
-    const converterParaTipoEvento = (eventoDetalhado: TipoEventoDetalhado): TipoEvento => {
-      const { observacoes, ...tipoEvento } = eventoDetalhado;
-      return tipoEvento;
-    };
-
-    // Função que converte um array de TipoDetalhado em TipoEvento
-    const converterArrayParaTipoEvento = (arrayDetalhado: TipoEventoDetalhado[]): TipoEvento[] => {
-      return arrayDetalhado.map(converterParaTipoEvento);
-    };
 
     const TemplateTimeline = reactive({
       topo: { exibir: true },
@@ -112,10 +105,9 @@ export default defineComponent({
       dados: {
         eventos: toRef(props, 'eventos'),
         perfil: toRef(props, 'perfil'),
-        eventosTimeline: converterArrayParaTipoEvento(eventosDetalhados.value),
+        eventosTimeline: eventosDetalhados,
         eventosDetalhados: eventosDetalhados,
         eventoAtual: eventoAtual,
-        eventoDetalhado: eventoAtual,
       },
     });
 
@@ -126,79 +118,80 @@ export default defineComponent({
       return 'observacoes' in evento;
     };
 
-    const selecionarEvento = (evento: TipoEvento): void => {
-      TemplateTimeline.topo.exibir = true;
-      TemplateTimeline.timeline.exibir = false;
-      TemplateTimeline.evento.exibir = true;
-      TemplateTimeline.editarStatus.exibir = false;
-      TemplateTimeline.adicionarObservacao.exibir = false;
+    const ativarTela = (tela: Tela) => {
+      const telasComTopo: Tela[] = ['Timeline', 'Evento'];
 
-      if (isEventoDetalhado(evento)) {
-        TemplateTimeline.dados.eventoDetalhado = evento;
-        TemplateTimeline.dados.eventoAtual = evento;
-      } else {
-        TemplateTimeline.dados.eventoDetalhado = converterParaTipoDetalhado(evento);
-      }
+      TemplateTimeline.topo.exibir = telasComTopo.includes(tela);
+      TemplateTimeline.timeline.exibir = tela === 'Timeline';
+      TemplateTimeline.evento.exibir = tela === 'Evento';
+      TemplateTimeline.editarStatus.exibir = tela === 'EditarStatus';
+      TemplateTimeline.adicionarObservacao.exibir = tela === 'AdicionarObservacao';
     };
 
-    const handleVoltarTela = (): void => {
-      TemplateTimeline.topo.exibir = true;
-      TemplateTimeline.timeline.exibir = true;
-      TemplateTimeline.evento.exibir = false;
-      TemplateTimeline.editarStatus.exibir = false;
-      TemplateTimeline.adicionarObservacao.exibir = false;
+    const selecionarEvento = (evento: TipoEvento, mouseEvent: MouseEvent): void => {
+      if (!isEventoDetalhado(evento)) {
+        return;
+      }
+      emit('eventoTimelineClicked', evento, mouseEvent);
+      TemplateTimeline.dados.eventoAtual = evento;
+      ativarTela('Timeline');
+    };
+
+    const handleVoltarTela = (mouseEvent: MouseEvent): void => {
+      //TODO: dependerá de qual tela está ativada
+      ativarTela('Timeline');
     };
 
     const handleStatusEditarClick = (mouseEvent: MouseEvent): void => {
-      TemplateTimeline.topo.exibir = false;
-      TemplateTimeline.timeline.exibir = false;
-      TemplateTimeline.evento.exibir = false;
-      TemplateTimeline.editarStatus.exibir = true;
-      TemplateTimeline.adicionarObservacao.exibir = true;
+      ativarTela('EditarStatus');
     };
 
-    const handleStatusSalvarClick = (status: Status): void => {
-      TemplateTimeline.topo.exibir = true;
-      TemplateTimeline.timeline.exibir = false;
-      TemplateTimeline.evento.exibir = true;
-      TemplateTimeline.editarStatus.exibir = false;
-      TemplateTimeline.adicionarObservacao.exibir = false;
-      emit('onEditarStatusSalvarClicked', status);
+    const handleStatusSalvarClick = (status: Status, mouseEvent: MouseEvent): void => {
+      if (!TemplateTimeline.dados.eventoAtual) {
+        return;
+      }
+
+      ativarTela('Evento');
+      emit('editarStatusSalvarClicked', TemplateTimeline.dados.eventoAtual, status, mouseEvent);
     };
 
     const handleStatusCancelarClick = (mouseEvent: MouseEvent): void => {
-      TemplateTimeline.topo.exibir = true;
-      TemplateTimeline.timeline.exibir = false;
-      TemplateTimeline.evento.exibir = true;
-      TemplateTimeline.adicionarObservacao.exibir = false;
-      TemplateTimeline.editarStatus.exibir = false;
-      emit('onEditarStatusCancelarClicked', mouseEvent);
+      if (!TemplateTimeline.dados.eventoAtual) {
+        return;
+      }
+
+      ativarTela('Evento');
+      emit('editarStatusCancelarClicked', TemplateTimeline.dados.eventoAtual, mouseEvent);
     };
 
     const handleObservacaoAdicionarClick = (mouseEvent: MouseEvent): void => {
-      TemplateTimeline.topo.exibir = false;
-      TemplateTimeline.timeline.exibir = false;
-      TemplateTimeline.evento.exibir = false;
-      TemplateTimeline.editarStatus.exibir = false;
-      TemplateTimeline.adicionarObservacao.exibir = true;
+      ativarTela('AdicionarObservacao');
     };
 
-    const handleAdicionarObservacaoSalvarClick = (mensagem: string): void => {
-      TemplateTimeline.topo.exibir = true;
-      TemplateTimeline.timeline.exibir = false;
-      TemplateTimeline.evento.exibir = true;
-      TemplateTimeline.editarStatus.exibir = false;
-      TemplateTimeline.adicionarObservacao.exibir = false;
-      emit('onAdicionarObservacaoSalvarClicked', mensagem);
+    const handleAdicionarObservacaoSalvarClick = (
+      mensagem: String,
+      mouseEvent: MouseEvent
+    ): void => {
+      if (!TemplateTimeline.dados.eventoAtual) {
+        return;
+      }
+
+      ativarTela('Evento');
+      emit(
+        'adicionarObservacaoSalvarClicked',
+        TemplateTimeline.dados.eventoAtual,
+        mensagem,
+        mouseEvent
+      );
     };
 
     const handleObservacaoAdicionarCancelarClick = (mouseEvent: MouseEvent): void => {
-      TemplateTimeline.topo.exibir = true;
-      TemplateTimeline.timeline.exibir = false;
-      TemplateTimeline.evento.exibir = true;
-      TemplateTimeline.adicionarObservacao.exibir = false;
-      TemplateTimeline.editarStatus.exibir = false;
-      emit('onAdicionarObservacaoCancelarClicked', mouseEvent);
+      if (!TemplateTimeline.dados.eventoAtual) {
+        return;
+      }
+
+      ativarTela('Evento');
+      emit('adicionarObservacaoCancelarClicked', TemplateTimeline.dados.eventoAtual, mouseEvent);
     };
 
     return {

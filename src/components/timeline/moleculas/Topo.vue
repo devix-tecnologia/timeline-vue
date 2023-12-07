@@ -28,12 +28,12 @@ export default defineComponent({
   },
 
   emits: {
-    voltarClick: () => true,
+    voltarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const emitirVoltarClick = () => {
-      emit('voltarClick');
+    const emitirVoltarClick = (mouseEvent: MouseEvent) => {
+      emit('voltarClick', mouseEvent);
     };
 
     props = reactive(props);

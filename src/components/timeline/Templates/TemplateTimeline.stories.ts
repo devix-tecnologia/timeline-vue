@@ -1,7 +1,10 @@
 import TemplateTimeline from './TemplateTimeline.vue';
 import { Meta, StoryFn } from '@storybook/vue3';
-import { dadosEventoDetalhado, dadosPerfil as dadosPerfilEvento } from '../EventoDetalhado.mock';
-import { dadosEventosDetalhados, dadosPerfil as dadosPerfilTimeline } from '../Templates//TemplateTimeline.mock';
+import {
+  dadosEventosDetalhados,
+  dadosPerfil as dadosPerfilTimeline,
+} from '../Templates//TemplateTimeline.mock';
+import { EventoDetalhado } from '../typeDetalhado';
 
 export default {
   title: 'Devix/Eventos/Templates/TemplateTimeline',
@@ -22,21 +25,22 @@ const Template: StoryFn<typeof TemplateTimeline> = (args) => ({
   components: { TemplateTimeline },
   setup() {
     const handleAdicionarObservacaoSalvarClick = (
-      mensagem: String,
-      mouseEvent: MouseEvent
+      evento: EventoDetalhado,
+      mensagem: string
     ): void => {
-      // Remover alteração dos dados ao finalizar testes
-      TemplateTimeline.dados.eventoDetalhado!.observacoes.push({
+      evento.observacoes.push({
         mensagem: mensagem,
         autor: { nome: 'José da Silva' },
         criadaEm: new Date(),
       });
+      //TODO: fechar a tela de adicionar observação
+      alert('Observação adicionada com sucesso!');
     };
 
     return { handleAdicionarObservacaoSalvarClick, args };
   },
   template:
-    '<TemplateTimeline v-bind="args" @observacaoAdicionarSalvarClick="handleAdicionarObservacaoSalvarClick" />',
+    '<TemplateTimeline v-bind="args" @adicionarObservacaoSalvarClicked="handleAdicionarObservacaoSalvarClick" />',
 });
 
 export const Timeline = Template.bind({});

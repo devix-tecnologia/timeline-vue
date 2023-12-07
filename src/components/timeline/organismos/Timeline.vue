@@ -24,11 +24,11 @@
           :previstoPara="evento.valor.previstoPara"
           :realizado-em="evento.valor.realizado"
           :categoria="evento.valor.categoria"
-          :titulo="evento.valor.titulo"
+          :titulo="evento.valor.clicavel ? 'clicavel = true' : 'clicavel = false'"
           :subtitulo="evento.valor.subtitulo"
           :texto-destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
-          @click="emitirEventoClick(evento.valor)"
+          @click="handleEventoClick(evento.valor, $event)"
           :data-testid="`evento-timeline-${index}`"
         />
       </div>
@@ -67,12 +67,16 @@ export default defineComponent({
   },
 
   emits: {
-    eventoClick: (evento: Evento) => true,
+    eventoClick: (evento: Evento, mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const emitirEventoClick = (evento: Evento) => {
-      emit('eventoClick', evento);
+    const handleEventoClick = (evento: Evento, mouseEvent: MouseEvent) => {
+      if (evento.clicavel === false) {
+        return;
+      }
+
+      emit('eventoClick', evento, mouseEvent);
     };
 
     const dadosEventosTimeline: Evento[] = reactive(props.eventosTimeline);
@@ -186,7 +190,7 @@ export default defineComponent({
     return {
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
-      emitirEventoClick,
+      handleEventoClick,
     };
   },
   mounted() {

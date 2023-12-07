@@ -26,6 +26,7 @@ export const dadosEventosDetalhados: EventoDetalhado[] = [
     criticidade: "media",
     atual: false,
     scroll: false,
+    clicavel: true,
     observacoes: [
       {
         mensagem: "Atraso de 10 minutos",
@@ -35,9 +36,9 @@ export const dadosEventosDetalhados: EventoDetalhado[] = [
     ],
   } satisfies EventoDetalhado,
   {
-    data: new Date("2023-04-26T18:10Z"),
-    previstoPara: new Date("2023-04-26T18:10Z"),
-    realizado: new Date("2023-04-26T18:15Z"),
+    data: new Date("2023-04-26T20:10Z"),
+    previstoPara: new Date("2023-04-20:10Z"),
+    realizado: new Date("2023-04-26T20:15Z"),
     duracao: undefined,
     tolerancia: 10,
     titulo: "Vacina da gripe",
@@ -51,6 +52,7 @@ export const dadosEventosDetalhados: EventoDetalhado[] = [
     criticidade: "baixa",
     atual: false,
     scroll: false,
+    clicavel: false,
     observacoes: [
       {
         mensagem: "Atraso de 10 minutos",

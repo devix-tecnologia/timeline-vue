@@ -2,7 +2,7 @@
   <EditarEvento
     :salvarVisivel="salvarVisivel"
     @cancelarClick="aoCancelar"
-    @salvarClick="aoSalvar(selecionado)"
+    @salvarClick="aoSalvar(selecionado, $event)"
   >
     <template #conteudo>
       <h2>Alterar o Status para:</h2>
@@ -60,13 +60,13 @@ export default defineComponent({
   components: { EditarEvento, IconeStatus, BotaoStatus },
 
   emits: {
-    salvarClick: (status: Status) => true,
+    salvarClick: (status: Status, mouseEvent: MouseEvent) => true,
     cancelarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const aoSalvar = (status: Status) => {
-      emit('salvarClick', status);
+    const aoSalvar = (status: Status, mouseEvent: MouseEvent) => {
+      emit('salvarClick', status, mouseEvent);
     };
 
     const aoCancelar = (mouseEvent: MouseEvent) => {
