@@ -1,8 +1,8 @@
 <template>
   <EditarEvento
     :salvarVisivel="salvarVisivel"
-    @onEditarEventoSalvarClicked="aoSalvar"
-    @onEditarEventoCancelarClicked="aoCancelar"
+    @cancelarClick="aoCancelar"
+    @salvarClick="aoSalvar(selecionado, $event)"
   >
     <template #conteudo>
       <h2>Alterar o Status para:</h2>

@@ -22,9 +22,10 @@
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <StatusEvento
+        data-testid="status-evento"
         :aparencia="`preenchido`"
         :status="evento.status"
-        @editarClick="handleEditarClick"
+        @click="handleEditarClick"
       />
     </transition>
   </div>

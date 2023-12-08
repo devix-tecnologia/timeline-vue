@@ -15,17 +15,17 @@ export default defineComponent({
 
   emits: {
     //caso queira validar o tipo de evento que será emitido, pode-se alterar o null para uma função que verifique o tipo dos parâmetros
-    clicaramNoBotaoUpdateValue: null,
-    clicaramNoBotaoUpdateStatus: null,
+    updateValueClick: (mouseEvent: MouseEvent) => true,
+    updateStatusClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(_, ctx) {
     const handleButtonValueClick = (mouseEvent: MouseEvent) => {
-      ctx.emit('clicaramNoBotaoUpdateValue', mouseEvent);
+      ctx.emit('updateValueClick', mouseEvent);
     };
 
     const handleButtonStatusClick = (mouseEvent: MouseEvent) => {
-      ctx.emit('clicaramNoBotaoUpdateStatus', mouseEvent);
+      ctx.emit('updateStatusClick', mouseEvent);
     };
 
     return {

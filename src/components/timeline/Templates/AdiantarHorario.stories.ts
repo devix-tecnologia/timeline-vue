@@ -20,12 +20,11 @@ const Template: StoryFn<typeof AdiantarHorario> = (args) => ({
     return { args };
   },
   template:
-    '<AdiantarHorario :aoClicar="args.aoClicar" :salvarVisivel="args.salvarVisivel" :dadosEvento="args.dadosEvento" />',
+    '<AdiantarHorario :aoClicar="args.aoClicar" :salvarVisivel="args.salvarVisivel" :evento="args.dadosEvento" />',
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  dadosEvento: eventoUmMock,
   salvarVisivel: true,
-  aoClicar: (evento) => alert("Olá!"),
+  dadosEvento: eventoUmMock,
 };

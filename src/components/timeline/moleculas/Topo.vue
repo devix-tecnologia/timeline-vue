@@ -1,7 +1,7 @@
-<template>
-  <div class="topo" :class="classes">
+<template >
+  <div class="topo" :class="classes" >
     <div class="conteudoTitulo">
-      <button class="btn_voltar" @click="emitirVoltarClick">
+      <button class="btn_voltar" @click="emitirVoltarClick" data-testid="topo">
         <span class="material-symbols-outlined"> arrow_back </span>
       </button>
       <h3 class="titulo">{{ titulo }}</h3>
@@ -28,12 +28,12 @@ export default defineComponent({
   },
 
   emits: {
-    voltarClick: () => true,
+    voltarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const emitirVoltarClick = () => {
-      emit('voltarClick');
+    const emitirVoltarClick = (mouseEvent: MouseEvent) => {
+      emit('voltarClick', mouseEvent);
     };
 
     props = reactive(props);

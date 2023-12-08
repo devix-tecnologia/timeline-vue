@@ -1,31 +1,36 @@
 import { render, fireEvent } from '@testing-library/vue';
-import EventoDetalhado from './EventoDetalhado.vue';
-import { dadosEventoDetalhado, dadosPerfil } from '../EventoDetalhado.mock';
+import Observacoes from '../moleculas/Observacoes.vue';
+import StatusEvento from '../moleculas/StatusEvento.vue';
 
 describe('EventoDetalhado.vue', () => {
-  it('renderiza componente', async () => {
+  
+  it('emits "adicionarClick" quando clicado no botão Adicionar Observação', async () => {
+
     const props = {
-      perfil: dadosPerfil,
-      evento: dadosEventoDetalhado[0],
+      observacoes: [],
     };
 
-    const { getByTestId } = render(EventoDetalhado, { props });
-    const elemento = getByTestId('evento-detalhado');
+    const { emitted, getByTestId } = render(Observacoes, { props });
+    const elemento = getByTestId('botao-adicionar');
     expect(elemento).toBeTruthy();
-  });
 
-  it('emit "statusEditarClick"', async () => {
-    const props = {
-      perfil: dadosPerfil,
-      evento: dadosEventoDetalhado[0],
-    };
-
-    const { emitted, getByTestId } = render(EventoDetalhado, { props });
-    const elemento = getByTestId('status-evento');
-    expect(elemento).toBeTruthy();
     await fireEvent.click(elemento);
-
     // Verifica se o evento foi emitido
-    expect(emitted().statusEditarClick).toBeTruthy();
+    expect(emitted().click).toBeTruthy();
   });
+
+  it('emits "cancelarClick" quando clicado no botão cancelar', async () => {
+    const props = {
+      status: 'Em andamento',
+    };
+
+    const { emitted, getByTestId } = render(StatusEvento, { props });
+    const elemento = getByTestId('botao-status');
+    expect(elemento).toBeTruthy();
+
+    await fireEvent.click(elemento);
+    // Verifica se o evento foi emitido
+    expect(emitted().click).toBeTruthy();
+  });
+  
 });

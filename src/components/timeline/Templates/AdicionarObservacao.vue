@@ -1,5 +1,6 @@
 <template>
   <EditarEvento
+    data-testid="adicionar-observacao"
     :salvarVisivel="salvarVisivel"
     v-model:observacao="state.observacaoLocal"
     @salvarClick="salvar"
@@ -13,9 +14,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import 'material-symbols/outlined.css';
-import EditarEvento from '../organismos/EditarEvento.vue';
+import { defineComponent, PropType, ref } from "vue";
+import "material-symbols/outlined.css";
+
+import EditarEvento from "../organismos/EditarEvento.vue";
 
 export default defineComponent({
   props: {

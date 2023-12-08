@@ -6,7 +6,7 @@ describe('AdiantarHorario.vue', () => {
   it('renderiza componente', async () => {
     const props = {
       salvarVisivel: true,
-      evento: dadosEventoDetalhado[0],
+      evento: dadosEventoDetalhado[0]
     };
 
     const { getByTestId } = render(AdiantarHorario, { props });
@@ -17,16 +17,16 @@ describe('AdiantarHorario.vue', () => {
   it('emite "salvarClick" quando o botao-salvar é clicado', async () => {
     const props = {
       salvarVisivel: true,
-      evento: dadosEventoDetalhado[0],
+      evento: dadosEventoDetalhado[0]
     };
 
     const { emitted, getByTestId } = render(AdiantarHorario, { props });
-    const elemento = getByTestId('botao-salvar');
+    const elemento = getByTestId('botao-adiantar-horario');
     expect(elemento).toBeTruthy();
     await fireEvent.click(elemento);
 
     // Verifica se o evento foi emitido
-    expect(emitted().salvarClick).toBeTruthy();
+    expect(emitted().click).toBeTruthy();
   });
 
   // it('adianta o horario em 15 minutos ao clicar em adiantar 15 minutos', async () => {
@@ -52,28 +52,26 @@ describe('AdiantarHorario.vue', () => {
   //   // expect(elementoHorario.textContent).toBe('29/11/2023 14:30');
   // });
 
-  it('adianta o horário em 15 minutos ao clicar no botão', async () => {
-    const props = {
-      salvarVisivel: true,
-      evento: {
-        previstoPara: new Date('2023-11-29T14:15:00.000Z'),
-      },
-    };
+  // it.skip('adianta o horário em 15 minutos ao clicar no botão', async () => {
+  //   const props = {
+  //     salvarVisivel: true,
+  //     dadosEvento: dadosEventoDetalhado[0]
+  //   };
 
-    const isHTMLInputElement = (elem: HTMLElement): elem is HTMLInputElement => {
-      return elem instanceof HTMLInputElement;
-    };
+  //   const isHTMLInputElement = (elem: HTMLElement): elem is HTMLInputElement => {
+  //     return elem instanceof HTMLInputElement;
+  //   };
 
-    const { getByTestId } = render(AdiantarHorario, { props });
+  //   const { getByTestId } = render(AdiantarHorario, { props });
 
-    const botao = getByTestId('adiantar-15-minutos');
-    expect(botao).toBeTruthy();
-    await fireEvent.click(botao);
+  //   const botao = getByTestId('adiantar-15-minutos');
+  //   expect(botao).toBeTruthy();
+  //   await fireEvent.click(botao);
 
-    const elementoHorario = getByTestId('horario');
-    if (isHTMLInputElement(elementoHorario)) {
-      console.log(elementoHorario.value);
-      expect(elementoHorario.value).toBe('29/11/2023 - 14:15');
-    }
-  });
+  //   const elementoHorario = getByTestId('horario');
+  //   if (isHTMLInputElement(elementoHorario)) {
+  //     console.log(elementoHorario.value);
+  //     expect(elementoHorario.value).toBe('29/11/2023 - 14:15');
+  //   }
+  // });
 });

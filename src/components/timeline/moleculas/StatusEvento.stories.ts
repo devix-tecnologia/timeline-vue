@@ -27,30 +27,30 @@ const Template: StoryFn<typeof StatusEvento> = (args) => ({
 
 export const Planejado = Template.bind({});
 Planejado.args = {
-  status: 'planejado',
-  aparencia: 'outline',
+  status: "planejado",
+  aparencia: "outline",
 };
 
 export const Atrasado = Template.bind({});
 Atrasado.args = {
-  status: 'atrasado',
-  aparencia: 'outline',
+  status: "atrasado",
+  aparencia: "outline",
 };
 
 export const Realizado = Template.bind({});
 Realizado.args = {
-  status: 'realizado',
-  aparencia: 'outline',
+  status: "realizado",
+  aparencia: "outline",
 };
 
 export const Cancelado = Template.bind({});
 Cancelado.args = {
-  status: 'cancelado',
-  aparencia: 'outline',
+  status: "cancelado",
+  aparencia: "outline",
 };
 
 export const Adiado = Template.bind({});
 Adiado.args = {
-  status: 'adiado',
-  aparencia: 'outline',
+  status: "adiado",
+  aparencia: "outline",
 };

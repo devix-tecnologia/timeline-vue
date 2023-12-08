@@ -1,30 +1,21 @@
 import { render, fireEvent } from '@testing-library/vue';
-import StatusEvento from './StatusEvento.vue';
+import BotaoStatus from './BotaoStatus.vue';
 
 describe('StatusEvento.vue', () => {
-  it('renderiza componente', async () => {
+  it('emits "clicked" when button is clicked', async () => {
     const props = {
-      aparencia: 'outline',
-      status: 'planejado',
+      status: "status",
     };
 
-    const { getByTestId } = render(StatusEvento, { props });
-    const buttonValue = getByTestId('status-evento');
-    expect(buttonValue).toBeTruthy();
-  });
-
-  it('emits "click" when button is clicked', async () => {
-    const props = {
-      aparencia: 'outline',
-      status: 'planejado',
-    };
-    
-    const { emitted, getByTestId } = render(StatusEvento, { props });
-    const elemento = getByTestId('status-evento');
+    const { emitted, getByTestId } = render(BotaoStatus, { props });
+    const elemento = getByTestId('botao-status');
     expect(elemento).toBeTruthy();
-    await fireEvent.click(elemento);
+
+   // Dispara o evento de clique
+   await fireEvent.click(elemento);
 
     // Verifica se o evento foi emitido
-    expect(emitted().editarClick).toBeTruthy();
+    expect(emitted().click).toBeTruthy();
   });
+  
 });

@@ -1,11 +1,14 @@
 import { render, fireEvent } from '@testing-library/vue';
-import AreaSalvamento from './AreaSalvamento.vue';
+import AreaSalvamento from '../moleculas/AreaSalvamento.vue';
 
-describe('AreaSalvamento.vue', () => {
-  
+describe('AdicionarObservacao.vue', () => {
+  it('emits "adicionarClick" quando clicado no botão Adicionar Observação', async () => {
 
-  it('emits "salvarClick" quando clicado no botão salvar', async () => {
-    const { emitted, getByTestId } = render(AreaSalvamento);
+    const props = {
+      observacoes: [],
+    };
+
+    const { emitted, getByTestId } = render(AreaSalvamento, { props });
     const elemento = getByTestId('botao-salvar');
     expect(elemento).toBeTruthy();
 
@@ -15,7 +18,11 @@ describe('AreaSalvamento.vue', () => {
   });
 
   it('emits "cancelarClick" quando clicado no botão cancelar', async () => {
-    const { emitted, getByTestId } = render(AreaSalvamento);
+    const props = {
+      status: 'Em andamento',
+    };
+
+    const { emitted, getByTestId } = render(AreaSalvamento, { props });
     const elemento = getByTestId('botao-cancelar');
     expect(elemento).toBeTruthy();
 

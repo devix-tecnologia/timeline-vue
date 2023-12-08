@@ -1,6 +1,8 @@
 import EventoDetalhado from "./EventoDetalhado.vue";
 import { Meta, StoryFn } from "@storybook/vue3";
 import { dadosEventoDetalhado, dadosPerfil } from "../EventoDetalhado.mock";
+import { Perfil } from '../type';
+import { EventoDetalhado as TipoEventoDetalhado } from '../typeDetalhado';
 
 export default {
   title: "Devix/Eventos/Organismos/EventoDetalhado",
@@ -26,16 +28,16 @@ const Template: StoryFn<typeof EventoDetalhado> = (args) => ({
     return { args };
   },
   template:
-    '<EventoDetalhado :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" />'
+    '<EventoDetalhado :perfil="args.perfil" :evento="args.evento" />'
 });
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  perfilEvento: perfilMock,
-  dadosEvento: eventoUmMock,
+  perfil: perfilMock satisfies Perfil,
+  evento: eventoUmMock satisfies TipoEventoDetalhado,
 };
 
 export const SemPerfil = Template.bind({});
 SemPerfil.args = {
-  dadosEvento: eventoDoisMock,
+  evento: eventoDoisMock satisfies TipoEventoDetalhado,
 };

@@ -17,46 +17,46 @@
   dependencies:
     default-browser-id "3.0.0"
 
-"@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.22.13", "@babel/code-frame@^7.23.4":
-  version "7.23.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fcode-frame/-/code-frame-7.23.4.tgz#03ae5af150be94392cb5c7ccd97db5a19a5da6aa"
-  integrity sha512-r1IONyb6Ia+jYR2vvIDhdWdlTGhqbBoFqLTQidzZ4kepUFH15ejXvFHxCVbtl7BOXIudsIubf4E81xeA3h3IXA==
+"@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.22.13", "@babel/code-frame@^7.23.5":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fcode-frame/-/code-frame-7.23.5.tgz#9009b69a8c602293476ad598ff53e4562e15c244"
+  integrity sha512-CgH3s1a96LipHCmSUmYFPwY7MNx8C3avkq7i4Wl3cfa662ldtUe4VM1TPXX70pfmrlWTb6jLqTYrZyT2ZTJBgA==
   dependencies:
     "@babel/highlight" "^7.23.4"
     chalk "^2.4.2"
 
-"@babel/compat-data@^7.22.6", "@babel/compat-data@^7.22.9", "@babel/compat-data@^7.23.3":
-  version "7.23.3"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fcompat-data/-/compat-data-7.23.3.tgz#3febd552541e62b5e883a25eb3effd7c7379db11"
-  integrity sha512-BmR4bWbDIoFJmJ9z2cZ8Gmm2MXgEDgjdWgpKmKWUt54UGFJdlj31ECtbaDvCG/qVdG3AQ1SfpZEs01lUFbzLOQ==
+"@babel/compat-data@^7.22.6", "@babel/compat-data@^7.22.9", "@babel/compat-data@^7.23.3", "@babel/compat-data@^7.23.5":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fcompat-data/-/compat-data-7.23.5.tgz#ffb878728bb6bdcb6f4510aa51b1be9afb8cfd98"
+  integrity sha512-uU27kfDRlhfKl+w1U6vp16IuvSLtjAxdArVXPa9BvLkrr7CYIsxH5adpHObeAGY/41+syctUWOZ140a2Rvkgjw==
 
 "@babel/core@^7.11.6", "@babel/core@^7.12.3", "@babel/core@^7.23.0", "@babel/core@^7.23.2":
-  version "7.23.3"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fcore/-/core-7.23.3.tgz#5ec09c8803b91f51cc887dedc2654a35852849c9"
-  integrity sha512-Jg+msLuNuCJDyBvFv5+OKOUjWMZgd85bKjbICd3zWrKAo+bJ49HJufi7CQE0q0uR8NGyO6xkCACScNqyjHSZew==
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fcore/-/core-7.23.5.tgz#6e23f2acbcb77ad283c5ed141f824fd9f70101c7"
+  integrity sha512-Cwc2XjUrG4ilcfOw4wBAK+enbdgwAcAJCfGUItPBKR7Mjw4aEfAFYrLxeRp4jWgtNIKn3n2AlBOfwwafl+42/g==
   dependencies:
     "@ampproject/remapping" "^2.2.0"
-    "@babel/code-frame" "^7.22.13"
-    "@babel/generator" "^7.23.3"
+    "@babel/code-frame" "^7.23.5"
+    "@babel/generator" "^7.23.5"
     "@babel/helper-compilation-targets" "^7.22.15"
     "@babel/helper-module-transforms" "^7.23.3"
-    "@babel/helpers" "^7.23.2"
-    "@babel/parser" "^7.23.3"
+    "@babel/helpers" "^7.23.5"
+    "@babel/parser" "^7.23.5"
     "@babel/template" "^7.22.15"
-    "@babel/traverse" "^7.23.3"
-    "@babel/types" "^7.23.3"
+    "@babel/traverse" "^7.23.5"
+    "@babel/types" "^7.23.5"
     convert-source-map "^2.0.0"
     debug "^4.1.0"
     gensync "^1.0.0-beta.2"
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/generator@^7.23.0", "@babel/generator@^7.23.3", "@babel/generator@^7.23.4":
-  version "7.23.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fgenerator/-/generator-7.23.4.tgz#4a41377d8566ec18f807f42962a7f3551de83d1c"
-  integrity sha512-esuS49Cga3HcThFNebGhlgsrVLkvhqvYDTzgjfFFlHJcIfLe5jFmRRfCQ1KuBfc4Jrtn3ndLgKWAKjBE+IraYQ==
+"@babel/generator@^7.23.0", "@babel/generator@^7.23.5":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fgenerator/-/generator-7.23.5.tgz#17d0a1ea6b62f351d281350a5f80b87a810c4755"
+  integrity sha512-BPssCHrBD+0YrxviOa3QzpqwhNIXKEtOa2jQrm4FlmkC2apYgRnQcmPWiGZDlGxiNtltnUFolMe8497Esry+jA==
   dependencies:
-    "@babel/types" "^7.23.4"
+    "@babel/types" "^7.23.5"
     "@jridgewell/gen-mapping" "^0.3.2"
     "@jridgewell/trace-mapping" "^0.3.17"
     jsesc "^2.5.1"
@@ -86,17 +86,17 @@
     lru-cache "^5.1.1"
     semver "^6.3.1"
 
-"@babel/helper-create-class-features-plugin@^7.22.15":
-  version "7.22.15"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelper-create-class-features-plugin/-/helper-create-class-features-plugin-7.22.15.tgz#97a61b385e57fe458496fad19f8e63b63c867de4"
-  integrity sha512-jKkwA59IXcvSaiK2UN45kKwSC9o+KuoXsBDvHvU/7BecYIp8GQ2UwrVvFgJASUT+hBnwJx6MhvMCuMzwZZ7jlg==
+"@babel/helper-create-class-features-plugin@^7.22.15", "@babel/helper-create-class-features-plugin@^7.23.5":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelper-create-class-features-plugin/-/helper-create-class-features-plugin-7.23.5.tgz#2a8792357008ae9ce8c0f2b78b9f646ac96b314b"
+  integrity sha512-QELlRWxSpgdwdJzSJn4WAhKC+hvw/AtHbbrIoncKHkhKKR/luAlKkgBDcri1EzWAo8f8VvYVryEHN4tax/V67A==
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.22.5"
-    "@babel/helper-environment-visitor" "^7.22.5"
-    "@babel/helper-function-name" "^7.22.5"
-    "@babel/helper-member-expression-to-functions" "^7.22.15"
+    "@babel/helper-environment-visitor" "^7.22.20"
+    "@babel/helper-function-name" "^7.23.0"
+    "@babel/helper-member-expression-to-functions" "^7.23.0"
     "@babel/helper-optimise-call-expression" "^7.22.5"
-    "@babel/helper-replace-supers" "^7.22.9"
+    "@babel/helper-replace-supers" "^7.22.20"
     "@babel/helper-skip-transparent-expression-wrappers" "^7.22.5"
     "@babel/helper-split-export-declaration" "^7.22.6"
     semver "^6.3.1"
@@ -121,7 +121,7 @@
     lodash.debounce "^4.0.8"
     resolve "^1.14.2"
 
-"@babel/helper-environment-visitor@^7.22.20", "@babel/helper-environment-visitor@^7.22.5":
+"@babel/helper-environment-visitor@^7.22.20":
   version "7.22.20"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelper-environment-visitor/-/helper-environment-visitor-7.22.20.tgz#96159db61d34a29dba454c959f5ae4a649ba9167"
   integrity sha512-zfedSIzFhat/gFhWfHtgWvlec0nqB9YEIVrpuwjruLlXfUSnA8cJB0miHKwqDnQ7d32aKo2xt88/xZptwxbfhA==
@@ -141,7 +141,7 @@
   dependencies:
     "@babel/types" "^7.22.5"
 
-"@babel/helper-member-expression-to-functions@^7.22.15":
+"@babel/helper-member-expression-to-functions@^7.22.15", "@babel/helper-member-expression-to-functions@^7.23.0":
   version "7.23.0"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelper-member-expression-to-functions/-/helper-member-expression-to-functions-7.23.0.tgz#9263e88cc5e41d39ec18c9a3e0eced59a3e7d366"
   integrity sha512-6gfrPwh7OuT6gZyJZvd6WbTfrqAo7vm4xCzAXOusKqq/vWdKXphTpj5klHKNmRUU6/QRGlBsyU9mAIPaWHlqJA==
@@ -187,7 +187,7 @@
     "@babel/helper-environment-visitor" "^7.22.20"
     "@babel/helper-wrap-function" "^7.22.20"
 
-"@babel/helper-replace-supers@^7.22.20", "@babel/helper-replace-supers@^7.22.9":
+"@babel/helper-replace-supers@^7.22.20":
   version "7.22.20"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelper-replace-supers/-/helper-replace-supers-7.22.20.tgz#e37d367123ca98fe455a9887734ed2e16eb7a793"
   integrity sha512-qsW0In3dbwQUbK8kejJ4R7IHVGwHJlV6lpG6UA7a9hSa2YEiAib+N1T2kr6PEeUT+Fl7najmSOS6SmAwCHK6Tw==
@@ -227,10 +227,10 @@
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelper-validator-identifier/-/helper-validator-identifier-7.22.20.tgz#c4ae002c61d2879e724581d96665583dbc1dc0e0"
   integrity sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==
 
-"@babel/helper-validator-option@^7.22.15":
-  version "7.22.15"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelper-validator-option/-/helper-validator-option-7.22.15.tgz#694c30dfa1d09a6534cdfcafbe56789d36aba040"
-  integrity sha512-bMn7RmyFjY/mdECUbgn9eoSY4vqvacUnS9i9vGAGttgFWesO6B4CYWA7XlpbWgBt71iv/hfbPlynohStqnu5hA==
+"@babel/helper-validator-option@^7.22.15", "@babel/helper-validator-option@^7.23.5":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelper-validator-option/-/helper-validator-option-7.23.5.tgz#907a3fbd4523426285365d1206c423c4c5520307"
+  integrity sha512-85ttAOMLsr53VgXkTbkx8oA6YTfT4q7/HzXSLEYmjcSTJPMPQtvq1BD79Byep5xMUYbGRzEpDsjUf3dyp54IKw==
 
 "@babel/helper-wrap-function@^7.22.20":
   version "7.22.20"
@@ -241,14 +241,14 @@
     "@babel/template" "^7.22.15"
     "@babel/types" "^7.22.19"
 
-"@babel/helpers@^7.23.2":
-  version "7.23.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelpers/-/helpers-7.23.4.tgz#7d2cfb969aa43222032193accd7329851facf3c1"
-  integrity sha512-HfcMizYz10cr3h29VqyfGL6ZWIjTwWfvYBMsBVGwpcbhNGe3wQ1ZXZRPzZoAHhd9OqHadHqjQ89iVKINXnbzuw==
+"@babel/helpers@^7.23.5":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fhelpers/-/helpers-7.23.5.tgz#52f522840df8f1a848d06ea6a79b79eefa72401e"
+  integrity sha512-oO7us8FzTEsG3U6ag9MfdF1iA/7Z6dz+MtFhifZk8C8o453rGJFFWUP1t+ULM9TUIAzC9uxXEiXjOiVMyd7QPg==
   dependencies:
     "@babel/template" "^7.22.15"
-    "@babel/traverse" "^7.23.4"
-    "@babel/types" "^7.23.4"
+    "@babel/traverse" "^7.23.5"
+    "@babel/types" "^7.23.5"
 
 "@babel/highlight@^7.23.4":
   version "7.23.4"
@@ -259,10 +259,10 @@
     chalk "^2.4.2"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.14.7", "@babel/parser@^7.20.7", "@babel/parser@^7.21.4", "@babel/parser@^7.22.15", "@babel/parser@^7.23.0", "@babel/parser@^7.23.3", "@babel/parser@^7.23.4", "@babel/parser@^7.6.0", "@babel/parser@^7.9.6":
-  version "7.23.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fparser/-/parser-7.23.4.tgz#409fbe690c333bb70187e2de4021e1e47a026661"
-  integrity sha512-vf3Xna6UEprW+7t6EtOmFpHNAuxw3xqPZghy+brsnusscJRW5BMUzzHZc5ICjULee81WeUV2jjakG09MDglJXQ==
+"@babel/parser@^7.1.0", "@babel/parser@^7.14.7", "@babel/parser@^7.20.7", "@babel/parser@^7.21.4", "@babel/parser@^7.22.15", "@babel/parser@^7.23.0", "@babel/parser@^7.23.5", "@babel/parser@^7.6.0", "@babel/parser@^7.9.6":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fparser/-/parser-7.23.5.tgz#37dee97c4752af148e1d38c34b856b2507660563"
+  integrity sha512-hOOqoiNXrmGdFbhgCzu6GiURxUgM27Xwd/aPuu8RfHEZPBzL1Z54okAHAQjXfcQNwvrlkAmAp4SlRTZ45vlthQ==
 
 "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@^7.23.3":
   version "7.23.3"
@@ -448,7 +448,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-async-generator-functions@^7.23.3":
+"@babel/plugin-transform-async-generator-functions@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-async-generator-functions/-/plugin-transform-async-generator-functions-7.23.4.tgz#93ac8e3531f347fba519b4703f9ff2a75c6ae27a"
   integrity sha512-efdkfPhHYTtn0G6n2ddrESE91fgXxjlqLsnUtPWnJs4a4mZIbUaK7ffqKIIUKXSHwcDvaCVX6GXkaJJFqtX7jw==
@@ -474,7 +474,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-block-scoping@^7.23.3":
+"@babel/plugin-transform-block-scoping@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-block-scoping/-/plugin-transform-block-scoping-7.23.4.tgz#b2d38589531c6c80fbe25e6b58e763622d2d3cf5"
   integrity sha512-0QqbP6B6HOh7/8iNR4CQU2Th/bbRtBp4KS9vcaZd1fZ0wSh5Fyssg0UCIHwxh+ka+pNDREbVLQnHCMHKZfPwfw==
@@ -489,7 +489,7 @@
     "@babel/helper-create-class-features-plugin" "^7.22.15"
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-class-static-block@^7.23.3":
+"@babel/plugin-transform-class-static-block@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-class-static-block/-/plugin-transform-class-static-block-7.23.4.tgz#2a202c8787a8964dd11dfcedf994d36bfc844ab5"
   integrity sha512-nsWu/1M+ggti1SOALj3hfx5FXzAY06fwPJsUZD4/A5e1bWi46VUIWtD+kOX6/IdhXGsXBWllLFDSnqSCdUNydQ==
@@ -498,10 +498,10 @@
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-class-static-block" "^7.14.5"
 
-"@babel/plugin-transform-classes@^7.23.3":
-  version "7.23.3"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-classes/-/plugin-transform-classes-7.23.3.tgz#73380c632c095b03e8503c24fd38f95ad41ffacb"
-  integrity sha512-FGEQmugvAEu2QtgtU0uTASXevfLMFfBeVCIIdcQhn/uBQsMTjBajdnAtanQlOcuihWh10PZ7+HWvc7NtBwP74w==
+"@babel/plugin-transform-classes@^7.23.5":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-classes/-/plugin-transform-classes-7.23.5.tgz#e7a75f815e0c534cc4c9a39c56636c84fc0d64f2"
+  integrity sha512-jvOTR4nicqYC9yzOHIhXG5emiFEOpappSJAl73SDSEDcybD+Puuze8Tnpb9p9qEyYup24tq891gkaygIFvWDqg==
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.22.5"
     "@babel/helper-compilation-targets" "^7.22.15"
@@ -543,7 +543,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-dynamic-import@^7.23.3":
+"@babel/plugin-transform-dynamic-import@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-dynamic-import/-/plugin-transform-dynamic-import-7.23.4.tgz#c7629e7254011ac3630d47d7f34ddd40ca535143"
   integrity sha512-V6jIbLhdJK86MaLh4Jpghi8ho5fGzt3imHOBu/x0jlBaPYqDoWz4RDXjmMOfnh+JWNaQleEAByZLV0QzBT4YQQ==
@@ -559,7 +559,7 @@
     "@babel/helper-builder-binary-assignment-operator-visitor" "^7.22.15"
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-export-namespace-from@^7.23.3":
+"@babel/plugin-transform-export-namespace-from@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-export-namespace-from/-/plugin-transform-export-namespace-from-7.23.4.tgz#084c7b25e9a5c8271e987a08cf85807b80283191"
   integrity sha512-GzuSBcKkx62dGzZI1WVgTWvkkz84FZO5TC5T8dl/Tht/rAla6Dg/Mz9Yhypg+ezVACf/rgDuQt3kbWEv7LdUDQ==
@@ -591,7 +591,7 @@
     "@babel/helper-function-name" "^7.23.0"
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-json-strings@^7.23.3":
+"@babel/plugin-transform-json-strings@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-json-strings/-/plugin-transform-json-strings-7.23.4.tgz#a871d9b6bd171976efad2e43e694c961ffa3714d"
   integrity sha512-81nTOqM1dMwZ/aRXQ59zVubN9wHGqk6UtqRK+/q+ciXmRy8fSolhGVvG09HHRGo4l6fr/c4ZhXUQH0uFW7PZbg==
@@ -606,7 +606,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-logical-assignment-operators@^7.23.3":
+"@babel/plugin-transform-logical-assignment-operators@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-logical-assignment-operators/-/plugin-transform-logical-assignment-operators-7.23.4.tgz#e599f82c51d55fac725f62ce55d3a0886279ecb5"
   integrity sha512-Mc/ALf1rmZTP4JKKEhUwiORU+vcfarFVLfcFiolKUo6sewoxSEgl36ak5t+4WamRsNr6nzjZXQjM35WsU+9vbg==
@@ -671,7 +671,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-nullish-coalescing-operator@^7.22.11", "@babel/plugin-transform-nullish-coalescing-operator@^7.23.3":
+"@babel/plugin-transform-nullish-coalescing-operator@^7.22.11", "@babel/plugin-transform-nullish-coalescing-operator@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-nullish-coalescing-operator/-/plugin-transform-nullish-coalescing-operator-7.23.4.tgz#45556aad123fc6e52189ea749e33ce090637346e"
   integrity sha512-jHE9EVVqHKAQx+VePv5LLGHjmHSJR76vawFPTdlxR/LVJPfOEGxREQwQfjuZEOPTwG92X3LINSh3M40Rv4zpVA==
@@ -679,7 +679,7 @@
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.3"
 
-"@babel/plugin-transform-numeric-separator@^7.23.3":
+"@babel/plugin-transform-numeric-separator@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-numeric-separator/-/plugin-transform-numeric-separator-7.23.4.tgz#03d08e3691e405804ecdd19dd278a40cca531f29"
   integrity sha512-mps6auzgwjRrwKEZA05cOwuDc9FAzoyFS4ZsG/8F43bTLf/TgkJg7QXOrPO1JO599iA3qgK9MXdMGOEC8O1h6Q==
@@ -687,7 +687,7 @@
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-numeric-separator" "^7.10.4"
 
-"@babel/plugin-transform-object-rest-spread@^7.23.3":
+"@babel/plugin-transform-object-rest-spread@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-object-rest-spread/-/plugin-transform-object-rest-spread-7.23.4.tgz#2b9c2d26bf62710460bdc0d1730d4f1048361b83"
   integrity sha512-9x9K1YyeQVw0iOXJlIzwm8ltobIIv7j2iLyP2jIhEbqPRQ7ScNgwQufU2I0Gq11VjyG4gI4yMXt2VFags+1N3g==
@@ -706,7 +706,7 @@
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/helper-replace-supers" "^7.22.20"
 
-"@babel/plugin-transform-optional-catch-binding@^7.23.3":
+"@babel/plugin-transform-optional-catch-binding@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-optional-catch-binding/-/plugin-transform-optional-catch-binding-7.23.4.tgz#318066de6dacce7d92fa244ae475aa8d91778017"
   integrity sha512-XIq8t0rJPHf6Wvmbn9nFxU6ao4c7WhghTR5WyV8SrJfUFzyxhCm4nhC+iAp3HFhbAKLfYpgzhJ6t4XCtVwqO5A==
@@ -714,7 +714,7 @@
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
 
-"@babel/plugin-transform-optional-chaining@^7.23.0", "@babel/plugin-transform-optional-chaining@^7.23.3":
+"@babel/plugin-transform-optional-chaining@^7.23.0", "@babel/plugin-transform-optional-chaining@^7.23.3", "@babel/plugin-transform-optional-chaining@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-optional-chaining/-/plugin-transform-optional-chaining-7.23.4.tgz#6acf61203bdfc4de9d4e52e64490aeb3e52bd017"
   integrity sha512-ZU8y5zWOfjM5vZ+asjgAPwDaBjJzgufjES89Rs4Lpq63O300R/kOz30WCLo6BxxX6QVEilwSlpClnG5cZaikTA==
@@ -738,7 +738,7 @@
     "@babel/helper-create-class-features-plugin" "^7.22.15"
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-private-property-in-object@^7.23.3":
+"@babel/plugin-transform-private-property-in-object@^7.23.4":
   version "7.23.4"
   resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-private-property-in-object/-/plugin-transform-private-property-in-object-7.23.4.tgz#3ec711d05d6608fd173d9b8de39872d8dbf68bf5"
   integrity sha512-9G3K1YqTq3F4Vt88Djx1UZ79PDyj+yKRnUy7cZGSMe+a7jkwD259uKKuUzQlPkGam7R+8RJwh5z4xO27fA1o2A==
@@ -807,12 +807,12 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-typescript@^7.23.3":
-  version "7.23.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-typescript/-/plugin-transform-typescript-7.23.4.tgz#da12914d17b3c4b307f32c5fd91fbfdf17d56f86"
-  integrity sha512-39hCCOl+YUAyMOu6B9SmUTiHUU0t/CxJNUmY3qRdJujbqi+lrQcL11ysYUsAvFWPBdhihrv1z0oRG84Yr3dODQ==
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fplugin-transform-typescript/-/plugin-transform-typescript-7.23.5.tgz#83da13ef62a1ebddf2872487527094b31c9adb84"
+  integrity sha512-2fMkXEJkrmwgu2Bsv1Saxgj30IXZdJ+84lQcKKI7sm719oXs0BBw2ZENKdJdR1PjWndgLCEBNXJOri0fk7RYQA==
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.22.5"
-    "@babel/helper-create-class-features-plugin" "^7.22.15"
+    "@babel/helper-create-class-features-plugin" "^7.23.5"
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-typescript" "^7.23.3"
 
@@ -848,14 +848,14 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/preset-env@^7.23.2":
-  version "7.23.3"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fpreset-env/-/preset-env-7.23.3.tgz#d299e0140a7650684b95c62be2db0ef8c975143e"
-  integrity sha512-ovzGc2uuyNfNAs/jyjIGxS8arOHS5FENZaNn4rtE7UdKMMkqHCvboHfcuhWLZNX5cB44QfcGNWjaevxMzzMf+Q==
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fpreset-env/-/preset-env-7.23.5.tgz#350a3aedfa9f119ad045b068886457e895ba0ca1"
+  integrity sha512-0d/uxVD6tFGWXGDSfyMD1p2otoaKmu6+GD+NfAx0tMaH+dxORnp7T9TaVQ6mKyya7iBtCIVxHjWT7MuzzM9z+A==
   dependencies:
-    "@babel/compat-data" "^7.23.3"
+    "@babel/compat-data" "^7.23.5"
     "@babel/helper-compilation-targets" "^7.22.15"
     "@babel/helper-plugin-utils" "^7.22.5"
-    "@babel/helper-validator-option" "^7.22.15"
+    "@babel/helper-validator-option" "^7.23.5"
     "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression" "^7.23.3"
     "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining" "^7.23.3"
     "@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly" "^7.23.3"
@@ -879,25 +879,25 @@
     "@babel/plugin-syntax-top-level-await" "^7.14.5"
     "@babel/plugin-syntax-unicode-sets-regex" "^7.18.6"
     "@babel/plugin-transform-arrow-functions" "^7.23.3"
-    "@babel/plugin-transform-async-generator-functions" "^7.23.3"
+    "@babel/plugin-transform-async-generator-functions" "^7.23.4"
     "@babel/plugin-transform-async-to-generator" "^7.23.3"
     "@babel/plugin-transform-block-scoped-functions" "^7.23.3"
-    "@babel/plugin-transform-block-scoping" "^7.23.3"
+    "@babel/plugin-transform-block-scoping" "^7.23.4"
     "@babel/plugin-transform-class-properties" "^7.23.3"
-    "@babel/plugin-transform-class-static-block" "^7.23.3"
-    "@babel/plugin-transform-classes" "^7.23.3"
+    "@babel/plugin-transform-class-static-block" "^7.23.4"
+    "@babel/plugin-transform-classes" "^7.23.5"
     "@babel/plugin-transform-computed-properties" "^7.23.3"
     "@babel/plugin-transform-destructuring" "^7.23.3"
     "@babel/plugin-transform-dotall-regex" "^7.23.3"
     "@babel/plugin-transform-duplicate-keys" "^7.23.3"
-    "@babel/plugin-transform-dynamic-import" "^7.23.3"
+    "@babel/plugin-transform-dynamic-import" "^7.23.4"
     "@babel/plugin-transform-exponentiation-operator" "^7.23.3"
-    "@babel/plugin-transform-export-namespace-from" "^7.23.3"
+    "@babel/plugin-transform-export-namespace-from" "^7.23.4"
     "@babel/plugin-transform-for-of" "^7.23.3"
     "@babel/plugin-transform-function-name" "^7.23.3"
-    "@babel/plugin-transform-json-strings" "^7.23.3"
+    "@babel/plugin-transform-json-strings" "^7.23.4"
     "@babel/plugin-transform-literals" "^7.23.3"
-    "@babel/plugin-transform-logical-assignment-operators" "^7.23.3"
+    "@babel/plugin-transform-logical-assignment-operators" "^7.23.4"
     "@babel/plugin-transform-member-expression-literals" "^7.23.3"
     "@babel/plugin-transform-modules-amd" "^7.23.3"
     "@babel/plugin-transform-modules-commonjs" "^7.23.3"
@@ -905,15 +905,15 @@
     "@babel/plugin-transform-modules-umd" "^7.23.3"
     "@babel/plugin-transform-named-capturing-groups-regex" "^7.22.5"
     "@babel/plugin-transform-new-target" "^7.23.3"
-    "@babel/plugin-transform-nullish-coalescing-operator" "^7.23.3"
-    "@babel/plugin-transform-numeric-separator" "^7.23.3"
-    "@babel/plugin-transform-object-rest-spread" "^7.23.3"
+    "@babel/plugin-transform-nullish-coalescing-operator" "^7.23.4"
+    "@babel/plugin-transform-numeric-separator" "^7.23.4"
+    "@babel/plugin-transform-object-rest-spread" "^7.23.4"
     "@babel/plugin-transform-object-super" "^7.23.3"
-    "@babel/plugin-transform-optional-catch-binding" "^7.23.3"
-    "@babel/plugin-transform-optional-chaining" "^7.23.3"
+    "@babel/plugin-transform-optional-catch-binding" "^7.23.4"
+    "@babel/plugin-transform-optional-chaining" "^7.23.4"
     "@babel/plugin-transform-parameters" "^7.23.3"
     "@babel/plugin-transform-private-methods" "^7.23.3"
-    "@babel/plugin-transform-private-property-in-object" "^7.23.3"
+    "@babel/plugin-transform-private-property-in-object" "^7.23.4"
     "@babel/plugin-transform-property-literals" "^7.23.3"
     "@babel/plugin-transform-regenerator" "^7.23.3"
     "@babel/plugin-transform-reserved-words" "^7.23.3"
@@ -979,9 +979,9 @@
   integrity sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==
 
 "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.17.8", "@babel/runtime@^7.21.0", "@babel/runtime@^7.8.4":
-  version "7.23.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fruntime/-/runtime-7.23.4.tgz#36fa1d2b36db873d25ec631dcc4923fdc1cf2e2e"
-  integrity sha512-2Yv65nlWnWlSpe3fXEyX5i7fx5kIKo4Qbcj+hMO0odwaneFjfXw5fdum+4yL20O0QiaHpia0cYQ9xpNMqrBwHg==
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2fruntime/-/runtime-7.23.5.tgz#11edb98f8aeec529b82b211028177679144242db"
+  integrity sha512-NdUTHcPe4C99WxPub+K9l9tK5/lV4UXIoaHSYgzco9BCyjKAAwzdBI+wWtYqHt7LJdbo74ZjRPJgzVweq1sz0w==
   dependencies:
     regenerator-runtime "^0.14.0"
 
@@ -994,26 +994,26 @@
     "@babel/parser" "^7.22.15"
     "@babel/types" "^7.22.15"
 
-"@babel/traverse@^7.23.2", "@babel/traverse@^7.23.3", "@babel/traverse@^7.23.4":
-  version "7.23.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2ftraverse/-/traverse-7.23.4.tgz#c2790f7edf106d059a0098770fe70801417f3f85"
-  integrity sha512-IYM8wSUwunWTB6tFC2dkKZhxbIjHoWemdK+3f8/wq8aKhbUscxD5MX72ubd90fxvFknaLPeGw5ycU84V1obHJg==
+"@babel/traverse@^7.23.2", "@babel/traverse@^7.23.5":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2ftraverse/-/traverse-7.23.5.tgz#f546bf9aba9ef2b042c0e00d245990c15508e7ec"
+  integrity sha512-czx7Xy5a6sapWWRx61m1Ke1Ra4vczu1mCTtJam5zRTBOonfdJ+S/B6HYmGYu3fJtr8GGET3si6IhgWVBhJ/m8w==
   dependencies:
-    "@babel/code-frame" "^7.23.4"
-    "@babel/generator" "^7.23.4"
+    "@babel/code-frame" "^7.23.5"
+    "@babel/generator" "^7.23.5"
     "@babel/helper-environment-visitor" "^7.22.20"
     "@babel/helper-function-name" "^7.23.0"
     "@babel/helper-hoist-variables" "^7.22.5"
     "@babel/helper-split-export-declaration" "^7.22.6"
-    "@babel/parser" "^7.23.4"
-    "@babel/types" "^7.23.4"
+    "@babel/parser" "^7.23.5"
+    "@babel/types" "^7.23.5"
     debug "^4.1.0"
     globals "^11.1.0"
 
-"@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.21.4", "@babel/types@^7.21.5", "@babel/types@^7.22.15", "@babel/types@^7.22.19", "@babel/types@^7.22.5", "@babel/types@^7.23.0", "@babel/types@^7.23.3", "@babel/types@^7.23.4", "@babel/types@^7.4.4", "@babel/types@^7.6.1", "@babel/types@^7.9.6":
-  version "7.23.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2ftypes/-/types-7.23.4.tgz#7206a1810fc512a7f7f7d4dace4cb4c1c9dbfb8e"
-  integrity sha512-7uIFwVYpoplT5jp/kVv6EF93VaJ8H+Yn5IczYiaAi98ajzjfoZfslet/e0sLh+wVBjb2qqIut1b0S26VSafsSQ==
+"@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.21.4", "@babel/types@^7.21.5", "@babel/types@^7.22.15", "@babel/types@^7.22.19", "@babel/types@^7.22.5", "@babel/types@^7.23.0", "@babel/types@^7.23.5", "@babel/types@^7.4.4", "@babel/types@^7.6.1", "@babel/types@^7.9.6":
+  version "7.23.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@babel%2ftypes/-/types-7.23.5.tgz#48d730a00c95109fa4393352705954d74fb5b602"
+  integrity sha512-ON5kSOJwVO6xXVRTvOI0eOnWe7VdUcIpsovGo9U/Br4Ie4UVFQTboO2cYnDhAGU6Fp+UxSiT+pMft0SMHfuq6w==
   dependencies:
     "@babel/helper-string-parser" "^7.23.4"
     "@babel/helper-validator-identifier" "^7.22.20"
@@ -1021,7 +1021,7 @@
 
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@bcoe%2fv8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@colors/colors@1.5.0":
@@ -1280,9 +1280,9 @@
     "@lit-labs/react" "^1.0.2"
 
 "@floating-ui/core@^1.4.2":
-  version "1.5.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@floating-ui%2fcore/-/core-1.5.0.tgz#5c05c60d5ae2d05101c3021c1a2a350ddc027f8c"
-  integrity sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==
+  version "1.5.2"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@floating-ui%2fcore/-/core-1.5.2.tgz#53a0f7a98c550e63134d504f26804f6b83dbc071"
+  integrity sha512-Ii3MrfY/GAIN3OhXNzpCKaLxHQfJF9qvwq/kEJYdqDxeIHa01K8sldugal6TmeeXl+WMvhv9cnVzUTaFFJF09A==
   dependencies:
     "@floating-ui/utils" "^0.1.3"
 
@@ -2083,65 +2083,65 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@rollup/rollup-android-arm-eabi@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-android-arm-eabi/-/rollup-android-arm-eabi-4.6.0.tgz#c08a454d70605aacad17530a953791ea385e37d5"
-  integrity sha512-keHkkWAe7OtdALGoutLY3utvthkGF+Y17ws9LYT8pxMBYXaCoH/8dXS2uzo6e8+sEhY7y/zi5RFo22Dy2lFpDw==
+"@rollup/rollup-android-arm-eabi@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-android-arm-eabi/-/rollup-android-arm-eabi-4.6.1.tgz#0ea289f68ff248b50fea5716ca9f65f7d4dba3ae"
+  integrity sha512-0WQ0ouLejaUCRsL93GD4uft3rOmB8qoQMU05Kb8CmMtMBe7XUDLAltxVZI1q6byNqEtU7N1ZX1Vw5lIpgulLQA==
 
-"@rollup/rollup-android-arm64@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-android-arm64/-/rollup-android-arm64-4.6.0.tgz#e0cf96960405947c1a09a389467e6aa10ae1a226"
-  integrity sha512-y3Kt+34smKQNWilicPbBz/MXEY7QwDzMFNgwEWeYiOhUt9MTWKjHqe3EVkXwT2fR7izOvHpDWZ0o2IyD9SWX7A==
+"@rollup/rollup-android-arm64@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-android-arm64/-/rollup-android-arm64-4.6.1.tgz#27c8c67fc5de574874085a1b480ac65b3e18378e"
+  integrity sha512-1TKm25Rn20vr5aTGGZqo6E4mzPicCUD79k17EgTLAsXc1zysyi4xXKACfUbwyANEPAEIxkzwue6JZ+stYzWUTA==
 
-"@rollup/rollup-darwin-arm64@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-darwin-arm64/-/rollup-darwin-arm64-4.6.0.tgz#6d2f53021fbb9fdecf60bfb6fd5d999aef8385e9"
-  integrity sha512-oLzzxcUIHltHxOCmaXl+pkIlU+uhSxef5HfntW7RsLh1eHm+vJzjD9Oo4oUKso4YuP4PpbFJNlZjJuOrxo8dPg==
+"@rollup/rollup-darwin-arm64@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-darwin-arm64/-/rollup-darwin-arm64-4.6.1.tgz#c5735c042980c85495411af7183dd20294763bd8"
+  integrity sha512-cEXJQY/ZqMACb+nxzDeX9IPLAg7S94xouJJCNVE5BJM8JUEP4HeTF+ti3cmxWeSJo+5D+o8Tc0UAWUkfENdeyw==
 
-"@rollup/rollup-darwin-x64@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-darwin-x64/-/rollup-darwin-x64-4.6.0.tgz#b7d0a4bbe6fc493efa269a60a66dc070ac10e2bd"
-  integrity sha512-+ANnmjkcOBaV25n0+M0Bere3roeVAnwlKW65qagtuAfIxXF9YxUneRyAn/RDcIdRa7QrjRNJL3jR7T43ObGe8Q==
+"@rollup/rollup-darwin-x64@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-darwin-x64/-/rollup-darwin-x64-4.6.1.tgz#af844bd54abb73ca3c9cf89a31eec17861d1375d"
+  integrity sha512-LoSU9Xu56isrkV2jLldcKspJ7sSXmZWkAxg7sW/RfF7GS4F5/v4EiqKSMCFbZtDu2Nc1gxxFdQdKwkKS4rwxNg==
 
-"@rollup/rollup-linux-arm-gnueabihf@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.6.0.tgz#12fad1802f500a0196ab0bb4dbb776aaabdedcc7"
-  integrity sha512-tBTSIkjSVUyrekddpkAqKOosnj1Fc0ZY0rJL2bIEWPKqlEQk0paORL9pUIlt7lcGJi3LzMIlUGXvtNi1Z6MOCQ==
+"@rollup/rollup-linux-arm-gnueabihf@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.6.1.tgz#5e972f63c441eaf859551039b3f18db9b035977d"
+  integrity sha512-EfI3hzYAy5vFNDqpXsNxXcgRDcFHUWSx5nnRSCKwXuQlI5J9dD84g2Usw81n3FLBNsGCegKGwwTVsSKK9cooSQ==
 
-"@rollup/rollup-linux-arm64-gnu@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.6.0.tgz#6de1caa2c9952d16dafa21dd26da9562d4ea2112"
-  integrity sha512-Ed8uJI3kM11de9S0j67wAV07JUNhbAqIrDYhQBrQW42jGopgheyk/cdcshgGO4fW5Wjq97COCY/BHogdGvKVNQ==
+"@rollup/rollup-linux-arm64-gnu@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.6.1.tgz#f4cfbc71e3b6fdb395b28b1472414e181515c72d"
+  integrity sha512-9lhc4UZstsegbNLhH0Zu6TqvDfmhGzuCWtcTFXY10VjLLUe4Mr0Ye2L3rrtHaDd/J5+tFMEuo5LTCSCMXWfUKw==
 
-"@rollup/rollup-linux-arm64-musl@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.6.0.tgz#ef9cae3d22c8c44ff4f271e308bf1c013348bdc0"
-  integrity sha512-mZoNQ/qK4D7SSY8v6kEsAAyDgznzLLuSFCA3aBHZTmf3HP/dW4tNLTtWh9+LfyO0Z1aUn+ecpT7IQ3WtIg3ViQ==
+"@rollup/rollup-linux-arm64-musl@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.6.1.tgz#6a94c691830dc29bf708de7c640f494996130893"
+  integrity sha512-FfoOK1yP5ksX3wwZ4Zk1NgyGHZyuRhf99j64I5oEmirV8EFT7+OhUZEnP+x17lcP/QHJNWGsoJwrz4PJ9fBEXw==
 
-"@rollup/rollup-linux-x64-gnu@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.6.0.tgz#e9071050bed7c64a9fd964cde3c8bd139bf8e489"
-  integrity sha512-rouezFHpwCqdEXsqAfNsTgSWO0FoZ5hKv5p+TGO5KFhyN/dvYXNMqMolOb8BkyKcPqjYRBeT+Z6V3aM26rPaYg==
+"@rollup/rollup-linux-x64-gnu@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.6.1.tgz#f07bae3f7dc532d9ea5ab36c9071db329f9a1efb"
+  integrity sha512-DNGZvZDO5YF7jN5fX8ZqmGLjZEXIJRdJEdTFMhiyXqyXubBa0WVLDWSNlQ5JR2PNgDbEV1VQowhVRUh+74D+RA==
 
-"@rollup/rollup-linux-x64-musl@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-x64-musl/-/rollup-linux-x64-musl-4.6.0.tgz#a4c7f5e0c363b2c34f6a7566b1c9da00bf0b96d0"
-  integrity sha512-Bbm+fyn3S6u51urfj3YnqBXg5vI2jQPncRRELaucmhBVyZkbWClQ1fEsRmdnCPpQOQfkpg9gZArvtMVkOMsh1w==
+"@rollup/rollup-linux-x64-musl@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-linux-x64-musl/-/rollup-linux-x64-musl-4.6.1.tgz#357a34fdbf410af88ce48bd802bea6462bb9a8bc"
+  integrity sha512-RkJVNVRM+piYy87HrKmhbexCHg3A6Z6MU0W9GHnJwBQNBeyhCJG9KDce4SAMdicQnpURggSvtbGo9xAWOfSvIQ==
 
-"@rollup/rollup-win32-arm64-msvc@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.6.0.tgz#9a7bfc660ac088d447858fc5223984deb979a55a"
-  integrity sha512-+MRMcyx9L2kTrTUzYmR61+XVsliMG4odFb5UmqtiT8xOfEicfYAGEuF/D1Pww1+uZkYhBqAHpvju7VN+GnC3ng==
+"@rollup/rollup-win32-arm64-msvc@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.6.1.tgz#b6e97fd38281667e35297033393cd1101f4a31be"
+  integrity sha512-v2FVT6xfnnmTe3W9bJXl6r5KwJglMK/iRlkKiIFfO6ysKs0rDgz7Cwwf3tjldxQUrHL9INT/1r4VA0n9L/F1vQ==
 
-"@rollup/rollup-win32-ia32-msvc@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.6.0.tgz#7d5fb96e9f0120451da1fece5c74d2bb373f8925"
-  integrity sha512-rxfeE6K6s/Xl2HGeK6cO8SiQq3k/3BYpw7cfhW5Bk2euXNEpuzi2cc7llxx1si1QgwfjNtdRNTGqdBzGlFZGFw==
+"@rollup/rollup-win32-ia32-msvc@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.6.1.tgz#a95db026c640c8128bfd38546d85342f2329beaf"
+  integrity sha512-YEeOjxRyEjqcWphH9dyLbzgkF8wZSKAKUkldRY6dgNR5oKs2LZazqGB41cWJ4Iqqcy9/zqYgmzBkRoVz3Q9MLw==
 
-"@rollup/rollup-win32-x64-msvc@4.6.0":
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.6.0.tgz#15841505c7ec1648020941d04ca0210f88c59e3a"
-  integrity sha512-QqmCsydHS172Y0Kc13bkMXvipbJSvzeglBncJG3LsYJSiPlxYACz7MmJBs4A8l1oU+jfhYEIC/+AUSlvjmiX/g==
+"@rollup/rollup-win32-x64-msvc@4.6.1":
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@rollup%2frollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.6.1.tgz#45785b5caf83200a34a9867ba50d69560880c120"
+  integrity sha512-0zfTlFAIhgz8V2G8STq8toAjsYYA6eci1hnXuyOTUFnymrtJwnS6uGKiv3v5UrPZkBlamLvrLV2iiaeqCKzb0A==
 
 "@semantic-release/commit-analyzer@^9.0.2":
   version "9.0.2"
@@ -2239,134 +2239,134 @@
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
 "@storybook/addon-a11y@^7.5.3":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-a11y/-/addon-a11y-7.6.0.tgz#456ac21be0907c433d5538db80e291841522c833"
-  integrity sha512-jJbrcqVt6/qn7vbV0tPsd3m8W9eheafBGz2lix5I68ZoaEZNqhlrr3r1pKqlqRkAyisAUI+ctrZsqhqid88VPQ==
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-a11y/-/addon-a11y-7.6.4.tgz#bee12968995a5c0a196906aaaf100369876c5534"
+  integrity sha512-NwROJMes3D1WVPSmASVnHtDCIFQCF3DoPJEpzpnUYFxCR2IQzqPSlf9jptRkot6XjL5XwVX5mV2KxC2lKA1cfg==
   dependencies:
-    "@storybook/addon-highlight" "7.6.0"
+    "@storybook/addon-highlight" "7.6.4"
     axe-core "^4.2.0"
 
-"@storybook/addon-actions@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-actions/-/addon-actions-7.6.0.tgz#dd70e3ca487c1ea53da4253867b66da48fb39c8b"
-  integrity sha512-yc4d/6j0XaTQPkEMkT0JxWPjRwZUg0oC929/vpouYhaC60Ch/b3PnzUFkSQ2BqgeUUH0c9wfzs/9np6USRXpBQ==
+"@storybook/addon-actions@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-actions/-/addon-actions-7.6.4.tgz#b2d2941baa926718f0c53581c8cc8b19c2e0393b"
+  integrity sha512-91UD5KPDik74VKVioPMcbwwvDXN/non8p1wArYAHCHCmd/Pts5MJRiFueSdfomSpNjUtjtn6eSXtwpIL3XVOfQ==
   dependencies:
-    "@storybook/core-events" "7.6.0"
+    "@storybook/core-events" "7.6.4"
     "@storybook/global" "^5.0.0"
     "@types/uuid" "^9.0.1"
     dequal "^2.0.2"
     polished "^4.2.2"
     uuid "^9.0.0"
 
-"@storybook/addon-backgrounds@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-backgrounds/-/addon-backgrounds-7.6.0.tgz#3bb08e59d774154c9af77793a1e2d9ca823b532c"
-  integrity sha512-8BMwVXiazDQlqYS8Snzowzn6MbcsigaUxhWzWoCkLUmyOvciywvOjQD9241wbEdLc/rdFZAPRGoQLZfn/1BV9g==
+"@storybook/addon-backgrounds@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-backgrounds/-/addon-backgrounds-7.6.4.tgz#8ba49f4ad88327f606edb1f08fb0aef4e8eb3f05"
+  integrity sha512-gNy3kIkHSr+Lg/jVDHwbZjIe1po5SDGZNVe39vrJwnqGz8T1clWes9WHCL6zk/uaCDA3yUna2Nt/KlOFAWDSoQ==
   dependencies:
     "@storybook/global" "^5.0.0"
     memoizerific "^1.11.3"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-controls@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-controls/-/addon-controls-7.6.0.tgz#524ddbf57cc22a3bd3f2f72d76479ed4e4c5ef2e"
-  integrity sha512-x6OszUmbi+xO4TlFAmw7nFq3IEzM10yPtAMC+RZ8jfSnlfevtZvT/KYb6WySo0H3b7b6GIxLwzbHceZrkHYPHg==
+"@storybook/addon-controls@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-controls/-/addon-controls-7.6.4.tgz#8f8651a1e929f5f8506d025bcc5c3e454444b1c3"
+  integrity sha512-k4AtZfazmD/nL3JAtLGAB7raPhkhUo0jWnaZWrahd9h1Fm13mBU/RW+JzTRhCw3Mp2HPERD7NI5Qcd2fUP6WDA==
   dependencies:
-    "@storybook/blocks" "7.6.0"
+    "@storybook/blocks" "7.6.4"
     lodash "^4.17.21"
     ts-dedent "^2.0.0"
 
 "@storybook/addon-designs@^7.0.5":
-  version "7.0.5"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-designs/-/addon-designs-7.0.5.tgz#a3b19dc7b92bdd89f03bd462c59238e28528cec3"
-  integrity sha512-yB1YwkVhnTI28mS+00avAf7vPAppZi2pdXQF91725g+RoiM7llY87q+c1z2/YiQNQYNm2QXpYcrcYiLQzyr0NQ==
+  version "7.0.7"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-designs/-/addon-designs-7.0.7.tgz#64af26ce73e34bd36d4eba1438e83e8c44250967"
+  integrity sha512-4Ec85kgv/r55Zh5xOHSIq7b9h7PyYhavMpwLmjpzeOkEdFwiNM9KCTK8SE58yCXzbkrw1JIGb3+FAWfR5JfK5g==
   dependencies:
     "@figspec/react" "^1.0.0"
 
-"@storybook/addon-docs@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-docs/-/addon-docs-7.6.0.tgz#7ef764b6259981a35de145c7159df0838189d6f1"
-  integrity sha512-gvBMqERBilXEQaDFbsmUZSVSRjBJUSmHaGRYLMb72PnK1pfoRSxvi0TrIqbOScTQLUukKN42OwA83xLS+2eubg==
+"@storybook/addon-docs@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-docs/-/addon-docs-7.6.4.tgz#e15ab003482d5c43da43edae8557ac6e0988017e"
+  integrity sha512-PbFMbvC9sK3sGdMhwmagXs9TqopTp9FySji+L8O7W9SHRC6wSmdwoWWPWybkOYxr/z/wXi7EM0azSAX7yQxLbw==
   dependencies:
     "@jest/transform" "^29.3.1"
     "@mdx-js/react" "^2.1.5"
-    "@storybook/blocks" "7.6.0"
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/components" "7.6.0"
-    "@storybook/csf-plugin" "7.6.0"
-    "@storybook/csf-tools" "7.6.0"
+    "@storybook/blocks" "7.6.4"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/components" "7.6.4"
+    "@storybook/csf-plugin" "7.6.4"
+    "@storybook/csf-tools" "7.6.4"
     "@storybook/global" "^5.0.0"
     "@storybook/mdx2-csf" "^1.0.0"
-    "@storybook/node-logger" "7.6.0"
-    "@storybook/postinstall" "7.6.0"
-    "@storybook/preview-api" "7.6.0"
-    "@storybook/react-dom-shim" "7.6.0"
-    "@storybook/theming" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/node-logger" "7.6.4"
+    "@storybook/postinstall" "7.6.4"
+    "@storybook/preview-api" "7.6.4"
+    "@storybook/react-dom-shim" "7.6.4"
+    "@storybook/theming" "7.6.4"
+    "@storybook/types" "7.6.4"
     fs-extra "^11.1.0"
     remark-external-links "^8.0.0"
     remark-slug "^6.0.0"
     ts-dedent "^2.0.0"
 
 "@storybook/addon-essentials@^7.0.7":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-essentials/-/addon-essentials-7.6.0.tgz#715f338bcbf84f4ed43c8fb70e2a063ac0897c64"
-  integrity sha512-cLmLradZqGxh3xavAhPTmJYUdV66NZsEyAZKdc2Fjo9sVWbWstODe/IC1xhD1dRgxEMCTlBpmUENqeCbbnkpqA==
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-essentials/-/addon-essentials-7.6.4.tgz#9ae4fa2836a603cccaf6065ae0ca81d7fb5f7139"
+  integrity sha512-J+zPmP4pbuuFxQ3pjLRYQRnxEtp7jF3xRXGFO8brVnEqtqoxwJ6j3euUrRLe0rpGAU3AD7dYfaaFjd3xkENgTw==
   dependencies:
-    "@storybook/addon-actions" "7.6.0"
-    "@storybook/addon-backgrounds" "7.6.0"
-    "@storybook/addon-controls" "7.6.0"
-    "@storybook/addon-docs" "7.6.0"
-    "@storybook/addon-highlight" "7.6.0"
-    "@storybook/addon-measure" "7.6.0"
-    "@storybook/addon-outline" "7.6.0"
-    "@storybook/addon-toolbars" "7.6.0"
-    "@storybook/addon-viewport" "7.6.0"
-    "@storybook/core-common" "7.6.0"
-    "@storybook/manager-api" "7.6.0"
-    "@storybook/node-logger" "7.6.0"
-    "@storybook/preview-api" "7.6.0"
+    "@storybook/addon-actions" "7.6.4"
+    "@storybook/addon-backgrounds" "7.6.4"
+    "@storybook/addon-controls" "7.6.4"
+    "@storybook/addon-docs" "7.6.4"
+    "@storybook/addon-highlight" "7.6.4"
+    "@storybook/addon-measure" "7.6.4"
+    "@storybook/addon-outline" "7.6.4"
+    "@storybook/addon-toolbars" "7.6.4"
+    "@storybook/addon-viewport" "7.6.4"
+    "@storybook/core-common" "7.6.4"
+    "@storybook/manager-api" "7.6.4"
+    "@storybook/node-logger" "7.6.4"
+    "@storybook/preview-api" "7.6.4"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-highlight@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-highlight/-/addon-highlight-7.6.0.tgz#0a17590a277223667c330be4ef439d85060304a2"
-  integrity sha512-9Ho4L47k9e36kIgNa0RA9ZXzn7AWmq/sXBMRK7PcgrMiKvYdRQMU0AMHDvICg2vI8IkMVXTEaT/CQPefG3XT0Q==
+"@storybook/addon-highlight@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-highlight/-/addon-highlight-7.6.4.tgz#0d71de9b081fd7d2fa0d7003a19b47002be1e4f3"
+  integrity sha512-0kvjDzquoPwWWU61QYmEtcSGWXufnV7Z/bfBTYh132uxvV/X9YzDFcXXrxGL7sBJkK32gNUUBDuiTOxs5NxyOQ==
   dependencies:
     "@storybook/global" "^5.0.0"
 
 "@storybook/addon-interactions@^7.0.7":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-interactions/-/addon-interactions-7.6.0.tgz#6c294529ece6a54af425e9af06a2a8dadc2741fc"
-  integrity sha512-+u1+FFn8asqJ96qe8AHWhpazYGu60vsl6QFkS1AWcvcNHaevjcSyBkPoVJEywnnixd5H3rpKo6EkXLsUvdr3JQ==
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-interactions/-/addon-interactions-7.6.4.tgz#e46a68f715b48b8d630fdc6a98c94ad3c7553f73"
+  integrity sha512-LjK9uhkgnbGyDwwa7pQhLptDEHeTIFmy+KurfJs9T08DpvRFfuuzyW4mj/hA63R1W5yjFSAhRiZj26+D7kBIyw==
   dependencies:
     "@storybook/global" "^5.0.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/types" "7.6.4"
     jest-mock "^27.0.6"
     polished "^4.2.2"
     ts-dedent "^2.2.0"
 
 "@storybook/addon-links@^7.0.7":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-links/-/addon-links-7.6.0.tgz#adefec37dfdff08630838be51d05c0d7f02e958e"
-  integrity sha512-Qfq6U7EuxlXUFSbWVH8XRzQWva+CNtNgqjwO2hGsbhCisX5cb8vjl1mQF9DH00Lc021UcUjDPXiCCEEhj6Mpvg==
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-links/-/addon-links-7.6.4.tgz#e484cd67d26c4877e3dd77b2211fc3d02875e3c1"
+  integrity sha512-TEhxYdMhJO28gD84ej1FCwLv9oLuCPt77bRXip9ndaNPRTdHYdWv6IP94dhbuDi8eHux7Z4A/mllciFuDFrnCw==
   dependencies:
     "@storybook/csf" "^0.1.2"
     "@storybook/global" "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-measure@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-measure/-/addon-measure-7.6.0.tgz#2423edb53d3653e065f7e2f5ef4d5d8c3e795c3e"
-  integrity sha512-CtGZ45LUvylvM7z53TbUdJ8qx5QRgWXAA1Lk/+yBlIYgXQhvMzSupxmhjRyZZdj1rMj8S5NYuIg43nsQYijnsQ==
+"@storybook/addon-measure@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-measure/-/addon-measure-7.6.4.tgz#0597ae04a27ff596bc8f2015f7c746b33eef78a3"
+  integrity sha512-73wsJ8PALsgWniR3MA/cmxcFuU6cRruWdIyYzOMgM8ife2Jm3xSkV7cTTXAqXt2H9Uuki4PGnuMHWWFLpPeyVA==
   dependencies:
     "@storybook/global" "^5.0.0"
     tiny-invariant "^1.3.1"
 
-"@storybook/addon-outline@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-outline/-/addon-outline-7.6.0.tgz#7f4f130dc0988440109cad0f1c13a4411d459b65"
-  integrity sha512-W5KcuxM2w9VugZmU8nCwRa1FZdLj+sMcLZG4R1JcplY4SkWXrVtqMRJE0TNvyUEPUJpqcUwZWvL31fOZHQaOwg==
+"@storybook/addon-outline@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-outline/-/addon-outline-7.6.4.tgz#1c62a4c5e97f277ded888e3157d5948618ec98fb"
+  integrity sha512-CFxGASRse/qeFocetDKFNeWZ3Aa2wapVtRciDNa4Zx7k1wCnTjEsPIm54waOuCaNVcrvO+nJUAZG5WyiorQvcg==
   dependencies:
     "@storybook/global" "^5.0.0"
     ts-dedent "^2.0.0"
@@ -2395,42 +2395,42 @@
     sass-loader "^13.2.2"
     style-loader "^3.3.2"
 
-"@storybook/addon-toolbars@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-toolbars/-/addon-toolbars-7.6.0.tgz#abc8d7fe642727b6fe8dbc00cc3e9cf15d1bebdc"
-  integrity sha512-IZ6LGqu4QYsXSKof8KO0bL9+UR4KXho4z/+o0OYBwQRnO1KBQh73yRoeRxZPsJWE0Ms5zZnAMEA6iSZ+Zyvs5g==
+"@storybook/addon-toolbars@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-toolbars/-/addon-toolbars-7.6.4.tgz#de76577d20db8a0e63c567d9cbfad7de15ca0f56"
+  integrity sha512-ENMQJgU4sRCLLDVXYfa+P3cQVV9PC0ZxwVAKeM3NPYPNH/ODoryGNtq+Q68LwHlM4ObCE2oc9MzaQqPxloFcCw==
 
-"@storybook/addon-viewport@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-viewport/-/addon-viewport-7.6.0.tgz#d0e2a2f79c2fa7e68478cd2d8213e40b72ce2dd5"
-  integrity sha512-1NGgoEnDYLWw0HuRTTrIHCj8I0Xtc76PgPtArj92HQu+ENu4Hy0Y8MypZ+ZmAFddykaInwmZeQo2CD0GXU9qUQ==
+"@storybook/addon-viewport@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2faddon-viewport/-/addon-viewport-7.6.4.tgz#f39601082f48a903c47cae71a84b05428ea20331"
+  integrity sha512-SoTcHIoqybhYD28v7QExF1EZnl7FfxuP74VDhtze5LyMd2CbqmVnUfwewLCz/3IvCNce0GqdNyg1m6QJ7Eq1uw==
   dependencies:
     memoizerific "^1.11.3"
 
 "@storybook/api@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fapi/-/api-7.6.0.tgz#71a3e85c9eb5286797cfacee7d24404d5319dd8f"
-  integrity sha512-aMgBWVqLb+aELCR8NbJsO7voaj2Io+MbYHUSFakZFPg/Y7OgE/asO7NkyE0ZJLzv5Uc3AmHRW3AQOrSde7BCtA==
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fapi/-/api-7.6.4.tgz#2a2d61280310e883acd7da8ce1c3abf6f95eb735"
+  integrity sha512-iY/ZejLmVHctT6WcCiVCXBY84g/wMP7Amb+J3xTBM6jZHAJoHpM3ZeYlR5eZu4QfbGZh608TQDTmdQ7irDo3ZA==
   dependencies:
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/manager-api" "7.6.0"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/manager-api" "7.6.4"
 
-"@storybook/blocks@7.6.0", "@storybook/blocks@^7.0.7":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fblocks/-/blocks-7.6.0.tgz#8534ac5d3c6ad68d0e2c806648237ad738668694"
-  integrity sha512-S5g0h9dJevngPXnsFAjxQryOU/rQuA4cet40hIH0qRKesFwaXDFrsYHMZfxg6uGKygpeGbIEBoXckL8DT3SofA==
+"@storybook/blocks@7.6.4", "@storybook/blocks@^7.0.7":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fblocks/-/blocks-7.6.4.tgz#f5d0de020b886e0fd17021608df5b73e5e39ae69"
+  integrity sha512-iXinXXhTUBtReREP1Jifpu35DnGg7FidehjvCM8sM4E4aymfb8czdg9DdvG46T2UFUPUct36nnjIdMLWOya8Bw==
   dependencies:
-    "@storybook/channels" "7.6.0"
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/components" "7.6.0"
-    "@storybook/core-events" "7.6.0"
+    "@storybook/channels" "7.6.4"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/components" "7.6.4"
+    "@storybook/core-events" "7.6.4"
     "@storybook/csf" "^0.1.2"
-    "@storybook/docs-tools" "7.6.0"
+    "@storybook/docs-tools" "7.6.4"
     "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "7.6.0"
-    "@storybook/preview-api" "7.6.0"
-    "@storybook/theming" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/manager-api" "7.6.4"
+    "@storybook/preview-api" "7.6.4"
+    "@storybook/theming" "7.6.4"
+    "@storybook/types" "7.6.4"
     "@types/lodash" "^4.14.167"
     color-convert "^2.0.1"
     dequal "^2.0.2"
@@ -2444,15 +2444,15 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/builder-manager@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fbuilder-manager/-/builder-manager-7.6.0.tgz#e7493c375438fceed66faaa046c36673941d5e66"
-  integrity sha512-xbyc1aMdvJrmN6mk7GW1mv/+gGxDfk3Rrv6tZph5nAWUojibEEqVHv5k6IXq5yyTzwRU+IpCf8gzCUSEvORt7w==
+"@storybook/builder-manager@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fbuilder-manager/-/builder-manager-7.6.4.tgz#64d4745f918bf370924b767cc3a767818fa45a47"
+  integrity sha512-k5+D3fXw7LdMOWd5tF7cIq8L3irrdW6/vmcEHLaJj1EXZ+DvsNCH9xSsLS+6zfrUcxug4oSfRqvF87w6Oz3DtA==
   dependencies:
     "@fal-works/esbuild-plugin-global-externals" "^2.1.2"
-    "@storybook/core-common" "7.6.0"
-    "@storybook/manager" "7.6.0"
-    "@storybook/node-logger" "7.6.0"
+    "@storybook/core-common" "7.6.4"
+    "@storybook/manager" "7.6.4"
+    "@storybook/node-logger" "7.6.4"
     "@types/ejs" "^3.1.1"
     "@types/find-cache-dir" "^3.2.1"
     "@yarnpkg/esbuild-plugin-pnp" "^3.0.0-rc.10"
@@ -2466,19 +2466,19 @@
     process "^0.11.10"
     util "^0.12.4"
 
-"@storybook/builder-vite@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fbuilder-vite/-/builder-vite-7.6.0.tgz#63725a297ff55231a485ff60911a84cd3aa79cec"
-  integrity sha512-gYJbQxquk/REN0Gg3okC56gFsrWHvnNtvc5Dbs+WRN8Zm2hUr7Gyrp3BQGgqvbinLFy2oK4Hq+Z18UAptG4LGw==
+"@storybook/builder-vite@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fbuilder-vite/-/builder-vite-7.6.4.tgz#a9baaf41731c1da63a9f70bd015975b638f95bc5"
+  integrity sha512-eqb3mLUfuXd4a7+46cWevQ9qH81FvHy1lrAbZGwp4bQ/Tj0YF8Ej7lKBbg7zoIwiu2zDci+BbMiaDOY1kPtILw==
   dependencies:
-    "@storybook/channels" "7.6.0"
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/core-common" "7.6.0"
-    "@storybook/csf-plugin" "7.6.0"
-    "@storybook/node-logger" "7.6.0"
-    "@storybook/preview" "7.6.0"
-    "@storybook/preview-api" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/channels" "7.6.4"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/core-common" "7.6.4"
+    "@storybook/csf-plugin" "7.6.4"
+    "@storybook/node-logger" "7.6.4"
+    "@storybook/preview" "7.6.4"
+    "@storybook/preview-api" "7.6.4"
+    "@storybook/types" "7.6.4"
     "@types/find-cache-dir" "^3.2.1"
     browser-assert "^1.2.1"
     es-module-lexer "^0.9.3"
@@ -2488,35 +2488,35 @@
     magic-string "^0.30.0"
     rollup "^2.25.0 || ^3.3.0"
 
-"@storybook/channels@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fchannels/-/channels-7.6.0.tgz#499c063a54970ebe2bddbcb124891aea5061286b"
-  integrity sha512-Zobr57AkPIE+cdQMrIC9FdgQZDJt8XmpCR+QCxzhrhz6zJLVbIDjf866vKmy3EGSzGrlajfAg/G1PK4v7FdAcw==
+"@storybook/channels@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fchannels/-/channels-7.6.4.tgz#d0af47f1f049c3ad77bcdefec54253f56b3b0a47"
+  integrity sha512-Z4PY09/Czl70ap4ObmZ4bgin+EQhPaA3HdrEDNwpnH7A9ttfEO5u5KThytIjMq6kApCCihmEPDaYltoVrfYJJA==
   dependencies:
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/core-events" "7.6.0"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/core-events" "7.6.4"
     "@storybook/global" "^5.0.0"
     qs "^6.10.0"
     telejson "^7.2.0"
     tiny-invariant "^1.3.1"
 
-"@storybook/cli@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcli/-/cli-7.6.0.tgz#f92c498ba665ce20e419a7147d86bfa14bf926b0"
-  integrity sha512-bpkJDBrpdrwn4D0XlqpPHuKBplpTirAC6hAvYLE1yVXFYKcZjF/Xavd6uaSZ5IK8G8E6BWJ2cgNFHM/FtF510w==
+"@storybook/cli@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcli/-/cli-7.6.4.tgz#3680233a32975a400c091341f8b6ae4cdb01c72f"
+  integrity sha512-GqvaFdkkBMJOdnrVe82XY0V3b+qFMhRNyVoTv2nqB87iMUXZHqh4Pu4LqwaJBsBpuNregvCvVOPe9LGgoOzy4A==
   dependencies:
     "@babel/core" "^7.23.2"
     "@babel/preset-env" "^7.23.2"
     "@babel/types" "^7.23.0"
     "@ndelangen/get-tarball" "^3.0.7"
-    "@storybook/codemod" "7.6.0"
-    "@storybook/core-common" "7.6.0"
-    "@storybook/core-events" "7.6.0"
-    "@storybook/core-server" "7.6.0"
-    "@storybook/csf-tools" "7.6.0"
-    "@storybook/node-logger" "7.6.0"
-    "@storybook/telemetry" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/codemod" "7.6.4"
+    "@storybook/core-common" "7.6.4"
+    "@storybook/core-events" "7.6.4"
+    "@storybook/core-server" "7.6.4"
+    "@storybook/csf-tools" "7.6.4"
+    "@storybook/node-logger" "7.6.4"
+    "@storybook/telemetry" "7.6.4"
+    "@storybook/types" "7.6.4"
     "@types/semver" "^7.3.4"
     "@yarnpkg/fslib" "2.10.3"
     "@yarnpkg/libzip" "2.3.0"
@@ -2547,25 +2547,25 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/client-logger@7.6.0", "@storybook/client-logger@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fclient-logger/-/client-logger-7.6.0.tgz#fdf4ccc3858a6e30e376a6a60403f623ff1fb551"
-  integrity sha512-18XPPEWYHmmUav7i+PjZGwtImshNtay0xO2vh2DmQtzoCh2Lx/NVldqv9Li1eHCI88+4y7fyutmC5OIi0YASbg==
+"@storybook/client-logger@7.6.4", "@storybook/client-logger@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fclient-logger/-/client-logger-7.6.4.tgz#7533f5194903f554c297b0d327efee04c5accfbb"
+  integrity sha512-vJwMShC98tcoFruRVQ4FphmFqvAZX1FqZqjFyk6IxtFumPKTVSnXJjlU1SnUIkSK2x97rgdUMqkdI+wAv/tugQ==
   dependencies:
     "@storybook/global" "^5.0.0"
 
-"@storybook/codemod@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcodemod/-/codemod-7.6.0.tgz#9ff2409cef09c75b8e4c6ea9a93cd26103ac0b3e"
-  integrity sha512-86/7AH5qg5uOE5e4ymnXjykfzA29eSFRQnTYJN0pbI/xlnFnPnh1mLQtinV03S2DtdcZKAm04UntfNgSFrSJNA==
+"@storybook/codemod@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcodemod/-/codemod-7.6.4.tgz#e3a314ad07f9dc799bd2531bb7ffc6ab3cf15996"
+  integrity sha512-q4rZVOfozxzbDRH/LzuFDoIGBdXs+orAm18fi6iAx8PeMHe8J/MOXKccNV1zdkm/h7mTQowuRo45KwJHw8vX+g==
   dependencies:
     "@babel/core" "^7.23.2"
     "@babel/preset-env" "^7.23.2"
     "@babel/types" "^7.23.0"
     "@storybook/csf" "^0.1.2"
-    "@storybook/csf-tools" "7.6.0"
-    "@storybook/node-logger" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/csf-tools" "7.6.4"
+    "@storybook/node-logger" "7.6.4"
+    "@storybook/types" "7.6.4"
     "@types/cross-spawn" "^6.0.2"
     cross-spawn "^7.0.3"
     globby "^11.0.2"
@@ -2574,38 +2574,38 @@
     prettier "^2.8.0"
     recast "^0.23.1"
 
-"@storybook/components@7.6.0", "@storybook/components@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcomponents/-/components-7.6.0.tgz#63f02392898686116c86985e27e117a56972112d"
-  integrity sha512-yV2krJOGYHldThfFShl5jC5EySUYVOWnhomwwT2b0J5e7odp04TCBycKmLxZhYmaFawnf5BNbDaIXvxcnY518A==
+"@storybook/components@7.6.4", "@storybook/components@^7.0.12":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcomponents/-/components-7.6.4.tgz#44cf5fa1b52af540157b4dee7d23a46817329ab1"
+  integrity sha512-K5RvEObJAnX+SbGJbkM1qrZEk+VR2cUhRCSrFnlfMwsn8/60T3qoH7U8bCXf8krDgbquhMwqev5WzDB+T1VV8g==
   dependencies:
     "@radix-ui/react-select" "^1.2.2"
     "@radix-ui/react-toolbar" "^1.0.4"
-    "@storybook/client-logger" "7.6.0"
+    "@storybook/client-logger" "7.6.4"
     "@storybook/csf" "^0.1.2"
     "@storybook/global" "^5.0.0"
-    "@storybook/theming" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/theming" "7.6.4"
+    "@storybook/types" "7.6.4"
     memoizerific "^1.11.3"
     use-resize-observer "^9.1.0"
     util-deprecate "^1.0.2"
 
-"@storybook/core-client@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcore-client/-/core-client-7.6.0.tgz#1e6d3737b7801dac7b96165d49912ae66b24eddd"
-  integrity sha512-zc2v1WoyN64okcVWfZb1/fWasaZX3mdFVigqavUOIeXsxWFcywU5bcr0bWCCwwk19xKaNzJ2FvWVqXrkOUq22w==
+"@storybook/core-client@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcore-client/-/core-client-7.6.4.tgz#d38ddb80bbc6119017a8ba15b88c030cf03d27e0"
+  integrity sha512-0msqdGd+VYD1dRgAJ2StTu4d543Wveb7LVVujX3PwD/QCxmCaVUHuAoZrekM/H7jZLw546ZIbLZo0xWrADAUMw==
   dependencies:
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/preview-api" "7.6.0"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/preview-api" "7.6.4"
 
-"@storybook/core-common@7.6.0", "@storybook/core-common@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcore-common/-/core-common-7.6.0.tgz#69fd48d0d1e1d468ec81c1c450a743ef508355fb"
-  integrity sha512-Le11+Pcbi2D+i63utkhjHEAUIVO65CNiZiDFa/ZJI5aSajy209ece2eX0Z12wPecfYu5TXlqhqaeXAVBABAUow==
+"@storybook/core-common@7.6.4", "@storybook/core-common@^7.0.12":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcore-common/-/core-common-7.6.4.tgz#8ee282058ea4dd8fc0a053c30759f4bf65dab86b"
+  integrity sha512-qes4+mXqINu0kCgSMFjk++GZokmYjb71esId0zyJsk0pcIPkAiEjnhbSEQkMhbUfcvO1lztoaQTBW2P7Rd1tag==
   dependencies:
-    "@storybook/core-events" "7.6.0"
-    "@storybook/node-logger" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/core-events" "7.6.4"
+    "@storybook/node-logger" "7.6.4"
+    "@storybook/types" "7.6.4"
     "@types/find-cache-dir" "^3.2.1"
     "@types/node" "^18.0.0"
     "@types/node-fetch" "^2.6.4"
@@ -2627,33 +2627,33 @@
     resolve-from "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/core-events@7.6.0", "@storybook/core-events@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcore-events/-/core-events-7.6.0.tgz#efe10c3da0140c3bee8cd6cc7cf5904f9127d29d"
-  integrity sha512-13d4YOcXPu0j5PDjqE2iy+mG68w2TLit408cF/ZbJ8d6V4QwuUiz6mUt34vTuTc3yB93q5moYXYo6a/AhrsPnQ==
+"@storybook/core-events@7.6.4", "@storybook/core-events@^7.0.12":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcore-events/-/core-events-7.6.4.tgz#55405545dbc9ae5715654d2198ee1f1a3cc34ef7"
+  integrity sha512-i3xzcJ19ILSy4oJL5Dz9y0IlyApynn5RsGhAMIsW+mcfri+hGfeakq1stNCo0o7jW4Y3A7oluFTtIoK8DOxQdQ==
   dependencies:
     ts-dedent "^2.0.0"
 
-"@storybook/core-server@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcore-server/-/core-server-7.6.0.tgz#c93609f3d237d99ff76f4b8d90795ee1efc1b4a8"
-  integrity sha512-9DmUDcMKbeZDaTENjRoV3cFvqLOKq64RNIh/eDffeRyzaj8PvY4E7MOd7XXx6pTSO7CmSpgcaZ4OYbmvu2xI/A==
+"@storybook/core-server@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcore-server/-/core-server-7.6.4.tgz#7732be1437af2affb3d7b0c5528446006a4c72a3"
+  integrity sha512-mXxZMpCwOhjEPPRjqrTHdiCpFdkc47f46vlgTj02SX+9xKHxslmZ2D3JG/8O4Ab9tG+bBl6lBm3RIrIzaiCu9Q==
   dependencies:
     "@aw-web-design/x-default-browser" "1.4.126"
     "@discoveryjs/json-ext" "^0.5.3"
-    "@storybook/builder-manager" "7.6.0"
-    "@storybook/channels" "7.6.0"
-    "@storybook/core-common" "7.6.0"
-    "@storybook/core-events" "7.6.0"
+    "@storybook/builder-manager" "7.6.4"
+    "@storybook/channels" "7.6.4"
+    "@storybook/core-common" "7.6.4"
+    "@storybook/core-events" "7.6.4"
     "@storybook/csf" "^0.1.2"
-    "@storybook/csf-tools" "7.6.0"
+    "@storybook/csf-tools" "7.6.4"
     "@storybook/docs-mdx" "^0.1.0"
     "@storybook/global" "^5.0.0"
-    "@storybook/manager" "7.6.0"
-    "@storybook/node-logger" "7.6.0"
-    "@storybook/preview-api" "7.6.0"
-    "@storybook/telemetry" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/manager" "7.6.4"
+    "@storybook/node-logger" "7.6.4"
+    "@storybook/preview-api" "7.6.4"
+    "@storybook/telemetry" "7.6.4"
+    "@storybook/types" "7.6.4"
     "@types/detect-port" "^1.3.0"
     "@types/node" "^18.0.0"
     "@types/pretty-hrtime" "^1.0.0"
@@ -2681,25 +2681,25 @@
     watchpack "^2.2.0"
     ws "^8.2.3"
 
-"@storybook/csf-plugin@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcsf-plugin/-/csf-plugin-7.6.0.tgz#32b908fcec400b27e0af0ec33bc8ab1411dd682b"
-  integrity sha512-d/rcRcNad+tLGXV3GQiQdFJOBS4fj90fqa4joJIekgVh+LfRBS+KYuiPeukBxfnmz2AbhF9ezwXQMFIYYyHmzg==
+"@storybook/csf-plugin@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcsf-plugin/-/csf-plugin-7.6.4.tgz#5d18cffc1c92dfd12d8571b2ba9d1456de58d8b2"
+  integrity sha512-7g9p8s2ITX+Z9iThK5CehPhJOcusVN7JcUEEW+gVF5PlYT+uk/x+66gmQno+scQuNkV9+8UJD6RLFjP+zg2uCA==
   dependencies:
-    "@storybook/csf-tools" "7.6.0"
+    "@storybook/csf-tools" "7.6.4"
     unplugin "^1.3.1"
 
-"@storybook/csf-tools@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcsf-tools/-/csf-tools-7.6.0.tgz#e06a9624a3e070b5a2b21cd4bf631a70d71358ae"
-  integrity sha512-JhGJeLgnE96JfBBXM1DIPVR/JLQH2OTGH+yZ3ohiTPGWjf+aShB3jKUxTkBl7Fjq0xu57tnky7kNUO690vYypg==
+"@storybook/csf-tools@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fcsf-tools/-/csf-tools-7.6.4.tgz#4c1ef7a79ecd6f96d7fc1cb092cf2ed942cd65e2"
+  integrity sha512-6sLayuhgReIK3/QauNj5BW4o4ZfEMJmKf+EWANPEM/xEOXXqrog6Un8sjtBuJS9N1DwyhHY6xfkEiPAwdttwqw==
   dependencies:
     "@babel/generator" "^7.23.0"
     "@babel/parser" "^7.23.0"
     "@babel/traverse" "^7.23.2"
     "@babel/types" "^7.23.0"
     "@storybook/csf" "^0.1.2"
-    "@storybook/types" "7.6.0"
+    "@storybook/types" "7.6.4"
     fs-extra "^11.1.0"
     recast "^0.23.1"
     ts-dedent "^2.0.0"
@@ -2716,14 +2716,14 @@
   resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fdocs-mdx/-/docs-mdx-0.1.0.tgz#33ba0e39d1461caf048b57db354b2cc410705316"
   integrity sha512-JDaBR9lwVY4eSH5W8EGHrhODjygPd6QImRbwjAuJNEnY0Vw4ie3bPkeGfnacB3OBW6u/agqPv2aRlR46JcAQLg==
 
-"@storybook/docs-tools@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fdocs-tools/-/docs-tools-7.6.0.tgz#f4c031bfd108473097cae10a7846744127501bc2"
-  integrity sha512-06M/Vo3AwOdr4VP1LbvnSih8eWT5zO6Mkm3ZZikMQVn+eDr5YJ9PzUeI2/SAymgCs4jH9qRf4lmKTPMl4bjGsQ==
+"@storybook/docs-tools@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fdocs-tools/-/docs-tools-7.6.4.tgz#504b8654f348a109b69cc77cdab556f0bf9c2304"
+  integrity sha512-2eGam43aD7O3cocA72Z63kRi7t/ziMSpst0qB218QwBWAeZjT4EYDh8V6j/Xhv6zVQL3msW7AglrQP5kCKPvPA==
   dependencies:
-    "@storybook/core-common" "7.6.0"
-    "@storybook/preview-api" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/core-common" "7.6.4"
+    "@storybook/preview-api" "7.6.4"
+    "@storybook/types" "7.6.4"
     "@types/doctrine" "^0.0.3"
     assert "^2.1.0"
     doctrine "^3.0.0"
@@ -2735,31 +2735,31 @@
   integrity sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==
 
 "@storybook/instrumenter@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2finstrumenter/-/instrumenter-7.6.0.tgz#b999ca61d20d0d65e0034279d0f0a140002fe9b1"
-  integrity sha512-x4h/WFbez5a/Lds1DxzijQb7ivFWRy2jV7DZ8STkVQtP/LkvaNoo21Jowuck79YncLD26r07MyTKZF1U+l35mg==
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2finstrumenter/-/instrumenter-7.6.4.tgz#d56c981bdb5de44f7d27a80e92d1e9337dd7d4bd"
+  integrity sha512-sfEXZbCy7orP2A7dYmSrCYGPnbwJcFAa55N+YBQEYhoyJkohGC//nd5LbuPjLj23uixgB9iOw4E0fGp5w8cf+w==
   dependencies:
-    "@storybook/channels" "7.6.0"
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/core-events" "7.6.0"
+    "@storybook/channels" "7.6.4"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/core-events" "7.6.4"
     "@storybook/global" "^5.0.0"
-    "@storybook/preview-api" "7.6.0"
+    "@storybook/preview-api" "7.6.4"
     "@vitest/utils" "^0.34.6"
     util "^0.12.4"
 
-"@storybook/manager-api@7.6.0", "@storybook/manager-api@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fmanager-api/-/manager-api-7.6.0.tgz#ae8a3c9c7d00fb76d0b0997cf1e876fd1e271029"
-  integrity sha512-P2ISRw8cmIDPrsMwDTOZvFOH6P9GN6O9wC2cSrfMWYE/aaXHWf/7f5gk5pX/zILHuLQeVnDBguS/zXmMDxJj7g==
+"@storybook/manager-api@7.6.4", "@storybook/manager-api@^7.0.12":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fmanager-api/-/manager-api-7.6.4.tgz#edf5d553a78987ad8602700b7200391776010f48"
+  integrity sha512-RFb/iaBJfXygSgXkINPRq8dXu7AxBicTGX7MxqKXbz5FU7ANwV7abH6ONBYURkSDOH9//TQhRlVkF5u8zWg3bw==
   dependencies:
-    "@storybook/channels" "7.6.0"
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/core-events" "7.6.0"
+    "@storybook/channels" "7.6.4"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/core-events" "7.6.4"
     "@storybook/csf" "^0.1.2"
     "@storybook/global" "^5.0.0"
-    "@storybook/router" "7.6.0"
-    "@storybook/theming" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/router" "7.6.4"
+    "@storybook/theming" "7.6.4"
+    "@storybook/types" "7.6.4"
     dequal "^2.0.2"
     lodash "^4.17.21"
     memoizerific "^1.11.3"
@@ -2768,37 +2768,37 @@
     telejson "^7.2.0"
     ts-dedent "^2.0.0"
 
-"@storybook/manager@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fmanager/-/manager-7.6.0.tgz#6bb99f4791795c163c8ee3782e12fdeb616b5bbc"
-  integrity sha512-HJ1DCCf3GT+irAFCZg9WsPcGwSZlDyQiJHsaqxFVzuoPnz2lx10eHkXTnKa3t8x6hJeWK9BFHVyOXEFUV78ryg==
+"@storybook/manager@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fmanager/-/manager-7.6.4.tgz#11ea1ce8f37a069c96e594a716957f0d6c7690f3"
+  integrity sha512-Ug2ejfKgKre8h/RJbkumukwAA44TbvTPEjDcJmyFdAI+kHYhOYdKPEC2UNmVYz8/4HjwMTJQ3M7t/esK8HHY4A==
 
 "@storybook/mdx2-csf@^1.0.0":
   version "1.1.0"
   resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fmdx2-csf/-/mdx2-csf-1.1.0.tgz#97f6df04d0bf616991cc1005a073ac004a7281e5"
   integrity sha512-TXJJd5RAKakWx4BtpwvSNdgTDkKM6RkXU8GK34S/LhidQ5Pjz3wcnqb0TxEkfhK/ztbP8nKHqXFwLfa2CYkvQw==
 
-"@storybook/node-logger@7.6.0", "@storybook/node-logger@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fnode-logger/-/node-logger-7.6.0.tgz#3f59d32e58dbc243e8178734a62cb1cebd397536"
-  integrity sha512-Z+wVmjnTMhMG2ydL4T8F+gf/awvuAv3IAzH6T4D5UgjmdABqxVqWNAAF+Mgp48TUAGxiJCowzI6sGDg3iNJx2w==
+"@storybook/node-logger@7.6.4", "@storybook/node-logger@^7.0.12":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fnode-logger/-/node-logger-7.6.4.tgz#e471ee117bbd329522113dd98e5a42e83e259f9c"
+  integrity sha512-GDkEnnDj4Op+PExs8ZY/P6ox3wg453CdEIaR8PR9TxF/H/T2fBL6puzma3hN2CMam6yzfAL8U+VeIIDLQ5BZdQ==
 
-"@storybook/postinstall@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fpostinstall/-/postinstall-7.6.0.tgz#5cd9eb97c3ced9136fe8cedf0d4c71c27066b782"
-  integrity sha512-saxxLh6dXpNYA1WQ5KnOfMsJ1U+WtxBLSgYv8DWYujbFirmafgzPKslxgCjP6OlV3erQgnoO/xBUK4YVTfsuag==
+"@storybook/postinstall@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fpostinstall/-/postinstall-7.6.4.tgz#baefcec351ac79ee711ad27b65bf1ec28e545da6"
+  integrity sha512-7uoB82hSzlFSdDMS3hKQD+AaeSvPit/fAMvXCBxn0/D0UGJUZcq4M9JcKBwEHkZJcbuDROgOTJ6TUeXi/FWO0w==
 
-"@storybook/preview-api@7.6.0", "@storybook/preview-api@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fpreview-api/-/preview-api-7.6.0.tgz#fa09571b6f1ee97e1fc3dc446940b24b44dddffe"
-  integrity sha512-//8mYKM8gkSDkIRcG3kSozGEvPUurVhfjBXDtaF8Y8cOZLzwe8/AZy+mUYHShh9HWFUXx5QAj5oU0U0PflfMeg==
+"@storybook/preview-api@7.6.4", "@storybook/preview-api@^7.0.12":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fpreview-api/-/preview-api-7.6.4.tgz#df103fbdfada5ceee540f6ea68001c0d2c718113"
+  integrity sha512-KhisNdQX5NdfAln+spLU4B82d804GJQp/CnI5M1mm/taTnjvMgs/wTH9AmR89OPoq+tFZVW0vhy2zgPS3ar71A==
   dependencies:
-    "@storybook/channels" "7.6.0"
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/core-events" "7.6.0"
+    "@storybook/channels" "7.6.4"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/core-events" "7.6.4"
     "@storybook/csf" "^0.1.2"
     "@storybook/global" "^5.0.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/types" "7.6.4"
     "@types/qs" "^6.9.5"
     dequal "^2.0.2"
     lodash "^4.17.21"
@@ -2808,33 +2808,33 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/preview@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fpreview/-/preview-7.6.0.tgz#c94526d587f74997f0c026989d638c4039031468"
-  integrity sha512-/zHTMl3aj1S3xxnffwaGzhMi1KySCKeln3xX15RBme014ZQ8cNYwnSDRAsiW/n3viDFFyZ6ybrtmw2HnpNBUhw==
+"@storybook/preview@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fpreview/-/preview-7.6.4.tgz#36cca1d10fd3729f1a68789d95bfc400e33aa616"
+  integrity sha512-p9xIvNkgXgTpSRphOMV9KpIiNdkymH61jBg3B0XyoF6IfM1S2/mQGvC89lCVz1dMGk2SrH4g87/WcOapkU5ArA==
 
-"@storybook/react-dom-shim@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2freact-dom-shim/-/react-dom-shim-7.6.0.tgz#645e62469a0824d5997e32ff2312fe2fbe5fe33d"
-  integrity sha512-DBsQ9OBwSjUEI2bvHcGqs+ucVy3UE8CjoWpD93kRcJZY913DCoNDrMSBWozhBHlcO65LhuBjrNm7oKdmwAKJsg==
+"@storybook/react-dom-shim@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2freact-dom-shim/-/react-dom-shim-7.6.4.tgz#d1f5440c8f1ccd95abcc01117872ce46d0ab9dc3"
+  integrity sha512-wGJfomlDEBnowNmhmumWDu/AcUInxSoPqUUJPgk2f5oL0EW17fR9fDP/juG3XOEdieMDM0jDX48GML7lyvL2fg==
 
-"@storybook/router@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2frouter/-/router-7.6.0.tgz#15fb60375be2ffff6855bf79eaa845263df56bde"
-  integrity sha512-661mO2JtO/wdWJEtVqyaUjQ8tsy56LrsKqz4suzO0L32Z7NHCBu0IzbZbLON6MXje3PWXksw0vFbd8jwH/i//w==
+"@storybook/router@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2frouter/-/router-7.6.4.tgz#13112bd9d6709bebe4072d923e4921b660f8f00c"
+  integrity sha512-5MQ7Z4D7XNPN2yhFgjey7hXOYd6s8CggUqeAwhzGTex90SMCkKHSz1hfkcXn1ZqBPaall2b53uK553OvPLp9KQ==
   dependencies:
-    "@storybook/client-logger" "7.6.0"
+    "@storybook/client-logger" "7.6.4"
     memoizerific "^1.11.3"
     qs "^6.10.0"
 
-"@storybook/telemetry@7.6.0":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2ftelemetry/-/telemetry-7.6.0.tgz#8374ae75b76ccd37bfc5ae98f053cb09ab8e8adc"
-  integrity sha512-xUYiWiXicYX6oneDqHx5bq3zViTuckLoXi1QTzKN+WPO98vt4NBr532XeVNJG+x+UE8ERSKazT6CHkZ9XeqyMA==
+"@storybook/telemetry@7.6.4":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2ftelemetry/-/telemetry-7.6.4.tgz#b28e8f7abf73b4900d83dfa68a988b6f3df9c24a"
+  integrity sha512-Q4QpvcgloHUEqC9PGo7tgqkUH91/PjX+74/0Hi9orLo8QmLMgdYS5fweFwgSKoTwDGNg2PaHp/jqvhhw7UmnJA==
   dependencies:
-    "@storybook/client-logger" "7.6.0"
-    "@storybook/core-common" "7.6.0"
-    "@storybook/csf-tools" "7.6.0"
+    "@storybook/client-logger" "7.6.4"
+    "@storybook/core-common" "7.6.4"
+    "@storybook/csf-tools" "7.6.4"
     chalk "^4.1.0"
     detect-package-manager "^2.0.1"
     fetch-retry "^5.0.2"
@@ -2852,48 +2852,48 @@
     "@testing-library/user-event" "^13.2.1"
     ts-dedent "^2.2.0"
 
-"@storybook/theming@7.6.0", "@storybook/theming@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2ftheming/-/theming-7.6.0.tgz#7a877407588949d3ac7a25fce5fa3ae4a0c2efbd"
-  integrity sha512-F5PTGkaRQ0TWIWRrZgQ2dmVxVcjX77vDc6QfUYxvOfez9/zrduKRHP5lGqHoqJlugJc8i2zpRNEFbL99frdUKg==
+"@storybook/theming@7.6.4", "@storybook/theming@^7.0.12":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2ftheming/-/theming-7.6.4.tgz#cc81d0aee5fc80fe383cb6790e3a0e2ad80d2185"
+  integrity sha512-Z/dcC5EpkIXelYCkt9ojnX6D7qGOng8YHxV/OWlVE9TrEGYVGPOEfwQryR0RhmGpDha1TYESLYrsDb4A8nJ1EA==
   dependencies:
     "@emotion/use-insertion-effect-with-fallbacks" "^1.0.0"
-    "@storybook/client-logger" "7.6.0"
+    "@storybook/client-logger" "7.6.4"
     "@storybook/global" "^5.0.0"
     memoizerific "^1.11.3"
 
-"@storybook/types@7.6.0", "@storybook/types@^7.0.12":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2ftypes/-/types-7.6.0.tgz#8cdffb37acae14deb7f2a55581bd8fca1b40819b"
-  integrity sha512-mrbL9qrRekaPCAV3d7jYpege5wOpsvBvNW6pmATG3UvNXpqz5BOWe6RWZJXbtkvjyt01b6HE9CbVUFJppplr6w==
+"@storybook/types@7.6.4", "@storybook/types@^7.0.12":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2ftypes/-/types-7.6.4.tgz#3bb50b46286cc83484848c3c450c32cc2071eb21"
+  integrity sha512-qyiiXPCvol5uVgfubcIMzJBA0awAyFPU+TyUP1mkPYyiTHnsHYel/mKlSdPjc8a97N3SlJXHOCx41Hde4IyJgg==
   dependencies:
-    "@storybook/channels" "7.6.0"
+    "@storybook/channels" "7.6.4"
     "@types/babel__core" "^7.0.0"
     "@types/express" "^4.7.0"
     file-system-cache "2.3.0"
 
 "@storybook/vue3-vite@^7.0.7":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fvue3-vite/-/vue3-vite-7.6.0.tgz#6f2294d4d6e3a059ac9c7f4c1290503e2f4084d3"
-  integrity sha512-Dt13QXqUUDQb28A9W4N0Zq5da3m0Der8r6F6k+ZGNZOxQmPRsVqdhK3XgKXcS1h+o4Plqt4GUI4nEcjwDKFJ5A==
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fvue3-vite/-/vue3-vite-7.6.4.tgz#94fa0f091043aad30f5f5909cc6ccafb94b1d20b"
+  integrity sha512-M1cT6lZsRqwws+H+pv2K/jJGiXUfGHAz7nc0DwK/YYT/w0OOVp5hinh/IvNwIYW5zUmwIyQVEoGrrxQEi0S79w==
   dependencies:
-    "@storybook/builder-vite" "7.6.0"
-    "@storybook/core-server" "7.6.0"
-    "@storybook/vue3" "7.6.0"
+    "@storybook/builder-vite" "7.6.4"
+    "@storybook/core-server" "7.6.4"
+    "@storybook/vue3" "7.6.4"
     "@vitejs/plugin-vue" "^4.0.0"
     magic-string "^0.30.0"
     vue-docgen-api "^4.40.0"
 
-"@storybook/vue3@7.6.0", "@storybook/vue3@^7.5.1":
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fvue3/-/vue3-7.6.0.tgz#5fec2deab8c8d3b83b8d69c977fd6a2c57179b26"
-  integrity sha512-oAuRsb5rW9juiPDlmuy63Rw3tifHWmTNE8fzOpTndxoPpi1AGfsHMAFOr+dO5csm0sHKeUXBfyuTnE6++MtMCA==
+"@storybook/vue3@7.6.4", "@storybook/vue3@^7.5.1":
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@storybook%2fvue3/-/vue3-7.6.4.tgz#694e3b0d7ebaf6a56f467da657563dfd53a38c09"
+  integrity sha512-9BYxqj9C30/7UBspP4sE0UE/4fgE17jymJHWkxFbEE95MfbLkDFRnJ3Y09VPK0OnmbsBW5xBciMyjGV9Lq2pmg==
   dependencies:
-    "@storybook/core-client" "7.6.0"
-    "@storybook/docs-tools" "7.6.0"
+    "@storybook/core-client" "7.6.4"
+    "@storybook/docs-tools" "7.6.4"
     "@storybook/global" "^5.0.0"
-    "@storybook/preview-api" "7.6.0"
-    "@storybook/types" "7.6.0"
+    "@storybook/preview-api" "7.6.4"
+    "@storybook/types" "7.6.4"
     lodash "^4.17.21"
     ts-dedent "^2.0.0"
     type-fest "~2.19"
@@ -3135,16 +3135,16 @@
     form-data "^4.0.0"
 
 "@types/node@*":
-  version "20.10.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@types%2fnode/-/node-20.10.0.tgz#16ddf9c0a72b832ec4fcce35b8249cf149214617"
-  integrity sha512-D0WfRmU9TQ8I9PFx9Yc+EBHw+vSpIub4IDvQivcp26PtPrdMGAq5SDcpXEo/epqa/DXotVpekHiLNTg3iaKXBQ==
+  version "20.10.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@types%2fnode/-/node-20.10.4.tgz#b246fd84d55d5b1b71bf51f964bd514409347198"
+  integrity sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==
   dependencies:
     undici-types "~5.26.4"
 
 "@types/node@^18.0.0":
-  version "18.18.13"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@types%2fnode/-/node-18.18.13.tgz#ae0f76c0bfe79d8fad0f910b78ae3e59b333c6e8"
-  integrity sha512-vXYZGRrSCreZmq1rEjMRLXJhiy8MrIeVasx+PCVlP414N7CJLHnMf+juVvjdprHyH+XRy3zKZLHeNueOpJCn0g==
+  version "18.19.3"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@types%2fnode/-/node-18.19.3.tgz#e4723c4cb385641d61b983f6fe0b716abd5f8fc0"
+  integrity sha512-k5fggr14DwAytoA/t8rPrIz++lXK7/DqckthCmoZOKNsEbJkId4Z//BqgApXBUGrGddrigYa1oqheo/7YmW4rg==
   dependencies:
     undici-types "~5.26.4"
 
@@ -3179,9 +3179,9 @@
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
 "@types/react@>=16":
-  version "18.2.39"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@types%2freact/-/react-18.2.39.tgz#744bee99e053ad61fe74eb8b897f3ab5b19a7e25"
-  integrity sha512-Oiw+ppED6IremMInLV4HXGbfbG6GyziY3kqAwJYOR0PNbkYDmLWQA3a95EhdSmamsvbkJN96ZNN+YD+fGjzSBA==
+  version "18.2.42"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@types%2freact/-/react-18.2.42.tgz#6f6b11a904f6d96dda3c2920328a97011a00aba7"
+  integrity sha512-c1zEr96MjakLYus/wPnuWDo1/zErfdU9rNsIGmE+NV71nx88FG9Ttgo5dqorXTu/LImX2f63WBP986gJkMPNbA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3249,13 +3249,13 @@
     "@types/yargs-parser" "*"
 
 "@vitejs/plugin-vue@^4.0.0", "@vitejs/plugin-vue@^4.1.0":
-  version "4.5.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vitejs%2fplugin-vue/-/plugin-vue-4.5.0.tgz#b4569fcb1faac054eba4f5efc1aaf4d39f4379e5"
-  integrity sha512-a2WSpP8X8HTEww/U00bU4mX1QpLINNuz/2KMNpLsdu3BzOpak3AGI1CJYBTXcc4SPhaD0eNRUp7IyQK405L5dQ==
+  version "4.5.2"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vitejs%2fplugin-vue/-/plugin-vue-4.5.2.tgz#1212d81bc83680e14448fefe55abd9fe1ed49ed1"
+  integrity sha512-UGR3DlzLi/SaVBPX0cnSyE37vqxU3O6chn8l0HJNzQzDia6/Au2A4xKv+iIJW8w2daf80G7TYHhi1pAUjdZ0bQ==
 
 "@vitest/coverage-v8@^0.34.6":
   version "0.34.6"
-  resolved "https://registry.yarnpkg.com/@vitest/coverage-v8/-/coverage-v8-0.34.6.tgz#931d9223fa738474e00c08f52b84e0f39cedb6d1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vitest%2fcoverage-v8/-/coverage-v8-0.34.6.tgz#931d9223fa738474e00c08f52b84e0f39cedb6d1"
   integrity sha512-fivy/OK2d/EsJFoEoxHFEnNGTg+MmdZBAVK9Ka4qhXR2K3J0DS08vcGVwzDtXSuUMabLv4KtPcpSKkcMXFDViw==
   dependencies:
     "@ampproject/remapping" "^2.2.1"
@@ -3304,7 +3304,7 @@
   dependencies:
     tinyspy "^2.1.1"
 
-"@vitest/utils@0.34.6", "@vitest/utils@^0.34.6":
+"@vitest/utils@0.34.6":
   version "0.34.6"
   resolved "https://verdaccio.paas.node07.de.vix.br/@vitest%2futils/-/utils-0.34.6.tgz#38a0a7eedddb8e7291af09a2409cb8a189516968"
   integrity sha512-IG5aDD8S6zlvloDsnzHw0Ut5xczlF+kv2BOTo+iXfPr54Yhi5qbVOgGB1hZaVq4iJ4C/MZ2J0y15IlsV/ZcI0A==
@@ -3313,136 +3313,146 @@
     loupe "^2.3.6"
     pretty-format "^29.5.0"
 
-"@volar/language-core@1.10.10", "@volar/language-core@~1.10.5":
-  version "1.10.10"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@volar%2flanguage-core/-/language-core-1.10.10.tgz#9c240a36dd4007b9c4f00739f6cecb81da54a49e"
-  integrity sha512-nsV1o3AZ5n5jaEAObrS3MWLBWaGwUj/vAsc15FVNIv+DbpizQRISg9wzygsHBr56ELRH8r4K75vkYNMtsSNNWw==
+"@vitest/utils@^0.34.6":
+  version "0.34.7"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vitest%2futils/-/utils-0.34.7.tgz#46d0d27cd0f6ca1894257d4e141c5c48d7f50295"
+  integrity sha512-ziAavQLpCYS9sLOorGrFFKmy2gnfiNU0ZJ15TsMz/K92NAPS/rp9K4z6AJQQk5Y8adCy4Iwpxy7pQumQ/psnRg==
   dependencies:
-    "@volar/source-map" "1.10.10"
+    diff-sequences "^29.4.3"
+    loupe "^2.3.6"
+    pretty-format "^29.5.0"
 
-"@volar/source-map@1.10.10", "@volar/source-map@~1.10.5":
-  version "1.10.10"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@volar%2fsource-map/-/source-map-1.10.10.tgz#ec807fe60b8afe29e19bf6d1c90d2e76502df541"
-  integrity sha512-GVKjLnifV4voJ9F0vhP56p4+F3WGf+gXlRtjFZsv6v3WxBTWU3ZVeaRaEHJmWrcv5LXmoYYpk/SC25BKemPRkg==
+"@volar/language-core@1.11.1", "@volar/language-core@~1.11.1":
+  version "1.11.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@volar%2flanguage-core/-/language-core-1.11.1.tgz#ecdf12ea8dc35fb8549e517991abcbf449a5ad4f"
+  integrity sha512-dOcNn3i9GgZAcJt43wuaEykSluAuOkQgzni1cuxLxTV0nJKanQztp7FxyswdRILaKH+P2XZMPRp2S4MV/pElCw==
+  dependencies:
+    "@volar/source-map" "1.11.1"
+
+"@volar/source-map@1.11.1", "@volar/source-map@~1.11.1":
+  version "1.11.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@volar%2fsource-map/-/source-map-1.11.1.tgz#535b0328d9e2b7a91dff846cab4058e191f4452f"
+  integrity sha512-hJnOnwZ4+WT5iupLRnuzbULZ42L7BWWPMmruzwtLhJfpDVoZLjNBxHDi2sY2bgZXCKlpU5XcsMFoYrsQmPhfZg==
   dependencies:
     muggle-string "^0.3.1"
 
-"@volar/typescript@~1.10.5":
-  version "1.10.10"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@volar%2ftypescript/-/typescript-1.10.10.tgz#1f88202c63988ddfcee154a93050312041b83329"
-  integrity sha512-4a2r5bdUub2m+mYVnLu2wt59fuoYWe7nf0uXtGHU8QQ5LDNfzAR0wK7NgDiQ9rcl2WT3fxT2AA9AylAwFtj50A==
+"@volar/typescript@~1.11.1":
+  version "1.11.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@volar%2ftypescript/-/typescript-1.11.1.tgz#ba86c6f326d88e249c7f5cfe4b765be3946fd627"
+  integrity sha512-iU+t2mas/4lYierSnoFOeRFQUhAEMgsFuQxoxvwn5EdQopw43j+J27a4lt9LMInx1gLJBC6qL14WYGlgymaSMQ==
   dependencies:
-    "@volar/language-core" "1.10.10"
+    "@volar/language-core" "1.11.1"
     path-browserify "^1.0.1"
 
-"@vue/compiler-core@3.3.9":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fcompiler-core/-/compiler-core-3.3.9.tgz#df1fc7947dcef5c2e12d257eae540057707f47d1"
-  integrity sha512-+/Lf68Vr/nFBA6ol4xOtJrW+BQWv3QWKfRwGSm70jtXwfhZNF4R/eRgyVJYoxFRhdCTk/F6g99BP0ffPgZihfQ==
+"@vue/compiler-core@3.3.10":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fcompiler-core/-/compiler-core-3.3.10.tgz#9ca4123a1458df43db641aaa8b7d1e636aa22545"
+  integrity sha512-doe0hODR1+i1menPkRzJ5MNR6G+9uiZHIknK3Zn5OcIztu6GGw7u0XUzf3AgB8h/dfsZC9eouzoLo3c3+N/cVA==
   dependencies:
-    "@babel/parser" "^7.23.3"
-    "@vue/shared" "3.3.9"
+    "@babel/parser" "^7.23.5"
+    "@vue/shared" "3.3.10"
     estree-walker "^2.0.2"
     source-map-js "^1.0.2"
 
-"@vue/compiler-dom@3.3.9", "@vue/compiler-dom@^3.2.0", "@vue/compiler-dom@^3.3.0":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fcompiler-dom/-/compiler-dom-3.3.9.tgz#67315ea4193d9d18c7a710889b8f90f7aa3914d2"
-  integrity sha512-nfWubTtLXuT4iBeDSZ5J3m218MjOy42Vp2pmKVuBKo2/BLcrFUX8nCSr/bKRFiJ32R8qbdnnnBgRn9AdU5v0Sg==
+"@vue/compiler-dom@3.3.10", "@vue/compiler-dom@^3.2.0", "@vue/compiler-dom@^3.3.0":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fcompiler-dom/-/compiler-dom-3.3.10.tgz#183811252be6aff4ac923f783124bb1590301907"
+  integrity sha512-NCrqF5fm10GXZIK0GrEAauBqdy+F2LZRt3yNHzrYjpYBuRssQbuPLtSnSNjyR9luHKkWSH8we5LMB3g+4z2HvA==
   dependencies:
-    "@vue/compiler-core" "3.3.9"
-    "@vue/shared" "3.3.9"
+    "@vue/compiler-core" "3.3.10"
+    "@vue/shared" "3.3.10"
 
-"@vue/compiler-sfc@3.3.9", "@vue/compiler-sfc@^3.2.0":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fcompiler-sfc/-/compiler-sfc-3.3.9.tgz#5900906baba1a90389200d81753ad0f7ceb98a83"
-  integrity sha512-wy0CNc8z4ihoDzjASCOCsQuzW0A/HP27+0MDSSICMjVIFzk/rFViezkR3dzH+miS2NDEz8ywMdbjO5ylhOLI2A==
+"@vue/compiler-sfc@3.3.10", "@vue/compiler-sfc@^3.2.0":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fcompiler-sfc/-/compiler-sfc-3.3.10.tgz#8eb97d42f276089ec58fd0565ef3a813bceeaa87"
+  integrity sha512-xpcTe7Rw7QefOTRFFTlcfzozccvjM40dT45JtrE3onGm/jBLZ0JhpKu3jkV7rbDFLeeagR/5RlJ2Y9SvyS0lAg==
   dependencies:
-    "@babel/parser" "^7.23.3"
-    "@vue/compiler-core" "3.3.9"
-    "@vue/compiler-dom" "3.3.9"
-    "@vue/compiler-ssr" "3.3.9"
-    "@vue/reactivity-transform" "3.3.9"
-    "@vue/shared" "3.3.9"
+    "@babel/parser" "^7.23.5"
+    "@vue/compiler-core" "3.3.10"
+    "@vue/compiler-dom" "3.3.10"
+    "@vue/compiler-ssr" "3.3.10"
+    "@vue/reactivity-transform" "3.3.10"
+    "@vue/shared" "3.3.10"
     estree-walker "^2.0.2"
     magic-string "^0.30.5"
-    postcss "^8.4.31"
+    postcss "^8.4.32"
     source-map-js "^1.0.2"
 
-"@vue/compiler-ssr@3.3.9":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fcompiler-ssr/-/compiler-ssr-3.3.9.tgz#3b3dbfa5368165fa4ff74c060503b4087ec1beed"
-  integrity sha512-NO5oobAw78R0G4SODY5A502MGnDNiDjf6qvhn7zD7TJGc8XDeIEw4fg6JU705jZ/YhuokBKz0A5a/FL/XZU73g==
+"@vue/compiler-ssr@3.3.10":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fcompiler-ssr/-/compiler-ssr-3.3.10.tgz#5a1b14a358cb3960a4edbce0ade90548e452fcaa"
+  integrity sha512-12iM4jA4GEbskwXMmPcskK5wImc2ohKm408+o9iox3tfN9qua8xL0THIZtoe9OJHnXP4eOWZpgCAAThEveNlqQ==
   dependencies:
-    "@vue/compiler-dom" "3.3.9"
-    "@vue/shared" "3.3.9"
+    "@vue/compiler-dom" "3.3.10"
+    "@vue/shared" "3.3.10"
 
-"@vue/language-core@1.8.22":
-  version "1.8.22"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2flanguage-core/-/language-core-1.8.22.tgz#1ef62645fb9b1f830c6c84a5586e49e74727b1e3"
-  integrity sha512-bsMoJzCrXZqGsxawtUea1cLjUT9dZnDsy5TuZ+l1fxRMzUGQUG9+Ypq4w//CqpWmrx7nIAJpw2JVF/t258miRw==
+"@vue/language-core@1.8.25":
+  version "1.8.25"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2flanguage-core/-/language-core-1.8.25.tgz#b44b4e3c244ba9b1b79cccf9eb7b046535a4676f"
+  integrity sha512-NJk/5DnAZlpvXX8BdWmHI45bWGLViUaS3R/RMrmFSvFMSbJKuEODpM4kR0F0Ofv5SFzCWuNiMhxameWpVdQsnA==
   dependencies:
-    "@volar/language-core" "~1.10.5"
-    "@volar/source-map" "~1.10.5"
+    "@volar/language-core" "~1.11.1"
+    "@volar/source-map" "~1.11.1"
     "@vue/compiler-dom" "^3.3.0"
     "@vue/shared" "^3.3.0"
     computeds "^0.0.1"
     minimatch "^9.0.3"
     muggle-string "^0.3.1"
+    path-browserify "^1.0.1"
     vue-template-compiler "^2.7.14"
 
-"@vue/reactivity-transform@3.3.9":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2freactivity-transform/-/reactivity-transform-3.3.9.tgz#5d894dd9a42a422a2db309babb385f9a2529b52f"
-  integrity sha512-HnUFm7Ry6dFa4Lp63DAxTixUp8opMtQr6RxQCpDI1vlh12rkGIeYqMvJtK+IKyEfEOa2I9oCkD1mmsPdaGpdVg==
+"@vue/reactivity-transform@3.3.10":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2freactivity-transform/-/reactivity-transform-3.3.10.tgz#b045776cc954bb57883fd305db7a200d42993768"
+  integrity sha512-0xBdk+CKHWT+Gev8oZ63Tc0qFfj935YZx+UAynlutnrDZ4diFCVFMWixn65HzjE3S1iJppWOo6Tt1OzASH7VEg==
   dependencies:
-    "@babel/parser" "^7.23.3"
-    "@vue/compiler-core" "3.3.9"
-    "@vue/shared" "3.3.9"
+    "@babel/parser" "^7.23.5"
+    "@vue/compiler-core" "3.3.10"
+    "@vue/shared" "3.3.10"
     estree-walker "^2.0.2"
     magic-string "^0.30.5"
 
-"@vue/reactivity@3.3.9":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2freactivity/-/reactivity-3.3.9.tgz#e28e8071bd74edcdd9c87b667ad00e8fbd8d6920"
-  integrity sha512-VmpIqlNp+aYDg2X0xQhJqHx9YguOmz2UxuUJDckBdQCNkipJvfk9yA75woLWElCa0Jtyec3lAAt49GO0izsphw==
+"@vue/reactivity@3.3.10":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2freactivity/-/reactivity-3.3.10.tgz#78fe3da319276d9e6d0f072037532928c472a287"
+  integrity sha512-H5Z7rOY/JLO+e5a6/FEXaQ1TMuOvY4LDVgT+/+HKubEAgs9qeeZ+NhADSeEtrNQeiKLDuzeKc8v0CUFpB6Pqgw==
   dependencies:
-    "@vue/shared" "3.3.9"
+    "@vue/shared" "3.3.10"
 
-"@vue/runtime-core@3.3.9":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fruntime-core/-/runtime-core-3.3.9.tgz#c835b77f7dc7ae5f251e93f277b54963ea1b5c31"
-  integrity sha512-xxaG9KvPm3GTRuM4ZyU8Tc+pMVzcu6eeoSRQJ9IE7NmCcClW6z4B3Ij6L4EDl80sxe/arTtQ6YmgiO4UZqRc+w==
+"@vue/runtime-core@3.3.10":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fruntime-core/-/runtime-core-3.3.10.tgz#d7b78c5c0500b856cf9447ef81d4a1b1438fd5bb"
+  integrity sha512-DZ0v31oTN4YHX9JEU5VW1LoIVgFovWgIVb30bWn9DG9a7oA415idcwsRNNajqTx8HQJyOaWfRKoyuP2P2TYIag==
   dependencies:
-    "@vue/reactivity" "3.3.9"
-    "@vue/shared" "3.3.9"
+    "@vue/reactivity" "3.3.10"
+    "@vue/shared" "3.3.10"
 
-"@vue/runtime-dom@3.3.9":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fruntime-dom/-/runtime-dom-3.3.9.tgz#68081d981695a229d72f431fed0b0cdd9161ce53"
-  integrity sha512-e7LIfcxYSWbV6BK1wQv9qJyxprC75EvSqF/kQKe6bdZEDNValzeRXEVgiX7AHI6hZ59HA4h7WT5CGvm69vzJTQ==
+"@vue/runtime-dom@3.3.10":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fruntime-dom/-/runtime-dom-3.3.10.tgz#130dfffb8fee8051671aaf80c5104d2020544950"
+  integrity sha512-c/jKb3ny05KJcYk0j1m7Wbhrxq7mZYr06GhKykDMNRRR9S+/dGT8KpHuNQjv3/8U4JshfkAk6TpecPD3B21Ijw==
   dependencies:
-    "@vue/runtime-core" "3.3.9"
-    "@vue/shared" "3.3.9"
+    "@vue/runtime-core" "3.3.10"
+    "@vue/shared" "3.3.10"
     csstype "^3.1.2"
 
-"@vue/server-renderer@3.3.9":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fserver-renderer/-/server-renderer-3.3.9.tgz#ffb41bc9c7afafcc608d0c500e9d6b0af7d68fad"
-  integrity sha512-w0zT/s5l3Oa3ZjtLW88eO4uV6AQFqU8X5GOgzq7SkQQu6vVr+8tfm+OI2kDBplS/W/XgCBuFXiPw6T5EdwXP0A==
+"@vue/server-renderer@3.3.10":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fserver-renderer/-/server-renderer-3.3.10.tgz#f23d151f0e5021ebdc730052d9934c9178486742"
+  integrity sha512-0i6ww3sBV3SKlF3YTjSVqKQ74xialMbjVYGy7cOTi7Imd8ediE7t72SK3qnvhrTAhOvlQhq6Bk6nFPdXxe0sAg==
   dependencies:
-    "@vue/compiler-ssr" "3.3.9"
-    "@vue/shared" "3.3.9"
+    "@vue/compiler-ssr" "3.3.10"
+    "@vue/shared" "3.3.10"
 
-"@vue/shared@3.3.9", "@vue/shared@^3.3.0":
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fshared/-/shared-3.3.9.tgz#df740d26d338faf03e09ca662a8031acf66051db"
-  integrity sha512-ZE0VTIR0LmYgeyhurPTpy4KzKsuDyQbMSdM49eKkMnT5X4VfFBLysMzjIZhLEFQYjjOVVfbvUDHckwjDFiO2eA==
+"@vue/shared@3.3.10", "@vue/shared@^3.3.0":
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2fshared/-/shared-3.3.10.tgz#1583a8d85a957d8b819078c465d2a11db7914b2f"
+  integrity sha512-2y3Y2J1a3RhFa0WisHvACJR2ncvWiVHcP8t0Inxo+NKz+8RKO4ZV8eZgCxRgQoA6ITfV12L4E6POOL9HOU5nqw==
 
 "@vue/test-utils@^2.3.1", "@vue/test-utils@^2.4.1":
-  version "2.4.2"
-  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2ftest-utils/-/test-utils-2.4.2.tgz#43ce99c4e2eab0adbf1220257dc9974bc5ae38a7"
-  integrity sha512-07lLjpG1o9tEBoWQfVOFhDT7+WFCdDeECoeSdzOuVgIi6nxb2JDLGNNOV6+3crPpyg/jMlIocj96UROcgomiGg==
+  version "2.4.3"
+  resolved "https://verdaccio.paas.node07.de.vix.br/@vue%2ftest-utils/-/test-utils-2.4.3.tgz#d86786d809f918c77fb9e1fafaa2438af37c17d3"
+  integrity sha512-F4K7mF+ad++VlTrxMJVRnenKSJmO6fkQt2wpRDiKDesQMkfpniGWsqEi/JevxGBo2qEkwwjvTUAoiGJLNx++CA==
   dependencies:
     js-beautify "^1.14.9"
     vue-component-type-helpers "^1.8.21"
@@ -3497,9 +3507,9 @@ accepts@~1.3.5, accepts@~1.3.8:
     negotiator "0.6.3"
 
 acorn-walk@^8.2.0:
-  version "8.3.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/acorn-walk/-/acorn-walk-8.3.0.tgz#2097665af50fd0cf7a2dfccd2b9368964e66540f"
-  integrity sha512-FS7hV565M5l1R08MXqo8odwMTB02C2UqzB17RVgu9EyuYFBqJZ3/ZY97sQD5FewVu1UyDFc1yztUDrAwT0EypA==
+  version "8.3.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/acorn-walk/-/acorn-walk-8.3.1.tgz#2f10f5b69329d90ae18c58bf1fa8fccd8b959a43"
+  integrity sha512-TgUZgYvqZprrl7YldZNoa9OciCAyZR+Ejm9eXzKCmjsF5IKp/wgQ7Z/ZpjpGTIUPwrHQIcYeI8qDh4PsEwxMbw==
 
 acorn@^7.1.1:
   version "7.4.1"
@@ -3921,14 +3931,14 @@ browserify-zlib@^0.1.4:
   dependencies:
     pako "~0.2.0"
 
-browserslist@^4.21.9, browserslist@^4.22.1:
-  version "4.22.1"
-  resolved "https://verdaccio.paas.node07.de.vix.br/browserslist/-/browserslist-4.22.1.tgz#ba91958d1a59b87dab6fed8dfbcb3da5e2e9c619"
-  integrity sha512-FEVc202+2iuClEhZhrWy6ZiAcRLvNMyYcxZ8raemul1DYVOVdFsbqckWLdsixQZCpJlwe77Z3UTalE7jsjnKfQ==
+browserslist@^4.21.9, browserslist@^4.22.2:
+  version "4.22.2"
+  resolved "https://verdaccio.paas.node07.de.vix.br/browserslist/-/browserslist-4.22.2.tgz#704c4943072bd81ea18997f3bd2180e89c77874b"
+  integrity sha512-0UgcrvQmBDvZHFGdYUehrCNIazki7/lUP3kkoi/r3YB2amZbFM9J43ZRkJTXBUZK4gmx56+Sqk9+Vs9mwZx9+A==
   dependencies:
-    caniuse-lite "^1.0.30001541"
-    electron-to-chromium "^1.4.535"
-    node-releases "^2.0.13"
+    caniuse-lite "^1.0.30001565"
+    electron-to-chromium "^1.4.601"
+    node-releases "^2.0.14"
     update-browserslist-db "^1.0.13"
 
 bser@2.1.1:
@@ -4030,10 +4040,10 @@ camelcase@^5.3.1:
   resolved "https://verdaccio.paas.node07.de.vix.br/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
-caniuse-lite@^1.0.30001541:
-  version "1.0.30001565"
-  resolved "https://verdaccio.paas.node07.de.vix.br/caniuse-lite/-/caniuse-lite-1.0.30001565.tgz#a528b253c8a2d95d2b415e11d8b9942acc100c4f"
-  integrity sha512-xrE//a3O7TP0vaJ8ikzkD2c2NgcVUvsEe2IvFTntV4Yd1Z9FVzh+gW+enX96L0psrbaFMcVcH2l90xNuGDWc8w==
+caniuse-lite@^1.0.30001565:
+  version "1.0.30001566"
+  resolved "https://verdaccio.paas.node07.de.vix.br/caniuse-lite/-/caniuse-lite-1.0.30001566.tgz#61a8e17caf3752e3e426d4239c549ebbb37fef0d"
+  integrity sha512-ggIhCsTxmITBAMmK8yZjEhCO5/47jKXPu6Dha/wuCS4JePVL+3uiDEBuhu2aIoT+bqTOR8L76Ip1ARL9xYsEJA==
 
 cardinal@^2.1.1:
   version "2.1.1"
@@ -4407,11 +4417,11 @@ cookie@0.5.0:
   integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
 core-js-compat@^3.31.0, core-js-compat@^3.33.1:
-  version "3.33.3"
-  resolved "https://verdaccio.paas.node07.de.vix.br/core-js-compat/-/core-js-compat-3.33.3.tgz#ec678b772c5a2d8a7c60a91c3a81869aa704ae01"
-  integrity sha512-cNzGqFsh3Ot+529GIXacjTJ7kegdt5fPXxCBVS1G0iaZpuo/tBz399ymceLJveQhFFZ8qThHiP3fzuoQjKN2ow==
+  version "3.34.0"
+  resolved "https://verdaccio.paas.node07.de.vix.br/core-js-compat/-/core-js-compat-3.34.0.tgz#61a4931a13c52f8f08d924522bba65f8c94a5f17"
+  integrity sha512-4ZIyeNbW/Cn1wkMMDy+mvrRUxrwFNjKwbhCfQpDd+eLgYipDqp8oGFGtLmhh18EDPKA0g3VUBYOxQGGwvWLVpA==
   dependencies:
-    browserslist "^4.22.1"
+    browserslist "^4.22.2"
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -4478,9 +4488,9 @@ cssesc@^3.0.0:
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
 csstype@^3.0.2, csstype@^3.1.2:
-  version "3.1.2"
-  resolved "https://verdaccio.paas.node07.de.vix.br/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
-  integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
+  version "3.1.3"
+  resolved "https://verdaccio.paas.node07.de.vix.br/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
+  integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
 date-fns@^2.30.0:
   version "2.30.0"
@@ -4596,7 +4606,7 @@ define-lazy-prop@^2.0.0:
   resolved "https://verdaccio.paas.node07.de.vix.br/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz#3f7ae421129bcaaac9bc74905c98a0009ec9ee7f"
   integrity sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==
 
-define-properties@^1.1.3, define-properties@^1.1.4, define-properties@^1.2.0:
+define-properties@^1.1.3, define-properties@^1.2.0, define-properties@^1.2.1:
   version "1.2.1"
   resolved "https://verdaccio.paas.node07.de.vix.br/define-properties/-/define-properties-1.2.1.tgz#10781cc616eb951a80a034bafcaa7377f6af2b6c"
   integrity sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==
@@ -4782,10 +4792,10 @@ ejs@^3.1.8:
   dependencies:
     jake "^10.8.5"
 
-electron-to-chromium@^1.4.535:
-  version "1.4.595"
-  resolved "https://verdaccio.paas.node07.de.vix.br/electron-to-chromium/-/electron-to-chromium-1.4.595.tgz#fa33309eb9aabb7426915f8e166ec60f664e9ad4"
-  integrity sha512-+ozvXuamBhDOKvMNUQvecxfbyICmIAwS4GpLmR0bsiSBlGnLaOcs2Cj7J8XSbW+YEaN3Xl3ffgpm+srTUWFwFQ==
+electron-to-chromium@^1.4.601:
+  version "1.4.607"
+  resolved "https://verdaccio.paas.node07.de.vix.br/electron-to-chromium/-/electron-to-chromium-1.4.607.tgz#340cc229b504966413716c6eae67d0f3d3702ff0"
+  integrity sha512-YUlnPwE6eYxzwBnFmawA8LiLRfm70R2aJRIUv0n03uHt/cUzzYACOogmvk8M2+hVzt/kB80KJXx7d5f5JofPvQ==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -5204,9 +5214,9 @@ find-versions@^4.0.0:
     semver-regex "^3.1.2"
 
 flow-parser@0.*:
-  version "0.222.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/flow-parser/-/flow-parser-0.222.0.tgz#88decc0e35bc11c011af66dbc2f669589d69a6b2"
-  integrity sha512-Fq5OkFlFRSMV2EOZW+4qUYMTE0uj8pcLsYJMxXYriSBDpHAF7Ofx3PibCTy3cs5P6vbsry7eYj7Z7xFD49GIOQ==
+  version "0.223.3"
+  resolved "https://verdaccio.paas.node07.de.vix.br/flow-parser/-/flow-parser-0.223.3.tgz#9e331f635b3d4b5e0875bfc4f5dd79bf9c42c795"
+  integrity sha512-9KxxDKSB22ovMpSULbOL/QAQGPN6M0YMS3PubQvB0jVc4W7QP6VhasIVic7MzKcJSh0BAVs4J6SZjoH0lDDNlg==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -5607,7 +5617,7 @@ hosted-git-info@^5.0.0, hosted-git-info@^5.2.1:
 
 html-escaper@^2.0.0:
   version "2.0.2"
-  resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-2.0.2.tgz#dfd60027da36a36dfcbe236262c00a5822681453"
+  resolved "https://verdaccio.paas.node07.de.vix.br/html-escaper/-/html-escaper-2.0.2.tgz#dfd60027da36a36dfcbe236262c00a5822681453"
   integrity sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==
 
 http-cache-semantics@^4.1.0:
@@ -6139,7 +6149,7 @@ istanbul-lib-instrument@^5.0.4:
 
 istanbul-lib-report@^3.0.0, istanbul-lib-report@^3.0.1:
   version "3.0.1"
-  resolved "https://registry.yarnpkg.com/istanbul-lib-report/-/istanbul-lib-report-3.0.1.tgz#908305bac9a5bd175ac6a74489eafd0fc2445a7d"
+  resolved "https://verdaccio.paas.node07.de.vix.br/istanbul-lib-report/-/istanbul-lib-report-3.0.1.tgz#908305bac9a5bd175ac6a74489eafd0fc2445a7d"
   integrity sha512-GCfE1mtsHGOELCU8e/Z7YWzpmybrx/+dSTfLrvY8qRmaY6zXTKWn6WQIjaAFw069icm6GVMNkgu0NzI4iPZUNw==
   dependencies:
     istanbul-lib-coverage "^3.0.0"
@@ -6148,7 +6158,7 @@ istanbul-lib-report@^3.0.0, istanbul-lib-report@^3.0.1:
 
 istanbul-lib-source-maps@^4.0.1:
   version "4.0.1"
-  resolved "https://registry.yarnpkg.com/istanbul-lib-source-maps/-/istanbul-lib-source-maps-4.0.1.tgz#895f3a709fcfba34c6de5a42939022f3e4358551"
+  resolved "https://verdaccio.paas.node07.de.vix.br/istanbul-lib-source-maps/-/istanbul-lib-source-maps-4.0.1.tgz#895f3a709fcfba34c6de5a42939022f3e4358551"
   integrity sha512-n3s8EwkdFIJCG3BPKBYvskgXGoy88ARzvegkitk60NxRdwltLOTaH7CUiMRXvwYorl0Q712iEjcWB+fK/MrWVw==
   dependencies:
     debug "^4.1.1"
@@ -6157,7 +6167,7 @@ istanbul-lib-source-maps@^4.0.1:
 
 istanbul-reports@^3.1.5:
   version "3.1.6"
-  resolved "https://registry.yarnpkg.com/istanbul-reports/-/istanbul-reports-3.1.6.tgz#2544bcab4768154281a2f0870471902704ccaa1a"
+  resolved "https://verdaccio.paas.node07.de.vix.br/istanbul-reports/-/istanbul-reports-3.1.6.tgz#2544bcab4768154281a2f0870471902704ccaa1a"
   integrity sha512-TLgnMkKg3iTDsQ9PbPTdpfAK2DzjF9mqUG7RMgcQl8oFjad8ob4laGxv5XV5U9MAfx8D6tSJiUyuAwzLicaxlg==
   dependencies:
     html-escaper "^2.0.0"
@@ -6725,7 +6735,7 @@ make-dir@^3.0.2:
 
 make-dir@^4.0.0:
   version "4.0.0"
-  resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-4.0.0.tgz#c3c2307a771277cd9638305f915c29ae741b614e"
+  resolved "https://verdaccio.paas.node07.de.vix.br/make-dir/-/make-dir-4.0.0.tgz#c3c2307a771277cd9638305f915c29ae741b614e"
   integrity sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==
   dependencies:
     semver "^7.5.3"
@@ -7092,7 +7102,7 @@ mute-stream@~0.0.4:
   resolved "https://verdaccio.paas.node07.de.vix.br/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-nanoid@^3.3.6:
+nanoid@^3.3.7:
   version "3.3.7"
   resolved "https://verdaccio.paas.node07.de.vix.br/nanoid/-/nanoid-3.3.7.tgz#d0c301a691bc8d54efa0a2226ccf3fe2fd656bd8"
   integrity sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==
@@ -7160,10 +7170,10 @@ node-int64@^0.4.0:
   resolved "https://verdaccio.paas.node07.de.vix.br/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
   integrity sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==
 
-node-releases@^2.0.13:
-  version "2.0.13"
-  resolved "https://verdaccio.paas.node07.de.vix.br/node-releases/-/node-releases-2.0.13.tgz#d5ed1627c23e3461e819b02e57b75e4899b1c81d"
-  integrity sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==
+node-releases@^2.0.14:
+  version "2.0.14"
+  resolved "https://verdaccio.paas.node07.de.vix.br/node-releases/-/node-releases-2.0.14.tgz#2ffb053bceb8b2be8495ece1ab6ce600c4461b0b"
+  integrity sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==
 
 nopt@^6.0.0:
   version "6.0.0"
@@ -7433,12 +7443,12 @@ object-keys@^1.1.1:
   integrity sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==
 
 object.assign@^4.1.4:
-  version "4.1.4"
-  resolved "https://verdaccio.paas.node07.de.vix.br/object.assign/-/object.assign-4.1.4.tgz#9673c7c7c351ab8c4d0b516f4343ebf4dfb7799f"
-  integrity sha512-1mxKf0e58bvyjSCtKYY4sRe9itRk3PJpquJOjeIkz885CczcI4IvJJDLPS72oowuSh+pBxUFROpX+TU++hxhZQ==
+  version "4.1.5"
+  resolved "https://verdaccio.paas.node07.de.vix.br/object.assign/-/object.assign-4.1.5.tgz#3a833f9ab7fdb80fc9e8d2300c803d216d8fdbb0"
+  integrity sha512-byy+U7gp+FVwmyzKPYhW2h5l3crpmGsxl7X2s8y43IgxvG4g3QZ6CffDtsNQy1WsmZpQbO+ybo0AlW7TY6DcBQ==
   dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.1.4"
+    call-bind "^1.0.5"
+    define-properties "^1.2.1"
     has-symbols "^1.0.3"
     object-keys "^1.1.1"
 
@@ -7860,12 +7870,12 @@ postcss-value-parser@^4.1.0, postcss-value-parser@^4.2.0:
   resolved "https://verdaccio.paas.node07.de.vix.br/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.2.14, postcss@^8.4.21, postcss@^8.4.27, postcss@^8.4.31:
-  version "8.4.31"
-  resolved "https://verdaccio.paas.node07.de.vix.br/postcss/-/postcss-8.4.31.tgz#92b451050a9f914da6755af352bdc0192508656d"
-  integrity sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==
+postcss@^8.2.14, postcss@^8.4.21, postcss@^8.4.27, postcss@^8.4.32:
+  version "8.4.32"
+  resolved "https://verdaccio.paas.node07.de.vix.br/postcss/-/postcss-8.4.32.tgz#1dac6ac51ab19adb21b8b34fd2d93a86440ef6c9"
+  integrity sha512-D/kj5JNu6oo2EIy+XL/26JEDTlIbB8hw85G8StOE6L74RQAVVP5rej6wxCNqyMbR4RkPfqvezVbPw81Ngd6Kcw==
   dependencies:
-    nanoid "^3.3.6"
+    nanoid "^3.3.7"
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
@@ -8526,22 +8536,22 @@ rimraf@~2.6.2:
     fsevents "~2.3.2"
 
 rollup@^4.2.0:
-  version "4.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/rollup/-/rollup-4.6.0.tgz#4f966f6dd3f6bafd01b864d68ba078d308b864fa"
-  integrity sha512-R8i5Her4oO1LiMQ3jKf7MUglYV/mhQ5g5OKeld5CnkmPdIGo79FDDQYqPhq/PCVuTQVuxsWgIbDy9F+zdHn80w==
+  version "4.6.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/rollup/-/rollup-4.6.1.tgz#351501c86b5b4f976dde8c5837516452b59921f8"
+  integrity sha512-jZHaZotEHQaHLgKr8JnQiDT1rmatjgKlMekyksz+yk9jt/8z9quNjnKNRoaM0wd9DC2QKXjmWWuDYtM3jfF8pQ==
   optionalDependencies:
-    "@rollup/rollup-android-arm-eabi" "4.6.0"
-    "@rollup/rollup-android-arm64" "4.6.0"
-    "@rollup/rollup-darwin-arm64" "4.6.0"
-    "@rollup/rollup-darwin-x64" "4.6.0"
-    "@rollup/rollup-linux-arm-gnueabihf" "4.6.0"
-    "@rollup/rollup-linux-arm64-gnu" "4.6.0"
-    "@rollup/rollup-linux-arm64-musl" "4.6.0"
-    "@rollup/rollup-linux-x64-gnu" "4.6.0"
-    "@rollup/rollup-linux-x64-musl" "4.6.0"
-    "@rollup/rollup-win32-arm64-msvc" "4.6.0"
-    "@rollup/rollup-win32-ia32-msvc" "4.6.0"
-    "@rollup/rollup-win32-x64-msvc" "4.6.0"
+    "@rollup/rollup-android-arm-eabi" "4.6.1"
+    "@rollup/rollup-android-arm64" "4.6.1"
+    "@rollup/rollup-darwin-arm64" "4.6.1"
+    "@rollup/rollup-darwin-x64" "4.6.1"
+    "@rollup/rollup-linux-arm-gnueabihf" "4.6.1"
+    "@rollup/rollup-linux-arm64-gnu" "4.6.1"
+    "@rollup/rollup-linux-arm64-musl" "4.6.1"
+    "@rollup/rollup-linux-x64-gnu" "4.6.1"
+    "@rollup/rollup-linux-x64-musl" "4.6.1"
+    "@rollup/rollup-win32-arm64-msvc" "4.6.1"
+    "@rollup/rollup-win32-ia32-msvc" "4.6.1"
+    "@rollup/rollup-win32-x64-msvc" "4.6.1"
     fsevents "~2.3.2"
 
 run-parallel@^1.1.9:
@@ -8890,9 +8900,9 @@ statuses@2.0.1:
   integrity sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==
 
 std-env@^3.3.3:
-  version "3.5.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/std-env/-/std-env-3.5.0.tgz#83010c9e29bd99bf6f605df87c19012d82d63b97"
-  integrity sha512-JGUEaALvL0Mf6JCfYnJOTcobY+Nc7sG/TemDRBqCA0wEr4DER7zDchaaixTlmOxAjG1uRJmX82EQcxwTQTkqVA==
+  version "3.6.0"
+  resolved "https://verdaccio.paas.node07.de.vix.br/std-env/-/std-env-3.6.0.tgz#94807562bddc68fa90f2e02c5fd5b6865bb4e98e"
+  integrity sha512-aFZ19IgVmhdB2uX599ve2kE6BIE3YMnQ6Gp6BURhW/oIzpXGKr878TQfAQZn1+i0Flcc/UKUy1gOlcfaUBCryg==
 
 stop-iteration-iterator@^1.0.0:
   version "1.0.0"
@@ -8906,12 +8916,12 @@ store2@^2.14.2:
   resolved "https://verdaccio.paas.node07.de.vix.br/store2/-/store2-2.14.2.tgz#56138d200f9fe5f582ad63bc2704dbc0e4a45068"
   integrity sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==
 
-storybook@^7.5.3:
-  version "7.6.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/storybook/-/storybook-7.6.0.tgz#7f83316ff9d2ba614d129b64298790f60d99fe37"
-  integrity sha512-t844tajV8dcWiGmGV0zXUdmLzLnftTqQOfzX678AjJXh7ijhMkNi2dgSFLaAOLQqeljdGfyrgFrivveZxkaj2w==
+storybook@^7.6.4:
+  version "7.6.4"
+  resolved "https://verdaccio.paas.node07.de.vix.br/storybook/-/storybook-7.6.4.tgz#4f89d25be3990f0e057020efb0dcb3429dfa179c"
+  integrity sha512-nQhs9XkrroxjqMoBnnToyc6M8ndbmpkOb1qmULO4chtfMy4k0p9Un3K4TJvDaP8c3wPUFGd4ZaJ1hZNVmIl56Q==
   dependencies:
-    "@storybook/cli" "7.6.0"
+    "@storybook/cli" "7.6.4"
 
 stream-combiner2@~1.1.1:
   version "1.1.1"
@@ -9298,9 +9308,9 @@ typedarray@^0.0.6:
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
 typescript@^5.0.2:
-  version "5.3.2"
-  resolved "https://verdaccio.paas.node07.de.vix.br/typescript/-/typescript-5.3.2.tgz#00d1c7c1c46928c5845c1ee8d0cc2791031d4c43"
-  integrity sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==
+  version "5.3.3"
+  resolved "https://verdaccio.paas.node07.de.vix.br/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
+  integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
 
 ufo@^1.3.0:
   version "1.3.2"
@@ -9476,7 +9486,7 @@ uuid@^9.0.0:
 
 v8-to-istanbul@^9.1.0:
   version "9.2.0"
-  resolved "https://registry.yarnpkg.com/v8-to-istanbul/-/v8-to-istanbul-9.2.0.tgz#2ed7644a245cddd83d4e087b9b33b3e62dfd10ad"
+  resolved "https://verdaccio.paas.node07.de.vix.br/v8-to-istanbul/-/v8-to-istanbul-9.2.0.tgz#2ed7644a245cddd83d4e087b9b33b3e62dfd10ad"
   integrity sha512-/EH/sDgxU2eGxajKdwLCDmQ4FWq+kpi3uCmBGpw1xJtnAxEjlD8j8PEiGWpCIMIs3ciNAgH0d3TTJiUkYzyZjA==
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.12"
@@ -9516,20 +9526,20 @@ vite-node@0.34.6:
     vite "^3.0.0 || ^4.0.0 || ^5.0.0-0"
 
 "vite@^3.0.0 || ^4.0.0 || ^5.0.0-0", "vite@^3.1.0 || ^4.0.0 || ^5.0.0-0":
-  version "5.0.3"
-  resolved "https://verdaccio.paas.node07.de.vix.br/vite/-/vite-5.0.3.tgz#febf6801604c618234de331bd04382cf9a149ec6"
-  integrity sha512-WgEq8WEKpZ8c0DL4M1+E+kBZEJyjBmGVrul6z8Ljfhv+PPbNF4aGq014DwNYxGz2FGq6NKL0N8usdiESWd2l2w==
+  version "5.0.6"
+  resolved "https://verdaccio.paas.node07.de.vix.br/vite/-/vite-5.0.6.tgz#f9e13503a4c5ccd67312c67803dec921f3bdea7c"
+  integrity sha512-MD3joyAEBtV7QZPl2JVVUai6zHms3YOmLR+BpMzLlX2Yzjfcc4gTgNi09d/Rua3F4EtC8zdwPU8eQYyib4vVMQ==
   dependencies:
     esbuild "^0.19.3"
-    postcss "^8.4.31"
+    postcss "^8.4.32"
     rollup "^4.2.0"
   optionalDependencies:
     fsevents "~2.3.3"
 
 vite@^4.3.0:
-  version "4.5.0"
-  resolved "https://verdaccio.paas.node07.de.vix.br/vite/-/vite-4.5.0.tgz#ec406295b4167ac3bc23e26f9c8ff559287cff26"
-  integrity sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==
+  version "4.5.1"
+  resolved "https://verdaccio.paas.node07.de.vix.br/vite/-/vite-4.5.1.tgz#3370986e1ed5dbabbf35a6c2e1fb1e18555b968a"
+  integrity sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==
   dependencies:
     esbuild "^0.18.10"
     postcss "^8.4.27"
@@ -9573,9 +9583,9 @@ void-elements@^3.1.0:
   integrity sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==
 
 vue-component-type-helpers@^1.8.21, vue-component-type-helpers@latest:
-  version "1.8.22"
-  resolved "https://verdaccio.paas.node07.de.vix.br/vue-component-type-helpers/-/vue-component-type-helpers-1.8.22.tgz#24c1f324885e5652c7bcc5d9cbd76800b0af3809"
-  integrity sha512-LK3wJHs3vJxHG292C8cnsRusgyC5SEZDCzDCD01mdE/AoREFMl2tzLRuzwyuEsOIz13tqgBcnvysN3Lxsa14Fw==
+  version "1.8.25"
+  resolved "https://verdaccio.paas.node07.de.vix.br/vue-component-type-helpers/-/vue-component-type-helpers-1.8.25.tgz#8e2c57ee57f0c8640aa910a3a4cd6597ae8bf688"
+  integrity sha512-NCA6sekiJIMnMs4DdORxATXD+/NRkQpS32UC+I1KQJUasx+Z7MZUb3Y+MsKsFmX+PgyTYSteb73JW77AibaCCw==
 
 vue-docgen-api@^4.40.0:
   version "4.75.1"
@@ -9608,24 +9618,24 @@ vue-template-compiler@^2.7.14:
     he "^1.2.0"
 
 vue-tsc@^1.8.22:
-  version "1.8.22"
-  resolved "https://verdaccio.paas.node07.de.vix.br/vue-tsc/-/vue-tsc-1.8.22.tgz#421e73c38b50802a6716ca32ed87b5970c867323"
-  integrity sha512-j9P4kHtW6eEE08aS5McFZE/ivmipXy0JzrnTgbomfABMaVKx37kNBw//irL3+LlE3kOo63XpnRigyPC3w7+z+A==
+  version "1.8.25"
+  resolved "https://verdaccio.paas.node07.de.vix.br/vue-tsc/-/vue-tsc-1.8.25.tgz#90cd03e71d28c5c4a8068167b232eb97cc96b77f"
+  integrity sha512-lHsRhDc/Y7LINvYhZ3pv4elflFADoEOo67vfClAfF2heVHpHmVquLSjojgCSIwzA4F0Pc4vowT/psXCYcfk+iQ==
   dependencies:
-    "@volar/typescript" "~1.10.5"
-    "@vue/language-core" "1.8.22"
+    "@volar/typescript" "~1.11.1"
+    "@vue/language-core" "1.8.25"
     semver "^7.5.4"
 
 vue@^3.0.0:
-  version "3.3.9"
-  resolved "https://verdaccio.paas.node07.de.vix.br/vue/-/vue-3.3.9.tgz#219a2ec68e8d4d0b0180460af0f5b9299b3f3f1f"
-  integrity sha512-sy5sLCTR8m6tvUk1/ijri3Yqzgpdsmxgj6n6yl7GXXCXqVbmW2RCXe9atE4cEI6Iv7L89v5f35fZRRr5dChP9w==
+  version "3.3.10"
+  resolved "https://verdaccio.paas.node07.de.vix.br/vue/-/vue-3.3.10.tgz#6e19c1982ee655a14babe1610288b90005f02ab1"
+  integrity sha512-zg6SIXZdTBwiqCw/1p+m04VyHjLfwtjwz8N57sPaBhEex31ND0RYECVOC1YrRwMRmxFf5T1dabl6SGUbMKKuVw==
   dependencies:
-    "@vue/compiler-dom" "3.3.9"
-    "@vue/compiler-sfc" "3.3.9"
-    "@vue/runtime-dom" "3.3.9"
-    "@vue/server-renderer" "3.3.9"
-    "@vue/shared" "3.3.9"
+    "@vue/compiler-dom" "3.3.10"
+    "@vue/compiler-sfc" "3.3.10"
+    "@vue/runtime-dom" "3.3.10"
+    "@vue/server-renderer" "3.3.10"
+    "@vue/shared" "3.3.10"
 
 walk-up-path@^1.0.0:
   version "1.0.0"

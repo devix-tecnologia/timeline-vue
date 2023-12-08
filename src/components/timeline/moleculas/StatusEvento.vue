@@ -1,13 +1,13 @@
 <template>
-  <section class="box box-status">
-    <h3>Status:</h3>
-    <BotaoStatus
-      :aparencia="aparencia"
-      :status="status"
-      data-testid="status-evento"
-      @click="handleEditarClick"
-    />
-  </section>
+    <section class="box box-status">
+      <h3>Status:</h3>
+      <BotaoStatus
+        data-testid="botao-status"
+        :aparencia="aparencia"
+        :status="status"
+        @click="emitClick"
+      />
+    </section>
 </template>
 
 <script lang="ts">
@@ -27,22 +27,23 @@ export default defineComponent({
     status: {
       required: true,
       type: String as PropType<Status>,
-    }
+    },
   },
 
   emits: {
-    editarClick: (mouseEvent: MouseEvent) => true,
+    click: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const handleEditarClick = (mouseEvent: MouseEvent) => {
-      emit('editarClick', mouseEvent);
+    const emitClick = (mouseEvent: MouseEvent) => {
+      emit('click', mouseEvent);
     };
 
     props = reactive(props);
 
     return {
-      handleEditarClick,
+      emitClick,
+      props,
     };
   },
 });

@@ -1,28 +1,26 @@
 import { render, fireEvent } from '@testing-library/vue';
-import EditarEvento from './EditarEvento.vue';
+import AreaSalvamento from '../moleculas/AreaSalvamento.vue';
 
 describe('EditarEvento.vue', () => {
-  it('renderiza componente', async () => {
-    const props = {
-      salvarVisivel: true,
-    };
+  
+  it('emits "salvarClick" quando clicado no botão salvar', async () => {
+    const { emitted, getByTestId } = render(AreaSalvamento);
+    const elemento = getByTestId('botao-salvar');
+    expect(elemento).toBeTruthy();
 
-    const { getByTestId } = render(EditarEvento, { props });
-    const buttonValue = getByTestId('editar-evento');
-    expect(buttonValue).toBeTruthy();
+    await fireEvent.click(elemento);
+
+    // Verifica se o evento foi emitido
+    expect(emitted().click).toBeTruthy();
   });
 
-  it('emits "click" when button is clicked', async () => {
-    const props = {
-      salvarVisivel: true,
-    };
-    
-    const { emitted, getByTestId } = render(EditarEvento, { props });
-    const elemento = getByTestId('botao-salvar');
+  it('emits "cancelarClick" quando clicado no botão cancelar', async () => {
+    const { emitted, getByTestId } = render(AreaSalvamento);
+    const elemento = getByTestId('botao-cancelar');
     expect(elemento).toBeTruthy();
     await fireEvent.click(elemento);
 
     // Verifica se o evento foi emitido
-    expect(emitted().salvarClick).toBeTruthy();
+    expect(emitted().click).toBeTruthy();
   });
 });

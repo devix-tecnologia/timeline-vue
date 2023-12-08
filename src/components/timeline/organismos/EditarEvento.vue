@@ -8,7 +8,9 @@
 
     <transition name="fadeBaixo" mode="out-in" appear>
       <div class="salvar">
-        <AreaSalvamento @salvarClick="emitirSalvarClick" @cancelarClick="emitirCancelarClick">
+        <AreaSalvamento  data-testid="area-salvamento"
+         @cancelar-click="emitirCancelarClick"
+         @salvar-click="emitirSalvarClick">
           <slot name="salvamento"></slot>
         </AreaSalvamento>
       </div>
@@ -20,7 +22,7 @@
 import { defineComponent, reactive } from 'vue';
 import 'material-symbols/outlined.css';
 
-import AreaSalvamento from '../moleculas/AreaSalvamento.vue';
+import AreaSalvamento from "../moleculas/AreaSalvamento.vue";
 
 export default defineComponent({
   props: {
@@ -47,10 +49,6 @@ export default defineComponent({
     return {
       emitirSalvarClick,
       emitirCancelarClick,
-      // classes: computed(() => ({
-      //   visivel: props.salvarVisivel,
-      //   invisivel: !props.salvarVisivel,
-      // })),
     };
   },
 });
