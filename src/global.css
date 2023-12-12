@@ -65,23 +65,23 @@
   }
 }
 
-body {
+.areaTimeline body {
   font-family: var(--fonte);
   font-size: 1.6rem;
   font-weight: 300;
 }
 
-h1 {
+.areaTimeline h1 {
   font-size: 2.4rem;
   font-weight: 600;
 }
 
-h2 {
+.areaTimeline h2 {
   font-size: 1.8rem;
   font-weight: 600;
 }
 
-h3 {
+.areaTimeline h3 {
   font-size: 1.4rem;
   font-weight: 600;
   margin: 0;
@@ -89,7 +89,7 @@ h3 {
   line-height: 1em;
 }
 
-h4 {
+.areaTimeline h4 {
   font-size: 1.2rem;
   font-weight: 300;
 }
