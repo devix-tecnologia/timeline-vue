@@ -24,7 +24,7 @@
           :previstoPara="evento.valor.previstoPara"
           :realizado-em="evento.valor.realizado"
           :categoria="evento.valor.categoria"
-          :titulo="evento.valor.clicavel ? 'clicavel = true' : 'clicavel = false'"
+          :titulo="evento.valor.titulo"
           :subtitulo="evento.valor.subtitulo"
           :texto-destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
