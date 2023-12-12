@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/vue';
+import { render, fireEvent, waitFor } from '@testing-library/vue';
 import TemplateTimeline from './TemplateTimeline.vue';
 import { dadosPerfil, dadosEventosDetalhados } from './TemplateTimeline.mock';
 
@@ -14,13 +14,28 @@ describe('TemplateTimeline.vue', () => {
     expect(elemento).toBeTruthy();
   });
 
+  it('emite o evento "voltarClick"', async () => {
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId, emitted } = render(TemplateTimeline, { props });
+    const elemento = getByTestId('botao-voltar');
+    expect(elemento).toBeTruthy();
+    await fireEvent.click(elemento);
+
+    // Verifica se o evento foi emitido
+    expect(emitted().voltarClick).toBeTruthy();
+  });
+
   it('emit evento click ao clicar no evento clicavel da Timeline', async () => {
     const props = {
       perfil: dadosPerfil,
       eventos: dadosEventosDetalhados,
     };
 
-    const { emitted, getByTestId, debug } = render(TemplateTimeline, { props });
+    const { emitted, getByTestId } = render(TemplateTimeline, { props });
 
     //obtém o evento 1 ao invés do zero, pois o zero é o separador de data
     const elemento = getByTestId('evento-timeline-1');
@@ -46,6 +61,23 @@ describe('TemplateTimeline.vue', () => {
 
     // Verifica se o evento NÃO foi emitido
     expect(emitted().eventoTimelineClicked).toBeUndefined();
+  });
+
+  it('Exibe o EventoDetalhado ao clicar no evento da Timeline', async () => {
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
   });
 
   it('testar emissão do evento "eventoTimelineClicked"', async () => {

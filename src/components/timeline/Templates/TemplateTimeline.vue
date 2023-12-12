@@ -17,7 +17,7 @@
 
     <Evento
       v-if="TemplateTimeline.dados.eventoAtual && TemplateTimeline.evento.exibir"
-      data-testid="evento"
+      data-testid="evento-detalhado"
       :perfil="TemplateTimeline.dados.perfil"
       :evento="TemplateTimeline.dados.eventoAtual"
       @observacao-adicionar-click="handleObservacaoAdicionarClick"
@@ -90,6 +90,7 @@ export default defineComponent({
     ) => true,
     adicionarObservacaoCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) =>
       true,
+    voltarClick: (mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
@@ -134,12 +135,15 @@ export default defineComponent({
       }
       emit('eventoTimelineClicked', evento, mouseEvent);
       TemplateTimeline.dados.eventoAtual = evento;
-      ativarTela('Timeline');
+      ativarTela('Evento');
     };
 
     const handleVoltarTela = (mouseEvent: MouseEvent): void => {
-      //TODO: dependerá de qual tela está ativada
-      ativarTela('Timeline');
+      if (TemplateTimeline.dados.eventoAtual) {
+        ativarTela('Timeline');
+      } else {
+        emit('voltarClick', mouseEvent);
+      }
     };
 
     const handleStatusEditarClick = (mouseEvent: MouseEvent): void => {

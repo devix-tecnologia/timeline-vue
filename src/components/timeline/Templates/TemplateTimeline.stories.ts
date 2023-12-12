@@ -37,10 +37,16 @@ const Template: StoryFn<typeof TemplateTimeline> = (args) => ({
       alert('Observação adicionada com sucesso!');
     };
 
-    return { handleAdicionarObservacaoSalvarClick, args };
+    const handleVoltarClick = (
+      mouseEvent: MouseEvent,
+    ): void => {
+      alert('Voltar para a tela anterior!');
+    };
+
+    return { handleAdicionarObservacaoSalvarClick, handleVoltarClick, args };
   },
   template:
-    '<TemplateTimeline v-bind="args" @adicionarObservacaoSalvarClicked="handleAdicionarObservacaoSalvarClick" />',
+    '<TemplateTimeline v-bind="args" @voltarClick="handleVoltarClick" @adicionarObservacaoSalvarClicked="handleAdicionarObservacaoSalvarClick" />',
 });
 
 export const Timeline = Template.bind({});
