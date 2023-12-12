@@ -1,12 +1,11 @@
 <template >
-  <div class="topo" :class="classes" >
+  <div class="topo" :class="classes" data-testid="topo">
     <div class="conteudoTitulo">
-      <button class="btn_voltar" @click="emitirVoltarClick" data-testid="topo">
+      <button class="btn_voltar" @click="emitirVoltarClick" data-testid="botao-voltar">
         <span class="material-symbols-outlined"> arrow_back </span>
       </button>
       <h3 class="titulo">{{ titulo }}</h3>
     </div>
-    <!-- <span class="material-symbols-outlined"> more_vert </span> -->
   </div>
 </template>
 
