@@ -8,7 +8,7 @@
   >
     <template #conteudo>
       <h2>Observação:</h2>
-      <textarea v-model="state.observacaoLocal" placeholder=""></textarea>
+      <textarea data-testid="observacao-textarea" v-model="state.observacaoLocal" placeholder=""></textarea>
     </template>
   </EditarEvento>
 </template>

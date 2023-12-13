@@ -41,18 +41,19 @@ describe('Timeline.vue', () => {
     expect(emitted().eventoClick).toBeTruthy();
 
     //verifica se o payload do evento é o esperado
-    // Verifica o payload do evento
-    const payload = emitted().eventoClick[0];
-    expect(Array.isArray(payload)).toBe(true);
+    const eventoClick = emitted().eventoClick;
+    expect(eventoClick).toHaveLength(1);
 
+    const payload = eventoClick[0];
     if (!Array.isArray(payload)) {
       new Error('Payload não é um array');
       return;
     }
 
     expect(payload).toHaveLength(2);
-    expectTypeOf(payload[0]).toMatchTypeOf<Evento>();
-    expect(payload[0]).toEqual(props.eventosTimeline[0]);
+    const evento = payload[0];
+    expectTypeOf(evento).toMatchTypeOf<Evento>();
+    expect(evento).toEqual(props.eventosTimeline[0]);
   });
 
   it('não emite "eventoClick" quando clicado em um evento não clicavel da timeline', async () => {
