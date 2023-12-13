@@ -1,5 +1,6 @@
 <template>
   <EditarEvento
+    data-testid="editar-status"
     :salvarVisivel="salvarVisivel"
     @cancelarClick="aoCancelar"
     @salvarClick="aoSalvar(selecionado, $event)"
@@ -11,16 +12,19 @@
         :aparencia="getAparencia('realizado')"
         @click="atualizarSelecionado('realizado')"
         :status="`realizado`"
+        data-testid="botao-status-realizado"
       />
       <BotaoStatus
         :aparencia="getAparencia('cancelado')"
         @click="atualizarSelecionado('cancelado')"
         :status="`cancelado`"
+        data-testid="botao-status-cancelado"
       />
       <BotaoStatus
         :aparencia="getAparencia('adiado')"
         @click="atualizarSelecionado('adiado')"
         :status="`adiado`"
+        data-testid="botao-status-adiado"
       />
     </template>
 
