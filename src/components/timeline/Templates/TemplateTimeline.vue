@@ -26,6 +26,7 @@
 
     <EditarStatus
       v-if="TemplateTimeline.dados.eventoAtual && TemplateTimeline.editarStatus.exibir"
+      data-testid="editar-status"
       :salvarVisivel="TemplateTimeline.editarStatus.exibir"
       :perfil="TemplateTimeline.dados.perfil"
       :evento="TemplateTimeline.dados.eventoAtual"
@@ -35,6 +36,7 @@
 
     <AdicionarObservacao
       v-if="TemplateTimeline.adicionarObservacao.exibir"
+      data-testid="adicionar-observacao"
       :salvarVisivel="TemplateTimeline.adicionarObservacao.exibir"
       @adicionar-click="handleAdicionarObservacaoSalvarClick"
       @cancelar-click="handleObservacaoAdicionarCancelarClick"

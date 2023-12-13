@@ -81,34 +81,206 @@ describe('TemplateTimeline.vue', () => {
   });
 
   it('testar emissão do evento "eventoTimelineClicked"', async () => {
-    // TODO: implementar teste emissão do evento "eventoTimelineClicked
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
   });
 
   it('testar emissão do evento "eventoStatusEditClicked"', async () => {
-    // TODO: implementar teste emissão do evento "eventoStatusEditClicked
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
+
+    const editarStatus = getByTestId('botao-status');
+    expect(editarStatus).toBeTruthy();
+    await fireEvent.click(editarStatus);
+
+    await waitFor(() => {
+      expect(getByTestId('editar-status')).toBeTruthy();
+    });
   });
 
   it('testar emissão do evento "eventoDetalhadoObservacoesAddClicked"', async () => {
-    // TODO: implementar teste emissão do evento "eventoDetalhadoObservacoesAddClicked
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
+
+    const adicionarObservacao = getByTestId('botao-adicionar');
+    expect(adicionarObservacao).toBeTruthy();
+    await fireEvent.click(adicionarObservacao);
+
+    await waitFor(() => {
+      expect(getByTestId('adicionar-observacao')).toBeTruthy();
+    });
   });
 
   it('testar emissão do evento "editarStatusSalvarClicked"', async () => {
-    // TODO: implementar teste emissão do evento "editarStatusSalvarClicked
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
+
+    const editarStatus = getByTestId('botao-status');
+    expect(editarStatus).toBeTruthy();
+    await fireEvent.click(editarStatus);
+
+    await waitFor(() => {
+      expect(getByTestId('editar-status')).toBeTruthy();
+    });
+
+    const salvarStatus = getByTestId('botao-salvar');
+    expect(salvarStatus).toBeTruthy();
+    await fireEvent.click(salvarStatus);
   });
 
   it('testar emissão do evento "editarStatusCancelarClicked"', async () => {
-    // TODO: implementar teste emissão do evento "editarStatusCancelarClicked
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
+
+    const editarStatus = getByTestId('botao-status');
+    expect(editarStatus).toBeTruthy();
+    await fireEvent.click(editarStatus);
+
+    await waitFor(() => {
+      expect(getByTestId('editar-status')).toBeTruthy();
+    });
+
+    const cancelarStatus = getByTestId('botao-cancelar');
+    expect(cancelarStatus).toBeTruthy();
+    await fireEvent.click(cancelarStatus);
   });
 
   it('testar emissão do evento "adicionarObservacaoSalvarClicked"', async () => {
-    // TODO: implementar teste emissão do evento "adicionarObservacaoSalvarClicked
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
+
+    const adicionarObservacao = getByTestId('botao-adicionar');
+    expect(adicionarObservacao).toBeTruthy();
+    await fireEvent.click(adicionarObservacao);
+
+    await waitFor(() => {
+      expect(getByTestId('adicionar-observacao')).toBeTruthy();
+    });
+
+    const salvarObservacao = getByTestId('botao-salvar');
+    expect(salvarObservacao).toBeTruthy();
+    await fireEvent.click(salvarObservacao);
   });
 
   it('testar emissão do evento "adicionarObservacaoCancelarClicked"', async () => {
-    // TODO: implementar teste emissão do evento "adicionarObservacaoCancelarClicked
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
+
+    const adicionarObservacao = getByTestId('botao-adicionar');
+    expect(adicionarObservacao).toBeTruthy();
+    await fireEvent.click(adicionarObservacao);
+
+    await waitFor(() => {
+      expect(getByTestId('adicionar-observacao')).toBeTruthy();
+    });
+
+    const cancelarObservacao = getByTestId('botao-cancelar');
+    expect(cancelarObservacao).toBeTruthy();
+    await fireEvent.click(cancelarObservacao);
   });
 
   it('acionar botao de voltar na tela de evento detalhado e voltar para a timeline', async () => {
-    // TODO: implementar teste botao de voltar na tela de evento detalhado
+    const props = {
+      perfil: dadosPerfil,
+      eventos: dadosEventosDetalhados,
+    };
+
+    const { getByTestId } = render(TemplateTimeline, { props });
+    const elementoEvento = getByTestId('evento-timeline-1');
+
+    expect(elementoEvento).toBeTruthy();
+    await fireEvent.click(elementoEvento);
+
+    await waitFor(() => {
+      expect(getByTestId('evento-detalhado')).toBeTruthy();
+    });
+
+    const voltar = getByTestId('botao-voltar');
+    expect(voltar).toBeTruthy();
+    await fireEvent.click(voltar);
   });
 });
