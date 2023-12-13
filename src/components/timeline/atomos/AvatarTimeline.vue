@@ -4,15 +4,14 @@
     <span v-else-if="icone" class="material-symbols-outlined">
       {{ icone }}
     </span>
-    <span v-else="icone" class="material-symbols-outlined">
-      person
-    </span>
+    <span v-else="icone" class="material-symbols-outlined"> person </span>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
+import 'material-symbols/outlined.css';
 export default defineComponent({
-  name: "Avatar Timeline",
+  name: 'Avatar Timeline',
   props: {
     imagem: {
       type: String,
