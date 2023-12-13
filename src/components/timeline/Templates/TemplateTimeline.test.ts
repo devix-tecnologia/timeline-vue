@@ -1,6 +1,8 @@
 import { render, fireEvent, waitFor } from '@testing-library/vue';
 import TemplateTimeline from './TemplateTimeline.vue';
 import { dadosPerfil, dadosEventosDetalhados } from './TemplateTimeline.mock';
+import { EventoDetalhado } from "../typeDetalhado";
+import { Status } from '../type';
 
 describe('TemplateTimeline.vue', () => {
   it('renderiza o componente TemplateTimeline', () => {
@@ -29,7 +31,7 @@ describe('TemplateTimeline.vue', () => {
     expect(emitted().voltarClick).toBeTruthy();
   });
 
-  it('emit evento click ao clicar no evento clicavel da Timeline', async () => {
+  it('emit "eventoTimelineClicked" ao clicar no evento clicavel da TemplateTimeline', async () => {
     const props = {
       perfil: dadosPerfil,
       eventos: dadosEventosDetalhados,
@@ -47,7 +49,7 @@ describe('TemplateTimeline.vue', () => {
     expect(emitted().eventoTimelineClicked).toBeTruthy();
   });
 
-  it('não emite "eventoClick" quando clicado em um evento não clicavel do TemplateTimeline', async () => {
+  it('não emite "eventoTimelineClicked" quando clicado em um evento não clicavel do TemplateTimeline', async () => {
     const props = {
       perfil: dadosPerfil,
       eventos: dadosEventosDetalhados,
@@ -128,7 +130,7 @@ describe('TemplateTimeline.vue', () => {
       eventos: dadosEventosDetalhados,
     };
 
-    const { getByTestId } = render(TemplateTimeline, { props });
+    const { emitted, getByTestId } = render(TemplateTimeline, { props });
     const elementoEvento = getByTestId('evento-timeline-1');
 
     expect(elementoEvento).toBeTruthy();
@@ -142,9 +144,8 @@ describe('TemplateTimeline.vue', () => {
     expect(adicionarObservacao).toBeTruthy();
     await fireEvent.click(adicionarObservacao);
 
-    await waitFor(() => {
-      expect(getByTestId('adicionar-observacao')).toBeTruthy();
-    });
+    // Verifica se o evento foi emitido
+    expect(emitted().eventoDetalhadoObservacoesAddClicked).toBeTruthy();
   });
 
   it('testar emissão do evento "editarStatusSalvarClicked"', async () => {
@@ -153,7 +154,7 @@ describe('TemplateTimeline.vue', () => {
       eventos: dadosEventosDetalhados,
     };
 
-    const { getByTestId } = render(TemplateTimeline, { props });
+    const { emitted, getByTestId } = render(TemplateTimeline, { props });
     const elementoEvento = getByTestId('evento-timeline-1');
 
     expect(elementoEvento).toBeTruthy();
@@ -171,9 +172,35 @@ describe('TemplateTimeline.vue', () => {
       expect(getByTestId('editar-status')).toBeTruthy();
     });
 
+    const elementoStatusCancelado = getByTestId('botao-status-cancelado');
+    expect(elementoStatusCancelado).toBeTruthy();
+    
+    await fireEvent.click(elementoStatusCancelado);
+
     const salvarStatus = getByTestId('botao-salvar');
     expect(salvarStatus).toBeTruthy();
     await fireEvent.click(salvarStatus);
+
+    const editarStatusSalvarClicked = emitted().editarStatusSalvarClicked;
+    expect(editarStatusSalvarClicked).toBeTruthy();
+    expect(editarStatusSalvarClicked).toHaveLength(1);
+
+
+    const payload = editarStatusSalvarClicked[0];
+    if (!Array.isArray(payload)) {
+      new Error('Payload não é um array');
+      return;
+    }
+
+    expect(payload).toHaveLength(3);
+    
+    const evento = payload[0];
+    expectTypeOf(evento).toMatchTypeOf<EventoDetalhado>();
+    expect(evento).toEqual(props.eventos[0]);
+
+    const status = payload[1];
+    expectTypeOf(status).toMatchTypeOf<Status>();
+    expect(status).toEqual('cancelado');
   });
 
   it('testar emissão do evento "editarStatusCancelarClicked"', async () => {
@@ -211,7 +238,7 @@ describe('TemplateTimeline.vue', () => {
       eventos: dadosEventosDetalhados,
     };
 
-    const { getByTestId } = render(TemplateTimeline, { props });
+    const { emitted, getByTestId } = render(TemplateTimeline, { props });
     const elementoEvento = getByTestId('evento-timeline-1');
 
     expect(elementoEvento).toBeTruthy();
@@ -229,9 +256,35 @@ describe('TemplateTimeline.vue', () => {
       expect(getByTestId('adicionar-observacao')).toBeTruthy();
     });
 
-    const salvarObservacao = getByTestId('botao-salvar');
-    expect(salvarObservacao).toBeTruthy();
-    await fireEvent.click(salvarObservacao);
+    //preench o campo observação
+    const observacaoInput = getByTestId('observacao-textarea');
+    expect(observacaoInput).toBeTruthy();
+    const mensagemTexto = 'teste adicionando observação';
+    await fireEvent.update(observacaoInput, mensagemTexto);
+
+    const salvarStatus = getByTestId('botao-salvar');
+    expect(salvarStatus).toBeTruthy();
+    await fireEvent.click(salvarStatus);
+
+
+    //verifica se o payload do evento é o esperado
+    const adicionarClick = emitted().adicionarObservacaoSalvarClicked;
+    expect(adicionarClick).toBeTruthy();
+    expect(adicionarClick).toHaveLength(1);
+
+    const payload = adicionarClick[0];
+    if (!Array.isArray(payload)) {
+      new Error('Payload não é um array');
+      return;
+    }
+
+    expect(payload).toHaveLength(3);
+    const evento = payload[0];
+    expectTypeOf(evento).toMatchTypeOf<EventoDetalhado>();
+    expect(evento).toEqual(props.eventos[0]);
+    const mensagem = payload[1];
+    expectTypeOf(mensagem).toMatchTypeOf<String>();
+    expect(mensagem).toEqual(mensagemTexto);
   });
 
   it('testar emissão do evento "adicionarObservacaoCancelarClicked"', async () => {
@@ -240,7 +293,7 @@ describe('TemplateTimeline.vue', () => {
       eventos: dadosEventosDetalhados,
     };
 
-    const { getByTestId } = render(TemplateTimeline, { props });
+    const { emitted, getByTestId } = render(TemplateTimeline, { props });
     const elementoEvento = getByTestId('evento-timeline-1');
 
     expect(elementoEvento).toBeTruthy();
@@ -261,6 +314,24 @@ describe('TemplateTimeline.vue', () => {
     const cancelarObservacao = getByTestId('botao-cancelar');
     expect(cancelarObservacao).toBeTruthy();
     await fireEvent.click(cancelarObservacao);
+
+    // Verifica se o evento foi emitido
+    const adicionarObservacaoCancelarClicked = emitted().adicionarObservacaoCancelarClicked;
+
+    expect(adicionarObservacaoCancelarClicked).toHaveLength(1);
+
+    const payload = adicionarObservacaoCancelarClicked[0];
+    if (!Array.isArray(payload)) {
+      new Error('Payload não é um array');
+      return;
+    }
+
+    expect(payload).toHaveLength(2);
+    const evento = payload[0];
+    expectTypeOf(evento).toMatchTypeOf<EventoDetalhado>();
+    expect(evento).toEqual(props.eventos[0]);
+    const mouseEvent = payload[1];
+    expectTypeOf(mouseEvent).toMatchTypeOf<MouseEvent>();
   });
 
   it('acionar botao de voltar na tela de evento detalhado e voltar para a timeline', async () => {

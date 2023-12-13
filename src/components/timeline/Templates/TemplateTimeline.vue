@@ -171,7 +171,14 @@ export default defineComponent({
     };
 
     const handleObservacaoAdicionarClick = (mouseEvent: MouseEvent): void => {
-      ativarTela('AdicionarObservacao');
+      if (TemplateTimeline.dados.eventoAtual) {
+        emit(
+          'eventoDetalhadoObservacoesAddClicked',
+          TemplateTimeline.dados.eventoAtual,
+          mouseEvent
+        );
+        ativarTela('AdicionarObservacao');
+      }
     };
 
     const handleAdicionarObservacaoSalvarClick = (
