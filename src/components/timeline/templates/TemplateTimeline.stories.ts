@@ -3,11 +3,11 @@ import { Meta, StoryFn } from '@storybook/vue3';
 import {
   dadosEventosDetalhados,
   dadosPerfil as dadosPerfilTimeline,
-} from '../Templates//TemplateTimeline.mock';
+} from '../templates/TemplateTimeline.mock';
 import { EventoDetalhado } from '../typeDetalhado';
 
 export default {
-  title: 'Devix/Eventos/Templates/TemplateTimeline',
+  title: 'Devix/Eventos/templates/TemplateTimeline',
   component: TemplateTimeline,
   parameters: {
     componentSubtitle: 'Timeline com tela de detalhes do evento.',
