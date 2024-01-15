@@ -110,9 +110,9 @@ export default defineComponent({
         let minDiff: number | null = null;
         let listaEventos = [];
         for (const e of eventos) {
-          const t = e.data.getTime();
+          const t = e.previstoPara.getTime();
           if (e.status === 'planejado' || e.status === 'atrasado') {
-            const diff: number = Math.abs(agora - e.data.getTime());
+            const diff: number = Math.abs(agora - e.previstoPara.getTime());
             if (minDiff === null || (diff < minDiff && t <= agora)) {
               minDiff = diff;
               listaEventos.length = 0;
@@ -133,7 +133,10 @@ export default defineComponent({
       void atualizarEventoAtual();
 
       const eventosOrdenados = dadosEventosTimelineClone.sort((a: Evento, b: Evento) => {
-        return a.data.getTime() - b.data.getTime();
+        const dataA = a.realizado || a.previstoPara;
+        const dataB = b.realizado || b.previstoPara;
+
+        return dataA.getTime() - dataB.getTime();
       });
       if (eventosOrdenados) {
         let resultado: Array<TipoEventoTimeline> = [];
@@ -143,7 +146,7 @@ export default defineComponent({
 
         for (const evento of eventosOrdenados) {
           const agora = new Date();
-          const dataEvento = evento.data;
+          const dataEvento = evento.realizado ? evento.realizado : evento.previstoPara;
           statusEvento = evento.status;
           const toleranciaEvento = evento.tolerancia * 60 * 1000;
 
@@ -158,7 +161,7 @@ export default defineComponent({
             dataAtual = dataEvento;
             resultado.push({
               tipo: 'dia',
-              valor: evento.data,
+              valor: evento.realizado ? evento.realizado : evento.previstoPara,
               key: ++idx,
             });
           }
