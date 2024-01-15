@@ -9,7 +9,7 @@ describe('EventoTimeline.vue', () => {
       criticidade: 'media',
       ehAtual: false,
       previstoPara: new Date('2023-04-26T19:00Z'),
-      realizado: new Date('2023-04-26T19:30Z'),
+      realizadoEm: new Date('2023-04-26T19:30Z'),
       categoria: {
         nome: 'Vacina',
         icone: 'vaccines',
@@ -35,7 +35,7 @@ describe('EventoTimeline.vue', () => {
       criticidade: 'media',
       ehAtual: false,
       previstoPara: new Date('2023-04-26T19:00Z'),
-      realizado: new Date('2023-04-26T19:30Z'),
+      realizadoEm: new Date('2023-04-26T19:30Z'),
       categoria: {
         nome: 'Vacina',
         icone: 'vaccines',
@@ -54,5 +54,4 @@ describe('EventoTimeline.vue', () => {
     // Verifica se o evento NÃO foi emitido
     expect(emitted().click).toBeUndefined();
   });
-  
 });

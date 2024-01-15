@@ -12,7 +12,7 @@ describe('Timeline.vue', () => {
         {
           data: new Date('2023-04-26T19:00Z'),
           previstoPara: new Date('2023-04-26T19:00Z'),
-          realizado: new Date('2023-04-26T19:30Z'),
+          realizadoEm: new Date('2023-04-26T19:30Z'),
           tolerancia: 10,
           titulo: 'Vacina da Covid',
           subtitulo: 'Posto de saúde do bairro',
@@ -64,7 +64,7 @@ describe('Timeline.vue', () => {
         {
           data: new Date('2023-04-26T19:00Z'),
           previstoPara: new Date('2023-04-26T19:00Z'),
-          realizado: new Date('2023-04-26T19:30Z'),
+          realizadoEm: new Date('2023-04-26T19:30Z'),
           tolerancia: 10,
           titulo: 'Vacina da Covid',
           subtitulo: 'Posto de saúde do bairro',
@@ -103,7 +103,7 @@ describe('Timeline.vue', () => {
           data: new Date('2023-04-26T19:00Z'),
           // @ts-ignore
           previstoPara: null,
-          realizado: new Date('2023-04-26T19:30Z'),
+          realizadoEm: new Date('2023-04-26T19:30Z'),
           tolerancia: 10,
           titulo: 'Vacina da Covid',
           subtitulo: 'Posto de saúde do bairro',

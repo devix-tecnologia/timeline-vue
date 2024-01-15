@@ -22,7 +22,7 @@
           :status="evento.valor.status"
           :criticidade="evento.valor.criticidade"
           :previstoPara="evento.valor.previstoPara"
-          :realizado-em="evento.valor.realizado"
+          :realizado-em="evento.valor.realizadoEm"
           :categoria="evento.valor.categoria"
           :titulo="evento.valor.titulo"
           :subtitulo="evento.valor.subtitulo"
@@ -110,9 +110,10 @@ export default defineComponent({
         let minDiff: number | null = null;
         let listaEventos = [];
         for (const e of eventos) {
-          const t = e.previstoPara.getTime();
+          const dataComparacao = e.realizadoEm || e.previstoPara; // Use a data realizada se disponível, caso contrário, use a prevista
+          const t = dataComparacao.getTime();
           if (e.status === 'planejado' || e.status === 'atrasado') {
-            const diff: number = Math.abs(agora - e.previstoPara.getTime());
+            const diff: number = Math.abs(agora - dataComparacao.getTime());
             if (minDiff === null || (diff < minDiff && t <= agora)) {
               minDiff = diff;
               listaEventos.length = 0;
@@ -133,8 +134,8 @@ export default defineComponent({
       void atualizarEventoAtual();
 
       const eventosOrdenados = dadosEventosTimelineClone.sort((a: Evento, b: Evento) => {
-        const dataA = a.realizado || a.previstoPara;
-        const dataB = b.realizado || b.previstoPara;
+        const dataA = a.realizadoEm || a.previstoPara;
+        const dataB = b.realizadoEm || b.previstoPara;
 
         return dataA.getTime() - dataB.getTime();
       });
@@ -146,12 +147,13 @@ export default defineComponent({
 
         for (const evento of eventosOrdenados) {
           const agora = new Date();
-          const dataEvento = evento.realizado ? evento.realizado : evento.previstoPara;
+          const dataEvento = evento.realizadoEm ? evento.realizadoEm : evento.previstoPara;
           statusEvento = evento.status;
           const toleranciaEvento = evento.tolerancia * 60 * 1000;
 
           //altera status para atrasado
           if (
+            dataEvento &&
             statusEvento === 'planejado' &&
             dataEvento.getTime() + toleranciaEvento < agora.getTime()
           ) {
@@ -161,7 +163,7 @@ export default defineComponent({
             dataAtual = dataEvento;
             resultado.push({
               tipo: 'dia',
-              valor: evento.realizado ? evento.realizado : evento.previstoPara,
+              valor: evento.realizadoEm ? evento.realizadoEm : evento.previstoPara,
               key: ++idx,
             });
           }
