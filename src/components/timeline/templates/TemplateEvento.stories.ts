@@ -3,7 +3,7 @@ import { Meta, StoryFn } from "@storybook/vue3";
 import { dadosEventoDetalhado, dadosPerfil } from "../EventoDetalhado.mock";
 
 export default {
-  title: "Devix/Eventos/Templates/TemplateEvento",
+  title: "Devix/Eventos/templates/TemplateEvento",
   component: TemplateEvento,
   parameters: {
     componentSubtitle: "Tela de detalhes do evento.",

@@ -57,7 +57,7 @@ export default defineComponent({
       {
         data: new Date('2023-04-26T18:10Z'),
         previstoPara: new Date('2023-04-26T18:10Z'),
-        realizado: new Date('2023-04-26T18:15Z'),
+        realizadoEm: new Date('2023-04-26T18:15Z'),
         tolerancia: 20,
         titulo: 'Vacina da gripe',
         subtitulo: 'Posto de saúde do bairro',

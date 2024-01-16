@@ -12,7 +12,7 @@ describe('Timeline.vue', () => {
         {
           data: new Date('2023-04-26T19:00Z'),
           previstoPara: new Date('2023-04-26T19:00Z'),
-          realizado: new Date('2023-04-26T19:30Z'),
+          realizadoEm: new Date('2023-04-26T19:30Z'),
           tolerancia: 10,
           titulo: 'Vacina da Covid',
           subtitulo: 'Posto de saúde do bairro',
@@ -64,7 +64,7 @@ describe('Timeline.vue', () => {
         {
           data: new Date('2023-04-26T19:00Z'),
           previstoPara: new Date('2023-04-26T19:00Z'),
-          realizado: new Date('2023-04-26T19:30Z'),
+          realizadoEm: new Date('2023-04-26T19:30Z'),
           tolerancia: 10,
           titulo: 'Vacina da Covid',
           subtitulo: 'Posto de saúde do bairro',
@@ -92,5 +92,40 @@ describe('Timeline.vue', () => {
 
     // Verifica se o evento NÃO foi emitido
     expect(emitted().eventoClick).toBeUndefined();
+  });
+
+  it('não renderiza eventos que nao possuem previstoPara', async () => {
+    // Criando de proposito uma entrada que tenta quebrar o componente
+    const props = {
+      perfilTimeline: dadosPerfil,
+      eventosTimeline: [
+        {
+          data: new Date('2023-04-26T19:00Z'),
+          // @ts-ignore
+          previstoPara: null,
+          realizadoEm: new Date('2023-04-26T19:30Z'),
+          tolerancia: 10,
+          titulo: 'Vacina da Covid',
+          subtitulo: 'Posto de saúde do bairro',
+          destaque: '',
+          categoria: {
+            nome: 'Vacina',
+            icone: 'vaccines',
+          },
+          status: 'realizado',
+          criticidade: 'media',
+          atual: false,
+          scroll: false,
+          clicavel: false, //desabilita o click no evento
+        },
+      ],
+    };
+
+    const { queryByTestId } = render(Timeline, { props });
+
+    //obtém o evento 1 ao invés do zero, pois o zero é o separador de data
+    const elemento = queryByTestId('evento-timeline-1');
+
+    expect(elemento).toBeNull();
   });
 });
