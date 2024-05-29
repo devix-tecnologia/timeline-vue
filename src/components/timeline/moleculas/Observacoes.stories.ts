@@ -19,8 +19,7 @@ const Template: StoryFn<typeof Observacoes> = (args) => ({
 
     return { adicionarClick, args };
   },
-  template:
-    '<Observacoes v-bind="args" @adicionarClick="adicionarClick" />',
+  template: '<Observacoes v-bind="args" @adicionarClick="adicionarClick" />',
 });
 
 export const Padrao = Template.bind({});

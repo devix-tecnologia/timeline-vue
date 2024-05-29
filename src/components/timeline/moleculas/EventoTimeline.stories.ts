@@ -1,17 +1,17 @@
-import EventoTimeline from "./EventoTimeline.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
+import EventoTimeline from './EventoTimeline.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: "Devix/Eventos/Moleculas/EventoTimeline",
+  title: 'Devix/Eventos/Moleculas/EventoTimeline',
   component: EventoTimeline,
   argTypes: {
     status: {
-      control: { type: "select" },
-      options: ["planejado", "realizado", "cancelado", "adiado", "atrasado"],
+      control: { type: 'select' },
+      options: ['planejado', 'realizado', 'cancelado', 'adiado', 'atrasado'],
     },
     criticidade: {
-      control: { type: "select" },
-      options: ["normal", "media", "alta"],
+      control: { type: 'select' },
+      options: ['normal', 'media', 'alta'],
     },
   },
 } as Meta<typeof EventoTimeline>;
@@ -27,68 +27,68 @@ const Template: StoryFn<typeof EventoTimeline> = (args) => ({
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  previstoPara: new Date("2023-04-19T11:00Z"),
-  realizado: "",
-  titulo: "Consulta Clinico geral",
-  subtitulo: "Posto de saúde do bairro",
-  destaque: "Estava passando mal",
+  previstoPara: new Date('2023-04-19T11:00Z'),
+  realizado: '',
+  titulo: 'Consulta Clinico geral',
+  subtitulo: 'Posto de saúde do bairro',
+  destaque: 'Estava passando mal',
   categoria: {
-    nome: "Cardiologista",
-    icone: "cardiology",
+    nome: 'Cardiologista',
+    icone: 'cardiology',
   },
-  status: "planejado",
-  criticidade: "media",
+  status: 'planejado',
+  criticidade: 'media',
   acao: false,
   ehAtual: false,
 };
 
 export const Atual = Template.bind({});
 Atual.args = {
-  previstoPara: new Date("2023-04-19T10:00Z"),
-  realizado: "",
-  titulo: "Consulta",
-  subtitulo: "Posto de saúde",
-  destaque: "",
+  previstoPara: new Date('2023-04-19T10:00Z'),
+  realizado: '',
+  titulo: 'Consulta',
+  subtitulo: 'Posto de saúde',
+  destaque: '',
   categoria: {
-    nome: "Tele consulta",
-    icone: "call",
+    nome: 'Tele consulta',
+    icone: 'call',
   },
-  status: "realizado",
-  criticidade: "alta",
+  status: 'realizado',
+  criticidade: 'alta',
   acao: false,
   ehAtual: true,
 };
 
 export const Importante = Template.bind({});
 Importante.args = {
-  previstoPara: new Date("2023-04-19T18:00Z"),
-  realizado: "",
-  titulo: "Consulta cardiologista",
-  subtitulo: "Posto de saúde do bairro",
-  destaque: "",
+  previstoPara: new Date('2023-04-19T18:00Z'),
+  realizado: '',
+  titulo: 'Consulta cardiologista',
+  subtitulo: 'Posto de saúde do bairro',
+  destaque: '',
   categoria: {
-    nome: "Cardiologista",
-    icone: "cardiology",
+    nome: 'Cardiologista',
+    icone: 'cardiology',
   },
-  status: "planejado",
-  criticidade: "alta",
+  status: 'planejado',
+  criticidade: 'alta',
   acao: false,
   ehAtual: false,
 };
 
 export const Realizado = Template.bind({});
 Realizado.args = {
-  previstoPara: new Date("2023-04-20T12:30Z"),
-  realizado: "",
-  titulo: "Vacina da gripe",
-  subtitulo: "Posto de saúde do bairro",
-  destaque: "",
+  previstoPara: new Date('2023-04-20T12:30Z'),
+  realizado: '',
+  titulo: 'Vacina da gripe',
+  subtitulo: 'Posto de saúde do bairro',
+  destaque: '',
   categoria: {
-    nome: "Vacina",
-    icone: "vaccines",
+    nome: 'Vacina',
+    icone: 'vaccines',
   },
-  status: "realizado",
-  criticidade: "media",
+  status: 'realizado',
+  criticidade: 'media',
   acao: true,
   ehAtual: false,
 };

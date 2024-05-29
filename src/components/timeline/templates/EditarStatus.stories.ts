@@ -1,13 +1,13 @@
-import EditarStatus from "./EditarStatus.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
-import { dadosEventoDetalhado } from "../EventoDetalhado.mock";
-import { EventoDetalhado } from "../typeDetalhado";
+import EditarStatus from './EditarStatus.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
+import { dadosEventoDetalhado } from '../EventoDetalhado.mock';
+import { EventoDetalhado } from '../typeDetalhado';
 
 export default {
-  title: "Devix/Eventos/Templates/EditarStatus",
+  title: 'Devix/Eventos/Templates/EditarStatus',
   component: EditarStatus,
   parameters: {
-    componentSubtitle: "Tela de edição de Status",
+    componentSubtitle: 'Tela de edição de Status',
   },
   argTypes: {},
 } as Meta<typeof EditarStatus>;

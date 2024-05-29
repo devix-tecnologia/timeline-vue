@@ -1,12 +1,12 @@
-import SeparadorPeriodo from "./SeparadorPeriodo.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
+import SeparadorPeriodo from './SeparadorPeriodo.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: "Devix/Eventos/Moleculas/SeparadorPeriodo",
+  title: 'Devix/Eventos/Moleculas/SeparadorPeriodo',
   component: SeparadorPeriodo,
   argTypes: {
     aparencia: {
-      control: { type: "select" },
+      control: { type: 'select' },
     },
   },
 } as Meta<typeof SeparadorPeriodo>;
@@ -21,6 +21,6 @@ const Template: StoryFn<typeof SeparadorPeriodo> = (args) => ({
 
 export const Padrao = Template.bind({});
 Padrao.args = {
-  dataSeparador: new Date("2023-05-03T15:00Z"),
-  mesNome: "Janeiro",
+  dataSeparador: new Date('2023-05-03T15:00Z'),
+  mesNome: 'Janeiro',
 };

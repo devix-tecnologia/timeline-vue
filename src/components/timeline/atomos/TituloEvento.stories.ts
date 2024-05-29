@@ -1,16 +1,16 @@
-import "@fontsource/material-icons";
-import TituloEvento from "./TituloEvento.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
+import '@fontsource/material-icons';
+import TituloEvento from './TituloEvento.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: "Devix/Eventos/Atomos/TituloEvento",
+  title: 'Devix/Eventos/Atomos/TituloEvento',
   component: TituloEvento,
   argTypes: {
     // titulo: { control: { type: String } },
   },
 } as Meta<typeof TituloEvento>;
 
-const tituloEventoMock = "titulo";
+const tituloEventoMock = 'titulo';
 
 const Template: StoryFn<typeof TituloEvento> = (args) => ({
   components: { TituloEvento },

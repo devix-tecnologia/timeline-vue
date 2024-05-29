@@ -19,8 +19,7 @@ const Template: StoryFn<typeof CabecalhoEventoDetalhado> = (args) => ({
   setup() {
     return { args };
   },
-  template:
-    '<CabecalhoEventoDetalhado :perfil="args.perfil" :evento="args.evento" />',
+  template: '<CabecalhoEventoDetalhado :perfil="args.perfil" :evento="args.evento" />',
 });
 
 export const Padrao = Template.bind({});

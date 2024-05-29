@@ -1,8 +1,8 @@
-import Topo from "./Topo.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
+import Topo from './Topo.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: "Devix/Eventos/Moleculas/Topo",
+  title: 'Devix/Eventos/Moleculas/Topo',
   component: Topo,
   argTypes: {},
 } as Meta<typeof Topo>;
@@ -17,12 +17,12 @@ const Template: StoryFn<typeof Topo> = (args) => ({
 
 export const Claro = Template.bind({});
 Claro.args = {
-  titulo: "Topo claro",
+  titulo: 'Topo claro',
   escuro: false,
 };
 
 export const Escuro = Template.bind({});
 Escuro.args = {
-  titulo: "Topo escuro",
+  titulo: 'Topo escuro',
   escuro: true,
 };

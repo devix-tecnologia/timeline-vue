@@ -1,11 +1,11 @@
-import AvatarTimeline from "./AvatarTimeline.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
+import AvatarTimeline from './AvatarTimeline.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: "Devix/Eventos/Atomos/AvatarTimeline",
+  title: 'Devix/Eventos/Atomos/AvatarTimeline',
   component: AvatarTimeline,
   parameters: {
-    componentSubtitle: "Imagem ou ícones do Materials Symbols do Google",
+    componentSubtitle: 'Imagem ou ícones do Materials Symbols do Google',
   },
   argTypes: {},
 } as Meta<typeof AvatarTimeline>;
@@ -19,7 +19,7 @@ const Template: StoryFn<typeof AvatarTimeline> = (args) => ({
 });
 
 const avatar =
-  "https://images.unsplash.com/photo-1526080652727-5b77f74eacd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80";
+  'https://images.unsplash.com/photo-1526080652727-5b77f74eacd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80';
 
 export const Imagem = Template.bind({});
 Imagem.args = {
@@ -28,7 +28,7 @@ Imagem.args = {
 
 export const Icone = Template.bind({});
 Icone.args = {
-  icone: "person",
+  icone: 'person',
 };
 
 export const Padrao = Template.bind({});

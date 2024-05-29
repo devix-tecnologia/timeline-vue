@@ -3,7 +3,7 @@
 import MyComponent from './MyComponent.vue';
 
 export default {
-  title: "Devix/Exemplos/Organismos/MyComponent",
+  title: 'Devix/Exemplos/Organismos/MyComponent',
   component: MyComponent,
   argTypes: {
     clicaramNoBotaoUpdateValue: { action: 'teste' },
@@ -14,7 +14,8 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { MyComponent },
-  template: '<MyComponent v-bind="$props" @clicaramNoBotaoUpdateValue="clicaramNoBotaoUpdateValue" @clicaramNoBotaoUpdateStatus="clicaramNoBotaoUpdateStatus" />',
+  template:
+    '<MyComponent v-bind="$props" @clicaramNoBotaoUpdateValue="clicaramNoBotaoUpdateValue" @clicaramNoBotaoUpdateStatus="clicaramNoBotaoUpdateStatus" />',
 });
 
 export const Default = Template.bind({});

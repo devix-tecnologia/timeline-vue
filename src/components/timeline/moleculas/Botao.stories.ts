@@ -29,8 +29,7 @@ const Template: StoryFn<typeof Botao> = (args) => ({
 
     return { args, handleClick };
   },
-  template:
-    '<Botao v-bind="args" @click="handleClick" />',
+  template: '<Botao v-bind="args" @click="handleClick" />',
 });
 
 export const outline = Template.bind({});

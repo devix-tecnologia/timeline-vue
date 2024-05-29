@@ -1,14 +1,14 @@
-import DescricaoEvento from "./DescricaoEvento.vue";
-import { Meta, StoryFn } from "@storybook/vue3";
+import DescricaoEvento from './DescricaoEvento.vue';
+import { Meta, StoryFn } from '@storybook/vue3';
 
 export default {
-  title: "Devix/Eventos/Moleculas/DescricaoEvento",
+  title: 'Devix/Eventos/Moleculas/DescricaoEvento',
   component: DescricaoEvento,
   argTypes: {},
 } as Meta<typeof DescricaoEvento>;
 
-const tituloMock = "Título";
-const subtituloMock = "Subtítulo";
+const tituloMock = 'Título';
+const subtituloMock = 'Subtítulo';
 
 const Template: StoryFn<typeof DescricaoEvento> = (args) => ({
   components: { DescricaoEvento: DescricaoEvento },
@@ -21,7 +21,7 @@ const Template: StoryFn<typeof DescricaoEvento> = (args) => ({
 export const Simples = Template.bind({});
 Simples.args = {
   titulo: tituloMock,
-  subtitulo: "",
+  subtitulo: '',
 };
 
 export const Completa = Template.bind({});

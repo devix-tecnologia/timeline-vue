@@ -26,7 +26,7 @@ const Template: StoryFn<typeof TemplateTimeline> = (args) => ({
   setup() {
     const handleAdicionarObservacaoSalvarClick = (
       evento: EventoDetalhado,
-      mensagem: string
+      mensagem: string,
     ): void => {
       evento.observacoes.push({
         mensagem: mensagem,
@@ -37,9 +37,7 @@ const Template: StoryFn<typeof TemplateTimeline> = (args) => ({
       alert('Observação adicionada com sucesso!');
     };
 
-    const handleVoltarClick = (
-      mouseEvent: MouseEvent,
-    ): void => {
+    const handleVoltarClick = (mouseEvent: MouseEvent): void => {
       alert('Voltar para a tela anterior!');
     };
 
