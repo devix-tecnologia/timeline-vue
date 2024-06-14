@@ -1,12 +1,12 @@
 import { render, fireEvent } from '@testing-library/vue';
 import EventoTimeline from './EventoTimeline.vue';
-import { Categoria } from '../type';
+import { Categoria, Criticidade, Status } from '../type';
 
 describe('EventoTimeline.vue', () => {
   it('emite o evento "click" ao clicar no evento, se o clicacável for igual a true', async () => {
     const props = {
-      status: 'realizado',
-      criticidade: 'media',
+      status: 'realizado' as Status,
+      criticidade: 'media' as Criticidade,
       ehAtual: false,
       previstoPara: new Date('2023-04-26T19:00Z'),
       realizado: new Date('2023-04-26T19:30Z'),
@@ -31,8 +31,8 @@ describe('EventoTimeline.vue', () => {
 
   it('clicacavel = false, então NÃO emite', async () => {
     const props = {
-      status: 'realizado',
-      criticidade: 'media',
+      status: 'realizado' as Status,
+      criticidade: 'media' as Criticidade,
       ehAtual: false,
       previstoPara: new Date('2023-04-26T19:00Z'),
       realizado: new Date('2023-04-26T19:30Z'),

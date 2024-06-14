@@ -1,12 +1,12 @@
 import { render, fireEvent } from '@testing-library/vue';
-import Botao from './Botao.vue';
+import Botao, { Aparencias, Tamanhos } from './Botao.vue';
 
 describe('Botao.vue', () => {
   
   it('renderiza componente', async () => {
     const props = {
-      aparencia: 'outline',
-      tamanho: 'medio',
+      aparencia: Aparencias.OUTLINE,
+      tamanho: Tamanhos.MEDIO,
       titulo: 'sidarta',
     };
 
