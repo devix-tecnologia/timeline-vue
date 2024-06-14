@@ -1,7 +1,18 @@
-import { PropType } from './vue/dist/vue.esm-bundler.js';
+import { PropType } from '../../../../vue/dist/vue.esm-bundler.js';
+
 export type Tamanho = 'pequeno' | 'medio' | 'grande';
 export type Aparencia = 'outline' | 'preenchido' | 'vazio';
-declare const _default: import('./vue/dist/vue.esm-bundler.js').DefineComponent<{
+export declare const Tamanhos: {
+    PEQUENO: Tamanho;
+    MEDIO: Tamanho;
+    GRANDE: Tamanho;
+};
+export declare const Aparencias: {
+    OUTLINE: Aparencia;
+    PREENCHIDO: Aparencia;
+    VAZIO: Aparencia;
+};
+declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
     titulo: {
         type: StringConstructor;
         default: string;
@@ -11,20 +22,20 @@ declare const _default: import('./vue/dist/vue.esm-bundler.js').DefineComponent<
     };
     aparencia: {
         type: PropType<Aparencia>;
-        default: string;
+        default: Aparencia;
     };
     tamanho: {
         type: PropType<Tamanho>;
-        default: string;
+        default: Tamanho;
     };
 }, {
     handleClick: (mouseEvent: MouseEvent) => void;
-    classes: import('./vue/dist/vue.esm-bundler.js').ComputedRef<{
+    classes: import('../../../../vue/dist/vue.esm-bundler.js').ComputedRef<{
         [x: string]: boolean;
     }>;
-}, unknown, {}, {}, import('./vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('./vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
+}, unknown, {}, {}, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
     click: (mouseEvent: MouseEvent) => true;
-}, string, import('./vue/dist/vue.esm-bundler.js').VNodeProps & import('./vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('./vue/dist/vue.esm-bundler.js').ComponentCustomProps, Readonly<import('./vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
+}, string, import('../../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
     titulo: {
         type: StringConstructor;
         default: string;
@@ -34,11 +45,11 @@ declare const _default: import('./vue/dist/vue.esm-bundler.js').DefineComponent<
     };
     aparencia: {
         type: PropType<Aparencia>;
-        default: string;
+        default: Aparencia;
     };
     tamanho: {
         type: PropType<Tamanho>;
-        default: string;
+        default: Tamanho;
     };
 }>> & {
     onClick?: ((mouseEvent: MouseEvent) => any) | undefined;

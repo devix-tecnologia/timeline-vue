@@ -1,4 +1,5 @@
-declare const _default: import('./vue/dist/vue.esm-bundler.js').DefineComponent<{
+
+declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
     imagemPerfil: {
         type: StringConstructor;
     };
@@ -13,11 +14,11 @@ declare const _default: import('./vue/dist/vue.esm-bundler.js').DefineComponent<
         default: boolean;
     };
 }, {
-    classes: import('./vue/dist/vue.esm-bundler.js').ComputedRef<{
+    classes: import('../../../../vue/dist/vue.esm-bundler.js').ComputedRef<{
         "formato-reduzido": boolean;
         "formato-normal": boolean;
     }>;
-}, unknown, {}, {}, import('./vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('./vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('./vue/dist/vue.esm-bundler.js').VNodeProps & import('./vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('./vue/dist/vue.esm-bundler.js').ComponentCustomProps, Readonly<import('./vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
+}, unknown, {}, {}, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
     imagemPerfil: {
         type: StringConstructor;
     };

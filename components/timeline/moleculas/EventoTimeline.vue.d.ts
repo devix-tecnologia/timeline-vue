@@ -1,6 +1,7 @@
-import { PropType } from './vue/dist/vue.esm-bundler.js';
+import { PropType } from '../../../../vue/dist/vue.esm-bundler.js';
 import { Categoria, Status, Criticidade } from '../type';
-declare const _default: import('./vue/dist/vue.esm-bundler.js').DefineComponent<{
+
+declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
     status: {
         required: true;
         type: PropType<Status>;
@@ -45,13 +46,13 @@ declare const _default: import('./vue/dist/vue.esm-bundler.js').DefineComponent<
     };
 }, {
     handleClick: (mouseEvent: MouseEvent) => void;
-    eventoSelecionado: import('./vue/dist/vue.esm-bundler.js').ComputedRef<{
+    eventoSelecionado: import('../../../../vue/dist/vue.esm-bundler.js').ComputedRef<{
         atual: boolean;
         padrao: boolean;
     }>;
-}, unknown, {}, {}, import('./vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('./vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
+}, unknown, {}, {}, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
     click: (mouseEvent: MouseEvent) => true;
-}, string, import('./vue/dist/vue.esm-bundler.js').VNodeProps & import('./vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('./vue/dist/vue.esm-bundler.js').ComponentCustomProps, Readonly<import('./vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
+}, string, import('../../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
     status: {
         required: true;
         type: PropType<Status>;
