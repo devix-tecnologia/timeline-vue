@@ -18,7 +18,7 @@
     "material-symbols": "^0.18.0",
     "storybook": "^8.1.4",
     "vue": "^3.0.0",
-    "wrap-ansi": "^9.0.0"
+    "wrap-ansi": "npm:wrap-ansi@^9.0.0"
   },
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
