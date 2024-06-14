@@ -2,10 +2,11 @@ import path from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import dts from 'vite-plugin-dts';
+import { configDefaults } from 'vitest/config';
 
 // https://github.com/quasarframework/quasar/issues/8432
 // https://vitejs.dev/config/
-module.exports = defineConfig({
+export default defineConfig({
   plugins: [vue(), dts()],
   build: {
     lib: {
@@ -21,15 +22,13 @@ module.exports = defineConfig({
       },
     },
     emptyOutDir: false,
-    optimizeDeps: {
-      exclude: ['vue']
-    }
+  },
+  optimizeDeps: {
+    exclude: ['vue']
   },
   test: {
-    // enable jest-like global test APIs
     globals: true,
-    // simulate DOM with happy-dom
-    // (requires installing happy-dom as a peer dependency)
-    environment: 'happy-dom'
+    environment: 'happy-dom',
+    exclude: [...configDefaults.exclude, 'dist/**']
   }
 });
