@@ -5,7 +5,7 @@ describe('StatusEvento.vue', () => {
   it('emits "clicked" when button is clicked', async () => {
     const props = {
       status: "status",
-    };
+    } as const;
 
     const { emitted, getByTestId } = render(BotaoStatus, { props });
     const elemento = getByTestId('botao-status');

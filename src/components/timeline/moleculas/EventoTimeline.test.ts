@@ -18,7 +18,7 @@ describe('EventoTimeline.vue', () => {
       subtitulo: 'Posto de saúde do bairro',
       destaque: '',
       clicavel: true,
-    };
+    } as const;
 
     const { emitted, getByTestId } = render(EventoTimeline, { props });
     const elemento = getByTestId('evento');
