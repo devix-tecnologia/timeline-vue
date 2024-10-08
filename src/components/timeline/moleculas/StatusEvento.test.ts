@@ -1,10 +1,11 @@
 import { render, fireEvent } from '@testing-library/vue';
 import BotaoStatus from './BotaoStatus.vue';
+import { Status } from '../type';
 
 describe('StatusEvento.vue', () => {
   it('emits "clicked" when button is clicked', async () => {
     const props = {
-      status: "status",
+      status: "status" as Status,
     } as const;
 
     const { emitted, getByTestId } = render(BotaoStatus, { props });

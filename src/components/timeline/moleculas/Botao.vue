@@ -14,6 +14,18 @@ import 'material-symbols/outlined.css';
 export type Tamanho = 'pequeno' | 'medio' | 'grande';
 export type Aparencia = 'outline' | 'preenchido' | 'vazio';
 
+export const Tamanhos = {
+  PEQUENO: 'pequeno' as Tamanho,
+  MEDIO: 'medio' as Tamanho,
+  GRANDE: 'grande' as Tamanho,
+};
+
+export const Aparencias = {
+  OUTLINE: 'outline' as Aparencia,
+  PREENCHIDO: 'preenchido' as Aparencia,
+  VAZIO: 'vazio' as Aparencia,
+};
+
 export default defineComponent({
   name: 'Botao',
   props: {
@@ -26,11 +38,11 @@ export default defineComponent({
     },
     aparencia: {
       type: String as PropType<Aparencia>,
-      default: 'outline',
+      default: Aparencias.OUTLINE,
     },
     tamanho: {
       type: String as PropType<Tamanho>,
-      default: 'medio',
+      default: Tamanhos.MEDIO,
     }
   },
 

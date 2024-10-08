@@ -1,6 +1,7 @@
 import { render, fireEvent } from '@testing-library/vue';
 import Observacoes from '../moleculas/Observacoes.vue';
 import StatusEvento from '../moleculas/StatusEvento.vue';
+import { Status } from '../type';
 
 describe('EventoDetalhado.vue', () => {
   
@@ -21,7 +22,7 @@ describe('EventoDetalhado.vue', () => {
 
   it('emits "cancelarClick" quando clicado no botão cancelar', async () => {
     const props = {
-      status: 'Em andamento',
+      status: 'Em andamento' as Status,
     };
 
     const { emitted, getByTestId } = render(StatusEvento, { props });

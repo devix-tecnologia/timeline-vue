@@ -4,7 +4,6 @@ import AdicionarObservacao from './AdicionarObservacao.vue';
 describe('AdicionarObservacao.vue', () => {
   it('emits "adicionarClick" quando clicado no botão Adicionar Observação', async () => {
     const props = {
-      observacoes: [],
     };
 
     const { emitted, getByTestId } = render(AdicionarObservacao, { props });
@@ -38,7 +37,6 @@ describe('AdicionarObservacao.vue', () => {
 
   it('emits "cancelarClick" quando clicado no botão cancelar', async () => {
     const props = {
-      status: 'Em andamento',
     };
 
     const { emitted, getByTestId } = render(AdicionarObservacao, { props });
