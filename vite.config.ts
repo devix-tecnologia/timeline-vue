@@ -1,11 +1,13 @@
+// https://github.com/quasarframework/quasar/issues/8432
+// https://vitejs.dev/config/
 import path from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import dts from 'vite-plugin-dts';
 import { configDefaults } from 'vitest/config';
 
-// https://github.com/quasarframework/quasar/issues/8432
-// https://vitejs.dev/config/
+const isStorybook = !!process.env.STORYBOOK;
+
 export default defineConfig({
   plugins: [vue(), dts()],
   build: {
@@ -16,15 +18,16 @@ export default defineConfig({
       fileName: (format: string) => `timeline-vue.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue"],
+      // Não marque "vue" como externo no Storybook
+      external: isStorybook ? [] : ["vue"],
       output: {
-        globals: { vue: "Vue" },
+        globals: isStorybook ? {} : { vue: "Vue" },
       },
     },
     emptyOutDir: false,
   },
   optimizeDeps: {
-    exclude: ['vue']
+    exclude: isStorybook ? [] : ['vue'], // Não exclua vue no Storybook
   },
   test: {
     globals: true,

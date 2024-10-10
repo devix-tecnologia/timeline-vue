@@ -8,8 +8,8 @@
     "test:unit": "vitest",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "storybook": "cross-env STORYBOOK=true storybook dev -p 6006",
+    "build-storybook": "cross-env STORYBOOK=true storybook build",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "@vue/test-utils": "^2.4.1",
     "add": "^2.0.6",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^7.0.3",
     "happy-dom": "^14.11.2",
     "postcss-load-config": "^6.0.1",
     "postcss-plugin": "^1.0.0",

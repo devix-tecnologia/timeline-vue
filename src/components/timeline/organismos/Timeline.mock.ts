@@ -3,7 +3,7 @@ import { Evento, Perfil } from '../type';
 export const dadosPerfil: Perfil = {
   nome: 'Maria do Socorro',
   imagem:
-    'https://this-person-does-not-exist.com/img/avatar-gen11071f8e0802a35d66684ee9376722b2.jpg',
+    'https://images.unsplash.com/photo-1526080652727-5b77f74eacd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80',
   icone: 'person',
 };
 
