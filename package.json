@@ -16,7 +16,6 @@
     "@fontsource/material-icons": "^5.0.18",
     "date-fns": "^3.6.0",
     "material-symbols": "^0.18.0",
-    "storybook": "^8.1.4",
     "vue": "^3.0.0",
     "wrap-ansi": "npm:wrap-ansi@^9.0.0"
   },
@@ -40,6 +39,7 @@
     "add": "^2.0.6",
     "happy-dom": "^14.11.2",
     "semantic-release": "^23.1.1",
+    "storybook": "^8.3.5",
     "typescript": "^5.0.2",
     "vite": "^5.2.12",
     "vite-plugin-dts": "^3.6.4",
