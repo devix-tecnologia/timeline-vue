@@ -12,7 +12,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "timeline-vue",
-      formats: ["es", "umd", "cjs"],
+      formats: ["es", "umd"],
       fileName: (format: string) => `timeline-vue.${format}.js`,
     },
     rollupOptions: {

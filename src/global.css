@@ -1,5 +1,5 @@
 /* GERAIS */
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap'); /* Adicionei o ponto e vírgula aqui */
 
 * {
   margin: 0;
@@ -60,7 +60,6 @@
     --cor-alerta: #f0cc0d;
     --cor-sucesso: #00a816;
 
-
     --cor-sombra: rgba(252, 252, 253, 0.224);
   }
 }
@@ -119,7 +118,6 @@ h4 {
   opacity: 0;
   transform: translateY(-100px);
 }
-
 
 .fadeBaixo-enter-from,
 .fadeBaixo-leave-to {
