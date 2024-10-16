@@ -1,5 +1,4 @@
 import { Evento } from './type';
-
 export type Autor = {
     nome: string;
 };

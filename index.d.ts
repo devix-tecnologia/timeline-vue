@@ -1,5 +1,4 @@
-import { Plugin } from '../vue/dist/vue.esm-bundler.js';
-
+import { Plugin } from 'vue';
 declare const Timeline: Plugin;
 export { Timeline };
 export * from './components/timeline';

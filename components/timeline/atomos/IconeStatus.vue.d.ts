@@ -1,19 +1,18 @@
-import { PropType } from '../../../../vue/dist/vue.esm-bundler.js';
+import { PropType } from 'vue';
 import { Status } from '../type';
-
-declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
+declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
     status: {
         required: true;
         type: PropType<Status>;
     };
-}, {
-    classes: import('../../../../vue/dist/vue.esm-bundler.js').ComputedRef<{
+}>, {
+    classes: import('vue').ComputedRef<{
         [x: string]: boolean;
     }>;
-}, unknown, {}, {}, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
+}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
     status: {
         required: true;
         type: PropType<Status>;
     };
-}>>, {}, {}>;
+}>> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;

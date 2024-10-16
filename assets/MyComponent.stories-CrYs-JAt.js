@@ -1,0 +1,9 @@
+import{d,b as C,g as s,F as B,o as k}from"./vue.esm-bundler-DivHmBVn.js";import{_ as S}from"./_plugin-vue_export-helper-DlAUqK2U.js";const r=d({name:"MyComponent",emits:{updateValueClick:e=>!0,updateStatusClick:e=>!0},setup(e,t){return{handleButtonValueClick:o=>{t.emit("updateValueClick",o)},handleButtonStatusClick:o=>{t.emit("updateStatusClick",o)}}}});function y(e,t,i,m,o,N){return k(),C(B,null,[s("button",{"data-testid":"updateValueButton",onClick:t[0]||(t[0]=(...n)=>e.handleButtonValueClick&&e.handleButtonValueClick(...n))}," Update Value "),s("button",{"data-testid":"updateStatusButton",onClick:t[1]||(t[1]=(...n)=>e.handleButtonStatusClick&&e.handleButtonStatusClick(...n))}," Update Status ")],64)}const c=S(r,[["render",y]]);r.__docgenInfo={displayName:"MyComponent",exportName:"default",description:"",tags:{},events:[{name:"updateValueClick"},{name:"updateStatusClick"}],sourceFiles:["/home/runner/work/timeline-vue/timeline-vue/src/components/timeline/organismos/MyComponent.vue"]};const f={title:"Devix/Exemplos/Organismos/MyComponent",component:c,argTypes:{clicaramNoBotaoUpdateValue:{action:"teste"},clicaramNoBotaoUpdateStatus:{action:"clicaramNoBotaoUpdateStatus"}}},V=(e,{argTypes:t})=>({props:Object.keys(t),components:{MyComponent:c},template:'<MyComponent v-bind="$props" @clicaramNoBotaoUpdateValue="clicaramNoBotaoUpdateValue" @clicaramNoBotaoUpdateStatus="clicaramNoBotaoUpdateStatus" />'}),a=V.bind({});a.args={};var u,l,p;a.parameters={...a.parameters,docs:{...(u=a.parameters)==null?void 0:u.docs,source:{originalSource:`(args, {
+  argTypes
+}) => ({
+  props: Object.keys(argTypes),
+  components: {
+    MyComponent
+  },
+  template: '<MyComponent v-bind="$props" @clicaramNoBotaoUpdateValue="clicaramNoBotaoUpdateValue" @clicaramNoBotaoUpdateStatus="clicaramNoBotaoUpdateStatus" />'
+})`,...(p=(l=a.parameters)==null?void 0:l.docs)==null?void 0:p.source}}};const v=["Default"];export{a as Default,v as __namedExportsOrder,f as default};

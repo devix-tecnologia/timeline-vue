@@ -1,5 +1,4 @@
-import { PropType } from '../../../../vue/dist/vue.esm-bundler.js';
-
+import { PropType } from 'vue';
 export type Tamanho = 'pequeno' | 'medio' | 'grande';
 export type Aparencia = 'outline' | 'preenchido' | 'vazio';
 export declare const Tamanhos: {
@@ -12,7 +11,7 @@ export declare const Aparencias: {
     PREENCHIDO: Aparencia;
     VAZIO: Aparencia;
 };
-declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
+declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
     titulo: {
         type: StringConstructor;
         default: string;
@@ -28,14 +27,14 @@ declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').Define
         type: PropType<Tamanho>;
         default: Tamanho;
     };
-}, {
+}>, {
     handleClick: (mouseEvent: MouseEvent) => void;
-    classes: import('../../../../vue/dist/vue.esm-bundler.js').ComputedRef<{
+    classes: import('vue').ComputedRef<{
         [x: string]: boolean;
     }>;
-}, unknown, {}, {}, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
+}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     click: (mouseEvent: MouseEvent) => true;
-}, string, import('../../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
+}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
     titulo: {
         type: StringConstructor;
         default: string;
@@ -51,11 +50,11 @@ declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').Define
         type: PropType<Tamanho>;
         default: Tamanho;
     };
-}>> & {
+}>> & Readonly<{
     onClick?: ((mouseEvent: MouseEvent) => any) | undefined;
-}, {
-    aparencia: Aparencia;
+}>, {
     titulo: string;
+    aparencia: Aparencia;
     tamanho: Tamanho;
-}, {}>;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;

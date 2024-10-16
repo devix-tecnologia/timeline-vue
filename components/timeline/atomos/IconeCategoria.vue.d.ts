@@ -1,5 +1,4 @@
-
-declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
+declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
     iconeCategoria: {
         type: StringConstructor;
         required: true;
@@ -20,17 +19,17 @@ declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').Define
     backgroundColor: {
         type: StringConstructor;
     };
-}, {
-    classes: import('../../../../vue/dist/vue.esm-bundler.js').ComputedRef<{
+}>, {
+    classes: import('vue').ComputedRef<{
         [x: string]: boolean;
         "bg-escuro": boolean;
         "bg-claro": boolean;
     }>;
-    style: import('../../../../vue/dist/vue.esm-bundler.js').ComputedRef<{
+    style: import('vue').ComputedRef<{
         borderColor: string | undefined;
         backgroundColor: string | undefined;
     }>;
-}, unknown, {}, {}, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
+}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
     iconeCategoria: {
         type: StringConstructor;
         required: true;
@@ -51,7 +50,7 @@ declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').Define
     backgroundColor: {
         type: StringConstructor;
     };
-}>>, {
+}>> & Readonly<{}>, {
     escuro: boolean;
-}, {}>;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;

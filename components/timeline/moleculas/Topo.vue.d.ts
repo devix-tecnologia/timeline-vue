@@ -1,5 +1,4 @@
-
-declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
+declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
     titulo: {
         type: StringConstructor;
     };
@@ -8,15 +7,15 @@ declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').Define
         default: boolean;
     };
     link: {};
-}, {
+}>, {
     emitirVoltarClick: (mouseEvent: MouseEvent) => void;
-    classes: import('../../../../vue/dist/vue.esm-bundler.js').ComputedRef<{
+    classes: import('vue').ComputedRef<{
         'bg-escuro': boolean;
         'bg-claro': boolean;
     }>;
-}, unknown, {}, {}, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
+}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     voltarClick: (mouseEvent: MouseEvent) => true;
-}, string, import('../../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
+}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
     titulo: {
         type: StringConstructor;
     };
@@ -25,9 +24,9 @@ declare const _default: import('../../../../vue/dist/vue.esm-bundler.js').Define
         default: boolean;
     };
     link: {};
-}>> & {
+}>> & Readonly<{
     onVoltarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
-}, {
+}>, {
     escuro: boolean;
-}, {}>;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;
