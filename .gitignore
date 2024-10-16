@@ -27,3 +27,7 @@ coverage
 
 *.tgz
 storybook-static
+
+# Ignore bundle analysis files
+stats.epub
+stats.html
