@@ -14,8 +14,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     };
 }>, {
     classes: import('vue').ComputedRef<{
-        "formato-reduzido": boolean;
-        "formato-normal": boolean;
+        'formato-reduzido': boolean;
+        'formato-normal': boolean;
     }>;
 }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
     imagemPerfil: {

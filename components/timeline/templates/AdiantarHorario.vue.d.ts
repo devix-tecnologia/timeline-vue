@@ -51,11 +51,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
             emitirSalvarClick: (mouseEvent: MouseEvent) => void;
             emitirCancelarClick: (mouseEvent: MouseEvent) => void;
         }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            salvarClick: (mouseEvent: MouseEvent) => true;
-            cancelarClick: (mouseEvent: MouseEvent) => true;
+            salvarClick: (_mouseEvent: MouseEvent) => true;
+            cancelarClick: (_mouseEvent: MouseEvent) => true;
         }, string, import('vue').PublicProps, Readonly<{}> & Readonly<{
-            onSalvarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
-            onCancelarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
+            onSalvarClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
+            onCancelarClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
         }>, {}, {}, {
             Botao: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
                 titulo: {

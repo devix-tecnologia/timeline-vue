@@ -56,8 +56,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
         };
     }>, {
         classes: import('vue').ComputedRef<{
-            "formato-reduzido": boolean;
-            "formato-normal": boolean;
+            'formato-reduzido': boolean;
+            'formato-normal': boolean;
         }>;
     }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
         imagemPerfil: {
@@ -266,8 +266,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
         }>, {
             classes: import('vue').ComputedRef<{
                 [x: string]: boolean;
-                "bg-escuro": boolean;
-                "bg-claro": boolean;
+                'bg-escuro': boolean;
+                'bg-claro': boolean;
             }>;
             style: import('vue').ComputedRef<{
                 borderColor: string | undefined;

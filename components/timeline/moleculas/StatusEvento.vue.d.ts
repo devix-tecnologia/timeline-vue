@@ -49,7 +49,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
             [x: string]: boolean;
         }>;
     }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        click: (mouseEvent: MouseEvent) => true;
+        click: (_mouseEvent: MouseEvent) => true;
     }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
         aparencia: {
             type: PropType<Aparencia>;
@@ -59,7 +59,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
             default: string;
         };
     }>> & Readonly<{
-        onClick?: ((mouseEvent: MouseEvent) => any) | undefined;
+        onClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
     }>, {
         status: Status;
     }, {}, {

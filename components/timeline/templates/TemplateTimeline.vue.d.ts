@@ -17,7 +17,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     handleStatusCancelarClick: (mouseEvent: MouseEvent) => void;
     handleStatusSalvarClick: (status: Status, mouseEvent: MouseEvent) => void;
     handleObservacaoAdicionarClick: (mouseEvent: MouseEvent) => void;
-    handleAdicionarObservacaoSalvarClick: (mensagem: String, mouseEvent: MouseEvent) => void;
+    handleAdicionarObservacaoSalvarClick: (mensagem: string, mouseEvent: MouseEvent) => void;
     handleObservacaoAdicionarCancelarClick: (mouseEvent: MouseEvent) => void;
     TemplateTimeline: {
         topo: {
@@ -74,7 +74,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     eventoDetalhadoObservacoesAddClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true;
     editarStatusSalvarClicked: (evento: TipoEventoDetalhado, status: Status, mouseEvent: MouseEvent) => true;
     editarStatusCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true;
-    adicionarObservacaoSalvarClicked: (evento: TipoEventoDetalhado, mensagem: String, mouseEvent: MouseEvent) => true;
+    adicionarObservacaoSalvarClicked: (evento: TipoEventoDetalhado, mensagem: string, mouseEvent: MouseEvent) => true;
     adicionarObservacaoCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true;
     voltarClick: (mouseEvent: MouseEvent) => true;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
@@ -93,7 +93,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     onEventoDetalhadoObservacoesAddClicked?: ((evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => any) | undefined;
     onEditarStatusSalvarClicked?: ((evento: TipoEventoDetalhado, status: Status, mouseEvent: MouseEvent) => any) | undefined;
     onEditarStatusCancelarClicked?: ((evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => any) | undefined;
-    onAdicionarObservacaoSalvarClicked?: ((evento: TipoEventoDetalhado, mensagem: String, mouseEvent: MouseEvent) => any) | undefined;
+    onAdicionarObservacaoSalvarClicked?: ((evento: TipoEventoDetalhado, mensagem: string, mouseEvent: MouseEvent) => any) | undefined;
     onAdicionarObservacaoCancelarClicked?: ((evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => any) | undefined;
 }>, {}, {}, {
     Topo: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
@@ -236,8 +236,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                 };
             }>, {
                 classes: import('vue').ComputedRef<{
-                    "formato-reduzido": boolean;
-                    "formato-normal": boolean;
+                    'formato-reduzido': boolean;
+                    'formato-normal': boolean;
                 }>;
             }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
                 imagemPerfil: {
@@ -296,8 +296,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
             }>, {
                 classes: import('vue').ComputedRef<{
                     [x: string]: boolean;
-                    "bg-escuro": boolean;
-                    "bg-claro": boolean;
+                    'bg-escuro': boolean;
+                    'bg-claro': boolean;
                 }>;
                 style: import('vue').ComputedRef<{
                     borderColor: string | undefined;
@@ -474,7 +474,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                     [x: string]: boolean;
                 }>;
             }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-                click: (mouseEvent: MouseEvent) => true;
+                click: (_mouseEvent: MouseEvent) => true;
             }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
                 aparencia: {
                     type: PropType<import('../moleculas/Botao.vue').Aparencia>;
@@ -484,7 +484,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                     default: string;
                 };
             }>> & Readonly<{
-                onClick?: ((mouseEvent: MouseEvent) => any) | undefined;
+                onClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
             }>, {
                 status: Status;
             }, {}, {
@@ -607,8 +607,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
             };
         }>, {
             classes: import('vue').ComputedRef<{
-                "formato-reduzido": boolean;
-                "formato-normal": boolean;
+                'formato-reduzido': boolean;
+                'formato-normal': boolean;
             }>;
         }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
             imagemPerfil: {
@@ -817,8 +817,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
             }>, {
                 classes: import('vue').ComputedRef<{
                     [x: string]: boolean;
-                    "bg-escuro": boolean;
-                    "bg-claro": boolean;
+                    'bg-escuro': boolean;
+                    'bg-claro': boolean;
                 }>;
                 style: import('vue').ComputedRef<{
                     borderColor: string | undefined;
@@ -1004,11 +1004,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                 emitirSalvarClick: (mouseEvent: MouseEvent) => void;
                 emitirCancelarClick: (mouseEvent: MouseEvent) => void;
             }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-                salvarClick: (mouseEvent: MouseEvent) => true;
-                cancelarClick: (mouseEvent: MouseEvent) => true;
+                salvarClick: (_mouseEvent: MouseEvent) => true;
+                cancelarClick: (_mouseEvent: MouseEvent) => true;
             }, string, import('vue').PublicProps, Readonly<{}> & Readonly<{
-                onSalvarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
-                onCancelarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
+                onSalvarClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
+                onCancelarClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
             }>, {}, {}, {
                 Botao: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
                     titulo: {
@@ -1087,7 +1087,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                 [x: string]: boolean;
             }>;
         }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            click: (mouseEvent: MouseEvent) => true;
+            click: (_mouseEvent: MouseEvent) => true;
         }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
             aparencia: {
                 type: PropType<import('../moleculas/Botao.vue').Aparencia>;
@@ -1097,7 +1097,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                 default: string;
             };
         }>> & Readonly<{
-            onClick?: ((mouseEvent: MouseEvent) => any) | undefined;
+            onClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
         }>, {
             status: Status;
         }, {}, {
@@ -1221,11 +1221,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                 emitirSalvarClick: (mouseEvent: MouseEvent) => void;
                 emitirCancelarClick: (mouseEvent: MouseEvent) => void;
             }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-                salvarClick: (mouseEvent: MouseEvent) => true;
-                cancelarClick: (mouseEvent: MouseEvent) => true;
+                salvarClick: (_mouseEvent: MouseEvent) => true;
+                cancelarClick: (_mouseEvent: MouseEvent) => true;
             }, string, import('vue').PublicProps, Readonly<{}> & Readonly<{
-                onSalvarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
-                onCancelarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
+                onSalvarClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
+                onCancelarClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
             }>, {}, {}, {
                 Botao: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
                     titulo: {

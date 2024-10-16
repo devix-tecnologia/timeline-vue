@@ -1,0 +1,11 @@
+/* empty css              */import{T as s}from"./TituloEvento-BrbCcUoi.js";import"./vue.esm-bundler-BQUovfll.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const l={title:"Devix/Eventos/Atomos/TituloEvento",component:s,argTypes:{}},n="titulo",i=a=>({components:{TituloEvento:s},setup(){return{args:a}},template:'<TituloEvento v-bind="args"  />'}),t=i.bind({});t.args={titulo:n};var o,e,r;t.parameters={...t.parameters,docs:{...(o=t.parameters)==null?void 0:o.docs,source:{originalSource:`args => ({
+  components: {
+    TituloEvento
+  },
+  setup() {
+    return {
+      args
+    };
+  },
+  template: '<TituloEvento v-bind="args"  />'
+})`,...(r=(e=t.parameters)==null?void 0:e.docs)==null?void 0:r.source}}};const d=["Padrao"];export{t as Padrao,d as __namedExportsOrder,l as default};

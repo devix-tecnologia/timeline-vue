@@ -22,8 +22,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
 }>, {
     classes: import('vue').ComputedRef<{
         [x: string]: boolean;
-        "bg-escuro": boolean;
-        "bg-claro": boolean;
+        'bg-escuro': boolean;
+        'bg-claro': boolean;
     }>;
     style: import('vue').ComputedRef<{
         borderColor: string | undefined;

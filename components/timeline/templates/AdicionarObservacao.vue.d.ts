@@ -1,4 +1,3 @@
-import { PropType } from 'vue';
 declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
     salvarVisivel: {
         type: BooleanConstructor;
@@ -56,11 +55,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
             emitirSalvarClick: (mouseEvent: MouseEvent) => void;
             emitirCancelarClick: (mouseEvent: MouseEvent) => void;
         }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            salvarClick: (mouseEvent: MouseEvent) => true;
-            cancelarClick: (mouseEvent: MouseEvent) => true;
+            salvarClick: (_mouseEvent: MouseEvent) => true;
+            cancelarClick: (_mouseEvent: MouseEvent) => true;
         }, string, import('vue').PublicProps, Readonly<{}> & Readonly<{
-            onSalvarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
-            onCancelarClick?: ((mouseEvent: MouseEvent) => any) | undefined;
+            onSalvarClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
+            onCancelarClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
         }>, {}, {}, {
             Botao: import('vue').DefineComponent<import('vue').ExtractPropTypes<{
                 titulo: {
@@ -71,11 +70,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                     type: StringConstructor;
                 };
                 aparencia: {
-                    type: PropType<import('../moleculas/Botao.vue').Aparencia>;
+                    type: import('vue').PropType<import('../moleculas/Botao.vue').Aparencia>;
                     default: import('../moleculas/Botao.vue').Aparencia;
                 };
                 tamanho: {
-                    type: PropType<import('../moleculas/Botao.vue').Tamanho>;
+                    type: import('vue').PropType<import('../moleculas/Botao.vue').Tamanho>;
                     default: import('../moleculas/Botao.vue').Tamanho;
                 };
             }>, {
@@ -94,11 +93,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                     type: StringConstructor;
                 };
                 aparencia: {
-                    type: PropType<import('../moleculas/Botao.vue').Aparencia>;
+                    type: import('vue').PropType<import('../moleculas/Botao.vue').Aparencia>;
                     default: import('../moleculas/Botao.vue').Aparencia;
                 };
                 tamanho: {
-                    type: PropType<import('../moleculas/Botao.vue').Tamanho>;
+                    type: import('vue').PropType<import('../moleculas/Botao.vue').Tamanho>;
                     default: import('../moleculas/Botao.vue').Tamanho;
                 };
             }>> & Readonly<{

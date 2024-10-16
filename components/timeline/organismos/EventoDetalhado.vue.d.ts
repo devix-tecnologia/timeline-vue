@@ -110,8 +110,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
             };
         }>, {
             classes: import('vue').ComputedRef<{
-                "formato-reduzido": boolean;
-                "formato-normal": boolean;
+                'formato-reduzido': boolean;
+                'formato-normal': boolean;
             }>;
         }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
             imagemPerfil: {
@@ -170,8 +170,8 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
         }>, {
             classes: import('vue').ComputedRef<{
                 [x: string]: boolean;
-                "bg-escuro": boolean;
-                "bg-claro": boolean;
+                'bg-escuro': boolean;
+                'bg-claro': boolean;
             }>;
             style: import('vue').ComputedRef<{
                 borderColor: string | undefined;
@@ -348,7 +348,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                 [x: string]: boolean;
             }>;
         }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            click: (mouseEvent: MouseEvent) => true;
+            click: (_mouseEvent: MouseEvent) => true;
         }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<{
             aparencia: {
                 type: PropType<import('../moleculas/Botao.vue').Aparencia>;
@@ -358,7 +358,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
                 default: string;
             };
         }>> & Readonly<{
-            onClick?: ((mouseEvent: MouseEvent) => any) | undefined;
+            onClick?: ((_mouseEvent: MouseEvent) => any) | undefined;
         }>, {
             status: import('../type').Status;
         }, {}, {
