@@ -11,11 +11,7 @@ const isStorybook = !!process.env.STORYBOOK;
 const isCI = !!process.env.CI;
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    dts(),
-    !isCI && visualizer({ open: true }),
-  ].filter(Boolean),
+  plugins: [vue(), dts(), !isCI && visualizer({ open: true })].filter(Boolean),
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
@@ -27,7 +23,9 @@ export default defineConfig({
       // Marcar 'vue' e 'material-symbols' como externas, exceto quando estiver buildando o Storybook
       external: isStorybook ? [] : ['vue', 'material-symbols/outlined.css'],
       output: {
-        globals: isStorybook ? {} : { vue: 'Vue', 'material-symbols/outlined.css': 'MaterialSymbols' },
+        globals: isStorybook
+          ? {}
+          : { vue: 'Vue', 'material-symbols/outlined.css': 'MaterialSymbols' },
       },
     },
     cssCodeSplit: true, // Dividir o CSS
