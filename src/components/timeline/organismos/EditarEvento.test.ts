@@ -2,7 +2,6 @@ import { render, fireEvent } from '@testing-library/vue';
 import AreaSalvamento from '../moleculas/AreaSalvamento.vue';
 
 describe('EditarEvento.vue', () => {
-  
   it('emits "salvarClick" quando clicado no botão salvar', async () => {
     const { emitted, getByTestId } = render(AreaSalvamento);
     const elemento = getByTestId('botao-salvar');

@@ -30,10 +30,10 @@
   --cor-apoio: #57676f;
   --cor-linha: #e9eaeb;
 
-  --cor-importante: #FC3636;
-  --cor-alerta: #F0CC0D;
-  --cor-sucesso: #00A816;
-  --cor-acao: #0187B1;
+  --cor-importante: #fc3636;
+  --cor-alerta: #f0cc0d;
+  --cor-sucesso: #00a816;
+  --cor-acao: #0187b1;
 
   --cor-sombra: rgba(27, 47, 57, 0.15);
 }
@@ -109,7 +109,9 @@ h4 {
 .fadeBaixo-leave-active,
 .fadeTopo-enter-active,
 .fadeTopo-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease-in-out;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease-in-out;
   transform: translateY(0px);
 }
 

@@ -8,16 +8,20 @@
   >
     <template #conteudo>
       <h2>Observação:</h2>
-      <textarea data-testid="observacao-textarea" v-model="state.observacaoLocal" placeholder=""></textarea>
+      <textarea
+        data-testid="observacao-textarea"
+        v-model="state.observacaoLocal"
+        placeholder=""
+      ></textarea>
     </template>
   </EditarEvento>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, PropType, ref } from 'vue';
+import 'material-symbols/outlined.css';
 
-import EditarEvento from "../organismos/EditarEvento.vue";
+import EditarEvento from '../organismos/EditarEvento.vue';
 
 export default defineComponent({
   props: {

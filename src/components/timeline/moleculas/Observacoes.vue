@@ -2,7 +2,12 @@
   <section class="box box-observacoes" data-testid="observacoes">
     <h3>Observações:</h3>
     <ul class="lista-obs">
-      <li v-for="(item, index) of observacoes" :data-testid="`observacao-${index}`" :key="index" class="lista-item">
+      <li
+        v-for="(item, index) of observacoes"
+        :data-testid="`observacao-${index}`"
+        :key="index"
+        class="lista-item"
+      >
         <p class="texto">{{ item.mensagem }}</p>
         <div class="autor">
           {{ item.autor.nome }} em {{ item.criadaEm.toLocaleDateString() }} às

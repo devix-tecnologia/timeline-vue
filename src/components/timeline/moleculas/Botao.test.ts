@@ -2,7 +2,6 @@ import { render, fireEvent } from '@testing-library/vue';
 import Botao, { Aparencias, Tamanhos } from './Botao.vue';
 
 describe('Botao.vue', () => {
-  
   it('renderiza componente', async () => {
     const props = {
       aparencia: Aparencias.OUTLINE,
@@ -24,5 +23,4 @@ describe('Botao.vue', () => {
     // Verifica se o evento foi emitido
     expect(emitted().click).toBeTruthy();
   });
-
 });

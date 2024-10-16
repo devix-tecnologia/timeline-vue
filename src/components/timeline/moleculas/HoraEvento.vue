@@ -1,11 +1,7 @@
 <template>
   <div class="areaHora">
     <div class="horaEvento">
-      <Hora
-        v-if="horaRealizada"
-        :hora="horaRealizada"
-        style="padding-top: 0.3rem"
-      />
+      <Hora v-if="horaRealizada" :hora="horaRealizada" style="padding-top: 0.3rem" />
       <Hora
         :hora="horaPrevista"
         :aparencia="horaRealizada ? 'riscada' : 'padrao'"
@@ -15,11 +11,11 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import Hora from "../atomos/Hora.vue";
+import { defineComponent, PropType } from 'vue';
+import Hora from '../atomos/Hora.vue';
 
 export default defineComponent({
-  name: "Hora Evento",
+  name: 'Hora Evento',
   props: {
     horaPrevista: {
       type: Date,

@@ -1,7 +1,7 @@
 import { render, fireEvent, waitFor } from '@testing-library/vue';
 import TemplateTimeline from './TemplateTimeline.vue';
 import { dadosPerfil, dadosEventosDetalhados } from './TemplateTimeline.mock';
-import { EventoDetalhado } from "../typeDetalhado";
+import { EventoDetalhado } from '../typeDetalhado';
 import { Status } from '../type';
 
 describe('TemplateTimeline.vue', () => {
@@ -174,7 +174,7 @@ describe('TemplateTimeline.vue', () => {
 
     const elementoStatusCancelado = getByTestId('botao-status-cancelado');
     expect(elementoStatusCancelado).toBeTruthy();
-    
+
     await fireEvent.click(elementoStatusCancelado);
 
     const salvarStatus = getByTestId('botao-salvar');
@@ -185,7 +185,6 @@ describe('TemplateTimeline.vue', () => {
     expect(editarStatusSalvarClicked).toBeTruthy();
     expect(editarStatusSalvarClicked).toHaveLength(1);
 
-
     const payload = editarStatusSalvarClicked[0];
     if (!Array.isArray(payload)) {
       new Error('Payload não é um array');
@@ -193,7 +192,7 @@ describe('TemplateTimeline.vue', () => {
     }
 
     expect(payload).toHaveLength(3);
-    
+
     const evento = payload[0];
     expectTypeOf(evento).toMatchTypeOf<EventoDetalhado>();
     expect(evento).toEqual(props.eventos[0]);
@@ -265,7 +264,6 @@ describe('TemplateTimeline.vue', () => {
     const salvarStatus = getByTestId('botao-salvar');
     expect(salvarStatus).toBeTruthy();
     await fireEvent.click(salvarStatus);
-
 
     //verifica se o payload do evento é o esperado
     const adicionarClick = emitted().adicionarObservacaoSalvarClicked;

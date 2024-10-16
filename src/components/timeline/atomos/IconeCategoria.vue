@@ -1,21 +1,16 @@
 <template>
   <div class="areaCategoria">
-    <div
-      class="iconeCategoria"
-      :class="classes"
-      :style="style"
-      :alt="categoria"
-    >
+    <div class="iconeCategoria" :class="classes" :style="style" :alt="categoria">
       <span class="material-symbols-outlined"> {{ iconeCategoria }} </span>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, reactive, computed } from 'vue';
+import 'material-symbols/outlined.css';
 
 export default defineComponent({
-  name: "Icone Categoria",
+  name: 'Icone Categoria',
   props: {
     iconeCategoria: {
       type: String,
@@ -42,9 +37,9 @@ export default defineComponent({
     props = reactive(props);
     return {
       classes: computed(() => ({
-        "bg-escuro": props.escuro,
-        "bg-claro": !props.escuro,
-        [`borda-${props.tipo || "padrao"}`]: true,
+        'bg-escuro': props.escuro,
+        'bg-claro': !props.escuro,
+        [`borda-${props.tipo || 'padrao'}`]: true,
       })),
       style: computed(() => ({
         borderColor: props.borderColor,

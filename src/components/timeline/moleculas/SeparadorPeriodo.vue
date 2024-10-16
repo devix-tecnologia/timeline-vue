@@ -11,11 +11,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import BoxData from "../atomos/BoxData.vue";
+import { defineComponent, ref } from 'vue';
+import BoxData from '../atomos/BoxData.vue';
 
 export default defineComponent({
-  name: "SeparadorPeriodo",
+  name: 'SeparadorPeriodo',
   props: {
     dataSeparador: {
       required: true,
@@ -25,18 +25,18 @@ export default defineComponent({
   components: { BoxData },
   setup(props) {
     const arrayMes = new Array(12);
-    arrayMes[0] = "Janeiro";
-    arrayMes[1] = "Fevereiro";
-    arrayMes[2] = "Março";
-    arrayMes[3] = "Abril";
-    arrayMes[4] = "Maio";
-    arrayMes[5] = "Junho";
-    arrayMes[6] = "Julho";
-    arrayMes[7] = "Agosto";
-    arrayMes[8] = "Setembro";
-    arrayMes[9] = "Outubro";
-    arrayMes[10] = "Novembro";
-    arrayMes[11] = "Dezembro";
+    arrayMes[0] = 'Janeiro';
+    arrayMes[1] = 'Fevereiro';
+    arrayMes[2] = 'Março';
+    arrayMes[3] = 'Abril';
+    arrayMes[4] = 'Maio';
+    arrayMes[5] = 'Junho';
+    arrayMes[6] = 'Julho';
+    arrayMes[7] = 'Agosto';
+    arrayMes[8] = 'Setembro';
+    arrayMes[9] = 'Outubro';
+    arrayMes[10] = 'Novembro';
+    arrayMes[11] = 'Dezembro';
 
     const mesCorrente = (mes: number) => {
       return arrayMes[mes];
@@ -64,7 +64,7 @@ export default defineComponent({
 }
 
 .areaData:before {
-  content: "";
+  content: '';
   background: var(--cor-linha);
   display: block;
   position: absolute;
@@ -75,7 +75,7 @@ export default defineComponent({
 }
 
 .areaData:after {
-  content: "";
+  content: '';
   background: var(--cor-linha);
   display: block;
   position: absolute;

@@ -3,8 +3,7 @@ import AdicionarObservacao from './AdicionarObservacao.vue';
 
 describe('AdicionarObservacao.vue', () => {
   it('emits "adicionarClick" quando clicado no botão Adicionar Observação', async () => {
-    const props = {
-    };
+    const props = {};
 
     const { emitted, getByTestId } = render(AdicionarObservacao, { props });
 
@@ -17,7 +16,6 @@ describe('AdicionarObservacao.vue', () => {
     const salvarStatus = getByTestId('botao-salvar');
     expect(salvarStatus).toBeTruthy();
     await fireEvent.click(salvarStatus);
-
 
     //verifica se o payload do evento é o esperado
     const adicionarClick = emitted().adicionarClick;
@@ -36,8 +34,7 @@ describe('AdicionarObservacao.vue', () => {
   });
 
   it('emits "cancelarClick" quando clicado no botão cancelar', async () => {
-    const props = {
-    };
+    const props = {};
 
     const { emitted, getByTestId } = render(AdicionarObservacao, { props });
     const elemento = getByTestId('botao-cancelar');

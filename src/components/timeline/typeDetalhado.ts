@@ -1,4 +1,4 @@
-import { Evento } from "./type";
+import { Evento } from './type';
 
 export type Autor = {
   nome: string;

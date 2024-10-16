@@ -1,5 +1,7 @@
 {
-  "recommendations": [
-    "Vue.vscode-typescript-vue-plugin"
-  ]
+  "recommendations": ["Vue.vscode-typescript-vue-plugin"],
+  "codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"]
 }

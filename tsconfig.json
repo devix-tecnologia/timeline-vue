@@ -9,19 +9,13 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationDir": "./dist/types",
     "isolatedModules": true,
     "skipLibCheck": true,
-    "types": [
-      "vite/client",
-      "vitest/globals"
-    ]
+    "types": ["vite/client", "vitest/globals"]
   },
   "include": [
     "src/**/*.ts",
@@ -32,7 +26,5 @@
     "src/**/*.test.ts",
     "src/**/*.spec.ts"
   ],
-  "exclude": [
-    "src/**/*.stories.ts"
-  ]
+  "exclude": ["src/**/*.stories.ts"]
 }

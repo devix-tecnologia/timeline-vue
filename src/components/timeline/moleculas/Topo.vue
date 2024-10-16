@@ -1,4 +1,4 @@
-<template >
+<template>
   <div class="topo" :class="classes" data-testid="topo">
     <div class="conteudoTitulo">
       <button class="btn_voltar" @click="emitirVoltarClick" data-testid="botao-voltar">

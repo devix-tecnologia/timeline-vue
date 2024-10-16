@@ -1,10 +1,6 @@
 <template>
-  <button data-testid="updateValueButton" @click="handleButtonValueClick">
-    Update Value
-  </button>
-  <button data-testid="updateStatusButton" @click="handleButtonStatusClick">
-    Update Status
-  </button>
+  <button data-testid="updateValueButton" @click="handleButtonValueClick">Update Value</button>
+  <button data-testid="updateStatusButton" @click="handleButtonStatusClick">Update Status</button>
 </template>
 
 <script lang="ts">

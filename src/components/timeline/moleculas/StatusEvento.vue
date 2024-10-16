@@ -1,13 +1,13 @@
 <template>
-    <section class="box box-status">
-      <h3>Status:</h3>
-      <BotaoStatus
-        data-testid="botao-status"
-        :aparencia="aparencia"
-        :status="status"
-        @click="emitClick"
-      />
-    </section>
+  <section class="box box-status">
+    <h3>Status:</h3>
+    <BotaoStatus
+      data-testid="botao-status"
+      :aparencia="aparencia"
+      :status="status"
+      @click="emitClick"
+    />
+  </section>
 </template>
 
 <script lang="ts">

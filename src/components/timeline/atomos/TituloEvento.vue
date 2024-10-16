@@ -2,10 +2,10 @@
   <h3 class="titulo">{{ titulo }}</h3>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "Título Evento",
+  name: 'Título Evento',
   props: {
     titulo: {
       required: true,

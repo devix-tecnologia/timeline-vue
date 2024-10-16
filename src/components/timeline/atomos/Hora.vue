@@ -1,13 +1,13 @@
 <template>
   <div class="hora" :class="classes">
-    {{ horas.getHours() }}:{{ horas.getMinutes().toString().padStart(2, "0") }}
+    {{ horas.getHours() }}:{{ horas.getMinutes().toString().padStart(2, '0') }}
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, computed, ref } from "vue";
+import { defineComponent, computed, ref } from 'vue';
 
 export default defineComponent({
-  name: "Hora",
+  name: 'Hora',
   props: {
     hora: {
       required: true,
@@ -15,9 +15,9 @@ export default defineComponent({
     },
     aparencia: {
       type: String,
-      default: "padrao",
+      default: 'padrao',
       validator(aparencia: string) {
-        return ["padrao", "riscada"].includes(aparencia);
+        return ['padrao', 'riscada'].includes(aparencia);
       },
     },
   },
@@ -28,7 +28,7 @@ export default defineComponent({
     return {
       horas,
       classes: computed(() => ({
-        [`hora-${props.aparencia || ""}`]: true,
+        [`hora-${props.aparencia || ''}`]: true,
       })),
     };
   },

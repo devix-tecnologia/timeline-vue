@@ -1,10 +1,10 @@
 <template>
-    <button class="btn" data-testid="botao" @click="handleClick">
-      <slot>
-        <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
-        {{ titulo }}
-      </slot>
-    </button>
+  <button class="btn" data-testid="botao" @click="handleClick">
+    <slot>
+      <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
+      {{ titulo }}
+    </slot>
+  </button>
 </template>
 
 <script lang="ts">
@@ -43,7 +43,7 @@ export default defineComponent({
     tamanho: {
       type: String as PropType<Tamanho>,
       default: Tamanhos.MEDIO,
-    }
+    },
   },
 
   emits: {

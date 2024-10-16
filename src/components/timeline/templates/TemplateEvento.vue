@@ -6,13 +6,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, PropType, reactive } from 'vue';
+import 'material-symbols/outlined.css';
 
-import { Perfil } from "../type";
-import { EventoDetalhado } from "../typeDetalhado";
-import Topo from "../moleculas/Topo.vue";
-import Evento from "../organismos/EventoDetalhado.vue";
+import { Perfil } from '../type';
+import { EventoDetalhado } from '../typeDetalhado';
+import Topo from '../moleculas/Topo.vue';
+import Evento from '../organismos/EventoDetalhado.vue';
 
 export default defineComponent({
   props: {

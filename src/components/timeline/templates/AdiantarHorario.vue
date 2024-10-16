@@ -20,14 +20,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, DeprecationTypes, PropType, reactive, ref, toRef } from "vue";
-import "material-symbols/outlined.css";
+import { defineComponent, DeprecationTypes, PropType, reactive, ref, toRef } from 'vue';
+import 'material-symbols/outlined.css';
 
 // import { AoClicarEvento } from "../type";
-import { EventoDetalhado } from "../typeDetalhado";
-import EditarEvento from "../organismos/EditarEvento.vue";
-import Botao from "../moleculas/Botao.vue";
-import { format, subMinutes } from "date-fns";
+import { EventoDetalhado } from '../typeDetalhado';
+import EditarEvento from '../organismos/EditarEvento.vue';
+import Botao from '../moleculas/Botao.vue';
+import { format, subMinutes } from 'date-fns';
 
 export default defineComponent({
   props: {
@@ -50,13 +50,12 @@ export default defineComponent({
       salvarVisivel: salvarVisivel.value,
       horarioOriginal: new Date(previstoPara.value),
       horarioNovo: new Date(previstoPara.value),
-      horarioFormatado: format(previstoPara.value, "dd/MM/yyyy - HH:mm"),
-      }
-    );
+      horarioFormatado: format(previstoPara.value, 'dd/MM/yyyy - HH:mm'),
+    });
 
     const adiantarHorario = () => {
-       AdiantarHorario.horarioNovo = subMinutes(AdiantarHorario.horarioNovo, 15);
-       AdiantarHorario.horarioFormatado = format(AdiantarHorario.horarioNovo, "dd/MM/yyyy - HH:mm");
+      AdiantarHorario.horarioNovo = subMinutes(AdiantarHorario.horarioNovo, 15);
+      AdiantarHorario.horarioFormatado = format(AdiantarHorario.horarioNovo, 'dd/MM/yyyy - HH:mm');
     };
 
     return {

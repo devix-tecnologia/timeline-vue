@@ -4,9 +4,7 @@ import StatusEvento from '../moleculas/StatusEvento.vue';
 import { Status } from '../type';
 
 describe('EventoDetalhado.vue', () => {
-  
   it('emits "adicionarClick" quando clicado no botão Adicionar Observação', async () => {
-
     const props = {
       observacoes: [],
     };
@@ -33,5 +31,4 @@ describe('EventoDetalhado.vue', () => {
     // Verifica se o evento foi emitido
     expect(emitted().click).toBeTruthy();
   });
-  
 });

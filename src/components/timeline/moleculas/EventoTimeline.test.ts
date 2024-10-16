@@ -54,5 +54,4 @@ describe('EventoTimeline.vue', () => {
     // Verifica se o evento NÃO foi emitido
     expect(emitted().click).toBeUndefined();
   });
-  
 });

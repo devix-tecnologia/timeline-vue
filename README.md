@@ -1,36 +1,32 @@
 ![TimelineDevix](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/timeline_topo.png)
 
-
-
-
 # Timeline de Eventos DEVIX
 
-Este é um projeto implementando uma linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico. 
+Este é um projeto implementando uma linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico.
 
 <div align="center">
 <img src="https://github.com/devix-tecnologia/timeline-vue/blob/91c3b94c6167ca02364507d58dc59bb804b3b51f/docs/timeline01.gif" width="300px"/>
 </div>
 
-
 ## 🛠 Como usar
+
 ---
 
 ### Instalação
-  
 
 ```sh
 yarn add @devix-tecnologia/timeline-vue
 ```
 
 ### Exemplo de código
-  
+
 ```ts
 //exemplo.vue
 
 <template>
   <main>
     <div class="telaTimeline">
-      <Timeline 
+      <Timeline
       :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos"
       @eventoClick="emitirEventoClick"
     />
@@ -97,7 +93,6 @@ export default defineComponent({
 </style>
 ```
 
-
 ### ✨ Customização de estilos
 
 Para customizar o visual da Timeline de acordo com a identidade visual da aplicação basta adicionar o código a seguir no CSS e alterar de acordo com a necessidade.
@@ -133,45 +128,45 @@ body {
 ```
 
 ### Propriedades:
-  
+
 A Timeline ordena e lista Eventos de forma crescente de acordo com a data/hora cadastrada.
 
 Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título, subtítulo, ícone de categoria, ícone de status, indicação de criticidade e campo para informação em destaque.
 
-
 ![TimelineDevixExemploEvento](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/evento.png)
 
+## 🚀 Contribuindo
 
-## 🚀  Contribuindo
 ---
 
 ### Importante:
+
 - Os componentes da Timeline são divididos em átomos, moléculas e organismos, seguindo os padrões do Design Atômico;
 - Cada componente vem acompanhado de documentação no storybook;
 - A timeline de demonstração utiliza dados mock;
-- Dê uma olhada no arquivo ``` type.ts ``` também, ele é o arquivo de tipos com influência sobre toda a aplicação.
+- Dê uma olhada no arquivo `type.ts` também, ele é o arquivo de tipos com influência sobre toda a aplicação.
 - Para ver o projeto funcionando no Storybook basta rodar:
 
-```sh 
-yarn storybook 
+```sh
+yarn storybook
 ```
 
 Faça um fork do projeto, crie uma nova branch e faça seus commits. Seguem passos para bons commits:
 
-1) **Criar um Fork:** Acesse o repositório de origem no GitHub e clique em "Fork". Isso criará uma cópia do projeto na sua conta pessoal do GitHub.
-1) **Clonar ou Atualizar o Seu Fork:** Se ainda não clonou o seu fork para a máquina local, faça-o com `git clone [URL_DO_SEU_FORK]`. Se já possui o projeto clonado, certifique-se de que seu fork esteja atualizado em relação ao projeto de origem usando os comandos:
+1. **Criar um Fork:** Acesse o repositório de origem no GitHub e clique em "Fork". Isso criará uma cópia do projeto na sua conta pessoal do GitHub.
+1. **Clonar ou Atualizar o Seu Fork:** Se ainda não clonou o seu fork para a máquina local, faça-o com `git clone [URL_DO_SEU_FORK]`. Se já possui o projeto clonado, certifique-se de que seu fork esteja atualizado em relação ao projeto de origem usando os comandos:
    ```
    git remote add upstream [URL_DO_REPOSITORIO_ORIGEM]
    git fetch upstream
    git merge upstream/branch_de_referencia
    ```
-1) **Atualizar Referências Remotas:** O comando `git remote update` atualiza as referências locais em relação aos repositórios remotos.
-1) **Selecionar o Branch de Partida:** Em geral, utiliza-se o `develop` como branch base, mas verifique sempre no git graph ou em instruções específicas da tarefa qual branch deve ser utilizado.
-1) **Sincronizar Mudanças Remotas:** Antes de iniciar as modificações, é uma boa prática sincronizar o branch local com o remoto usando `git pull origin branch_de_referencia`.
-1) **Criar um Novo Branch:** Ao trabalhar em uma nova funcionalidade ou correção, crie um novo branch com um nome descritivo, como `feature-relatorio-cliente`, usando o comando `git checkout -b nome_do_branch`.
-1) **Fazer Alterações e Commit:** Realize as alterações necessárias no código. Ao terminar, faça um commit seguindo um padrão de mensagens semânticas e imperativas. Lembre-se de criar e/ou executar testes automatizados para garantir que nada foi quebrado.
-1) **Enviar Alterações para o GitHub:** Envie as alterações para o seu fork com o comando `git push origin nome_do_branch`.
-1) **Abrir um Pull Request:** Acesse seu fork no GitHub e clique em "New Pull Request". Escolha os branches de origem e destino corretos e envie sua solicitação. O desenvolvedor ou equipe responsável pelo projeto de origem revisará suas alterações e, se aprovadas, fará o merge no projeto principal.
+1. **Atualizar Referências Remotas:** O comando `git remote update` atualiza as referências locais em relação aos repositórios remotos.
+1. **Selecionar o Branch de Partida:** Em geral, utiliza-se o `develop` como branch base, mas verifique sempre no git graph ou em instruções específicas da tarefa qual branch deve ser utilizado.
+1. **Sincronizar Mudanças Remotas:** Antes de iniciar as modificações, é uma boa prática sincronizar o branch local com o remoto usando `git pull origin branch_de_referencia`.
+1. **Criar um Novo Branch:** Ao trabalhar em uma nova funcionalidade ou correção, crie um novo branch com um nome descritivo, como `feature-relatorio-cliente`, usando o comando `git checkout -b nome_do_branch`.
+1. **Fazer Alterações e Commit:** Realize as alterações necessárias no código. Ao terminar, faça um commit seguindo um padrão de mensagens semânticas e imperativas. Lembre-se de criar e/ou executar testes automatizados para garantir que nada foi quebrado.
+1. **Enviar Alterações para o GitHub:** Envie as alterações para o seu fork com o comando `git push origin nome_do_branch`.
+1. **Abrir um Pull Request:** Acesse seu fork no GitHub e clique em "New Pull Request". Escolha os branches de origem e destino corretos e envie sua solicitação. O desenvolvedor ou equipe responsável pelo projeto de origem revisará suas alterações e, se aprovadas, fará o merge no projeto principal.
 
 ---
 

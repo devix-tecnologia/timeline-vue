@@ -2,15 +2,15 @@
   <div class="destaqueEvento texto-pequeno">{{ texto }}</div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "Destaque",
+  name: 'Destaque',
   props: {
     texto: {
       type: String,
     },
-  }
+  },
 });
 </script>
 <style scoped>

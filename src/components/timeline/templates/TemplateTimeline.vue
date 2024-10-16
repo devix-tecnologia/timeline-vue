@@ -182,7 +182,7 @@ export default defineComponent({
     };
 
     const handleAdicionarObservacaoSalvarClick = (
-      mensagem: String,
+      mensagem: string,
       mouseEvent: MouseEvent
     ): void => {
       if (!TemplateTimeline.dados.eventoAtual) {

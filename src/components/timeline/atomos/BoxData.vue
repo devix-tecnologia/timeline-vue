@@ -2,10 +2,10 @@
   <h3 class="boxData padrao" :class="classes">{{ dataNumero }}</h3>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from "vue";
+import { defineComponent, reactive, computed } from 'vue';
 
 export default defineComponent({
-  name: "Box Data",
+  name: 'Box Data',
   props: {
     dataNumero: {
       required: true,
@@ -19,7 +19,7 @@ export default defineComponent({
     props = reactive(props);
     return {
       classes: computed(() => ({
-        [`${props.aparencia || "padrao"}`]: true,
+        [`${props.aparencia || 'padrao'}`]: true,
       })),
     };
   },

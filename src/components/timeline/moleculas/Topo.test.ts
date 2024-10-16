@@ -2,7 +2,6 @@ import { render, fireEvent } from '@testing-library/vue';
 import Topo from './Topo.vue';
 
 describe('Observacoes.vue', () => {
-
   it('emits "click" quando clicado no botão Voltar', async () => {
     const { emitted, getByTestId } = render(Topo);
 
@@ -15,5 +14,4 @@ describe('Observacoes.vue', () => {
     // Verifica se o evento click foi emitido
     expect(emitted().click).toBeTruthy();
   });
-
 });

@@ -16,7 +16,7 @@ describe('EditarStatus.vue', () => {
     expect(elemento).toBeTruthy();
   });
 
-  it('Testar emissao do evento "salvarClick" quando clicado no botao salvar',async () => {
+  it('Testar emissao do evento "salvarClick" quando clicado no botao salvar', async () => {
     const props = {
       evento: dadosEventosDetalhados[0] satisfies EventoDetalhado,
       salvarVisivel: true,
@@ -25,7 +25,7 @@ describe('EditarStatus.vue', () => {
     const { emitted, getByTestId } = render(EditarStatus, { props });
     const elementoStatusCancelado = getByTestId('botao-status-cancelado');
     expect(elementoStatusCancelado).toBeTruthy();
-    
+
     await fireEvent.click(elementoStatusCancelado);
 
     const salvarStatus = getByTestId('botao-salvar');
@@ -35,7 +35,6 @@ describe('EditarStatus.vue', () => {
     const salvarClick = emitted().salvarClick;
     expect(salvarClick).toBeTruthy();
     expect(salvarClick).toHaveLength(1);
-
 
     const payload = salvarClick[0];
     if (!Array.isArray(payload)) {

@@ -3,10 +3,9 @@ import BotaoStatus from './BotaoStatus.vue';
 import { Status } from '../type';
 
 describe('BotaoStatus.vue', () => {
-
   it('emits "clicked" when button is clicked', async () => {
     const props = {
-      status: "status" as Status,
+      status: 'status' as Status,
     };
 
     const { emitted, getByTestId } = render(BotaoStatus, { props });
@@ -17,5 +16,4 @@ describe('BotaoStatus.vue', () => {
     // Verifica se o evento foi emitido
     expect(emitted().click).toBeTruthy();
   });
-  
 });
