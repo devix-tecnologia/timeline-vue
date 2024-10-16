@@ -42,7 +42,6 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitest/coverage-v8": "^2.1.2",
     "@vue/test-utils": "^2.4.1",
-    "add": "^2.0.6",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "cssnano": "^7.0.6",
