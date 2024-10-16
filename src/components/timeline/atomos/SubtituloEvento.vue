@@ -1,6 +1,7 @@
 <template>
   <h4 class="subtitulo">{{ subtitulo }}</h4>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 

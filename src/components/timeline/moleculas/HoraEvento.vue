@@ -10,12 +10,14 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import Hora from '../atomos/Hora.vue';
 
 export default defineComponent({
   name: 'Hora Evento',
+  components: { Hora },
   props: {
     horaPrevista: {
       type: Date,
@@ -26,9 +28,9 @@ export default defineComponent({
       type: Date as PropType<Date | null>,
     },
   },
-  components: { Hora },
 });
 </script>
+
 <style scoped>
 .realizado .horaEvento,
 .cancelado .horaEvento,

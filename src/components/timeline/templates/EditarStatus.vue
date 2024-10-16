@@ -10,21 +10,21 @@
 
       <BotaoStatus
         :aparencia="getAparencia('realizado')"
-        @click="atualizarSelecionado('realizado')"
         :status="`realizado`"
         data-testid="botao-status-realizado"
+        @click="atualizarSelecionado('realizado')"
       />
       <BotaoStatus
         :aparencia="getAparencia('cancelado')"
-        @click="atualizarSelecionado('cancelado')"
         :status="`cancelado`"
         data-testid="botao-status-cancelado"
+        @click="atualizarSelecionado('cancelado')"
       />
       <BotaoStatus
         :aparencia="getAparencia('adiado')"
-        @click="atualizarSelecionado('adiado')"
         :status="`adiado`"
         data-testid="botao-status-adiado"
+        @click="atualizarSelecionado('adiado')"
       />
     </template>
 
@@ -51,6 +51,7 @@ import IconeStatus from '../atomos/IconeStatus.vue';
 import BotaoStatus from '../moleculas/BotaoStatus.vue';
 
 export default defineComponent({
+  components: { EditarEvento, IconeStatus, BotaoStatus },
   props: {
     salvarVisivel: {
       type: Boolean,
@@ -60,8 +61,6 @@ export default defineComponent({
       type: Object as PropType<EventoDetalhado>,
     },
   },
-
-  components: { EditarEvento, IconeStatus, BotaoStatus },
 
   emits: {
     salvarClick: (status: Status, mouseEvent: MouseEvent) => true,

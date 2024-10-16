@@ -1,14 +1,14 @@
 name: Test and publish package
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read #  for checkout
 
 jobs:
   build:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js 20
@@ -49,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_NPM_TOKEN }}
       - name: Build storybook
-        run: yarn build-storybook
+        run: yarn build:storybook
       - name: Deploy storybook
         uses: peaceiris/actions-gh-pages@v4
         with:

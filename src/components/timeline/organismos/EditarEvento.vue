@@ -21,18 +21,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent } from 'vue';
 import 'material-symbols/outlined.css';
 
 import AreaSalvamento from '../moleculas/AreaSalvamento.vue';
 
 export default defineComponent({
+  components: { AreaSalvamento },
   props: {
     salvarVisivel: {
       type: Boolean,
     },
   },
-  components: { AreaSalvamento },
   emits: {
     salvarClick: (mouseEvent: MouseEvent) => true,
     cancelarClick: (mouseEvent: MouseEvent) => true,

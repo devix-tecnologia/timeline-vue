@@ -3,11 +3,13 @@
     {{ horas.getHours() }}:{{ horas.getMinutes().toString().padStart(2, '0') }}
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue';
 
 export default defineComponent({
   name: 'Hora',
+  components: {},
   props: {
     hora: {
       required: true,
@@ -21,7 +23,6 @@ export default defineComponent({
       },
     },
   },
-  components: {},
   setup(props) {
     const horas = ref(new Date(props.hora));
 
@@ -34,6 +35,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 .hora {
   color: var(--cor-texto);

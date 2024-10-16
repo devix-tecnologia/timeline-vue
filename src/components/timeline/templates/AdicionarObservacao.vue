@@ -1,16 +1,16 @@
 <template>
   <EditarEvento
+    v-model:observacao="state.observacaoLocal"
     data-testid="adicionar-observacao"
     :salvarVisivel="salvarVisivel"
-    v-model:observacao="state.observacaoLocal"
     @salvarClick="salvar"
     @cancelarClick="cancelar"
   >
     <template #conteudo>
       <h2>Observação:</h2>
       <textarea
-        data-testid="observacao-textarea"
         v-model="state.observacaoLocal"
+        data-testid="observacao-textarea"
         placeholder=""
       ></textarea>
     </template>
@@ -18,12 +18,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 import 'material-symbols/outlined.css';
 
 import EditarEvento from '../organismos/EditarEvento.vue';
 
 export default defineComponent({
+  components: { EditarEvento },
   props: {
     salvarVisivel: {
       type: Boolean,
@@ -32,7 +33,6 @@ export default defineComponent({
       type: String,
     },
   },
-  components: { EditarEvento },
 
   emits: {
     adicionarClick: (mensagem: string, mouseEvent: MouseEvent) => true,

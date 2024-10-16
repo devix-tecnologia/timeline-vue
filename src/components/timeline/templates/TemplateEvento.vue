@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import 'material-symbols/outlined.css';
 
 import { Perfil } from '../type';
@@ -15,6 +15,7 @@ import Topo from '../moleculas/Topo.vue';
 import Evento from '../organismos/EventoDetalhado.vue';
 
 export default defineComponent({
+  components: { Topo, Evento },
   props: {
     perfilEvento: {
       required: true,
@@ -25,8 +26,7 @@ export default defineComponent({
       type: Object as PropType<EventoDetalhado>,
     },
   },
-  components: { Topo, Evento },
-  setup(props) {
+  setup() {
     return {};
   },
 });

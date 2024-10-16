@@ -12,6 +12,7 @@
     <Destaque :texto="textoDestaque" />
   </article>
 </template>
+
 <script lang="ts">
 import { defineComponent, computed, PropType } from 'vue';
 import IconeCategoria from '../atomos/IconeCategoria.vue';
@@ -23,6 +24,13 @@ import { Categoria, Status, Criticidade } from '../type';
 
 export default defineComponent({
   name: 'Evento Timeline',
+  components: {
+    IconeStatus,
+    IconeCategoria,
+    HoraEvento,
+    DescricaoEvento,
+    Destaque,
+  },
   props: {
     status: {
       required: true,
@@ -67,13 +75,6 @@ export default defineComponent({
       default: true,
     },
   },
-  components: {
-    IconeStatus,
-    IconeCategoria,
-    HoraEvento,
-    DescricaoEvento,
-    Destaque,
-  },
   emits: {
     click: (mouseEvent: MouseEvent) => true,
   },
@@ -94,6 +95,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style>
 /* BOX DO EVENTO */
 

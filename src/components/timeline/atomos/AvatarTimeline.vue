@@ -7,6 +7,7 @@
     <span v-else="icone" class="material-symbols-outlined"> person </span>
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import 'material-symbols/outlined.css';
@@ -22,6 +23,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 .avatar {
   background: var(--cor-secundaria);

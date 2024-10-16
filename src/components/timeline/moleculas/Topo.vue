@@ -1,7 +1,7 @@
 <template>
   <div class="topo" :class="classes" data-testid="topo">
     <div class="conteudoTitulo">
-      <button class="btn_voltar" @click="emitirVoltarClick" data-testid="botao-voltar">
+      <button class="btn_voltar" data-testid="botao-voltar" @click="emitirVoltarClick">
         <span class="material-symbols-outlined"> arrow_back </span>
       </button>
       <h3 class="titulo">{{ titulo }}</h3>

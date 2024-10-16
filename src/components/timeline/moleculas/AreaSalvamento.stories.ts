@@ -10,7 +10,7 @@ export default {
   },
   argTypes: {},
 } as Meta<typeof AreaSalvamento>;
-const Template: StoryFn<typeof AreaSalvamento> = (args) => ({
+const Template: StoryFn<typeof AreaSalvamento> = (_args) => ({
   components: { AreaSalvamento },
   setup() {
     const salvarClick = () => {

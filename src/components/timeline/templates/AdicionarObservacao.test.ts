@@ -29,7 +29,7 @@ describe('AdicionarObservacao.vue', () => {
 
     expect(payload).toHaveLength(2);
     const mensagem = payload[0];
-    expectTypeOf(mensagem).toMatchTypeOf<String>();
+    expectTypeOf(mensagem).toMatchTypeOf<string>();
     expect(mensagem).toEqual(mensagemTexto);
   });
 

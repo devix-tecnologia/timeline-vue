@@ -1,6 +1,7 @@
 <template>
   <div :class="classes" class="iconeStatus"></div>
 </template>
+
 <script lang="ts">
 import { defineComponent, reactive, computed, PropType } from 'vue';
 import 'material-symbols/outlined.css';
@@ -24,6 +25,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 /* icones */
 .iconeStatus {

@@ -4,8 +4,8 @@
     <ul class="lista-obs">
       <li
         v-for="(item, index) of observacoes"
-        :data-testid="`observacao-${index}`"
         :key="index"
+        :data-testid="`observacao-${index}`"
         class="lista-item"
       >
         <p class="texto">{{ item.mensagem }}</p>
@@ -35,8 +35,8 @@ import Botao from './Botao.vue';
 import { Observacao } from '../typeDetalhado';
 
 export default defineComponent({
-  components: { Botao },
   name: 'Observacoes',
+  components: { Botao },
   props: {
     tituloBotao: {
       type: String,

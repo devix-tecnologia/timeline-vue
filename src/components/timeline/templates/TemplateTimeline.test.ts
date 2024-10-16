@@ -281,7 +281,7 @@ describe('TemplateTimeline.vue', () => {
     expectTypeOf(evento).toMatchTypeOf<EventoDetalhado>();
     expect(evento).toEqual(props.eventos[0]);
     const mensagem = payload[1];
-    expectTypeOf(mensagem).toMatchTypeOf<String>();
+    expectTypeOf(mensagem).toMatchTypeOf<string>();
     expect(mensagem).toEqual(mensagemTexto);
   });
 

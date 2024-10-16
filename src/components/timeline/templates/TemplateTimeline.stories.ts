@@ -37,7 +37,7 @@ const Template: StoryFn<typeof TemplateTimeline> = (args) => ({
       alert('Observação adicionada com sucesso!');
     };
 
-    const handleVoltarClick = (mouseEvent: MouseEvent): void => {
+    const handleVoltarClick = (_mouseEvent: MouseEvent): void => {
       alert('Voltar para a tela anterior!');
     };
 

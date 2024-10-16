@@ -1,5 +1,5 @@
 <template>
-  <Botao :aparencia="aparencia" :class="classes" @click="emitirClick" data-testid="botao-status">
+  <Botao :aparencia="aparencia" :class="classes" data-testid="botao-status" @click="emitirClick">
     <IconeStatus class="icone" :status="status" /> {{ status }}
   </Botao>
 </template>
@@ -12,8 +12,8 @@ import Botao, { Aparencia } from './Botao.vue';
 import IconeStatus from '../atomos/IconeStatus.vue';
 
 export default defineComponent({
-  components: { Botao, IconeStatus },
   name: 'BotaoStatus',
+  components: { Botao, IconeStatus },
   props: {
     aparencia: {
       type: String as PropType<Aparencia>,
@@ -24,7 +24,7 @@ export default defineComponent({
     },
   },
   emits: {
-    click: (mouseEvent: MouseEvent) => true,
+    click: (_mouseEvent: MouseEvent) => true,
   },
   setup(props, { emit }) {
     props = reactive(props);

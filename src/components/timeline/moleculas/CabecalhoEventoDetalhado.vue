@@ -60,8 +60,8 @@ import IconeCategoria from '../atomos/IconeCategoria.vue';
 import Hora from '../atomos/Hora.vue';
 
 export default defineComponent({
-  components: { Botao, PerfilTimeline, IconeCategoria, Hora },
   name: 'CabecalhoEventoDetalhado',
+  components: { Botao, PerfilTimeline, IconeCategoria, Hora },
   props: {
     perfil: {
       required: true,

@@ -1,6 +1,7 @@
 <template>
   <div class="destaqueEvento texto-pequeno">{{ texto }}</div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 
@@ -13,6 +14,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 .realizado .destaqueEvento,
 .cancelado .destaqueEvento,

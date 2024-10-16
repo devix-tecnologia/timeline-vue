@@ -1,6 +1,7 @@
 <template>
   <h3 class="titulo">{{ titulo }}</h3>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 

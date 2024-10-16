@@ -39,7 +39,10 @@ export default defineFlatConfig([
         },
       ],
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+      ],
       'vue/no-v-html': 'off',
       'vue/padding-line-between-blocks': ['error', 'always'],
     },

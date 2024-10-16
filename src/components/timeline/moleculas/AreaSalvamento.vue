@@ -28,8 +28,8 @@ export default defineComponent({
 
   components: { Botao },
   emits: {
-    salvarClick: (mouseEvent: MouseEvent) => true,
-    cancelarClick: (mouseEvent: MouseEvent) => true,
+    salvarClick: (_mouseEvent: MouseEvent) => true,
+    cancelarClick: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {

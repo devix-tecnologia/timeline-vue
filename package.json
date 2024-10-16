@@ -13,7 +13,7 @@
     "build": "cross-env STORYBOOK=false vue-tsc && vite build",
     "preview": "vite preview",
     "storybook": "cross-env STORYBOOK=true storybook dev -p 6006",
-    "build-storybook": "cross-env STORYBOOK=true storybook build",
+    "build:storybook": "cross-env STORYBOOK=true storybook build",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -51,6 +51,7 @@
     "eslint-define-config": "^2.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^9.29.0",
     "happy-dom": "^15.7.4",
     "postcss": "^8.1.0",
@@ -60,7 +61,7 @@
     "rollup-plugin-visualizer": "^5.12.0",
     "semantic-release": "^24.1.2",
     "storybook": "^8.3.5",
-    "typescript": "^5.6.3",
+    "typescript": "5.5.x",
     "vite": "^5.2.12",
     "vite-plugin-dts": "^4.2.3",
     "vitest": "^2.1.2",

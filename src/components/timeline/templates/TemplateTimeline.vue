@@ -61,6 +61,7 @@ import AdicionarObservacao from './AdicionarObservacao.vue';
 type Tela = 'Timeline' | 'Evento' | 'EditarStatus' | 'AdicionarObservacao';
 
 export default defineComponent({
+  components: { Topo, Evento, Timeline, EditarStatus, AdicionarObservacao },
   props: {
     perfil: {
       required: true,
@@ -71,8 +72,6 @@ export default defineComponent({
       type: Array as PropType<TipoEventoDetalhado[]>,
     },
   },
-
-  components: { Topo, Evento, Timeline, EditarStatus, AdicionarObservacao },
 
   emits: {
     eventoTimelineClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true,
@@ -87,7 +86,7 @@ export default defineComponent({
     editarStatusCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true,
     adicionarObservacaoSalvarClicked: (
       evento: TipoEventoDetalhado,
-      mensagem: String,
+      mensagem: string,
       mouseEvent: MouseEvent
     ) => true,
     adicionarObservacaoCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) =>

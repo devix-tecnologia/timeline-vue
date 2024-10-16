@@ -16,14 +16,14 @@ import BoxData from '../atomos/BoxData.vue';
 
 export default defineComponent({
   name: 'SeparadorPeriodo',
+  components: { BoxData },
   props: {
     dataSeparador: {
       required: true,
       type: Date,
     },
   },
-  components: { BoxData },
-  setup(props) {
+  setup() {
     const arrayMes = new Array(12);
     arrayMes[0] = 'Janeiro';
     arrayMes[1] = 'Fevereiro';

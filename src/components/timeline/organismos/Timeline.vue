@@ -28,8 +28,8 @@
           :subtitulo="evento.valor.subtitulo"
           :texto-destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
-          @click="handleEventoClick(evento.valor, $event)"
           :data-testid="`evento-timeline-${index}`"
+          @click="handleEventoClick(evento.valor, $event)"
         />
       </div>
     </section>
@@ -50,6 +50,11 @@ type TipoEventoTimeline =
   | { tipo: 'eventos'; valor: Evento[]; key: number };
 
 export default defineComponent({
+  components: {
+    PerfilTimeline,
+    SeparadorPeriodo,
+    EventoTimeline,
+  },
   props: {
     perfilTimeline: {
       required: false,
@@ -59,11 +64,6 @@ export default defineComponent({
       required: true,
       type: Array as PropType<Evento[]>,
     },
-  },
-  components: {
-    PerfilTimeline,
-    SeparadorPeriodo,
-    EventoTimeline,
   },
 
   emits: {

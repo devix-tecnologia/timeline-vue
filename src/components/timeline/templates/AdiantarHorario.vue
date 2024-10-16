@@ -4,15 +4,15 @@
       <h2>Adiantar horário:</h2>
       <div>
         <div>
-          <input id="horario" type="text" v-model="AdiantarHorario.horarioFormatado" />
+          <input id="horario" v-model="AdiantarHorario.horarioFormatado" type="text" />
         </div>
 
         <Botao
           data-testid="botao-adiantar-horario"
-          @click="adiantarHorario"
           :titulo="`- 15 minutos`"
           :aparencia="`preenchido`"
           :tamanho="`pequeno`"
+          @click="adiantarHorario"
         />
       </div>
     </template>
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, DeprecationTypes, PropType, reactive, ref, toRef } from 'vue';
+import { defineComponent, PropType, reactive, ref, toRef } from 'vue';
 import 'material-symbols/outlined.css';
 
 // import { AoClicarEvento } from "../type";
@@ -30,6 +30,7 @@ import Botao from '../moleculas/Botao.vue';
 import { format, subMinutes } from 'date-fns';
 
 export default defineComponent({
+  components: { EditarEvento, Botao },
   props: {
     salvarVisivel: {
       type: Boolean,
@@ -39,7 +40,6 @@ export default defineComponent({
       type: Object as PropType<EventoDetalhado>,
     },
   },
-  components: { EditarEvento, Botao },
 
   setup(props) {
     const salvarVisivel = toRef(props, 'salvarVisivel');

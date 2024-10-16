@@ -27,7 +27,7 @@ const Template: StoryFn<typeof EditarEvento> = (args) => ({
 export const Padrao = Template.bind({});
 Padrao.args = {
   salvarVisivel: true,
-  aoClicar: (evento) => alert('Olá!'),
+  aoClicar: (_evento) => alert('Olá!'),
 };
 
 export const SalvarInvisivel = Template.bind({});

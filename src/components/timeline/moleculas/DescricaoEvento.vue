@@ -4,6 +4,7 @@
     <SubtituloEvento v-if="subtitulo" :subtitulo="subtitulo" />
   </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import SubtituloEvento from '../atomos/SubtituloEvento.vue';
@@ -11,6 +12,7 @@ import TituloEvento from '../atomos/TituloEvento.vue';
 
 export default defineComponent({
   name: 'Descrição Evento',
+  components: { TituloEvento, SubtituloEvento },
   props: {
     titulo: {
       required: true,
@@ -21,7 +23,6 @@ export default defineComponent({
       type: String,
     },
   },
-  components: { TituloEvento, SubtituloEvento },
 });
 </script>
 

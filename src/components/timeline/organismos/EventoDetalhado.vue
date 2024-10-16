@@ -43,6 +43,7 @@ import StatusEvento from '../moleculas/StatusEvento.vue';
 
 export default defineComponent({
   name: 'EventoDetalhado',
+  components: { CabecalhoEventoDetalhado, Observacoes, StatusEvento },
   props: {
     perfil: {
       required: true,
@@ -53,7 +54,6 @@ export default defineComponent({
       type: Object as PropType<EventoDetalhado>,
     },
   },
-  components: { CabecalhoEventoDetalhado, Observacoes, StatusEvento },
 
   emits: {
     statusEditarClick: (mouseEvent: MouseEvent) => true,

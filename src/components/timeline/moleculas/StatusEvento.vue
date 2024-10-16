@@ -18,8 +18,8 @@ import { Aparencia } from './Botao.vue';
 import { Status } from '../type';
 
 export default defineComponent({
-  components: { BotaoStatus },
   name: 'StatusEvento',
+  components: { BotaoStatus },
   props: {
     aparencia: {
       type: String as PropType<Aparencia>,

@@ -1,6 +1,6 @@
-import { render, waitFor, fireEvent } from '@testing-library/vue';
+import { render, fireEvent } from '@testing-library/vue';
 import Timeline from './Timeline.vue';
-import { dadosPerfil, dadosEventos } from './Timeline.mock';
+import { dadosPerfil } from './Timeline.mock';
 import { Evento } from '../type';
 
 describe('Timeline.vue', () => {

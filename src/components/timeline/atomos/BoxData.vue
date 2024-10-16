@@ -1,6 +1,7 @@
 <template>
   <h3 class="boxData padrao" :class="classes">{{ dataNumero }}</h3>
 </template>
+
 <script lang="ts">
 import { defineComponent, reactive, computed } from 'vue';
 
