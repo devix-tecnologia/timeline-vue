@@ -32,9 +32,16 @@ export default defineFlatConfig([
       ...vuePlugin.configs['vue3-recommended'].rules,
       ...tsPlugin.configs['recommended'].rules,
       ...prettierConfig.rules,
+      'vue/component-tags-order': [
+        'error',
+        {
+          order: ['template', 'script', 'style'],
+        },
+      ],
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'vue/no-v-html': 'off',
+      'vue/padding-line-between-blocks': ['error', 'always'],
     },
     linterOptions: {
       reportUnusedDisableDirectives: true,
