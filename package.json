@@ -1,7 +1,7 @@
 {
   "name": "@devix-tecnologia/timeline-vue",
   "private": false,
-  "version": "3.1.6",
+  "version": "3.1.7",
   "license": "MIT",
   "type": "module",
   "keywords": [
