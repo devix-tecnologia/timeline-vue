@@ -1,16 +1,19 @@
-name: Test and publish package
+name: Test and Deploy Package
+
 on:
   push:
     branches: [main]
 
 permissions:
-  contents: read #  for checkout
+  contents: read # for checkout
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensure full repository is checked out, not just a shallow clone
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
@@ -28,12 +31,14 @@ jobs:
   release:
     needs: build
     permissions:
-      contents: write #  to be able to publish a GitHub release
-      issues: write #  to be able to comment on released issues
-      pull-requests: write #  to be able to comment on released pull requests
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensure full repository is checked out, not just a shallow clone
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
@@ -41,13 +46,13 @@ jobs:
           cache: yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Update repository to latest version
+        run: git pull origin main
       - name: Build package
         run: yarn build
       - name: Release package
         uses: cycjimmy/semantic-release-action@v4
         with:
-          # semantic_version: 20.1.1
-          # You can specify specifying version range for the extra plugins if you prefer.
           extra_plugins: |
             @semantic-release/git@10.0.1
             @semantic-release/github@10.1.0
