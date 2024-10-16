@@ -2,6 +2,7 @@
 
 
 
+
 # Timeline de Eventos DEVIX
 
 Este é um projeto implementando uma linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico. 
