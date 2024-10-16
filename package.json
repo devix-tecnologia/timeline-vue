@@ -4,6 +4,14 @@
   "version": "3.1.4",
   "license": "MIT",
   "type": "module",
+  "keywords": [
+    "timeline",
+    "vue",
+    "timeline-vue",
+    "timeline-component",
+    "devix",
+    "linha-do-tempo"
+  ],
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -26,7 +34,7 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.0",
+    "@semantic-release/github": "^10.1.0",
     "@semantic-release/npm": "^12.0.1",
     "@storybook/addon-a11y": "^8.1.4",
     "@storybook/addon-essentials": "^8.1.4",
@@ -58,7 +66,7 @@
     "postcss-plugin": "^1.0.0",
     "prettier": "^3.3.3",
     "rollup-plugin-visualizer": "^5.12.0",
-    "semantic-release": "^24.1.2",
+    "semantic-release": "^20.1.1",
     "storybook": "^8.3.5",
     "typescript": "5.5.x",
     "vite": "^5.2.12",

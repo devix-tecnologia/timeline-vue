@@ -44,7 +44,14 @@ jobs:
       - name: Build package
         run: yarn build
       - name: Release package
-        uses: semantic-release/semantic-release@v11
+        uses: cycjimmy/semantic-release-action@v4
+        with:
+          # semantic_version: 20.1.1
+          # You can specify specifying version range for the extra plugins if you prefer.
+          extra_plugins: |
+            @semantic-release/git@10.0.1
+            @semantic-release/github@10.1.0
+            @semantic-release/npm@12.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_NPM_TOKEN }}
