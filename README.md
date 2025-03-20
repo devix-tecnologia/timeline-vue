@@ -2,7 +2,7 @@
 
 # Timeline de Eventos DEVIX
 
-Este é disponibiza componentrs de linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico.
+Este é disponibiza componentees de linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico.
 
 <div align="center">
 <img src="https://github.com/devix-tecnologia/timeline-vue/blob/91c3b94c6167ca02364507d58dc59bb804b3b51f/docs/timeline01.gif" width="300px"/>
