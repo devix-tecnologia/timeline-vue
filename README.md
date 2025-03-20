@@ -2,7 +2,7 @@
 
 # Timeline de Eventos DEVIX
 
-Este é disponibiza componentees de linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico.
+Este é disponibiza componentes de linha do tempo de eventos utilizando Vue 3 e Typescript. Utiliza o Storybook para o desenvolvimento dos componentes seguindo o Design Atômico.
 
 <div align="center">
 <img src="https://github.com/devix-tecnologia/timeline-vue/blob/91c3b94c6167ca02364507d58dc59bb804b3b51f/docs/timeline01.gif" width="300px"/>
@@ -169,6 +169,5 @@ Faça um fork do projeto, crie uma nova branch e faça seus commits. Seguem pass
 1. **Abrir um Pull Request:** Acesse seu fork no GitHub e clique em "New Pull Request". Escolha os branches de origem e destino corretos e envie sua solicitação. O desenvolvedor ou equipe responsável pelo projeto de origem revisará suas alterações e, se aprovadas, fará o merge no projeto principal.
 
 ---
-
 
 Código-fonte bom é código compartilhado! Contribua melhorando esse importante projeto. 😉
