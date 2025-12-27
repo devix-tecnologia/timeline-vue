@@ -1,5 +1,6 @@
 import { render, fireEvent } from '@testing-library/vue';
-import Botao, { Aparencias, Tamanhos } from './Botao.vue';
+import Botao from './Botao.vue';
+import { Aparencias, Tamanhos } from './Botao.types';
 
 describe('Botao.vue', () => {
   it('renderiza componente', async () => {

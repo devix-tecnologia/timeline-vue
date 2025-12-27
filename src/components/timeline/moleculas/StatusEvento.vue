@@ -15,7 +15,7 @@ import 'material-symbols/outlined.css';
 import { defineComponent, reactive, PropType } from 'vue';
 import type { DefineComponent } from 'vue';
 import BotaoStatus from './BotaoStatus.vue';
-import { Aparencia } from './Botao.vue';
+import type { Aparencia } from './Botao.types';
 import { Status } from '../type';
 
 export default defineComponent({

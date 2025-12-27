@@ -8,7 +8,8 @@
 import 'material-symbols/outlined.css';
 import { defineComponent, reactive, computed, PropType } from 'vue';
 import { Status } from '../type';
-import Botao, { Aparencia } from './Botao.vue';
+import Botao from './Botao.vue';
+import type { Aparencia } from './Botao.types';
 import IconeStatus from '../atomos/IconeStatus.vue';
 
 export default defineComponent({
