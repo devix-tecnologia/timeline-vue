@@ -4,6 +4,10 @@
   "version": "3.2.0",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devix-tecnologia/timeline-vue"
+  },
   "keywords": [
     "timeline",
     "vue",
