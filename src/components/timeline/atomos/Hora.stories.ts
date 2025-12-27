@@ -1,5 +1,5 @@
 import Hora from './Hora.vue';
-import { Meta, StoryFn } from '@storybook/vue3-vite';
+import { Meta } from '@storybook/vue3-vite';
 
 export default {
   title: 'Devix/Atomos/Hora',
@@ -15,22 +15,5 @@ export default {
 
 const horaMock = new Date();
 
-const Template: StoryFn<typeof Hora> = (args) => ({
-  components: { Hora },
-  setup() {
-    return { args };
-  },
-  template: '<Hora :hora="args.hora" :aparencia="args.aparencia" />',
-});
-
-export const Padrao = Template.bind({});
-Padrao.args = {
-  hora: horaMock,
-  aparencia: 'padrao',
-};
-
-export const Riscada = Template.bind({});
-Riscada.args = {
-  hora: horaMock,
-  aparencia: 'riscada',
-};
+export const Padrao = { args: { hora: horaMock, aparencia: 'padrao' } };
+export const Riscada = { args: { hora: horaMock, aparencia: 'riscada' } };

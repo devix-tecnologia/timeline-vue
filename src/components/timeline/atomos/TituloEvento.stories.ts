@@ -1,6 +1,6 @@
 import '@fontsource/material-icons';
 import TituloEvento from './TituloEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3-vite';
+import { Meta } from '@storybook/vue3-vite';
 
 export default {
   title: 'Devix/Atomos/TituloEvento',
@@ -12,13 +12,4 @@ export default {
 
 const tituloEventoMock = 'titulo';
 
-const Template: StoryFn<typeof TituloEvento> = (args) => ({
-  components: { TituloEvento },
-  setup() {
-    return { args };
-  },
-  template: '<TituloEvento v-bind="args"  />',
-});
-
-export const Padrao = Template.bind({});
-Padrao.args = { titulo: tituloEventoMock };
+export const Padrao = { args: { titulo: tituloEventoMock } };

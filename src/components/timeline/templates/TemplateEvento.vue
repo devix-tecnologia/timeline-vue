@@ -19,7 +19,7 @@ export default defineComponent({
   components: { Topo, Evento },
   props: {
     perfilEvento: {
-      required: true,
+      required: false,
       type: Object as PropType<Perfil>,
     },
     dadosEvento: {

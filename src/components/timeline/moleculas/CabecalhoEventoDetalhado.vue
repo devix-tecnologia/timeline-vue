@@ -52,7 +52,7 @@
 <script lang="ts">
 import 'material-symbols/outlined.css';
 import { defineComponent, PropType } from 'vue';
-import Botao from './Botao.vue';
+import Botao from '../atomos/Botao.vue';
 import { EventoDetalhado } from '../typeDetalhado';
 import { Perfil } from '../type';
 import PerfilTimeline from './PerfilTimeline.vue';
@@ -64,7 +64,7 @@ export default defineComponent({
   components: { Botao, PerfilTimeline, IconeCategoria, Hora },
   props: {
     perfil: {
-      required: true,
+      required: false,
       type: Object as PropType<Perfil>,
     },
     evento: {

@@ -1,5 +1,5 @@
 import TemplateEvento from './TemplateEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3-vite';
+import { Meta } from '@storybook/vue3-vite';
 import { dadosEventoDetalhado, dadosPerfil } from '../EventoDetalhado.mock';
 
 export default {
@@ -15,21 +15,16 @@ const perfilMock = dadosPerfil;
 const eventoUmMock = dadosEventoDetalhado[0];
 const eventoDoisMock = dadosEventoDetalhado[1];
 
-const Template: StoryFn<typeof TemplateEvento> = (args) => ({
-  components: { TemplateEvento },
-  setup() {
-    return { args };
+export const Padrao = {
+  args: {
+    perfilEvento: perfilMock,
+    dadosEvento: eventoUmMock,
   },
-  template: '<TemplateEvento :perfilEvento="args.perfilEvento" :dadosEvento="args.dadosEvento" />',
-});
-
-export const Padrao = Template.bind({});
-Padrao.args = {
-  perfilEvento: perfilMock,
-  dadosEvento: eventoUmMock,
 };
 
-export const SemPerfil = Template.bind({});
-SemPerfil.args = {
-  dadosEvento: eventoDoisMock,
+export const SemPerfil = {
+  args: {
+    perfilEvento: { nome: '', imagem: '', icone: '' },
+    dadosEvento: eventoDoisMock,
+  },
 };

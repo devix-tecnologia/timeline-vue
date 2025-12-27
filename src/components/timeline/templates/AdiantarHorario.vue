@@ -26,7 +26,7 @@ import 'material-symbols/outlined.css';
 // import { AoClicarEvento } from "../type";
 import { EventoDetalhado } from '../typeDetalhado';
 import EditarEvento from '../organismos/EditarEvento.vue';
-import Botao from '../moleculas/Botao.vue';
+import Botao from '../atomos/Botao.vue';
 import { format, subMinutes } from 'date-fns';
 
 export default defineComponent({

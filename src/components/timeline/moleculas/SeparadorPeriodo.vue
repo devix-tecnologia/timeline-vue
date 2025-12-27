@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import BoxData from '../atomos/BoxData.vue';
+import BoxData from '../atomos/box-data';
 
 export default defineComponent({
   name: 'SeparadorPeriodo',

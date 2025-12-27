@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/vue';
-import Botao from './Botao.vue';
+import Botao from '../atomos/Botao.vue';
 
 describe('Observacoes.vue', () => {
   it('emits "click" quando clicado no botão Adicionar Observação', async () => {

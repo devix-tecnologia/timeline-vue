@@ -21,7 +21,7 @@
 <script lang="ts">
 import 'material-symbols/outlined.css';
 import { defineComponent } from 'vue';
-import Botao from './Botao.vue';
+import Botao from '../atomos/Botao.vue';
 
 export default defineComponent({
   name: 'AreaSalvamento',

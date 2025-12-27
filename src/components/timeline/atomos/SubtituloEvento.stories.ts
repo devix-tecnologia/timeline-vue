@@ -1,6 +1,6 @@
 import '@fontsource/material-icons';
 import SubtituloEvento from './SubtituloEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3-vite';
+import { Meta } from '@storybook/vue3-vite';
 
 export default {
   title: 'Devix/Atomos/SubtituloEvento',
@@ -12,13 +12,4 @@ export default {
 
 const subtituloEventooMock = 'subtitulo';
 
-const Template: StoryFn<typeof SubtituloEvento> = (args) => ({
-  components: { SubtituloEvento },
-  setup() {
-    return { args };
-  },
-  template: '<SubtituloEvento v-bind="args"  />',
-});
-
-export const Padrao = Template.bind({});
-Padrao.args = { subtitulo: subtituloEventooMock };
+export const Padrao = { args: { subtitulo: subtituloEventooMock } };

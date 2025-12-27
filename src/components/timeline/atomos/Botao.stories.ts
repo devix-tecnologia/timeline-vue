@@ -2,7 +2,7 @@ import Botao from './Botao.vue';
 import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Moleculas/Botao',
+  title: 'Devix/Atomos/Botao',
   component: Botao,
   parameters: {
     docs: {

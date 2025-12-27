@@ -31,7 +31,7 @@
 <script lang="ts">
 import 'material-symbols/outlined.css';
 import { defineComponent, reactive, PropType } from 'vue';
-import Botao from './Botao.vue';
+import Botao from '../atomos/Botao.vue';
 import { Observacao } from '../typeDetalhado';
 
 export default defineComponent({

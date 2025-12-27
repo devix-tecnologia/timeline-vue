@@ -47,7 +47,7 @@ export default defineComponent({
   components: { CabecalhoEventoDetalhado, Observacoes, StatusEvento },
   props: {
     perfil: {
-      required: true,
+      required: false,
       type: Object as PropType<Perfil>,
     },
     evento: {

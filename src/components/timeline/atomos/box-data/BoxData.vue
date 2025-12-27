@@ -3,7 +3,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive, computed, PropType } from 'vue';
+import { Aparencia } from './BoxData.types';
 
 export default defineComponent({
   name: 'Box Data',
@@ -13,7 +14,8 @@ export default defineComponent({
       type: Number,
     },
     aparencia: {
-      type: String,
+      type: String as PropType<Aparencia>,
+      default: 'padrao',
     },
   },
   setup(props) {
