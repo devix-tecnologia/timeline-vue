@@ -21,6 +21,8 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.57.0-jammy
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,9 +47,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
 
       - name: Lint
         run: pnpm run lint
@@ -92,15 +91,7 @@ jobs:
         run: pnpm run build
 
       - name: Release package
-        uses: cycjimmy/semantic-release-action@v4
-        with:
-          semantic_version: 19
-          extra_plugins: |
-            @semantic-release/git@10.0.1
-            @semantic-release/github@10.1.0
-            @semantic-release/npm@12.0.1
-          branches: |
-            ['main']
+        run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.SEMANTIC_RELEASE_BOT_NPM_TOKEN }}
