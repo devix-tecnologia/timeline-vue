@@ -26,17 +26,17 @@ A biblioteca oferece duas formas de importação:
 
 ```ts
 import { createApp } from 'vue';
-import Timeline from '@devix-tecnologia/timeline-vue';
+import TimelinePlugin from '@devix-tecnologia/timeline-vue';
 import '@devix-tecnologia/timeline-vue/dist/style.css';
 
 const app = createApp(App);
-app.use(Timeline);
+app.use(TimelinePlugin);
 ```
 
 #### 2. Componentes Individuais (tree-shaking automático - recomendado)
 
 ```ts
-import { Timeline, Tipos } from '@devix-tecnologia/timeline-vue';
+import { TimelineComponent, Tipos } from '@devix-tecnologia/timeline-vue';
 import '@devix-tecnologia/timeline-vue/dist/style.css';
 ```
 
@@ -60,11 +60,11 @@ import '@devix-tecnologia/timeline-vue/dist/style.css';
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Timeline } from '@devix-tecnologia/timeline-vue'
+import { TimelineComponent } from '@devix-tecnologia/timeline-vue'
 import '@devix-tecnologia/timeline-vue/dist/style.css'
 
 export default defineComponent({
-  components: { Timeline },
+  components: { Timeline: TimelineComponent },
   setup() {
     const emitirEventoClick = (evento: Evento) => {
       alert(`foi clicado no evento ${evento.titulo}`);

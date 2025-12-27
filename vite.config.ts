@@ -36,6 +36,7 @@ export default defineConfig({
       // Marcar 'vue' e 'material-symbols' como externas, exceto quando estiver buildando o Storybook
       external: isStorybook ? [] : ['vue', 'material-symbols/outlined.css'],
       output: {
+        exports: 'named',
         globals: isStorybook
           ? {}
           : {
