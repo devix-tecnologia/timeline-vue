@@ -151,7 +151,74 @@ Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título,
 yarn storybook
 ```
 
+### Executando com npm / yarn / pnpm
+
+Se preferir outro gerenciador de pacotes, aqui estão exemplos equivalentes:
+
+- Instalar dependências
+
+```sh
+# npm
+npm install
+
+# yarn
+yarn install
+
+# pnpm
+pnpm install
+```
+
+- Rodar Storybook (modo dev)
+
+```sh
+# npm
+npm run storybook
+
+# yarn
+yarn storybook
+
+# pnpm
+pnpm storybook
+```
+
+- Executar Storybook sem instalar dependências locais (útil para checar rápido)
+
+```sh
+# com npx
+npx storybook dev -p 6006
+
+# com pnpm
+pnpm dlx storybook dev -p 6006
+
+# com yarn (se suportado)
+
+```
+
+### Expor o Storybook para outras pessoas
+
+Para permitir acesso pela rede local, inicie o Storybook aceitando conexões externas:
+
+```sh
+# passa argumento extra ao script
+npm run storybook -- --host 0.0.0.0
+# ou
+pnpm storybook -- --host 0.0.0.0
+```
+
+Depois, compartilhe o `http://<sua-ip-local>:6006` com quem você quiser na mesma rede.
+
+Para expor publicamente (internet), use uma ferramenta de túnel como `ngrok` ou `localtunnel`:
+
+```sh
+# instalar ngrok (opcional)
 Faça um fork do projeto, crie uma nova branch e faça seus commits. Seguem passos para bons commits:
+ngrok http 6006
+
+# ou usar localtunnel
+npx localtunnel --port 6006
+```
+
+Essas opções geram um URL público que você pode enviar para outras pessoas.
 
 1. **Criar um Fork:** Acesse o repositório de origem no GitHub e clique em "Fork". Isso criará uma cópia do projeto na sua conta pessoal do GitHub.
 1. **Clonar ou Atualizar o Seu Fork:** Se ainda não clonou o seu fork para a máquina local, faça-o com `git clone [URL_DO_SEU_FORK]`. Se já possui o projeto clonado, certifique-se de que seu fork esteja atualizado em relação ao projeto de origem usando os comandos:

@@ -1,8 +1,8 @@
 import EventoTimeline from './EventoTimeline.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/EventoTimeline',
+  title: 'Devix/Moleculas/EventoTimeline',
   component: EventoTimeline,
   argTypes: {
     status: {

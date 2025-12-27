@@ -1,9 +1,9 @@
 import '@fontsource/material-icons';
 import TituloEvento from './TituloEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Atomos/TituloEvento',
+  title: 'Devix/Atomos/TituloEvento',
   component: TituloEvento,
   argTypes: {
     // titulo: { control: { type: String } },

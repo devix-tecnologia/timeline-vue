@@ -1,12 +1,12 @@
 import TemplateEvento from './TemplateEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 import { dadosEventoDetalhado, dadosPerfil } from '../EventoDetalhado.mock';
 
 export default {
-  title: 'Devix/Eventos/templates/TemplateEvento',
+  title: 'Devix/templates/TemplateEvento',
   component: TemplateEvento,
   parameters: {
-    componentSubtitle: 'Tela de detalhes do evento.',
+    docs: { description: { component: 'Tela de detalhes do evento.' } },
   },
   argTypes: {},
 } as Meta<typeof TemplateEvento>;

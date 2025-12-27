@@ -1,9 +1,9 @@
 import '@fontsource/material-icons';
 import BoxData from './BoxData.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Atomos/BoxData',
+  title: 'Devix/Atomos/BoxData',
   component: BoxData,
   argTypes: {
     // dataBox: { control: { type: String } },

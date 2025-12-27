@@ -1,9 +1,9 @@
 import Observacoes from './Observacoes.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 import { dadosEventoDetalhado } from '../EventoDetalhado.mock';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/Observacoes',
+  title: 'Devix/Moleculas/Observacoes',
   component: Observacoes,
   argTypes: {},
 } as Meta<typeof Observacoes>;

@@ -1,8 +1,8 @@
 import StatusEvento from './StatusEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/StatusEvento',
+  title: 'Devix/Moleculas/StatusEvento',
   component: StatusEvento,
   argTypes: {
     aparencia: {

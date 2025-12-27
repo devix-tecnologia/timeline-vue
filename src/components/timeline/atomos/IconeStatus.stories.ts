@@ -1,9 +1,9 @@
 import '@fontsource/material-icons';
 import IconeStatus from './IconeStatus.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Atomos/IconeStatus',
+  title: 'Devix/Atomos/IconeStatus',
   component: IconeStatus,
   argTypes: {
     // status: { control: { type: String } },

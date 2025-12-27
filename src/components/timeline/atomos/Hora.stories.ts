@@ -1,8 +1,8 @@
 import Hora from './Hora.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Atomos/Hora',
+  title: 'Devix/Atomos/Hora',
   component: Hora,
   argTypes: {
     hora: { control: { type: 'date' } },

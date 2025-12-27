@@ -1,5 +1,5 @@
 import TemplateTimeline from './TemplateTimeline.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 import {
   dadosEventosDetalhados,
   dadosPerfil as dadosPerfilTimeline,
@@ -7,10 +7,10 @@ import {
 import { EventoDetalhado } from '../typeDetalhado';
 
 export default {
-  title: 'Devix/Eventos/templates/TemplateTimeline',
+  title: 'Devix/Templates/TemplateTimeline',
   component: TemplateTimeline,
   parameters: {
-    componentSubtitle: 'Timeline com tela de detalhes do evento.',
+    docs: { description: { component: 'Timeline com tela de detalhes do evento.' } },
   },
   argTypes: {},
 } as Meta<typeof TemplateTimeline>;

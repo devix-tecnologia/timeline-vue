@@ -1,12 +1,15 @@
 import AreaSalvamento from './AreaSalvamento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/AreaSalvamento',
+  title: 'Devix/Moleculas/AreaSalvamento',
   component: AreaSalvamento,
   parameters: {
-    componentSubtitle:
-      'Este componente possui um <slot> padrão que carrega conteúdo acima dos botões',
+    docs: {
+      description: {
+        component: 'Este componente possui um <slot> padrão que carrega conteúdo acima dos botões',
+      },
+    },
   },
   argTypes: {},
 } as Meta<typeof AreaSalvamento>;

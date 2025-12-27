@@ -1,8 +1,8 @@
 import DescricaoEvento from './DescricaoEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/DescricaoEvento',
+  title: 'Devix/Moleculas/DescricaoEvento',
   component: DescricaoEvento,
   argTypes: {},
 } as Meta<typeof DescricaoEvento>;

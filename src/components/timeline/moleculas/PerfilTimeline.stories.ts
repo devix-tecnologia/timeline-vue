@@ -1,52 +1,57 @@
 import PerfilTimeline from './PerfilTimeline.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/PerfilTimeline',
+  title: 'Devix/Moleculas/PerfilTimeline',
   component: PerfilTimeline,
-  argTypes: {},
+  parameters: {
+    docs: {
+      description: { component: 'Cabeçalho com avatar e nome do perfil (formato reduzido)' },
+    },
+  },
+  argTypes: {
+    formatoReduzido: { control: 'boolean' },
+    imagemPerfil: { control: 'text' },
+    nomePerfil: { control: 'text' },
+    iconePerfil: { control: 'text' },
+  },
 } as Meta<typeof PerfilTimeline>;
 
 const avatar =
   'https://images.unsplash.com/photo-1526080652727-5b77f74eacd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80';
 
-const Template: StoryFn<typeof PerfilTimeline> = (args) => ({
-  components: { PerfilTimeline: PerfilTimeline },
-  setup() {
-    return { args };
+export const ComImagem = {
+  args: {
+    imagemPerfil: avatar,
+    nomePerfil: 'Dona Maria',
+    iconePerfil: '',
+    formatoReduzido: false,
   },
-  template:
-    '<PerfilTimeline :nomePerfil="args.nomePerfil" :imagemPerfil="args.imagemPerfil" :iconePerfil="args.iconePerfil" :formatoReduzido="args.formatoReduzido"  style="position: relative"  />',
-});
-
-export const ComImagem = Template.bind({});
-ComImagem.args = {
-  imagemPerfil: avatar,
-  nomePerfil: 'Dona Maria',
-  iconePerfil: '',
-  formatoReduzido: false,
 };
 
-export const ComIcone = Template.bind({});
-ComIcone.args = {
-  imagemPerfil: '',
-  nomePerfil: 'Dona Maria',
-  iconePerfil: 'person',
-  formatoReduzido: false,
+export const ComIcone = {
+  args: {
+    imagemPerfil: '',
+    nomePerfil: 'Dona Maria',
+    iconePerfil: 'person',
+    formatoReduzido: false,
+  },
 };
 
-export const ApenasTitulo = Template.bind({});
-ApenasTitulo.args = {
-  imagemPerfil: '',
-  nomePerfil: 'Dona Maria',
-  iconePerfil: '',
-  formatoReduzido: false,
+export const ApenasTitulo = {
+  args: {
+    imagemPerfil: '',
+    nomePerfil: 'Dona Maria',
+    iconePerfil: '',
+    formatoReduzido: false,
+  },
 };
 
-export const FormatoReduzido = Template.bind({});
-FormatoReduzido.args = {
-  imagemPerfil: '',
-  nomePerfil: 'Dona Maria',
-  iconePerfil: 'person',
-  formatoReduzido: true,
+export const FormatoReduzido = {
+  args: {
+    imagemPerfil: '',
+    nomePerfil: 'Dona Maria',
+    iconePerfil: 'person',
+    formatoReduzido: true,
+  },
 };

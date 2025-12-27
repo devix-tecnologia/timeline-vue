@@ -1,12 +1,16 @@
 import AdiantarHorario from './AdiantarHorario.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 import { dadosEventoDetalhado } from '../EventoDetalhado.mock';
 
 export default {
-  title: 'Devix/Eventos/Templates/AdiantarHorario',
+  title: 'Devix/Templates/AdiantarHorario',
   component: AdiantarHorario,
   parameters: {
-    componentSubtitle: 'Tela de edição de horário. O usuário pode adiantar o horário da tarefa.',
+    docs: {
+      description: {
+        component: 'Tela de edição de horário. O usuário pode adiantar o horário da tarefa.',
+      },
+    },
   },
   argTypes: {},
 } as Meta<typeof AdiantarHorario>;

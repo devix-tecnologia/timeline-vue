@@ -1,9 +1,9 @@
 import '@fontsource/material-icons';
 import SubtituloEvento from './SubtituloEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Atomos/SubtituloEvento',
+  title: 'Devix/Atomos/SubtituloEvento',
   component: SubtituloEvento,
   argTypes: {
     // subtitulo: { control: { type: String } },

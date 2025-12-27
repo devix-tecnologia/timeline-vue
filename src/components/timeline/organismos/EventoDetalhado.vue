@@ -33,6 +33,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, reactive } from 'vue';
+import type { DefineComponent } from 'vue';
 import 'material-symbols/outlined.css';
 
 import { Perfil } from '../type';
@@ -74,7 +75,7 @@ export default defineComponent({
       handleAdicionarObservacaoClick,
     };
   },
-});
+}) as DefineComponent<Record<string, unknown>, Record<string, unknown>, any>;
 </script>
 
 <style>

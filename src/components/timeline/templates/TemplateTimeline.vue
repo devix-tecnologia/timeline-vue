@@ -46,6 +46,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, toRef, reactive } from 'vue';
+import type { DefineComponent } from 'vue';
 import 'material-symbols/outlined.css';
 
 import { Perfil, Status } from '../type';
@@ -218,7 +219,7 @@ export default defineComponent({
       TemplateTimeline,
     };
   },
-});
+}) as DefineComponent<Record<string, unknown>, Record<string, unknown>, any>;
 </script>
 
 <style>

@@ -13,6 +13,7 @@
 <script lang="ts">
 import 'material-symbols/outlined.css';
 import { defineComponent, reactive, PropType } from 'vue';
+import type { DefineComponent } from 'vue';
 import BotaoStatus from './BotaoStatus.vue';
 import { Aparencia } from './Botao.vue';
 import { Status } from '../type';
@@ -46,7 +47,7 @@ export default defineComponent({
       props,
     };
   },
-});
+}) as DefineComponent<Record<string, unknown>, Record<string, unknown>, any>;
 </script>
 
 <style scoped>

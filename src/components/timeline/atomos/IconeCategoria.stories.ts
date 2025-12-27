@@ -1,9 +1,9 @@
 import '@fontsource/material-icons';
 import IconeCategoria from './IconeCategoria.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Atomos/IconeCategoria',
+  title: 'Devix/Atomos/IconeCategoria',
   component: IconeCategoria,
   argTypes: {
     // categoria: { control: { type: String } },

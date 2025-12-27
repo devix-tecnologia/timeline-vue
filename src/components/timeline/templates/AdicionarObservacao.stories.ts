@@ -1,11 +1,11 @@
 import AdicionarObservacao from './AdicionarObservacao.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Templates/AdicionarObservacao',
+  title: 'Devix/Templates/AdicionarObservacao',
   component: AdicionarObservacao,
   parameters: {
-    componentSubtitle: 'Tela de adicionar observação',
+    docs: { description: { component: 'Tela de adicionar observação' } },
   },
   argTypes: {},
 } as Meta<typeof AdicionarObservacao>;

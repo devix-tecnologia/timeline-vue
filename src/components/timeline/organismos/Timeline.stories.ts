@@ -1,17 +1,17 @@
 import Timeline from './Timeline.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 import { dadosEventos, dadosPerfil } from './Timeline.mock';
 import { Evento } from '../type';
 
 export default {
-  title: 'Devix/Eventos/Organismos/Timeline',
+  title: 'Devix/Organismos/Timeline',
   component: Timeline,
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Eb4gpZ5HsK3xPAErpd8TQl/timeline-ui?type=design&node-id=226-2538&mode=design&t=gtygrUm9znRhEPR6-4',
     },
-    componentSubtitle: 'Linha do tempo padrão com identidade da Devix',
+    docs: { description: { component: 'Linha do tempo padrão com identidade da Devix' } },
   },
   argTypes: {},
 } as Meta<typeof Timeline>;

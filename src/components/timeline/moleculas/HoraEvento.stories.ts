@@ -1,8 +1,8 @@
 import HoraEvento from './HoraEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/HoraEvento',
+  title: 'Devix/Moleculas/HoraEvento',
   component: HoraEvento,
   argTypes: {},
 } as Meta<typeof HoraEvento>;

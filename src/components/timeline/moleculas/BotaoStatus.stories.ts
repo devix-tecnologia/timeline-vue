@@ -1,8 +1,8 @@
 import BotaoStatus from './BotaoStatus.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/BotaoStatus',
+  title: 'Devix/Moleculas/BotaoStatus',
   component: BotaoStatus,
   argTypes: {
     aparencia: {

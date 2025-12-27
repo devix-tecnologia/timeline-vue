@@ -1,6 +1,6 @@
 import '@fontsource/material-icons';
 import '../src/global.css';
-import type { Preview } from '@storybook/vue3';
+import type { Preview } from '@storybook/vue3-vite';
 
 const preview: Preview = {
   parameters: {

@@ -1,19 +1,23 @@
 import EventoDetalhado from './EventoDetalhado.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 import { dadosEventoDetalhado, dadosPerfil } from '../EventoDetalhado.mock';
 import { Perfil } from '../type';
 import { EventoDetalhado as TipoEventoDetalhado } from '../typeDetalhado';
 
 export default {
-  title: 'Devix/Eventos/Organismos/EventoDetalhado',
+  title: 'Devix/Organismos/EventoDetalhado',
   component: EventoDetalhado,
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Eb4gpZ5HsK3xPAErpd8TQl/timeline-ui?type=design&node-id=226-2078&mode=design&t=gtygrUm9znRhEPR6-4',
     },
-    componentSubtitle:
-      'Tela de detalhes do evento. Este componente possui um slot que altera o conteúdo da área de descrição. Para usá-lo basta acrescentar <template #descricao></template> na tela que for usar o componente.',
+    docs: {
+      description: {
+        component:
+          'Tela de detalhes do evento. Este componente possui um slot que altera o conteúdo da área de descrição. Para usá-lo basta acrescentar <template #descricao></template> na tela que for usar o componente.',
+      },
+    },
   },
   argTypes: {},
 } as Meta<typeof EventoDetalhado>;

@@ -1,11 +1,11 @@
 import AvatarTimeline from './AvatarTimeline.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Atomos/AvatarTimeline',
+  title: 'Devix/Atomos/AvatarTimeline',
   component: AvatarTimeline,
   parameters: {
-    componentSubtitle: 'Imagem ou ícones do Materials Symbols do Google',
+    docs: { description: { component: 'Imagem ou ícones do Materials Symbols do Google' } },
   },
   argTypes: {},
 } as Meta<typeof AvatarTimeline>;

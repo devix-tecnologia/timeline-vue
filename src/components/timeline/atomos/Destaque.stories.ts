@@ -1,9 +1,9 @@
 import '@fontsource/material-icons';
 import Destaque from './Destaque.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Atomos/Destaque',
+  title: 'Devix/Atomos/Destaque',
   component: Destaque,
   argTypes: {
     // subtitulo: { control: { type: String } },

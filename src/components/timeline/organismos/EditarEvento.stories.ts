@@ -1,12 +1,16 @@
 import EditarEvento from './EditarEvento.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 
 export default {
-  title: 'Devix/Eventos/Organismos/EditarEvento',
+  title: 'Devix/Organismos/EditarEvento',
   component: EditarEvento,
   parameters: {
-    componentSubtitle:
-      'Este componente serve como tela única de edição do evento. Possui <slots> que carregam conteúdo em suas respectivas áreas: #conteudo e #salvamento.',
+    docs: {
+      description: {
+        component:
+          'Este componente serve como tela única de edição do evento. Possui <slots> que carregam conteúdo em suas respectivas áreas: #conteudo e #salvamento.',
+      },
+    },
   },
   argTypes: {},
 } as Meta<typeof EditarEvento>;

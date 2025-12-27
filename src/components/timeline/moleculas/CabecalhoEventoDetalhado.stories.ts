@@ -1,11 +1,11 @@
 import CabecalhoEventoDetalhado from './CabecalhoEventoDetalhado.vue';
-import { Meta, StoryFn } from '@storybook/vue3';
+import { Meta, StoryFn } from '@storybook/vue3-vite';
 import { dadosEventoDetalhado, dadosPerfil } from '../EventoDetalhado.mock';
 import { EventoDetalhado } from '../typeDetalhado';
 import { Perfil } from '../type';
 
 export default {
-  title: 'Devix/Eventos/Moleculas/CabecalhoEventoDetalhado',
+  title: 'Devix/Moleculas/CabecalhoEventoDetalhado',
   component: CabecalhoEventoDetalhado,
   argTypes: {},
 } as Meta<typeof CabecalhoEventoDetalhado>;
