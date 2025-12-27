@@ -98,12 +98,12 @@
   "files": [
     "dist"
   ],
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "module": "./dist/timeline-vue.es.js",
   "exports": {
     ".": {
       "import": "./dist/timeline-vue.es.js",
-      "types": "./dist/types/index.d.ts"
+      "types": "./dist/index.d.ts"
     },
     "./dist/style.css": "./dist/style.css"
   },
