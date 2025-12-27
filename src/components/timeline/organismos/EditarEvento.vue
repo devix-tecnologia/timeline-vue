@@ -34,17 +34,17 @@ export default defineComponent({
     },
   },
   emits: {
-    salvarClick: (mouseEvent: MouseEvent) => true,
-    cancelarClick: (mouseEvent: MouseEvent) => true,
+    salvarClick: (_mouseEvent: MouseEvent) => true,
+    cancelarClick: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const emitirSalvarClick = (mouseEvent: MouseEvent) => {
-      emit('salvarClick', mouseEvent);
+    const emitirSalvarClick = (_mouseEvent: MouseEvent) => {
+      emit('salvarClick', _mouseEvent);
     };
 
-    const emitirCancelarClick = (mouseEvent: MouseEvent) => {
-      emit('cancelarClick', mouseEvent);
+    const emitirCancelarClick = (_mouseEvent: MouseEvent) => {
+      emit('cancelarClick', _mouseEvent);
     };
 
     // props = reactive(props);

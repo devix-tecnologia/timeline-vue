@@ -1,6 +1,5 @@
 <template>
   <EditarEvento
-    v-model:observacao="state.observacaoLocal"
     data-testid="adicionar-observacao"
     :salvarVisivel="salvarVisivel"
     @salvarClick="salvar"
@@ -35,8 +34,8 @@ export default defineComponent({
   },
 
   emits: {
-    adicionarClick: (mensagem: string, mouseEvent: MouseEvent) => true,
-    cancelarClick: (mouseEvent: MouseEvent) => true,
+    adicionarClick: (_mensagem: string, _mouseEvent: MouseEvent) => true,
+    cancelarClick: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
@@ -44,13 +43,13 @@ export default defineComponent({
       observacaoLocal: props.observacao || '',
     });
 
-    const salvar = (mouseEvent: MouseEvent) => {
+    const salvar = (_mouseEvent: MouseEvent) => {
       const mensagem = state.value.observacaoLocal;
-      emit('adicionarClick', mensagem, mouseEvent);
+      emit('adicionarClick', mensagem, _mouseEvent);
     };
 
-    const cancelar = (mouseEvent: MouseEvent) => {
-      emit('cancelarClick', mouseEvent);
+    const cancelar = (_mouseEvent: MouseEvent) => {
+      emit('cancelarClick', _mouseEvent);
     };
 
     return { salvar, cancelar, state };

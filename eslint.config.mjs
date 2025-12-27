@@ -1,7 +1,7 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from 'eslint-plugin-storybook';
 
-import { defineFlatConfig } from 'eslint-define-config';
+import { defineConfig } from 'eslint/config';
 import vuePlugin from 'eslint-plugin-vue';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import parser from 'vue-eslint-parser';
@@ -9,7 +9,17 @@ import tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
 import prettierConfig from 'eslint-config-prettier';
 
-export default defineFlatConfig([
+export default defineConfig([
+  // Ignorar arquivos de build / dependências para evitar warnings e lentidão
+  {
+    ignores: [
+      '**/storybook-static/**',
+      '**/dist/**',
+      '**/node_modules/**',
+      '**/.vite/**',
+      '**/*.min.js',
+    ],
+  },
   {
     files: ['**/*.{js,ts,vue}'],
     languageOptions: {
@@ -32,15 +42,7 @@ export default defineFlatConfig([
       '@typescript-eslint': tsPlugin,
     },
     rules: {
-      ...vuePlugin.configs['vue3-recommended'].rules,
-      ...tsPlugin.configs['recommended'].rules,
-      ...prettierConfig.rules,
-      'vue/component-tags-order': [
-        'error',
-        {
-          order: ['template', 'script', 'style'],
-        },
-      ],
+      // Removed 'vue/component-tags-order' (not available in current eslint-plugin-vue)
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',

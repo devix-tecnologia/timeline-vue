@@ -48,12 +48,12 @@ export default defineComponent({
   },
 
   emits: {
-    adicionarClick: (mouseEvent: MouseEvent) => true,
+    adicionarClick: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const emitirAdicionarClick = (mouseEvent: MouseEvent) => {
-      emit('adicionarClick', mouseEvent);
+    const emitirAdicionarClick = (_mouseEvent: MouseEvent) => {
+      emit('adicionarClick', _mouseEvent);
     };
 
     // Ordenando observações pela mais recente

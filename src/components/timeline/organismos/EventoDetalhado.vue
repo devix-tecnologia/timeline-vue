@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import type { DefineComponent } from 'vue';
 import 'material-symbols/outlined.css';
 
@@ -57,17 +57,17 @@ export default defineComponent({
   },
 
   emits: {
-    statusEditarClick: (mouseEvent: MouseEvent) => true,
-    observacaoAdicionarClick: (mouseEvent: MouseEvent) => true,
+    statusEditarClick: (_mouseEvent: MouseEvent) => true,
+    observacaoAdicionarClick: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
-    const handleEditarClick = (mouseEvent: MouseEvent) => {
-      emit('statusEditarClick', mouseEvent);
+    const handleEditarClick = (_mouseEvent: MouseEvent) => {
+      emit('statusEditarClick', _mouseEvent);
     };
 
-    const handleAdicionarObservacaoClick = (mouseEvent: MouseEvent) => {
-      emit('observacaoAdicionarClick', mouseEvent);
+    const handleAdicionarObservacaoClick = (_mouseEvent: MouseEvent) => {
+      emit('observacaoAdicionarClick', _mouseEvent);
     };
 
     return {

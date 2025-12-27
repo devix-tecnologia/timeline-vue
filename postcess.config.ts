@@ -1,4 +1,3 @@
-import type { ProcessOptions } from 'postcss';
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
 import purgecss from '@fullhuman/postcss-purgecss';

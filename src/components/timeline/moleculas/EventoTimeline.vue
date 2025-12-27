@@ -76,12 +76,12 @@ export default defineComponent({
     },
   },
   emits: {
-    click: (mouseEvent: MouseEvent) => true,
+    click: (_mouseEvent: MouseEvent) => true,
   },
   setup(props, { emit }) {
-    const handleClick = (mouseEvent: MouseEvent) => {
+    const handleClick = (_mouseEvent: MouseEvent) => {
       if (props.clicavel) {
-        emit('click', mouseEvent);
+        emit('click', _mouseEvent);
       }
     };
 

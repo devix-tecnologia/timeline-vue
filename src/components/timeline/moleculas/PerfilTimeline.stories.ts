@@ -1,5 +1,5 @@
 import PerfilTimeline from './PerfilTimeline.vue';
-import { Meta, StoryFn } from '@storybook/vue3-vite';
+import { Meta } from '@storybook/vue3-vite';
 
 export default {
   title: 'Devix/Moleculas/PerfilTimeline',

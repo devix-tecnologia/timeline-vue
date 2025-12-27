@@ -47,14 +47,14 @@ export default defineComponent({
   },
 
   emits: {
-    click: (mouseEvent: MouseEvent) => true,
+    click: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
     props = reactive(props);
 
-    const handleClick = (mouseEvent: MouseEvent) => {
-      emit('click', mouseEvent);
+    const handleClick = (_mouseEvent: MouseEvent) => {
+      emit('click', _mouseEvent);
     };
 
     const classes = computed(() => ({

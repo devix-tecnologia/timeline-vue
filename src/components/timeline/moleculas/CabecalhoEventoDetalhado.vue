@@ -72,7 +72,7 @@ export default defineComponent({
       type: Object as PropType<EventoDetalhado>,
     },
   },
-  setup(props) {
+  setup(_props) {
     return {};
   },
 });

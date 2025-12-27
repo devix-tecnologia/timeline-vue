@@ -32,7 +32,7 @@ export default defineComponent({
   },
 
   emits: {
-    click: (mouseEvent: MouseEvent) => true,
+    click: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {

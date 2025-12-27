@@ -13,7 +13,7 @@ const observacoesMock = dadosEventoDetalhado[0].observacoes;
 const Template: StoryFn<typeof Observacoes> = (args) => ({
   components: { Observacoes },
   setup() {
-    const adicionarClick = (mouseEvent: MouseEvent) => {
+    const adicionarClick = (_mouseEvent: MouseEvent) => {
       alert('Clicou no botão adicionar!');
     };
 

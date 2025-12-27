@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, nextTick, PropType } from 'vue';
+import { defineComponent, computed, reactive, PropType } from 'vue';
 import EventoTimeline from '../moleculas/EventoTimeline.vue';
 import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
 import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
@@ -67,7 +67,7 @@ export default defineComponent({
   },
 
   emits: {
-    eventoClick: (evento: Evento, mouseEvent: MouseEvent) => true,
+    eventoClick: (_evento: Evento, _mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {

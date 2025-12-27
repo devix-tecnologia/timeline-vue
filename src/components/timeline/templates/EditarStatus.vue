@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, reactive, computed } from 'vue';
+import { defineComponent, PropType, ref, computed } from 'vue';
 import 'material-symbols/outlined.css';
 
 import { Status } from '../type';
@@ -63,8 +63,8 @@ export default defineComponent({
   },
 
   emits: {
-    salvarClick: (status: Status, mouseEvent: MouseEvent) => true,
-    cancelarClick: (mouseEvent: MouseEvent) => true,
+    salvarClick: (_status: Status, _mouseEvent: MouseEvent) => true,
+    cancelarClick: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {

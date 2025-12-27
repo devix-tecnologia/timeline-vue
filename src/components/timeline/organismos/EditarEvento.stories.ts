@@ -15,10 +15,6 @@ export default {
   argTypes: {},
 } as Meta<typeof EditarEvento>;
 
-function atualizarEstado(estadoNovo: string) {
-  this.estadoEdicao = estadoNovo;
-}
-
 const Template: StoryFn<typeof EditarEvento> = (args) => ({
   components: { EditarEvento },
   setup() {
@@ -37,5 +33,5 @@ Padrao.args = {
 export const SalvarInvisivel = Template.bind({});
 SalvarInvisivel.args = {
   salvarVisivel: false,
-  aoClicar: (evento) => alert('Olá!'),
+  aoClicar: (_evento) => alert('Olá!'),
 };

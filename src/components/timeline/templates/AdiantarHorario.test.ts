@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor } from '@testing-library/vue';
+import { render, fireEvent } from '@testing-library/vue';
 import AdiantarHorario from './AdiantarHorario.vue';
 import { dadosEventoDetalhado } from '../EventoDetalhado.mock';
 

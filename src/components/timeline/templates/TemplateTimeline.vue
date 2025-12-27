@@ -75,24 +75,24 @@ export default defineComponent({
   },
 
   emits: {
-    eventoTimelineClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true,
-    eventoStatusEditClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true,
-    eventoDetalhadoObservacoesAddClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) =>
+    eventoTimelineClicked: (_evento: TipoEventoDetalhado, _mouseEvent: MouseEvent) => true,
+    eventoStatusEditClicked: (_evento: TipoEventoDetalhado, _mouseEvent: MouseEvent) => true,
+    eventoDetalhadoObservacoesAddClicked: (_evento: TipoEventoDetalhado, _mouseEvent: MouseEvent) =>
       true,
     editarStatusSalvarClicked: (
-      evento: TipoEventoDetalhado,
-      status: Status,
-      mouseEvent: MouseEvent
+      _evento: TipoEventoDetalhado,
+      _status: Status,
+      _mouseEvent: MouseEvent
     ) => true,
-    editarStatusCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) => true,
+    editarStatusCancelarClicked: (_evento: TipoEventoDetalhado, _mouseEvent: MouseEvent) => true,
     adicionarObservacaoSalvarClicked: (
-      evento: TipoEventoDetalhado,
-      mensagem: string,
-      mouseEvent: MouseEvent
+      _evento: TipoEventoDetalhado,
+      _mensagem: string,
+      _mouseEvent: MouseEvent
     ) => true,
-    adicionarObservacaoCancelarClicked: (evento: TipoEventoDetalhado, mouseEvent: MouseEvent) =>
+    adicionarObservacaoCancelarClicked: (_evento: TipoEventoDetalhado, _mouseEvent: MouseEvent) =>
       true,
-    voltarClick: (mouseEvent: MouseEvent) => true,
+    voltarClick: (_mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
@@ -148,7 +148,7 @@ export default defineComponent({
       }
     };
 
-    const handleStatusEditarClick = (mouseEvent: MouseEvent): void => {
+    const handleStatusEditarClick = (_mouseEvent: MouseEvent): void => {
       ativarTela('EditarStatus');
     };
 

@@ -13,7 +13,7 @@ export default {
 const Template: StoryFn<typeof AdicionarObservacao> = (args) => ({
   components: { AdicionarObservacao },
   setup() {
-    const handleAdicionarClick = (mensagem: string, mouseEvent: MouseEvent) => {
+    const handleAdicionarClick = (mensagem: string, _mouseEvent: MouseEvent) => {
       alert(`Observação adicionada: ${mensagem}`);
     };
     return { handleAdicionarClick, args };
