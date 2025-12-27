@@ -37,6 +37,13 @@ jobs:
         with:
           version: '10.20.0'
 
+      - name: Ensure pnpm is available
+        run: |
+          if ! command -v pnpm >/dev/null; then
+            npm install -g pnpm@10.20.0
+          fi
+        shell: bash
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -69,6 +76,13 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: '10.20.0'
+
+      - name: Ensure pnpm is available
+        run: |
+          if ! command -v pnpm >/dev/null; then
+            npm install -g pnpm@10.20.0
+          fi
+        shell: bash
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -112,6 +126,13 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: '10.20.0'
+
+      - name: Ensure pnpm is available
+        run: |
+          if ! command -v pnpm >/dev/null; then
+            npm install -g pnpm@10.20.0
+          fi
+        shell: bash
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
