@@ -94,7 +94,12 @@
   "module": "./dist/timeline-vue.es.js",
   "exports": {
     ".": {
-      "import": "./dist/timeline-vue.es.js"
+      "import": "./dist/timeline-vue.es.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/timeline-vue.es.js",
+      "types": "./dist/components/timeline/index.d.ts"
     },
     "./dist/style.css": "./dist/style.css"
   },
