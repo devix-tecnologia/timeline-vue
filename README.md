@@ -25,26 +25,26 @@ A biblioteca oferece três formas de importação:
 #### 1. Como Plugin Vue (instala todos componentes globalmente)
 
 ```ts
-import { createApp } from 'vue'
-import Timeline from '@devix-tecnologia/timeline-vue'
-import '@devix-tecnologia/timeline-vue/dist/style.css'
+import { createApp } from 'vue';
+import Timeline from '@devix-tecnologia/timeline-vue';
+import '@devix-tecnologia/timeline-vue/dist/style.css';
 
-const app = createApp(App)
-app.use(Timeline)
+const app = createApp(App);
+app.use(Timeline);
 ```
 
 #### 2. Componentes Individuais (tree-shaking automático)
 
 ```ts
-import { Timeline, Tipos } from '@devix-tecnologia/timeline-vue'
-import '@devix-tecnologia/timeline-vue/dist/style.css'
+import { Timeline, Tipos } from '@devix-tecnologia/timeline-vue';
+import '@devix-tecnologia/timeline-vue/dist/style.css';
 ```
 
 #### 3. Via Path `/components` (alternativa explícita)
 
 ```ts
-import { Timeline, Tipos } from '@devix-tecnologia/timeline-vue/components'
-import '@devix-tecnologia/timeline-vue/dist/style.css'
+import { Timeline, Tipos } from '@devix-tecnologia/timeline-vue/components';
+import '@devix-tecnologia/timeline-vue/dist/style.css';
 ```
 
 > 💡 **Dica:** As opções 2 e 3 são equivalentes e oferecem melhor tree-shaking. Use a opção 1 apenas se precisar de todos os componentes registrados globalmente.

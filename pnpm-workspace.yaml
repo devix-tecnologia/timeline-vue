@@ -1,0 +1,4 @@
+overrides:
+  postcss@<7.0.36: '>=7.0.36'
+  postcss@<8.4.31: '>=8.4.31'
+  wrap-ansi: ^9.0.0
