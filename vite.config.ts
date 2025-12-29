@@ -19,7 +19,16 @@ const isCI = !!process.env.CI;
 export default defineConfig({
   plugins: [
     vue(),
-    dts(),
+    dts({
+      outDir: 'dist',
+      entryRoot: 'src',
+      exclude: ['**/*.stories.ts', '**/*.test.ts', '**/tests/**', '**/*.spec.ts'],
+      skipDiagnostics: false,
+      cleanVueFileName: true,
+      staticImport: true,
+      insertTypesEntry: true,
+      rollupTypes: true,
+    }),
     !isCI &&
       visualizer({
         open: true,
