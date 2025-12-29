@@ -28,6 +28,7 @@ export default defineConfig({
       staticImport: true,
       insertTypesEntry: true,
       rollupTypes: true,
+      copyDtsFiles: false,
     }),
     !isCI &&
       visualizer({
