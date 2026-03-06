@@ -36,12 +36,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: '10.20.0'
+          version: '10.30.3'
 
       - name: Ensure pnpm is available
         run: |
           if ! command -v pnpm >/dev/null; then
-            npm install -g pnpm@10.20.0
+            npm install -g pnpm@10.30.3
           fi
         shell: bash
 
@@ -75,12 +75,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: '10.20.0'
+          version: '10.30.3'
 
       - name: Ensure pnpm is available
         run: |
           if ! command -v pnpm >/dev/null; then
-            npm install -g pnpm@10.20.0
+            npm install -g pnpm@10.30.3
           fi
         shell: bash
 
@@ -116,12 +116,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: '10.20.0'
+          version: '10.30.3'
 
       - name: Ensure pnpm is available
         run: |
           if ! command -v pnpm >/dev/null; then
-            npm install -g pnpm@10.20.0
+            npm install -g pnpm@10.30.3
           fi
         shell: bash
 
