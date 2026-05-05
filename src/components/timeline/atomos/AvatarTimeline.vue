@@ -1,6 +1,6 @@
 <template>
   <div class="avatar">
-    <img v-if="imagem" :src="imagem" />
+    <img v-if="imagem" :src="imagem" :alt="altText" />
     <span v-else-if="icone" class="material-symbols-outlined">
       {{ icone }}
     </span>
@@ -19,6 +19,10 @@ export default defineComponent({
     },
     icone: {
       type: String,
+    },
+    altText: {
+      type: String,
+      default: 'Avatar do perfil',
     },
   },
 });

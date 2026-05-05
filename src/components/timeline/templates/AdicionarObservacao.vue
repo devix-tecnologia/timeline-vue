@@ -6,10 +6,12 @@
     @cancelarClick="cancelar"
   >
     <template #conteudo>
-      <h2>Observação:</h2>
+      <h2 id="observacao-label">Observação:</h2>
       <textarea
+        id="observacao-textarea"
         v-model="state.observacaoLocal"
         data-testid="observacao-textarea"
+        aria-labelledby="observacao-label"
         placeholder=""
       ></textarea>
     </template>
