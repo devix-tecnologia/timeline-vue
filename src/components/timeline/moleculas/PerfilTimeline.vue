@@ -1,7 +1,15 @@
 <template>
   <section class="perfilTimeline" :class="classes">
-    <AvatarTimeline v-if="imagemPerfil" :imagem="imagemPerfil" :altText="`Avatar de ${nomePerfil}`" />
-    <AvatarTimeline v-else-if="iconePerfil" :icone="iconePerfil" :altText="`Ícone de ${nomePerfil}`" />
+    <AvatarTimeline
+      v-if="imagemPerfil"
+      :imagem="imagemPerfil"
+      :altText="`Avatar de ${nomePerfil}`"
+    />
+    <AvatarTimeline
+      v-else-if="iconePerfil"
+      :icone="iconePerfil"
+      :altText="`Ícone de ${nomePerfil}`"
+    />
     <h2 class="nome">{{ nomePerfil }}</h2>
   </section>
 </template>
