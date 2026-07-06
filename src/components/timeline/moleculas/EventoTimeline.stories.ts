@@ -4,14 +4,73 @@ import { Meta } from '@storybook/vue3-vite';
 export default {
   title: 'Devix/Moleculas/EventoTimeline',
   component: EventoTimeline,
+  parameters: {
+    docs: {
+      description: {
+        component: `Card principal da timeline que representa um evento na linha do tempo. Exibe status, horário, categoria, título, subtítulo e destaque.
+
+## 🎯 Quando usar
+- Como item individual na lista da timeline
+- Para representar qualquer tipo de evento agendado, realizado ou cancelado
+
+## 🚫 Quando NÃO usar
+- Para exibir detalhes completos do evento — use a tela de detalhamento com CabecalhoEventoDetalhado
+- Quando o evento não possui data prevista (campo obrigatório)
+
+## ♿ Acessibilidade
+- O contraste de cor do status é reforçado por classes CSS específicas
+- O cursor e o hover indicam interatividade quando clicavel = true
+- O evento atual (ehAtual) recebe destaque visual com fundo diferenciado`,
+      },
+    },
+  },
   argTypes: {
     status: {
+      description: 'Status atual do evento. Altera o ícone e a cor do card.',
+      table: { type: { summary: 'Status' } },
       control: { type: 'select' },
       options: ['planejado', 'realizado', 'cancelado', 'adiado', 'atrasado'],
     },
     criticidade: {
+      description: 'Nível de criticidade do evento. Altera a cor do indicador visual.',
+      table: { type: { summary: 'Criticidade' } },
       control: { type: 'select' },
       options: ['normal', 'media', 'alta'],
+    },
+    ehAtual: {
+      description:
+        'Quando true, destaca o evento como o atual na timeline aplicando um fundo especial.',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+      control: 'boolean',
+    },
+    previstoPara: {
+      description: 'Data e hora prevista para o evento.',
+      table: { type: { summary: 'Date' } },
+    },
+    realizadoEm: {
+      description: 'Data e hora em que o evento foi realizado (opcional).',
+      table: { type: { summary: 'Date' } },
+    },
+    categoria: {
+      description: 'Objeto contendo nome e ícone da categoria do evento.',
+      table: { type: { summary: 'Categoria' } },
+    },
+    titulo: {
+      description: 'Título principal do evento.',
+      table: { type: { summary: 'string' } },
+    },
+    subtitulo: {
+      description: 'Subtítulo ou descrição secundária do evento.',
+      table: { type: { summary: 'string' } },
+    },
+    textoDestaque: {
+      description: 'Texto de destaque adicional exibido ao final do card.',
+      table: { type: { summary: 'string' } },
+    },
+    clicavel: {
+      description: 'Habilita ou desabilita o clique no evento. Quando true, emite o evento click.',
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
+      control: 'boolean',
     },
   },
 } as Meta<typeof EventoTimeline>;
@@ -30,6 +89,14 @@ export const Padrao = {
     ehAtual: false,
   },
 };
+Padrao.parameters = {
+  docs: {
+    description: {
+      story:
+        'Evento planejado com criticidade média, subtítulo e texto de destaque. Estado padrão de um evento futuro.',
+    },
+  },
+};
 
 export const Atual = {
   args: {
@@ -43,6 +110,14 @@ export const Atual = {
     criticidade: 'alta',
     acao: false,
     ehAtual: true,
+  },
+};
+Atual.parameters = {
+  docs: {
+    description: {
+      story:
+        'Evento marcado como atual (ehAtual = true). Recebe destaque visual com fundo diferenciado na timeline.',
+    },
   },
 };
 
@@ -60,6 +135,14 @@ export const Importante = {
     ehAtual: false,
   },
 };
+Importante.parameters = {
+  docs: {
+    description: {
+      story:
+        'Evento planejado com criticidade alta. Demonstra o indicador visual de prioridade máxima.',
+    },
+  },
+};
 
 export const Realizado = {
   args: {
@@ -73,5 +156,13 @@ export const Realizado = {
     criticidade: 'media',
     acao: true,
     ehAtual: false,
+  },
+};
+Realizado.parameters = {
+  docs: {
+    description: {
+      story:
+        'Evento já realizado com ação habilitada (clicavel = true). Exibe o estado de conclusão.',
+    },
   },
 };
