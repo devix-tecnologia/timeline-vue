@@ -59,9 +59,6 @@ export default defineComponent({
 <style scoped>
 /* BOTAO */
 
-.material-symbols-outlined {
-  font-size: 2.6rem;
-}
 .btn {
   background: transparent;
   padding: 1.4rem;

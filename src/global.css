@@ -105,6 +105,10 @@ h4 {
   font-size: 1.4rem;
 }
 
+.material-symbols-outlined {
+  font-size: 2.6rem;
+}
+
 .fadeBaixo-enter-active,
 .fadeBaixo-leave-active,
 .fadeTopo-enter-active,

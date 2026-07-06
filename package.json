@@ -117,12 +117,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "postcss": {
-    "map": false,
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
   "author": "Devix Tecnologia",
   "contributors": [
     {

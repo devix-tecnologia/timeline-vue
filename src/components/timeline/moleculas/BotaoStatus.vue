@@ -48,10 +48,6 @@ export default defineComponent({
 
 <style scoped>
 /* CABEÇALHO */
-.material-symbols-outlined {
-  font-size: 2.6rem;
-}
-
 .btn {
   text-transform: capitalize;
 }

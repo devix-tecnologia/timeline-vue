@@ -49,9 +49,6 @@ export default defineComponent({
 
 <style scoped>
 /* CABEÇALHO */
-.material-symbols-outlined {
-  font-size: 2.6rem;
-}
 .topo {
   background: var(--cor-fundo);
   padding: 1.4rem;

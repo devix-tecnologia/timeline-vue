@@ -51,10 +51,6 @@ export default defineComponent({
 
 <style scoped>
 /* CABEÇALHO */
-.material-symbols-outlined {
-  font-size: 2.6rem;
-}
-
 .area-salvamento {
   background: var(--cor-terciaria);
   padding: 5rem 2.4rem;

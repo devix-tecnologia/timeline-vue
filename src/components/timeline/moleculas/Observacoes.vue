@@ -67,10 +67,6 @@ export default defineComponent({
 
 <style scoped>
 /* CABEÇALHO */
-.material-symbols-outlined {
-  font-size: 2.6rem;
-}
-
 .box {
   padding: 1.4rem;
   background: transparent;
