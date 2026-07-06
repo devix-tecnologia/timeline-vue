@@ -78,6 +78,9 @@ export default defineConfig({
         ],
         test: {
           name: 'storybook',
+          onConsoleLog(log) {
+            if (log.includes("ariaLabel' prop on 'PopoverProvider'")) return false;
+          },
           browser: {
             enabled: true,
             headless: true,

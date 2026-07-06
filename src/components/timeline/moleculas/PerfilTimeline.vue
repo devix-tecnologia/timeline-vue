@@ -10,7 +10,7 @@
       :icone="iconePerfil"
       :altText="`Ícone de ${nomePerfil}`"
     />
-    <h2 class="nome">{{ nomePerfil }}</h2>
+    <h2 v-if="nomePerfil" class="nome">{{ nomePerfil }}</h2>
   </section>
 </template>
 

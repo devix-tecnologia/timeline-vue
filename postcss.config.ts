@@ -7,7 +7,7 @@ const config = {
     purgecss({
       content: ['./src/**/*.html', './src/**/*.vue', './src/**/*.ts', './src/**/*.tsx'],
       safelist: {
-        standard: [/^fadeBaixo-/, /^fadeTopo-/],
+        standard: ['body', '*', '*:focus', /^fadeBaixo-/, /^fadeTopo-/],
         deep: [/^fadeBaixo-/, /^fadeTopo-/],
       },
       defaultExtractor: (content: string) => content.match(/[\w-/:]+(?<!:)/g) || [],

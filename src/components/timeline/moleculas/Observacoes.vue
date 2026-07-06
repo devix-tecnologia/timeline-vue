@@ -1,6 +1,6 @@
 <template>
   <section class="box box-observacoes" data-testid="observacoes">
-    <h3>Observações:</h3>
+    <h2>Observações:</h2>
     <ul class="lista-obs">
       <li
         v-for="(item, index) of observacoes"

@@ -128,6 +128,13 @@ export default defineComponent({
   background-color: var(--cor-selecao);
 }
 
+.atual .horaEvento,
+.atual .descricaoEvento,
+.atual .destaqueEvento,
+.atual .iconeCategoria {
+  opacity: 1 !important;
+}
+
 /* box com as informações */
 
 .eventoTimeline:before {

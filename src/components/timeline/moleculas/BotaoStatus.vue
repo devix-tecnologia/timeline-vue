@@ -65,7 +65,7 @@ export default defineComponent({
 
 .btn.realizado {
   border: 1px solid var(--cor-sucesso);
-  color: var(--cor-sucesso);
+  color: #008212;
 }
 .btn.realizado:active,
 .btn.preenchido.realizado {
@@ -79,7 +79,7 @@ export default defineComponent({
 
 .btn.cancelado {
   border: 1px solid var(--cor-importante);
-  color: var(--cor-importante);
+  color: #c42020;
 }
 .btn.cancelado:active,
 .btn.preenchido.cancelado {
@@ -93,7 +93,7 @@ export default defineComponent({
 
 .btn.atrasado {
   border: 1px solid var(--cor-alerta);
-  color: var(--cor-alerta);
+  color: #8a7300;
 }
 
 .btn.atrasado:active,
@@ -107,8 +107,8 @@ export default defineComponent({
 }
 
 .btn.adiado {
-  border: 1px solid var(--cor-apoio);
-  color: var(--cor-apoio);
+  border: 1px solid #3d4f57;
+  color: #3d4f57;
 }
 
 .btn.adiado:active,

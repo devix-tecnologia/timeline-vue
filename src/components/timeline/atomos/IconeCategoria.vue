@@ -79,11 +79,17 @@ export default defineComponent({
   font-size: 2rem;
 }
 
-.iconeCategoria.bg-claro,
+.iconeCategoria.bg-claro {
+  opacity: 1;
+  background: var(--cor-terciaria);
+  border-color: var(--cor-terciaria);
+  color: var(--cor-apoio);
+}
+
 .realizado .iconeCategoria,
 .cancelado .iconeCategoria,
 .adiado .iconeCategoria {
-  opacity: 0.3;
+  opacity: 0.75;
 }
 
 .iconeCategoria.borda-alerta,

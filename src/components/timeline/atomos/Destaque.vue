@@ -19,7 +19,7 @@ export default defineComponent({
 .realizado .destaqueEvento,
 .cancelado .destaqueEvento,
 .adiado .destaqueEvento {
-  opacity: 0.4;
+  opacity: 0.65;
 }
 .destaqueEvento {
   display: table-cell;

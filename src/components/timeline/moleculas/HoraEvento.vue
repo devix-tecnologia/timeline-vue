@@ -35,7 +35,7 @@ export default defineComponent({
 .realizado .horaEvento,
 .cancelado .horaEvento,
 .adiado .horaEvento {
-  opacity: 0.4;
+  opacity: 0.65;
 }
 .areaHora {
   width: 4.5rem;

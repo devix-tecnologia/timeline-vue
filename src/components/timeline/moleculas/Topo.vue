@@ -4,7 +4,7 @@
       <button class="btn_voltar" data-testid="botao-voltar" @click="emitirVoltarClick">
         <span class="material-symbols-outlined"> arrow_back </span>
       </button>
-      <h3 class="titulo">{{ titulo }}</h3>
+      <h3 v-if="titulo" class="titulo">{{ titulo }}</h3>
     </div>
   </div>
 </template>

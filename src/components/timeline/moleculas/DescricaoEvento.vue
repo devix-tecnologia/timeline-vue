@@ -39,7 +39,7 @@ export default defineComponent({
 .realizado .descricaoEvento,
 .cancelado .descricaoEvento,
 .adiado .descricaoEvento {
-  opacity: 0.4;
+  opacity: 0.65;
 }
 
 .descricaoEvento .titulo {
