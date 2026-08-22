@@ -7,11 +7,9 @@ import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { configDefaults } from 'vitest/config';
-import { fileURLToPath } from 'node:url';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
-const dirname =
-  typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+const dirname = import.meta.dirname;
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 const isStorybook = !!process.env.STORYBOOK;
@@ -37,7 +35,7 @@ export default defineConfig({
   ].filter(Boolean),
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(dirname, 'src/index.ts'),
       name: 'timeline-vue',
       formats: ['es', 'umd'],
       fileName: (format: string) => `timeline-vue.${format}.js`,
