@@ -1,5 +1,10 @@
 {
   "version": "1.0.3",
+  "automation": {
+    "level": "autopilot",
+    "autoSync": true,
+    "ciSkipTag": "[skip ci]"
+  },
   "provider": {
     "type": "fs",
     "config": {
