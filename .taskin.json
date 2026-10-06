@@ -3,12 +3,16 @@
   "automation": {
     "level": "autopilot",
     "autoSync": true,
-    "ciSkipTag": "[skip ci]"
+    "ciSkipTag": "[skip ci]",
+    "defaultBranch": "develop"
   },
   "provider": {
     "type": "fs",
     "config": {
       "tasksDir": "TASKS"
     }
+  },
+  "hookConfig": {
+    "baseBranch": "develop"
   }
 }
