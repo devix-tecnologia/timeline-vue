@@ -31,9 +31,14 @@ Defeitos encontrados ao usar a versão publicada (3.4.4) no OpenTask BTalk, a li
 
 ## Tasks
 <!-- [x] feito · [ ] em aberto · [ ] ... — adiado: <razão> para o que se decidiu não fazer -->
-- [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
+- [ ] Nome do CSS gerado alinhado ao `exports`, conferido com `pnpm pack`
+- [ ] Contorno de foco visível com `:focus-visible`
+- [ ] Evento acionável pelo teclado (Enter e Espaço)
+- [ ] Evento de dia inteiro sem hora
+- [ ] Fonte sem requisição ao Google Fonts
+- [ ] Separador de dia com `getDate()`
+- [ ] Reatividade à prop, sem reordenar a lista recebida e sem vazar o `setInterval`
+- [ ] Causa da 3.5.0 ausente no npm, e nova versão publicada
 
 ## Notes
-Add any relevant notes or links here.
+- A configuração da branch base das tasks está em `.taskin.json`, em `automation.defaultBranch` (`develop`). O `taskin config` não tem opção para ela. O `hookConfig.baseBranch` é a branch base passada aos hooks.
