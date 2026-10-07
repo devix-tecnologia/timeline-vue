@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" data-testid="botao" @click="handleClick">
+  <button class="btn" :class="classes" data-testid="botao" @click="handleClick">
     <slot>
       <!-- Com título, o nome da ligadura não entra no nome acessível do botão. -->
       <span

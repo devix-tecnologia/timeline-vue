@@ -35,6 +35,11 @@
   --cor-sucesso: #00a816;
   --cor-acao: #0187b1;
 
+  /* Texto sobre os fundos de ação, sucesso e importante, como o --cor-texto-selecao. */
+  --cor-texto-acao: #0d1117;
+  --cor-texto-sucesso: #0d1117;
+  --cor-texto-importante: #0d1117;
+
   --cor-sombra: rgba(27, 47, 57, 0.15);
 }
 
@@ -59,6 +64,9 @@
     --cor-importante: #bb0202;
     --cor-alerta: #f0cc0d;
     --cor-sucesso: #00a816;
+
+    --cor-texto-sucesso: #0d1117;
+    --cor-texto-importante: #f9f9f9;
 
     --cor-sombra: rgba(252, 252, 253, 0.224);
   }

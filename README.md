@@ -139,9 +139,15 @@ Para customizar o visual da Timeline de acordo com a identidade visual da aplica
   --cor-apoio: #57676f;
   --cor-linha: #e9eaeb;
 
-  --cor-importante: #bb0202;
+  --cor-importante: #fc3636;
   --cor-alerta: #f0cc0d;
   --cor-sucesso: #00a816;
+  --cor-acao: #0187b1;
+
+  /* Texto sobre os fundos de ação, sucesso e importante. */
+  --cor-texto-acao: #0d1117;
+  --cor-texto-sucesso: #0d1117;
+  --cor-texto-importante: #0d1117;
 }
 
 body {

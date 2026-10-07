@@ -25,6 +25,23 @@ describe('Botao.vue', () => {
     expect(emitted().click).toBeTruthy();
   });
 
+  it.each([
+    [Aparencias.PREENCHIDO, Tamanhos.PEQUENO],
+    [Aparencias.VAZIO, Tamanhos.GRANDE],
+  ])('aplica a aparência %s e o tamanho %s como classes do botão', (aparencia, tamanho) => {
+    const { getByTestId } = render(Botao, { props: { aparencia, tamanho, titulo: 'Salvar' } });
+
+    expect(getByTestId('botao').classList).toContain(aparencia);
+    expect(getByTestId('botao').classList).toContain(tamanho);
+  });
+
+  it('é outline e médio por padrão', () => {
+    const { getByTestId } = render(Botao, { props: { titulo: 'Salvar' } });
+
+    expect(getByTestId('botao').classList).toContain(Aparencias.OUTLINE);
+    expect(getByTestId('botao').classList).toContain(Tamanhos.MEDIO);
+  });
+
   it('deixa o nome da ligadura fora do nome acessível quando há título', () => {
     const { getByRole } = render(Botao, { props: { icone: 'check', titulo: 'Concluir' } });
 
