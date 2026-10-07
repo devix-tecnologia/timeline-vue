@@ -24,4 +24,18 @@ describe('AvatarTimeline', () => {
     });
     expect(wrapper.find('img').attributes('alt')).toBe('Meu avatar');
   });
+
+  it('renderiza as iniciais quando nao ha imagem nem icone', () => {
+    const wrapper = mount(AvatarTimeline, {
+      props: { iniciais: 'RM' },
+    });
+    expect(wrapper.find('.avatar__iniciais').text()).toBe('RM');
+  });
+
+  it('prefere o icone as iniciais', () => {
+    const wrapper = mount(AvatarTimeline, {
+      props: { icone: 'person', iniciais: 'RM' },
+    });
+    expect(wrapper.find('.avatar__iniciais').exists()).toBe(false);
+  });
 });

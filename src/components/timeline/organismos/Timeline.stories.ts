@@ -5,6 +5,7 @@ import {
   dadosPerfil,
   dadosPerfilConsultor,
   gerarEventosConsultor,
+  temaAgiliza,
 } from './Timeline.mock';
 import { APARENCIAS_TIMELINE } from './Timeline.types';
 import { Evento } from '../type';
@@ -44,8 +45,9 @@ O componente recebe um perfil opcional no topo e uma lista de eventos. Intername
 A prop \`aparencia\` muda a forma de representar os eventos, sem mudar os dados:
 - \`padrao\`: linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.
 - \`cartoes\`: um cartão por evento ao lado de um trilho, com status por extenso, etiquetas de categoria, prioridade e destaque, e separadores de dia por extenso ("Hoje", "Amanhã").
+- \`agiliza\`: a hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento (\`acoes\`, emitidas em \`acaoClick\`). Segue o projeto gráfico do agiliza.ai.
 
-Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\` × \`SeparadorPeriodoCartao\`, \`EventoTimeline\` × \`EventoTimelineCartao\`); a ordenação, o evento atual e o status atrasado continuam na Timeline.
+Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\`, \`SeparadorPeriodoCartao\` ou \`SeparadorPeriodoAgiliza\`; \`EventoTimeline\`, \`EventoTimelineCartao\` ou \`EventoTimelineAgiliza\`); a ordenação, o evento atual e o status atrasado continuam na Timeline.
 
 ## ♿ Acessibilidade
 - Os eventos são navegáveis por teclado via click
@@ -65,7 +67,7 @@ Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\` × \`S
     },
     aparencia: {
       description:
-        'Forma de representar os eventos: \`padrao\` (linha com a hora à esquerda) ou \`cartoes\` (um cartão por evento ao lado do trilho).',
+        'Forma de representar os eventos: \`padrao\` (linha com a hora à esquerda), \`cartoes\` (um cartão por evento ao lado do trilho) ou \`agiliza\` (hora, marcador do status e cartão com ações).',
       control: { type: 'select' },
       options: APARENCIAS_TIMELINE,
       table: { type: { summary: 'AparenciaTimeline' }, defaultValue: { summary: 'padrao' } },
@@ -146,7 +148,7 @@ export const Cartoes: StoryObj<typeof Timeline> = {
       description: {
         story: `Agenda de um consultor de vendas de desenvolvimento de sistemas, de ontem a daqui a três dias, na aparência \`cartoes\`.
 
-Cada evento vira um cartão com a hora, o status por extenso, o cliente e as etiquetas de categoria, prioridade e destaque (o valor da proposta, o tamanho do time). A prioridade aparece também na faixa à esquerda do cartão. Eventos encerrados perdem o preenchimento, o cancelado fica tracejado e o evento atual ganha o fundo de seleção.
+Cada evento vira um cartão com a hora, o status por extenso, o cliente e as etiquetas de categoria, prioridade e destaque (o valor da proposta, a pauta do encontro). A prioridade aparece também na faixa à esquerda do cartão. Eventos encerrados perdem o preenchimento, o cancelado fica tracejado e o evento atual ganha o fundo de seleção.
 
 A proposta de ontem não foi enviada: a Timeline a marca como atrasada.`,
       },
@@ -189,7 +191,38 @@ export const Aparencias: StoryObj<typeof Timeline> = {
     docs: {
       description: {
         story:
-          'A mesma agenda do consultor de vendas em cada aparência, para comparar as duas formas de representar os eventos.',
+          'A mesma agenda do consultor de vendas em cada aparência, para comparar as formas de representar os eventos.',
+      },
+    },
+  },
+};
+
+export const Agiliza: StoryObj<typeof Timeline> = {
+  render: (args) => ({
+    components: { Timeline },
+    setup() {
+      const acoes: string[] = [];
+      const registrarAcao = (evento: Evento, acao: { rotulo: string }) => {
+        acoes.push(`${acao.rotulo}: ${evento.titulo}`);
+      };
+      return { args, tema: temaAgiliza, registrarAcao };
+    },
+    template: `
+      <div :style="tema" style="max-width: 48rem; padding: 0 2rem">
+        <Timeline v-bind="args" @acaoClick="registrarAcao" />
+      </div>
+    `,
+  }),
+  args: {
+    aparencia: 'agiliza',
+    eventosTimeline: gerarEventosConsultor(),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `A agenda do consultor de vendas na aparência \`agiliza\`, com as cores do projeto gráfico do agiliza.ai aplicadas por tokens num contêiner.
+
+Cada evento mostra a hora à esquerda (a realizada, quando houver), o marcador do status sobre o trilho e um cartão com o título, o cliente, a hora prevista ou a descrição, o status por extenso e as ações do evento. As ações vêm do campo \`acoes\` do evento, e o clique nelas sai no evento \`acaoClick\`, separado do \`eventoClick\` do cartão.`,
       },
     },
   },

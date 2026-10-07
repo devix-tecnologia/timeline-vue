@@ -19,4 +19,20 @@ describe('SeloStatus.vue', () => {
     expect(icone?.getAttribute('aria-hidden')).toBe('true');
     expect(icone?.getAttribute('data-icone')).toBe('check_circle');
   });
+
+  it('usa a aparência contorno por padrão e aceita a preenchida', async () => {
+    const { getByTestId, rerender } = render(SeloStatus, { props: { status: 'adiado' } });
+
+    expect(getByTestId('selo-status').classList).toContain('seloStatus--contorno');
+    await rerender({ status: 'adiado', aparencia: 'preenchido' });
+    expect(getByTestId('selo-status').classList).toContain('seloStatus--preenchido');
+  });
+
+  it('expõe a cor do status para o ícone e o fundo', () => {
+    const { getByTestId } = render(SeloStatus, { props: { status: 'cancelado' } });
+
+    expect(getByTestId('selo-status').style.getPropertyValue('--seloStatus-cor')).toBe(
+      SELOS_STATUS.cancelado.cor
+    );
+  });
 });

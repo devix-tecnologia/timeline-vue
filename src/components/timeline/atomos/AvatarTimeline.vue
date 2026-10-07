@@ -4,6 +4,7 @@
     <span v-else-if="icone" class="material-symbols-outlined">
       {{ icone }}
     </span>
+    <span v-else-if="iniciais" class="avatar__iniciais">{{ iniciais }}</span>
     <span v-else="icone" class="material-symbols-outlined"> person </span>
   </div>
 </template>
@@ -18,6 +19,9 @@ export default defineComponent({
       type: String,
     },
     icone: {
+      type: String,
+    },
+    iniciais: {
       type: String,
     },
     altText: {
@@ -53,5 +57,12 @@ export default defineComponent({
 
 .avatar span {
   font-size: 3rem;
+}
+
+.avatar .avatar__iniciais {
+  color: var(--cor-terciaria);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
 }
 </style>

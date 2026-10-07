@@ -24,4 +24,16 @@ describe('Botao.vue', () => {
     // Verifica se o evento foi emitido
     expect(emitted().click).toBeTruthy();
   });
+
+  it('deixa o nome da ligadura fora do nome acessível quando há título', () => {
+    const { getByRole } = render(Botao, { props: { icone: 'check', titulo: 'Concluir' } });
+
+    expect(getByRole('button', { name: 'Concluir' })).toBeTruthy();
+  });
+
+  it('centraliza o ícone quando não há título', () => {
+    const { getByTestId } = render(Botao, { props: { icone: 'more_horiz' } });
+
+    expect(getByTestId('botao').querySelector('.btn__icone--sozinho')).toBeTruthy();
+  });
 });

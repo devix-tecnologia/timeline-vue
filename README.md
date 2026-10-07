@@ -163,16 +163,59 @@ Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título,
 
 A prop `aparencia` muda a forma de representar os eventos, com os mesmos dados:
 
-| Valor               | Como os eventos aparecem                                                                                                                        |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `padrao` (o padrão) | Linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.                                                                     |
-| `cartoes`           | Um cartão por evento ao lado de um trilho, com o status por extenso e etiquetas de categoria, prioridade e destaque. O dia aparece por extenso. |
+| Valor               | Como os eventos aparecem                                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `padrao` (o padrão) | Linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.                                                                             |
+| `cartoes`           | Um cartão por evento ao lado de um trilho, com o status por extenso e etiquetas de categoria, prioridade e destaque. O dia aparece por extenso.         |
+| `agiliza`           | A hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento. Segue o projeto gráfico do agiliza.ai. |
 
 ```vue
 <Timeline aparencia="cartoes" :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos" />
 ```
 
-O tipo `AparenciaTimeline` é exportado pelo pacote. No Storybook, a story **Organismos/Timeline › Aparências lado a lado** mostra a mesma agenda nas duas aparências.
+O tipo `AparenciaTimeline` é exportado pelo pacote. No Storybook, a story **Organismos/Timeline › Aparências lado a lado** mostra a mesma agenda em todas as aparências.
+
+#### Ações do evento
+
+Na aparência `agiliza`, cada evento pode trazer botões de ação no campo `acoes`. O clique sai no evento `acaoClick`, separado do `eventoClick`:
+
+```ts
+const evento = {
+  // ...
+  acoes: [
+    { id: 'abrir-proposta', rotulo: 'Abrir proposta', principal: true },
+    { id: 'mais-acoes', rotulo: 'Mais ações', icone: 'more_horiz', apenasIcone: true },
+  ],
+};
+```
+
+```vue
+<Timeline
+  aparencia="agiliza"
+  :eventosTimeline="listaEventos"
+  @acaoClick="(evento, acao) => executar(acao.id, evento)"
+/>
+```
+
+### Tela de agenda (`TemplateAgenda`)
+
+O `TemplateAgenda` monta a tela do projeto gráfico do agiliza.ai. No topo ficam a marca (slot `marca`), o avatar com as iniciais, o título, o nome e a função (`perfil.descricao`). Abaixo, a busca e a escolha entre duas visões:
+
+- **Agenda** (`AgendaEventos`): os pendentes que passaram do horário em destaque, os próximos eventos do dia e os concluídos, com filtros;
+- **Histórico**: os eventos já resolvidos, na Timeline com a aparência `agiliza`.
+
+```vue
+<TemplateAgenda
+  :perfil="perfil"
+  :eventos="eventos"
+  @acaoClick="executarAcao"
+  @diaClick="escolherDia"
+>
+  <template #marca><img src="/logo.svg" alt="agiliza.ai" /></template>
+</TemplateAgenda>
+```
+
+As cores vêm dos tokens `--cor-*` de quem usa o componente. As stories aplicam os tokens do agiliza.ai num contêiner.
 
 ## 🚀 Contribuindo
 

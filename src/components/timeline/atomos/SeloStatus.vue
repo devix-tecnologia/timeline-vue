@@ -1,5 +1,10 @@
 <template>
-  <span class="seloStatus" :class="`seloStatus--${status}`" data-testid="selo-status">
+  <span
+    class="seloStatus"
+    :class="[`seloStatus--${status}`, `seloStatus--${aparencia}`]"
+    :style="{ '--seloStatus-cor': selo.cor }"
+    data-testid="selo-status"
+  >
     <span
       class="material-symbols-outlined seloStatus__icone"
       :data-icone="selo.icone"
@@ -13,7 +18,7 @@
 import { defineComponent, computed, PropType } from 'vue';
 import 'material-symbols/outlined.css';
 import { Status } from '../type';
-import { SELOS_STATUS } from './SeloStatus.types';
+import { APARENCIAS_SELO_STATUS, AparenciaSeloStatus, SELOS_STATUS } from './SeloStatus.types';
 
 export default defineComponent({
   name: 'SeloStatus',
@@ -21,6 +26,12 @@ export default defineComponent({
     status: {
       required: true,
       type: String as PropType<Status>,
+    },
+    aparencia: {
+      type: String as PropType<AparenciaSeloStatus>,
+      default: 'contorno',
+      validator: (aparencia: string) =>
+        (APARENCIAS_SELO_STATUS as readonly string[]).includes(aparencia),
     },
   },
   setup(props) {
@@ -32,7 +43,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* O texto herda a cor de quem usa o selo; a cor do status fica só no ícone. */
+/* O texto herda a cor de quem usa o selo; a cor do status fica no ícone e no fundo. */
 .seloStatus {
   display: inline-flex;
   align-items: center;
@@ -48,6 +59,7 @@ export default defineComponent({
 }
 
 .seloStatus .seloStatus__icone {
+  color: var(--seloStatus-cor);
   font-size: 1.6rem;
 }
 
@@ -59,24 +71,14 @@ export default defineComponent({
   content: attr(data-icone);
 }
 
-.seloStatus--planejado .seloStatus__icone,
-.seloStatus--adiantado .seloStatus__icone {
-  color: var(--cor-acao);
+.seloStatus--preenchido {
+  padding: 0.4rem 1rem 0.4rem 0.8rem;
+  border-color: transparent;
+  background: color-mix(in srgb, var(--seloStatus-cor) 14%, var(--cor-fundo));
+  color: var(--cor-texto);
 }
 
-.seloStatus--atrasado .seloStatus__icone {
-  color: var(--cor-alerta);
-}
-
-.seloStatus--adiado .seloStatus__icone {
-  color: var(--cor-apoio);
-}
-
-.seloStatus--realizado .seloStatus__icone {
-  color: var(--cor-sucesso);
-}
-
-.seloStatus--cancelado .seloStatus__icone {
-  color: var(--cor-importante);
+.seloStatus--preenchido .seloStatus__icone {
+  font-variation-settings: 'FILL' 1;
 }
 </style>
