@@ -5,6 +5,7 @@
 - Assignee: sidartaveloso
 
 ## Description
+
 Defeitos encontrados ao usar a versão publicada (3.4.4) no OpenTask BTalk, a linha do tempo da oportunidade. Ela fica no repositório `sidartaveloso/opentask`, em `packages/btalk`, e foi feita na task-045. O BTalk contorna cada defeito com um comentário no código. Quando esta correção for publicada, esses contornos podem sair.
 
 ### Defeitos
@@ -30,7 +31,9 @@ Defeitos encontrados ao usar a versão publicada (3.4.4) no OpenTask BTalk, a li
 - A nova versão foi publicada no npm.
 
 ## Tasks
+
 <!-- [x] feito · [ ] em aberto · [ ] ... — adiado: <razão> para o que se decidiu não fazer -->
+
 - [ ] Nome do CSS gerado alinhado ao `exports`, conferido com `pnpm pack`
 - [ ] Contorno de foco visível com `:focus-visible`
 - [ ] Evento acionável pelo teclado (Enter e Espaço)
@@ -41,4 +44,5 @@ Defeitos encontrados ao usar a versão publicada (3.4.4) no OpenTask BTalk, a li
 - [ ] Causa da 3.5.0 ausente no npm, e nova versão publicada
 
 ## Notes
+
 - A configuração da branch base das tasks está em `.taskin.json`, em `automation.defaultBranch` (`develop`). O `taskin config` não tem opção para ela. O `hookConfig.baseBranch` é a branch base passada aos hooks.
