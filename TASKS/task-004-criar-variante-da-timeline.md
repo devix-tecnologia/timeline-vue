@@ -1,4 +1,4 @@
-# 🧩 Task 003 — Corrige CSS publicado, acessibilidade e reatividade da timeline
+# 🧩 Task 004 — Criar variante da timeline
 
 - Status: pending
 - Type: feat
