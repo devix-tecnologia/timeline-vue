@@ -1,6 +1,6 @@
 # 🧩 Task 004 — Criar variante da timeline
 
-- Status: pending
+- Status: in-progress
 - Type: feat
 - Assignee: sidartaveloso
 
