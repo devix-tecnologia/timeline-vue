@@ -4,7 +4,7 @@
       v-for="acao in acoes"
       :key="acao.id"
       class="acoesEvento__botao"
-      :class="{ 'acoesEvento__botao--apenasIcone': acao.apenasIcone, preenchido: acao.principal }"
+      :class="{ 'acoesEvento__botao--apenasIcone': acao.apenasIcone }"
       :aparencia="acao.principal ? 'preenchido' : 'outline'"
       :icone="acao.icone"
       :titulo="acao.apenasIcone ? '' : acao.rotulo"
@@ -23,10 +23,6 @@ import { AcaoEvento } from '../type';
 /**
  * Botões das ações de um evento. O clique não sobe até o cartão, que tem o seu próprio
  * clique (abrir o evento).
- *
- * O Botao hoje não aplica a `aparencia` à raiz (o `:class="classes"` saiu no a1b1975);
- * por isso a classe `preenchido` da ação principal vai também pela raiz do componente.
- * Religar a classe no Botao ativa estilos de outros componentes que reprovam no contraste.
  */
 export default defineComponent({
   name: 'AcoesEvento',
