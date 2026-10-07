@@ -68,7 +68,7 @@ O projeto gráfico tem duas telas do agiliza.ai, a partir da agenda do consultor
   - `AreaSalvamento`: `#1b2f39` sobre `#0187b1`;
   - `BotaoStatus` realizado: `#1b2f39` sobre `#00a816`.
 
-  Fica para outra task. Enquanto isso, o `AcoesEvento` põe a classe `preenchido` pela raiz do Botao.
+  Corrigido em seguida, na branch `fix/botao-aparencia-tamanho`: o Botao voltou a aplicar as classes, o texto sobre as cores de ação, sucesso e importante ganhou tokens (`--cor-texto-acao`, `--cor-texto-sucesso`, `--cor-texto-importante`), e o `AcoesEvento` deixou de pôr a classe `preenchido` pela raiz do Botao.
 
 - **Ajustes no `Botao`.** Ele ganhou o ícone centralizado quando não há título. Com título, o nome da ligadura (`edit_calendar`) saiu do nome acessível.
 - **Desvios do projeto gráfico.**
