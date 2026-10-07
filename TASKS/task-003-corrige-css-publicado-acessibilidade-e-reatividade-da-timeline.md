@@ -40,7 +40,7 @@ Defeitos encontrados ao usar a versão publicada (3.4.4) no OpenTask BTalk, a li
 - [ ] Evento de dia inteiro sem hora
 - [ ] Fonte sem requisição ao Google Fonts
 - [ ] Separador de dia com `getDate()`
-- [ ] Reatividade à prop, sem reordenar a lista recebida e sem vazar o `setInterval`
+- [x] Reatividade à prop, sem reordenar a lista recebida e sem vazar o `setInterval` — feito na task-004, que precisava da Timeline reagindo à busca; testes em `Timeline.test.ts` ("lista recebida")
 - [ ] Causa da 3.5.0 ausente no npm, e nova versão publicada
 
 ## Notes
