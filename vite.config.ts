@@ -65,6 +65,15 @@ export default defineConfig({
     environment: 'happy-dom',
     exclude: [...configDefaults.exclude, 'dist/**'],
     projects: [
+      // Testes unitários (Testing Library / Vue Test Utils) em happy-dom, fora do navegador
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+          environment: 'happy-dom',
+          include: ['src/**/*.{test,spec}.ts'],
+        },
+      },
       {
         extends: true,
         plugins: [
