@@ -1,4 +1,4 @@
-import { Evento, Perfil } from '../type';
+import { Categoria, Evento, Perfil } from '../type';
 
 export const dadosPerfil: Perfil = {
   nome: 'Maria do Socorro',
@@ -294,3 +294,172 @@ export const dadosEventos: Evento[] = [
     clicavel: true,
   } satisfies Evento,
 ];
+
+/*
+ * CONSULTOR DE VENDAS
+ * Agenda de quem vende desenvolvimento de sistemas sob medida: prospecção,
+ * descoberta, demonstração, proposta, negociação e contrato.
+ */
+
+export const dadosPerfilConsultor: Perfil = {
+  nome: 'Rafael Moreira · Consultor de vendas',
+  icone: 'handshake',
+};
+
+const categoriasConsultor = {
+  ligacao: { nome: 'Ligação', icone: 'call' },
+  email: { nome: 'E-mail', icone: 'mail' },
+  reuniao: { nome: 'Reunião', icone: 'groups' },
+  visita: { nome: 'Visita técnica', icone: 'apartment' },
+  demonstracao: { nome: 'Demonstração', icone: 'present_to_all' },
+  workshop: { nome: 'Workshop', icone: 'design_services' },
+  proposta: { nome: 'Proposta', icone: 'request_quote' },
+  negociacao: { nome: 'Negociação', icone: 'handshake' },
+  contrato: { nome: 'Contrato', icone: 'contract' },
+  kickoff: { nome: 'Kickoff', icone: 'rocket_launch' },
+} satisfies Record<string, Categoria>;
+
+type EventoConsultor = Pick<
+  Evento,
+  'titulo' | 'subtitulo' | 'destaque' | 'categoria' | 'status' | 'criticidade' | 'realizado'
+> & { previstoPara: Date };
+
+const eventoConsultor = ({ previstoPara, ...evento }: EventoConsultor): Evento => ({
+  data: previstoPara,
+  previstoPara: new Date(previstoPara),
+  tolerancia: 15,
+  atual: false,
+  scroll: false,
+  clicavel: true,
+  ...evento,
+});
+
+/**
+ * Gera a agenda do consultor em torno de `referencia` (hoje, por padrão): ontem,
+ * hoje, amanhã e daqui a três dias. Devolve uma lista nova a cada chamada, porque
+ * a Timeline ordena e altera os eventos que recebe.
+ *
+ * A proposta de ontem está `planejado` de propósito: a Timeline a marca como atrasada.
+ */
+export function gerarEventosConsultor(referencia: Date = new Date()): Evento[] {
+  const em = (dias: number, horas: number, minutos = 0) => {
+    const data = new Date(referencia);
+    data.setDate(data.getDate() + dias);
+    data.setHours(horas, minutos, 0, 0);
+    return data;
+  };
+
+  return [
+    eventoConsultor({
+      previstoPara: em(-1, 9),
+      realizado: em(-1, 9, 5),
+      titulo: 'Ligação de prospecção',
+      subtitulo: 'Construtora Alicerce · diretora de TI',
+      destaque: '',
+      categoria: categoriasConsultor.ligacao,
+      status: 'realizado',
+      criticidade: 'baixa',
+    }),
+    eventoConsultor({
+      previstoPara: em(-1, 11),
+      titulo: 'Visita técnica',
+      subtitulo: 'Cooperativa AgroSul · sede em Chapecó',
+      destaque: 'Nova data a definir',
+      categoria: categoriasConsultor.visita,
+      status: 'adiado',
+      criticidade: 'baixa',
+    }),
+    eventoConsultor({
+      previstoPara: em(-1, 14),
+      realizado: em(-1, 14, 10),
+      titulo: 'Reunião de descoberta',
+      subtitulo: 'Rede Farma Vida · portal do cliente e app',
+      destaque: '3 squads',
+      categoria: categoriasConsultor.reuniao,
+      status: 'realizado',
+      criticidade: 'media',
+    }),
+    eventoConsultor({
+      previstoPara: em(-1, 17),
+      titulo: 'Enviar proposta revisada',
+      subtitulo: 'Cooperativa AgroSul · integração com o ERP',
+      destaque: 'R$ 320 mil',
+      categoria: categoriasConsultor.proposta,
+      status: 'planejado',
+      criticidade: 'alta',
+    }),
+    eventoConsultor({
+      previstoPara: em(0, 8, 30),
+      realizado: em(0, 8, 40),
+      titulo: 'Follow-up por e-mail',
+      subtitulo: 'Construtora Alicerce · case de gestão de obras',
+      destaque: '',
+      categoria: categoriasConsultor.email,
+      status: 'realizado',
+      criticidade: 'baixa',
+    }),
+    eventoConsultor({
+      previstoPara: em(0, 10),
+      titulo: 'Demonstração da plataforma',
+      subtitulo: 'Banco Horizonte · squad de modernização',
+      destaque: 'R$ 480 mil',
+      categoria: categoriasConsultor.demonstracao,
+      status: 'planejado',
+      criticidade: 'alta',
+    }),
+    eventoConsultor({
+      previstoPara: em(0, 13, 30),
+      titulo: 'Workshop de requisitos',
+      subtitulo: 'Rede Farma Vida · app de fidelidade',
+      destaque: 'Discovery de 2 semanas',
+      categoria: categoriasConsultor.workshop,
+      status: 'planejado',
+      criticidade: 'media',
+    }),
+    eventoConsultor({
+      previstoPara: em(0, 16),
+      titulo: 'Alinhamento com a pré-venda',
+      subtitulo: 'Arquitetura e estimativa da proposta',
+      destaque: '',
+      categoria: categoriasConsultor.reuniao,
+      status: 'cancelado',
+      criticidade: 'baixa',
+    }),
+    eventoConsultor({
+      previstoPara: em(1, 9, 30),
+      titulo: 'Negociação de contrato',
+      subtitulo: 'Banco Horizonte · jurídico e compras',
+      destaque: 'R$ 480 mil',
+      categoria: categoriasConsultor.negociacao,
+      status: 'planejado',
+      criticidade: 'alta',
+    }),
+    eventoConsultor({
+      previstoPara: em(1, 15),
+      titulo: 'Revisão de escopo com o CTO',
+      subtitulo: 'Logística Rota Norte · ajustes finais da proposta',
+      destaque: '',
+      categoria: categoriasConsultor.reuniao,
+      status: 'planejado',
+      criticidade: 'media',
+    }),
+    eventoConsultor({
+      previstoPara: em(3, 10),
+      titulo: 'Assinatura do contrato',
+      subtitulo: 'Logística Rota Norte · squad dedicado por 12 meses',
+      destaque: 'R$ 1,2 mi',
+      categoria: categoriasConsultor.contrato,
+      status: 'planejado',
+      criticidade: 'alta',
+    }),
+    eventoConsultor({
+      previstoPara: em(3, 16),
+      titulo: 'Kickoff com o time de entrega',
+      subtitulo: 'Logística Rota Norte · apresentação do gerente de projeto',
+      destaque: '',
+      categoria: categoriasConsultor.kickoff,
+      status: 'planejado',
+      criticidade: 'media',
+    }),
+  ];
+}

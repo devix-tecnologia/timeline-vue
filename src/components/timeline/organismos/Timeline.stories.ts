@@ -1,6 +1,12 @@
 import Timeline from './Timeline.vue';
-import { Meta, StoryFn } from '@storybook/vue3-vite';
-import { dadosEventos, dadosPerfil } from './Timeline.mock';
+import { Meta, StoryFn, StoryObj } from '@storybook/vue3-vite';
+import {
+  dadosEventos,
+  dadosPerfil,
+  dadosPerfilConsultor,
+  gerarEventosConsultor,
+} from './Timeline.mock';
+import { APARENCIAS_TIMELINE } from './Timeline.types';
 import { Evento } from '../type';
 
 export default {
@@ -34,6 +40,13 @@ O componente recebe um perfil opcional no topo e uma lista de eventos. Intername
 - Atualiza o status para "atrasado" quando ultrapassa a tolerância
 - Rola automaticamente até o evento atual na montagem
 
+## 🎨 Aparências
+A prop \`aparencia\` muda a forma de representar os eventos, sem mudar os dados:
+- \`padrao\`: linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.
+- \`cartoes\`: um cartão por evento ao lado de um trilho, com status por extenso, etiquetas de categoria, prioridade e destaque, e separadores de dia por extenso ("Hoje", "Amanhã").
+
+Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\` × \`SeparadorPeriodoCartao\`, \`EventoTimeline\` × \`EventoTimelineCartao\`); a ordenação, o evento atual e o status atrasado continuam na Timeline.
+
 ## ♿ Acessibilidade
 - Os eventos são navegáveis por teclado via click
 - Cada evento possui \`data-testid\` para testes automatizados
@@ -49,6 +62,13 @@ O componente recebe um perfil opcional no topo e uma lista de eventos. Intername
     eventosTimeline: {
       description: 'Lista de eventos a serem exibidos na linha do tempo, ordenados por data',
       table: { type: { summary: 'Evento[]' } },
+    },
+    aparencia: {
+      description:
+        'Forma de representar os eventos: \`padrao\` (linha com a hora à esquerda) ou \`cartoes\` (um cartão por evento ao lado do trilho).',
+      control: { type: 'select' },
+      options: APARENCIAS_TIMELINE,
+      table: { type: { summary: 'AparenciaTimeline' }, defaultValue: { summary: 'padrao' } },
     },
   },
 } as Meta<typeof Timeline>;
@@ -109,6 +129,68 @@ SemPerfil.parameters = {
     description: {
       story:
         'Timeline sem o perfil no topo. Útil quando o contexto do perfil já é conhecido pelo usuário.',
+    },
+  },
+};
+
+export const Cartoes: StoryObj<typeof Timeline> = {
+  name: 'Cartões',
+  render: Template,
+  args: {
+    aparencia: 'cartoes',
+    perfilTimeline: dadosPerfilConsultor,
+    eventosTimeline: gerarEventosConsultor(),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `Agenda de um consultor de vendas de desenvolvimento de sistemas, de ontem a daqui a três dias, na aparência \`cartoes\`.
+
+Cada evento vira um cartão com a hora, o status por extenso, o cliente e as etiquetas de categoria, prioridade e destaque (o valor da proposta, o tamanho do time). A prioridade aparece também na faixa à esquerda do cartão. Eventos encerrados perdem o preenchimento, o cancelado fica tracejado e o evento atual ganha o fundo de seleção.
+
+A proposta de ontem não foi enviada: a Timeline a marca como atrasada.`,
+      },
+    },
+  },
+};
+
+/**
+ * Uma Timeline por valor de APARENCIAS_TIMELINE: aparência nova aparece aqui sem editar a story.
+ */
+export const Aparencias: StoryObj<typeof Timeline> = {
+  name: 'Aparências lado a lado',
+  render: () => ({
+    components: { Timeline },
+    setup() {
+      // Uma lista de eventos por Timeline, porque a Timeline altera os eventos que recebe.
+      const aparencias = APARENCIAS_TIMELINE.map((aparencia) => ({
+        aparencia,
+        eventos: gerarEventosConsultor(),
+      }));
+      return { aparencias, perfil: dadosPerfilConsultor };
+    },
+    template: `
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr)); gap: 2.4rem; align-items: start">
+        <figure v-for="item in aparencias" :key="item.aparencia" style="margin: 0">
+          <figcaption style="padding: 0.8rem 0; color: var(--cor-texto); font-size: 1.4rem">
+            aparencia: <code>{{ item.aparencia }}</code>
+          </figcaption>
+          <Timeline
+            :aparencia="item.aparencia"
+            :perfilTimeline="perfil"
+            :eventosTimeline="item.eventos"
+          />
+        </figure>
+      </div>
+    `,
+  }),
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          'A mesma agenda do consultor de vendas em cada aparência, para comparar as duas formas de representar os eventos.',
+      },
     },
   },
 };

@@ -8,16 +8,18 @@
       data-testid="perfilTimeline"
     />
 
-    <section class="timeline">
+    <section class="timeline" :class="`timeline--${aparencia}`">
       <!-- SEPARADOR -->
       <div v-for="(evento, index) in eventosPorTipo" :key="evento.key">
-        <SeparadorPeriodo
+        <component
+          :is="componentes.separador"
           v-if="evento.tipo === 'dia'"
           :dataSeparador="evento.valor"
           :data-testid="`evento-timeline-${index}`"
         />
         <!--loop-->
-        <EventoTimeline
+        <component
+          :is="componentes.evento"
           v-if="evento.tipo === 'evento'"
           :status="evento.valor.status"
           :criticidade="evento.valor.criticidade"
@@ -28,6 +30,7 @@
           :subtitulo="evento.valor.subtitulo"
           :texto-destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
+          :clicavel="evento.valor.clicavel !== false"
           :data-testid="`evento-timeline-${index}`"
           @click="handleEventoClick(evento.valor, $event)"
         />
@@ -37,11 +40,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, PropType } from 'vue';
+import { defineComponent, computed, reactive, PropType, Component } from 'vue';
 import EventoTimeline from '../moleculas/EventoTimeline.vue';
+import EventoTimelineCartao from '../moleculas/EventoTimelineCartao.vue';
 import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
+import SeparadorPeriodoCartao from '../moleculas/SeparadorPeriodoCartao.vue';
 import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
 import { Evento, Perfil } from '../type';
+import { APARENCIAS_TIMELINE, AparenciaTimeline } from './Timeline.types';
 import 'material-symbols/outlined.css';
 
 type TipoEventoTimeline =
@@ -49,11 +55,18 @@ type TipoEventoTimeline =
   | { tipo: 'evento'; valor: Evento; key: number }
   | { tipo: 'eventos'; valor: Evento[]; key: number };
 
+// Cada aparência troca o separador de dia e o evento; as props passadas são as mesmas.
+const COMPONENTES_POR_APARENCIA: Record<
+  AparenciaTimeline,
+  { separador: Component; evento: Component }
+> = {
+  padrao: { separador: SeparadorPeriodo, evento: EventoTimeline },
+  cartoes: { separador: SeparadorPeriodoCartao, evento: EventoTimelineCartao },
+};
+
 export default defineComponent({
   components: {
     PerfilTimeline,
-    SeparadorPeriodo,
-    EventoTimeline,
   },
   props: {
     perfilTimeline: {
@@ -63,6 +76,12 @@ export default defineComponent({
     eventosTimeline: {
       required: true,
       type: Array as PropType<Evento[]>,
+    },
+    aparencia: {
+      type: String as PropType<AparenciaTimeline>,
+      default: 'padrao',
+      validator: (aparencia: string) =>
+        (APARENCIAS_TIMELINE as readonly string[]).includes(aparencia),
     },
   },
 
@@ -188,6 +207,7 @@ export default defineComponent({
 
     carregarListaEventos();
     return {
+      componentes: computed(() => COMPONENTES_POR_APARENCIA[props.aparencia]),
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
       handleEventoClick,
@@ -219,5 +239,22 @@ export default defineComponent({
   display: table;
   width: 100%;
   position: relative;
+}
+
+/*
+ * APARÊNCIA CARTÕES
+ * Cada separador e cada cartão desenha o seu trecho do trilho e o estende pelo
+ * espaço até o próximo item. Uma linha só, num ::before da lista, cobriria todos
+ * os textos e impediria o axe de medir o contraste deles.
+ */
+
+.timeline--cartoes {
+  --trilho-largura: 5.6rem;
+  --trilho-espaco: 1.2rem;
+  --trilho-cor: var(--cor-linha);
+  display: flex;
+  flex-direction: column;
+  gap: var(--trilho-espaco);
+  padding: 1.2rem 1.6rem 3.2rem 0.8rem;
 }
 </style>

@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/vue';
 import Timeline from './Timeline.vue';
-import { dadosPerfil } from './Timeline.mock';
+import { dadosPerfil, dadosPerfilConsultor, gerarEventosConsultor } from './Timeline.mock';
 import { Evento } from '../type';
 
 describe('Timeline.vue', () => {
@@ -92,5 +92,61 @@ describe('Timeline.vue', () => {
 
     // Verifica se o evento NÃO foi emitido
     expect(emitted().eventoClick).toBeUndefined();
+  });
+
+  describe('aparencia', () => {
+    const referencia = new Date(2026, 9, 7, 12, 0);
+
+    it('usa a aparência padrao quando a prop não é informada', () => {
+      const { container } = render(Timeline, {
+        props: { eventosTimeline: gerarEventosConsultor(referencia) },
+      });
+
+      expect(container.querySelector('.timeline--padrao')).toBeTruthy();
+      expect(container.querySelectorAll('.separadorPeriodo')).toHaveLength(4);
+      expect(container.querySelectorAll('.eventoTimeline')).toHaveLength(12);
+      expect(container.querySelector('.eventoCartao')).toBeNull();
+    });
+
+    it('troca separadores e eventos pelos cartões na aparência cartoes', () => {
+      const { container } = render(Timeline, {
+        props: {
+          aparencia: 'cartoes',
+          perfilTimeline: dadosPerfilConsultor,
+          eventosTimeline: gerarEventosConsultor(referencia),
+        },
+      });
+
+      expect(container.querySelector('.timeline--cartoes')).toBeTruthy();
+      expect(container.querySelectorAll('.separadorCartao')).toHaveLength(4);
+      expect(container.querySelectorAll('.eventoCartao')).toHaveLength(12);
+      expect(container.querySelector('.eventoTimeline')).toBeNull();
+      expect(container.querySelector('.separadorPeriodo')).toBeNull();
+    });
+
+    it('na aparência cartoes, emite "eventoClick" com o evento clicado', async () => {
+      const eventos = gerarEventosConsultor(referencia);
+      const { emitted, getByRole } = render(Timeline, {
+        props: { aparencia: 'cartoes', eventosTimeline: eventos },
+      });
+
+      await fireEvent.click(getByRole('button', { name: 'Assinatura do contrato' }));
+
+      const eventoClick = emitted().eventoClick as [Evento, MouseEvent][];
+      expect(eventoClick).toHaveLength(1);
+      expect(eventoClick[0][0].titulo).toBe('Assinatura do contrato');
+    });
+
+    it('na aparência cartoes, mostra o evento não clicável sem botão', () => {
+      const eventos = gerarEventosConsultor(referencia).map((evento) => ({
+        ...evento,
+        clicavel: false,
+      }));
+      const { queryAllByRole } = render(Timeline, {
+        props: { aparencia: 'cartoes', eventosTimeline: eventos },
+      });
+
+      expect(queryAllByRole('button')).toHaveLength(0);
+    });
   });
 });

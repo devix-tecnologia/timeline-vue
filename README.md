@@ -159,6 +159,21 @@ Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título,
 
 ![TimelineDevixExemploEvento](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/evento.png)
 
+### Aparências
+
+A prop `aparencia` muda a forma de representar os eventos, com os mesmos dados:
+
+| Valor               | Como os eventos aparecem                                                                                                                        |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `padrao` (o padrão) | Linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.                                                                     |
+| `cartoes`           | Um cartão por evento ao lado de um trilho, com o status por extenso e etiquetas de categoria, prioridade e destaque. O dia aparece por extenso. |
+
+```vue
+<Timeline aparencia="cartoes" :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos" />
+```
+
+O tipo `AparenciaTimeline` é exportado pelo pacote. No Storybook, a story **Organismos/Timeline › Aparências lado a lado** mostra a mesma agenda nas duas aparências.
+
 ## 🚀 Contribuindo
 
 ---
