@@ -19,7 +19,7 @@ const isCI = !!process.env.CI;
 const projetoStorybook = (
   name: string,
   colorScheme: 'light' | 'dark',
-  groupOrder: number,
+  groupOrder: number
 ): TestProjectInlineConfiguration => ({
   extends: true,
   plugins: [
@@ -32,9 +32,6 @@ const projetoStorybook = (
   test: {
     name,
     sequence: { groupOrder },
-    onConsoleLog(log) {
-      if (log.includes("ariaLabel' prop on 'PopoverProvider'")) return false;
-    },
     browser: {
       enabled: true,
       headless: true,
@@ -98,6 +95,10 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     exclude: [...configDefaults.exclude, 'dist/**'],
+    // Só vale na raiz: o Vitest ignora o onConsoleLog dentro de um projeto
+    onConsoleLog(log) {
+      if (log.includes("ariaLabel' prop on 'PopoverProvider'")) return false;
+    },
     projects: [
       // Testes unitários (Testing Library / Vue Test Utils) em happy-dom, fora do navegador
       {
