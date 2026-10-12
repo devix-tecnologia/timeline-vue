@@ -28,6 +28,22 @@ describe('IconeCategoria.vue', () => {
     expect(container.querySelector('[aria-label]')).toBeNull();
   });
 
+  it('aplica a borda, o fundo e a cor do ícone customizados', () => {
+    const { container } = render(IconeCategoria, {
+      props: {
+        iconeCategoria: 'palette',
+        borderColor: '#7c3aed',
+        backgroundColor: '#ede9fe',
+        color: '#5b21b6',
+      },
+    });
+
+    const circulo = container.querySelector<HTMLElement>('.iconeCategoria');
+    expect(circulo?.style.borderColor).toBe('#7c3aed');
+    expect(circulo?.style.backgroundColor).toBe('#ede9fe');
+    expect(circulo?.style.color).toBe('#5b21b6');
+  });
+
   it('usa o fundo claro quando não é escuro', () => {
     const { container } = render(IconeCategoria, {
       props: { iconeCategoria: 'call', escuro: false },

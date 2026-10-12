@@ -43,6 +43,9 @@ export default defineComponent({
     backgroundColor: {
       type: String,
     },
+    color: {
+      type: String,
+    },
   },
   setup(props) {
     props = reactive(props);
@@ -55,6 +58,7 @@ export default defineComponent({
       style: computed(() => ({
         borderColor: props.borderColor,
         backgroundColor: props.backgroundColor,
+        color: props.color,
       })),
     };
   },

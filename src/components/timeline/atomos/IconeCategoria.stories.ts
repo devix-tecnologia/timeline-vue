@@ -23,7 +23,8 @@ export default {
 ## ♿ Acessibilidade
 - Com \`categoria\`, o ícone vira uma imagem (\`role="img"\`) que tem a categoria como nome acessível
 - Sem \`categoria\`, o ícone é decorativo e fica fora do leitor de tela
-- As cores de borda seguem o tema visual e devem manter contraste suficiente`,
+- As cores de borda seguem o tema visual e devem manter contraste suficiente
+- O ícone pede contraste de 3:1 com o fundo. Com \`backgroundColor\`, que não muda com o tema, defina também \`color\``,
       },
     },
   },
@@ -54,7 +55,14 @@ export default {
       table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
     },
     backgroundColor: {
-      description: 'Cor personalizada do fundo, sobrescreve a cor definida por \`escuro\`.',
+      description:
+        'Cor personalizada do fundo, sobrescreve a cor definida por \`escuro\`. Não muda com o tema.',
+      control: { type: 'color' },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
+    },
+    color: {
+      description:
+        'Cor personalizada do ícone, sobrescreve a cor definida por \`escuro\`. Use junto com \`backgroundColor\`, para o ícone não depender do tema.',
       control: { type: 'color' },
       table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
     },
@@ -155,13 +163,14 @@ export const CoresCustomizadas = {
     tipo: 'padrao',
     borderColor: '#7c3aed',
     backgroundColor: '#ede9fe',
+    color: '#5b21b6',
   },
 };
 CoresCustomizadas.parameters = {
   docs: {
     description: {
       story:
-        'Demonstração das props \`borderColor\` e \`backgroundColor\` para customização completa de cores.',
+        'Demonstração das props \`borderColor\`, \`backgroundColor\` e \`color\` para customização completa de cores. O fundo customizado não muda com o tema, por isso a cor do ícone também é definida.',
     },
   },
 };
