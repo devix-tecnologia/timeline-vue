@@ -49,14 +49,12 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
-      outDir: 'dist',
+      outDirs: 'dist',
       entryRoot: 'src',
       exclude: ['**/*.stories.ts', '**/*.test.ts', '**/tests/**', '**/*.spec.ts'],
-      skipDiagnostics: false,
       cleanVueFileName: true,
       staticImport: true,
       insertTypesEntry: true,
-      rollupTypes: true,
       copyDtsFiles: false,
     }),
     !isCI &&

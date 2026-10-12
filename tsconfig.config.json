@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "types": ["node", "vite/client"]
+  },
+  "include": ["vite.config.ts", "postcss.config.ts", "vitest.shims.d.ts", ".storybook/**/*.ts"]
+}
