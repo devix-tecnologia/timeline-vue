@@ -13,12 +13,12 @@ export default {
 ## 🎯 Quando usar
 - Para exibir ícones categorizados dentro de eventos da timeline
 - Quando é necessário diferenciar visualmente tipos de evento (padrão, importante, alerta, sucesso)
-- Em列表agens de timeline que precisam de identificação visual rápida por categoria
+- Em listagens de timeline que precisam de identificação visual rápida por categoria
 
 ## 🚫 Quando NÃO usar
 - Para ícones de status (use IconeStatus)
 - Quando o ícone precisa ser clicável ou interativo
-- Em contexts fora da timeline
+- Em contextos fora da timeline
 
 ## ♿ Acessibilidade
 - Com \`categoria\`, o ícone vira uma imagem (\`role="img"\`) que tem a categoria como nome acessível
@@ -83,7 +83,7 @@ export const Escuro = {
 Escuro.parameters = {
   docs: {
     description: {
-      story: 'Ícone com fundo escuro e borda padrão — aparência mais contrasted e sóbria.',
+      story: 'Ícone com fundo escuro e borda padrão — aparência mais contrastada e sóbria.',
     },
   },
 };
@@ -134,7 +134,7 @@ Alerta.parameters = {
   docs: {
     description: {
       story:
-        'Ícone com borda na cor de alerta (amarelo/laranja) para eventos que要求 atenção moderada.',
+        'Ícone com borda na cor de alerta (amarelo/laranja) para eventos que pedem atenção moderada.',
     },
   },
 };
