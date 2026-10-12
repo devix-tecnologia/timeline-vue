@@ -1,7 +1,11 @@
 <template>
   <div class="areaCategoria">
     <div class="iconeCategoria" :class="classes" :style="style" :alt="categoria">
-      <span class="material-symbols-outlined"> {{ iconeCategoria }} </span>
+      <span
+        class="material-symbols-outlined"
+        :data-icone="iconeCategoria"
+        aria-hidden="true"
+      ></span>
     </div>
   </div>
 </template>
@@ -77,6 +81,14 @@ export default defineComponent({
 
 .iconeCategoria span {
   font-size: 2rem;
+}
+
+/*
+ * O nome do ícone vem do atributo, num pseudo-elemento. Como texto do DOM, a ligadura
+ * seria medida pelo axe como texto comum sempre que a fonte ainda não tivesse carregado.
+ */
+.iconeCategoria span::before {
+  content: attr(data-icone);
 }
 
 .iconeCategoria.bg-claro {
