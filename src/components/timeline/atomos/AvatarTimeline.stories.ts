@@ -63,6 +63,9 @@ export const Icone = {
   args: { icone: 'person' },
 };
 Icone.parameters = {
+  // Ícones abaixo de 3:1 com o fundo: ícone do avatar, --cor-apoio sobre --cor-secundaria (2,36:1
+  // no claro, 2,77:1 no escuro).
+  contrasteIcones: 'off',
   docs: {
     description: {
       story:
@@ -75,6 +78,9 @@ export const Padrao = {
   args: {},
 };
 Padrao.parameters = {
+  // Ícones abaixo de 3:1 com o fundo: ícone do avatar, --cor-apoio sobre --cor-secundaria (2,36:1
+  // no claro, 2,77:1 no escuro).
+  contrasteIcones: 'off',
   docs: {
     description: {
       story:

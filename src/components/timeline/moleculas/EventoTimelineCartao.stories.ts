@@ -141,6 +141,8 @@ export const Cancelado: Story = {
     textoDestaque: '',
   },
   parameters: {
+    // Ícones abaixo de 3:1 com o fundo: cancelado, #bb0202 sobre #0d1117 (2,81:1) no escuro.
+    contrasteIcones: 'off',
     docs: {
       description: { story: 'Evento cancelado: borda tracejada e título riscado.' },
     },
