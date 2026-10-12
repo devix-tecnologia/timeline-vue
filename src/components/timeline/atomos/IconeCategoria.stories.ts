@@ -21,9 +21,9 @@ export default {
 - Em contexts fora da timeline
 
 ## ♿ Acessibilidade
-- O atributo \`categoria\` é usado como texto alternativo (\`alt\`) do ícone
-- As cores de borda seguem o tema visual e devem manter contraste suficiente
-- Ícones decorativos devem ser ignorados por leitores de tela quando não伝える informação essencial`,
+- Com \`categoria\`, o ícone vira uma imagem (\`role="img"\`) que tem a categoria como nome acessível
+- Sem \`categoria\`, o ícone é decorativo e fica fora do leitor de tela
+- As cores de borda seguem o tema visual e devem manter contraste suficiente`,
       },
     },
   },
@@ -33,7 +33,8 @@ export default {
       table: { type: { summary: 'string' } },
     },
     categoria: {
-      description: 'Texto alternativo descritivo da categoria, usado como \`alt\` no ícone.',
+      description:
+        'Nome da categoria. Vira o nome acessível do ícone (\`role="img"\` com \`aria-label\`); sem ele, o ícone é decorativo.',
       table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
     },
     escuro: {
@@ -61,8 +62,16 @@ export default {
 } as Meta<typeof IconeCategoria>;
 
 const categoriaMock = 'call';
+const nomeCategoriaMock = 'Ligação';
 
-export const Escuro = { args: { iconeCategoria: categoriaMock, escuro: true, tipo: 'padrao' } };
+export const Escuro = {
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: true,
+    tipo: 'padrao',
+  },
+};
 Escuro.parameters = {
   docs: {
     description: {
@@ -71,7 +80,14 @@ Escuro.parameters = {
   },
 };
 
-export const Claro = { args: { iconeCategoria: categoriaMock, escuro: false, tipo: 'padrao' } };
+export const Claro = {
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: false,
+    tipo: 'padrao',
+  },
+};
 Claro.parameters = {
   docs: {
     description: {
@@ -82,7 +98,12 @@ Claro.parameters = {
 };
 
 export const Importante = {
-  args: { iconeCategoria: categoriaMock, escuro: true, tipo: 'importante' },
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: true,
+    tipo: 'importante',
+  },
 };
 Importante.parameters = {
   docs: {
@@ -93,7 +114,14 @@ Importante.parameters = {
   },
 };
 
-export const Alerta = { args: { iconeCategoria: categoriaMock, escuro: true, tipo: 'alerta' } };
+export const Alerta = {
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: true,
+    tipo: 'alerta',
+  },
+};
 Alerta.parameters = {
   docs: {
     description: {
@@ -103,7 +131,14 @@ Alerta.parameters = {
   },
 };
 
-export const Sucesso = { args: { iconeCategoria: categoriaMock, escuro: true, tipo: 'sucesso' } };
+export const Sucesso = {
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: true,
+    tipo: 'sucesso',
+  },
+};
 Sucesso.parameters = {
   docs: {
     description: {
@@ -115,6 +150,7 @@ Sucesso.parameters = {
 export const CoresCustomizadas = {
   args: {
     iconeCategoria: 'palette',
+    categoria: 'Personalizada',
     escuro: true,
     tipo: 'padrao',
     borderColor: '#7c3aed',

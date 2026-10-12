@@ -1,6 +1,12 @@
 <template>
   <div class="areaCategoria">
-    <div class="iconeCategoria" :class="classes" :style="style" :alt="categoria">
+    <div
+      class="iconeCategoria"
+      :class="classes"
+      :style="style"
+      :role="categoria ? 'img' : undefined"
+      :aria-label="categoria || undefined"
+    >
       <span
         class="material-symbols-outlined"
         :data-icone="iconeCategoria"

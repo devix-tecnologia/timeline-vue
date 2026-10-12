@@ -11,6 +11,23 @@ describe('IconeCategoria.vue', () => {
     expect(icone?.textContent).toBe('');
   });
 
+  it('com categoria, é uma imagem com o nome da categoria', () => {
+    const { getByRole } = render(IconeCategoria, {
+      props: { iconeCategoria: 'call', categoria: 'Ligação' },
+    });
+
+    expect(getByRole('img', { name: 'Ligação' })).toBeTruthy();
+  });
+
+  it('sem categoria, é decorativo', () => {
+    const { container, queryByRole } = render(IconeCategoria, {
+      props: { iconeCategoria: 'call' },
+    });
+
+    expect(queryByRole('img')).toBeNull();
+    expect(container.querySelector('[aria-label]')).toBeNull();
+  });
+
   it('usa o fundo claro quando não é escuro', () => {
     const { container } = render(IconeCategoria, {
       props: { iconeCategoria: 'call', escuro: false },
