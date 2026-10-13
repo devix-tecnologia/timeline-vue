@@ -61,6 +61,6 @@ export default defineComponent({
 .area-salvamento .preenchido {
   background: var(--cor-acao);
   border: 0;
-  color: var(--cor-texto);
+  color: var(--cor-texto-acao);
 }
 </style>

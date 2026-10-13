@@ -31,8 +31,13 @@
           :texto-destaque="evento.valor.destaque"
           :ehAtual="evento.valor.atual"
           :clicavel="evento.valor.clicavel !== false"
+          v-bind="componentes.comAcoes ? { acoes: evento.valor.acoes } : {}"
           :data-testid="`evento-timeline-${index}`"
           @click="handleEventoClick(evento.valor, $event)"
+          @acao-click="
+            (acao: AcaoEvento, mouseEvent: MouseEvent) =>
+              $emit('acaoClick', evento.valor as Evento, acao, mouseEvent)
+          "
         />
       </div>
     </section>
@@ -40,13 +45,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, PropType, Component } from 'vue';
+import {
+  defineComponent,
+  computed,
+  reactive,
+  watch,
+  onMounted,
+  onBeforeUnmount,
+  PropType,
+  Component,
+} from 'vue';
 import EventoTimeline from '../moleculas/EventoTimeline.vue';
+import EventoTimelineAgiliza from '../moleculas/EventoTimelineAgiliza.vue';
 import EventoTimelineCartao from '../moleculas/EventoTimelineCartao.vue';
 import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
+import SeparadorPeriodoAgiliza from '../moleculas/SeparadorPeriodoAgiliza.vue';
 import SeparadorPeriodoCartao from '../moleculas/SeparadorPeriodoCartao.vue';
 import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
-import { Evento, Perfil } from '../type';
+import { AcaoEvento, Evento, Perfil } from '../type';
 import { APARENCIAS_TIMELINE, AparenciaTimeline } from './Timeline.types';
 import 'material-symbols/outlined.css';
 
@@ -55,13 +71,17 @@ type TipoEventoTimeline =
   | { tipo: 'evento'; valor: Evento; key: number }
   | { tipo: 'eventos'; valor: Evento[]; key: number };
 
-// Cada aparência troca o separador de dia e o evento; as props passadas são as mesmas.
+/*
+ * Cada aparência troca o separador de dia e o evento; as props passadas são as mesmas.
+ * Só quem tem `comAcoes` recebe as ações do evento: nos demais, a prop viraria atributo.
+ */
 const COMPONENTES_POR_APARENCIA: Record<
   AparenciaTimeline,
-  { separador: Component; evento: Component }
+  { separador: Component; evento: Component; comAcoes: boolean }
 > = {
-  padrao: { separador: SeparadorPeriodo, evento: EventoTimeline },
-  cartoes: { separador: SeparadorPeriodoCartao, evento: EventoTimelineCartao },
+  padrao: { separador: SeparadorPeriodo, evento: EventoTimeline, comAcoes: false },
+  cartoes: { separador: SeparadorPeriodoCartao, evento: EventoTimelineCartao, comAcoes: false },
+  agiliza: { separador: SeparadorPeriodoAgiliza, evento: EventoTimelineAgiliza, comAcoes: true },
 };
 
 export default defineComponent({
@@ -87,6 +107,7 @@ export default defineComponent({
 
   emits: {
     eventoClick: (_evento: Evento, _mouseEvent: MouseEvent) => true,
+    acaoClick: (_evento: Evento, _acao: AcaoEvento, _mouseEvent: MouseEvent) => true,
   },
 
   setup(props, { emit }) {
@@ -98,22 +119,21 @@ export default defineComponent({
       emit('eventoClick', evento, mouseEvent);
     };
 
-    const dadosEventosTimeline: Evento[] = reactive(props.eventosTimeline);
-    let dadosEventosTimelineClone: Evento[] = reactive(dadosEventosTimeline);
+    /*
+     * A lista recebida, sempre a da prop atual. Fica reativa porque a Timeline grava nela
+     * o evento atual e o status atrasado; trocar a prop troca a lista exibida.
+     */
+    const eventosRecebidos = computed(() => reactive(props.eventosTimeline) as Evento[]);
 
     function carregarListaEventos() {
-      const eventosAtuais: Evento[] = filtraEventoAtual(dadosEventosTimeline);
-      dadosEventosTimeline.forEach((evento) => {
+      const eventosAtuais: Evento[] = filtraEventoAtual(eventosRecebidos.value);
+      eventosRecebidos.value.forEach((evento) => {
         const ehAtual = eventosAtuais.length > 0 && eventosAtuais[0] === evento;
         evento.atual = ehAtual;
         evento.scroll = ehAtual;
       });
       scrollParaItemAtual();
     }
-
-    const atualizarEventoAtual = () => {
-      setInterval(carregarListaEventos, 60000);
-    };
 
     const verifica_mesmo_dia = (a: Date, b: Date) => {
       const mesmo_dia = a.getDay() === b.getDay();
@@ -149,9 +169,8 @@ export default defineComponent({
 
     // lista de eventos por tipo
     const eventosTimeline = computed(() => {
-      void atualizarEventoAtual();
-
-      const eventosOrdenados = dadosEventosTimelineClone.sort((a: Evento, b: Evento) => {
+      // Ordena uma cópia: a lista de quem usa a Timeline não muda de ordem.
+      const eventosOrdenados = [...eventosRecebidos.value].sort((a: Evento, b: Evento) => {
         return a.data.getTime() - b.data.getTime();
       });
       if (eventosOrdenados) {
@@ -206,16 +225,23 @@ export default defineComponent({
     };
 
     carregarListaEventos();
+    watch(() => props.eventosTimeline, carregarListaEventos);
+
+    // Um único intervalo por Timeline, para o evento atual acompanhar o relógio.
+    let intervalo: ReturnType<typeof setInterval> | undefined;
+    onMounted(() => {
+      // Aguardando a renderização para fazer scroll
+      scrollParaItemAtual();
+      intervalo = setInterval(carregarListaEventos, 60000);
+    });
+    onBeforeUnmount(() => clearInterval(intervalo));
+
     return {
       componentes: computed(() => COMPONENTES_POR_APARENCIA[props.aparencia]),
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
       handleEventoClick,
     };
-  },
-  mounted() {
-    // Aguardando a renderização para fazer scroll
-    this.scrollParaItemAtual();
   },
 });
 </script>
@@ -256,5 +282,26 @@ export default defineComponent({
   flex-direction: column;
   gap: var(--trilho-espaco);
   padding: 1.2rem 1.6rem 3.2rem 0.8rem;
+}
+
+/*
+ * APARÊNCIA AGILIZA
+ * A hora à esquerda, o marcador do status sobre o trilho e um cartão por evento. Como nos
+ * cartões, cada item desenha o seu trecho do trilho; entre os dias, uma linha divisória.
+ */
+
+.timeline--agiliza {
+  --trilho-espaco: 1.2rem;
+  --trilho-cor: var(--cor-linha);
+  display: flex;
+  flex-direction: column;
+  gap: var(--trilho-espaco);
+  padding: 0.8rem 0 2.4rem;
+}
+
+.timeline--agiliza > div:not(:first-child) > .separadorAgiliza {
+  margin-top: 1.2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--cor-linha);
 }
 </style>

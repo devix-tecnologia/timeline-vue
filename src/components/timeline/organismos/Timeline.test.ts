@@ -148,5 +148,79 @@ describe('Timeline.vue', () => {
 
       expect(queryAllByRole('button')).toHaveLength(0);
     });
+
+    it('troca separadores e eventos pelos da aparência agiliza, com as ações', () => {
+      const { container, getAllByRole } = render(Timeline, {
+        props: { aparencia: 'agiliza', eventosTimeline: gerarEventosConsultor(referencia) },
+      });
+
+      expect(container.querySelector('.timeline--agiliza')).toBeTruthy();
+      expect(container.querySelectorAll('.separadorAgiliza')).toHaveLength(4);
+      expect(container.querySelectorAll('.eventoAgiliza')).toHaveLength(12);
+      expect(getAllByRole('button', { name: 'Concluir' }).length).toBeGreaterThan(0);
+    });
+
+    it('na aparência agiliza, emite "acaoClick" com o evento e a ação', async () => {
+      const { getByRole, emitted } = render(Timeline, {
+        props: { aparencia: 'agiliza', eventosTimeline: gerarEventosConsultor(referencia) },
+      });
+
+      await fireEvent.click(getByRole('button', { name: 'Reagendar' }));
+
+      const [evento, acao] = emitted().acaoClick[0] as [Evento, { id: string }];
+      expect(evento.titulo).toBe('Visita técnica');
+      expect(acao.id).toBe('reagendar');
+      expect(emitted().eventoClick).toBeUndefined();
+    });
+
+    it('nas aparências sem ações, não põe as ações como atributo no evento', () => {
+      const { container } = render(Timeline, {
+        props: { aparencia: 'cartoes', eventosTimeline: gerarEventosConsultor(referencia) },
+      });
+
+      expect(container.querySelector('[acoes]')).toBeNull();
+    });
+  });
+
+  // task-003, item 7: reatividade à prop, sem reordenar a lista recebida e sem vazar o intervalo.
+  describe('lista recebida', () => {
+    const referencia = new Date(2026, 9, 7, 12, 0);
+
+    it('acompanha a troca da prop', async () => {
+      const eventos = gerarEventosConsultor(referencia);
+      const { container, rerender } = render(Timeline, {
+        props: { aparencia: 'cartoes', eventosTimeline: eventos },
+      });
+      expect(container.querySelectorAll('.eventoCartao')).toHaveLength(12);
+
+      await rerender({ aparencia: 'cartoes', eventosTimeline: eventos.slice(0, 2) });
+
+      expect(container.querySelectorAll('.eventoCartao')).toHaveLength(2);
+    });
+
+    it('não muda a ordem da lista de quem usa a Timeline', () => {
+      const eventos = gerarEventosConsultor(referencia).reverse();
+      const ordemRecebida = eventos.map((evento) => evento.titulo);
+
+      render(Timeline, { props: { eventosTimeline: eventos } });
+
+      expect(eventos.map((evento) => evento.titulo)).toEqual(ordemRecebida);
+    });
+
+    it('cria um intervalo ao montar e o limpa ao desmontar', () => {
+      const criar = vi.spyOn(globalThis, 'setInterval');
+      const limpar = vi.spyOn(globalThis, 'clearInterval');
+
+      const { unmount } = render(Timeline, {
+        props: { eventosTimeline: gerarEventosConsultor(referencia) },
+      });
+      expect(criar).toHaveBeenCalledTimes(1);
+
+      unmount();
+      expect(limpar).toHaveBeenCalledWith(criar.mock.results[0].value);
+
+      criar.mockRestore();
+      limpar.mockRestore();
+    });
   });
 });

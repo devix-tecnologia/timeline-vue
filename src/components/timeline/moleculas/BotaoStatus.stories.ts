@@ -120,3 +120,26 @@ Adiado.parameters = {
     },
   },
 };
+
+/** Todos os status preenchidos, para o axe medir o texto sobre cada cor. */
+export const Preenchidos = {
+  render: () => ({
+    components: { BotaoStatus },
+    setup() {
+      return { statusPossiveis: ['planejado', 'atrasado', 'realizado', 'cancelado', 'adiado'] };
+    },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 1.2rem">
+        <BotaoStatus v-for="status in statusPossiveis" :key="status" :status="status" aparencia="preenchido" />
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Cada status no estilo preenchido, como fica o status selecionado no EditarStatus. O fundo é a cor do status, e o texto, o token de texto sobre essa cor.',
+      },
+    },
+  },
+};

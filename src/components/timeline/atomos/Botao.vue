@@ -1,7 +1,15 @@
 <template>
-  <button class="btn" data-testid="botao" @click="handleClick">
+  <button class="btn" :class="classes" data-testid="botao" @click="handleClick">
     <slot>
-      <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
+      <!-- Com título, o nome da ligadura não entra no nome acessível do botão. -->
+      <span
+        v-if="icone"
+        class="material-symbols-outlined"
+        :class="{ 'btn__icone--sozinho': !titulo }"
+        :aria-hidden="titulo ? 'true' : undefined"
+      >
+        {{ icone }}
+      </span>
       {{ titulo }}
     </slot>
   </button>
@@ -78,6 +86,11 @@ export default defineComponent({
 
 .btn span {
   padding-right: 1.4rem;
+}
+
+/* Sem título, o ícone fica no centro do botão. */
+.btn span.btn__icone--sozinho {
+  padding-right: 0;
 }
 
 .btn.preenchido {

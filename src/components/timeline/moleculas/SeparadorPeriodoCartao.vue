@@ -14,26 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-
-const formatoPorExtenso = new Intl.DateTimeFormat('pt-BR', {
-  weekday: 'long',
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-});
-
-const DIA_EM_MS = 24 * 60 * 60 * 1000;
-
-// Chave: diferença em dias entre a data do separador e hoje.
-const ROTULOS_RELATIVOS: Record<number, string> = {
-  [-1]: 'Ontem',
-  0: 'Hoje',
-  1: 'Amanhã',
-};
-
-const inicioDoDia = (data: Date) => new Date(data.getFullYear(), data.getMonth(), data.getDate());
-
-const doisDigitos = (numero: number) => String(numero).padStart(2, '0');
+import { dataIso, dataPorExtenso, rotuloRelativoDoDia } from '../utils/datas';
 
 /**
  * Separador de dia da aparência `cartoes`: data por extenso, com "Ontem", "Hoje"
@@ -49,22 +30,9 @@ export default defineComponent({
   },
   setup(props) {
     return {
-      dataIso: computed(() => {
-        const data = props.dataSeparador;
-        return `${data.getFullYear()}-${doisDigitos(data.getMonth() + 1)}-${doisDigitos(data.getDate())}`;
-      }),
-      dataPorExtenso: computed(() => {
-        const texto = formatoPorExtenso.format(props.dataSeparador);
-        return texto.charAt(0).toUpperCase() + texto.slice(1);
-      }),
-      rotuloRelativo: computed(() => {
-        // Arredonda para absorver os dias de 23 h ou 25 h do horário de verão.
-        const dias = Math.round(
-          (inicioDoDia(props.dataSeparador).getTime() - inicioDoDia(new Date()).getTime()) /
-            DIA_EM_MS
-        );
-        return ROTULOS_RELATIVOS[dias];
-      }),
+      dataIso: computed(() => dataIso(props.dataSeparador)),
+      dataPorExtenso: computed(() => dataPorExtenso(props.dataSeparador)),
+      rotuloRelativo: computed(() => rotuloRelativoDoDia(props.dataSeparador)),
     };
   },
 });

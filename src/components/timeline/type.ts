@@ -2,6 +2,8 @@ export type Perfil = {
   nome: string;
   imagem?: string;
   icone?: string;
+  /** Função ou cargo, mostrado abaixo do nome (ex.: "Consultor de vendas"). */
+  descricao?: string;
 };
 
 export type Categoria = {
@@ -12,6 +14,19 @@ export type Categoria = {
 export type Status = 'atrasado' | 'adiantado' | 'adiado' | 'realizado' | 'planejado' | 'cancelado';
 
 export type Criticidade = 'baixa' | 'media' | 'alta';
+
+/** Ação que o evento oferece, mostrada como botão (ex.: "Concluir", "Reagendar"). */
+export type AcaoEvento = {
+  /** Identifica a ação para quem trata o clique. */
+  id: string;
+  rotulo: string;
+  /** Nome do ícone do Material Symbols. */
+  icone?: string;
+  /** Botão preenchido, para a ação principal do evento. */
+  principal?: boolean;
+  /** Mostra só o ícone; o rótulo vira o nome acessível do botão. */
+  apenasIcone?: boolean;
+};
 
 export type Evento = {
   data: Date;
@@ -28,4 +43,5 @@ export type Evento = {
   atual: boolean;
   scroll: boolean;
   clicavel?: boolean;
+  acoes?: AcaoEvento[];
 };
