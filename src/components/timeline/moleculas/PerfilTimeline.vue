@@ -85,7 +85,6 @@ export default defineComponent({
 }
 
 .formato-reduzido .avatar span {
-  color: var(--cor-apoio);
   font-size: 1.6rem;
 }
 

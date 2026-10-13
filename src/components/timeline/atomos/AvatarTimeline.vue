@@ -33,9 +33,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* O ícone fica mais discreto que as iniciais, com 4,5:1 sobre o fundo nos dois temas. */
 .avatar {
   background: var(--cor-secundaria);
-  color: var(--cor-apoio);
+  color: color-mix(in srgb, var(--cor-apoio) 35%, var(--cor-terciaria));
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
