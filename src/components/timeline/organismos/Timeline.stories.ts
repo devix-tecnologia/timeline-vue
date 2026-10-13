@@ -144,9 +144,6 @@ export const Cartoes: StoryObj<typeof Timeline> = {
     eventosTimeline: gerarEventosConsultor(),
   },
   parameters: {
-    // Ícones abaixo de 3:1 com o fundo: ícone do avatar (2,36:1); status em #f0cc0d no claro
-    // (1,38:1); cancelado no escuro (2,81:1).
-    contrasteIcones: 'off',
     docs: {
       description: {
         story: `Agenda de um consultor de vendas de desenvolvimento de sistemas, de ontem a daqui a três dias, na aparência \`cartoes\`.
@@ -190,9 +187,6 @@ export const Aparencias: StoryObj<typeof Timeline> = {
     `,
   }),
   parameters: {
-    // Ícones abaixo de 3:1 com o fundo: ícone do avatar (2,36:1); status em #f0cc0d (1,38:1) e
-    // realizado preenchido (2,70:1) no claro; cancelado no escuro (2,70:1).
-    contrasteIcones: 'off',
     controls: { disable: true },
     docs: {
       description: {
@@ -224,8 +218,6 @@ export const Agiliza: StoryObj<typeof Timeline> = {
     eventosTimeline: gerarEventosConsultor(),
   },
   parameters: {
-    // Ícones abaixo de 3:1 com o fundo: adiado e atrasado, #e39b17 sobre #fbf1df (2,09:1).
-    contrasteIcones: 'off',
     docs: {
       description: {
         story: `A agenda do consultor de vendas na aparência \`agiliza\`, com as cores do projeto gráfico do agiliza.ai aplicadas por tokens num contêiner.

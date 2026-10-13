@@ -56,9 +56,6 @@ Padrao.parameters = {
 export const Preenchido: Story = {
   args: { status: 'realizado', aparencia: 'preenchido' },
   parameters: {
-    // Ícones abaixo de 3:1 com o fundo: realizado preenchido, #00a816 sobre #dbf3de (2,70:1) no
-    // claro.
-    contrasteIcones: 'off',
     docs: {
       description: {
         story: 'Selo preenchido, com fundo tingido e ícone cheio, como na aparência `agiliza`.',
@@ -91,10 +88,6 @@ export const Todos: Story = {
     `,
   }),
   parameters: {
-    // Ícones abaixo de 3:1 com o fundo: atrasado e adiantado, #f0cc0d sobre branco (1,57:1) no
-    // claro; realizado preenchido (2,70:1) no claro; cancelado, #bb0202 sobre o fundo (2,81:1) no
-    // escuro.
-    contrasteIcones: 'off',
     controls: { disable: true },
     docs: { description: { story: 'Todos os status lado a lado, uma linha por aparência.' } },
   },

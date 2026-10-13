@@ -138,8 +138,6 @@ export const Historico: Story = {
   name: 'Histórico',
   args: { visaoInicial: 'historico' },
   parameters: {
-    // Ícones abaixo de 3:1 com o fundo: adiado, #e39b17 sobre #fbf1df (2,09:1).
-    contrasteIcones: 'off',
     docs: {
       description: {
         story:

@@ -58,9 +58,31 @@ export default defineComponent({
   white-space: nowrap;
 }
 
+/*
+ * O ícone leva a cor do status puxada para a do texto, o bastante para 3:1 com o fundo
+ * (WCAG 1.4.11) nos dois temas e nos temas por tokens: sem isso, o amarelo some no fundo
+ * claro, e o vermelho do tema escuro, no fundo escuro. As cores que já contrastam ficam puras.
+ */
 .seloStatus .seloStatus__icone {
-  color: var(--seloStatus-cor);
+  color: color-mix(
+    in srgb,
+    var(--seloStatus-cor) var(--seloStatus-peso-icone, 100%),
+    var(--cor-texto)
+  );
   font-size: 1.6rem;
+}
+
+.seloStatus--atrasado,
+.seloStatus--adiado {
+  --seloStatus-peso-icone: 55%;
+}
+
+.seloStatus--realizado {
+  --seloStatus-peso-icone: 90%;
+}
+
+.seloStatus--cancelado {
+  --seloStatus-peso-icone: 70%;
 }
 
 /*

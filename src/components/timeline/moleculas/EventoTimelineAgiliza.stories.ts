@@ -119,8 +119,6 @@ export const Adiado: Story = {
     acoes: [{ id: 'reagendar', rotulo: 'Reagendar', icone: 'edit_calendar' }],
   },
   parameters: {
-    // Ícones abaixo de 3:1 com o fundo: adiado, #e39b17 sobre #fbf1df (2,09:1).
-    contrasteIcones: 'off',
     docs: {
       description: { story: 'Evento adiado, com a descrição e a ação "Reagendar".' },
     },
