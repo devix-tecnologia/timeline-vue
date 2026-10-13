@@ -74,4 +74,9 @@ O projeto gráfico tem duas telas do agiliza.ai, a partir da agenda do consultor
 - **Desvios do projeto gráfico.**
   - A fonte é a do sistema: a imagem não identifica a fonte, e a biblioteca não carrega fontes externas.
   - Os títulos longos quebram em duas linhas em telas estreitas.
-- **Ícones decorativos.** Os novos componentes desenham os ícones decorativos num pseudo-elemento. Como texto do DOM, a ligadura é medida pelo axe sempre que a fonte ainda não carregou, e os testes ficavam instáveis.
+- **Ícones decorativos.** Os novos componentes desenham os ícones decorativos num pseudo-elemento. Como texto do DOM, a ligadura é medida pelo axe sempre que a fonte ainda não carregou, e os testes ficavam instáveis. O `IconeCategoria` passou a seguir o mesmo padrão na branch `fix/storybook-tema-escuro`.
+- **Os dois temas nos testes.** O `pnpm test` roda as stories também no tema escuro (projeto `storybook-escuro`), depois do claro. O tempo do `pnpm test` praticamente dobra.
+- **Contraste dos ícones.** O axe não mede os ícones. Um `afterEach` no preview do Storybook mede cada ícone contra o fundo e reprova abaixo de 3:1. Para passar:
+  - o ícone do `SeloStatus` puxa a cor do status para a do texto: 55% em atrasado e adiado, 90% em realizado e 70% em cancelado;
+  - o ícone do `AvatarTimeline` mistura `--cor-apoio` com `--cor-terciaria`;
+  - o `IconeCategoria` ganhou a prop `color`, para acompanhar o `backgroundColor`.
