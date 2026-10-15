@@ -1,6 +1,9 @@
 import Timeline from './Timeline.vue';
 import { Meta, StoryFn, StoryObj } from '@storybook/vue3-vite';
-import { expect, waitFor, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
+import { computed, ref } from 'vue';
+import SeletorOpcoes from '../moleculas/SeletorOpcoes.vue';
+import { eventosDaSelecao, perfilCopaDoMundo, titulosPorSelecao } from './CopaDoMundo.mock';
 import {
   dadosEventos,
   dadosPerfil,
@@ -368,6 +371,65 @@ export const RolagemAteOAtual: StoryObj<typeof Timeline> = {
         story: `Duas Timelines, cada uma num contêiner que rola, e uma terceira numa moldura com \`overflow: hidden\`.
 
 Ao montar e quando a lista muda, cada Timeline centraliza o próprio evento atual no primeiro ancestral com \`overflow-y\` \`auto\` ou \`scroll\`. A página e a moldura não rolam, e o intervalo que acompanha o relógio não rola de novo. Para cuidar da posição por conta própria, use \`:rolarAteOAtual="false"\`.`,
+      },
+    },
+  },
+};
+
+const ranking = titulosPorSelecao();
+
+/**
+ * As finais da Copa do Mundo, de 1930 a 2026, com a conquista de cada seleção. Os chips
+ * filtram por seleção e trocam a lista da Timeline, que acompanha a troca da prop.
+ */
+export const FinaisDaCopaDoMundo: StoryObj<typeof Timeline> = {
+  name: 'Finais da Copa do Mundo',
+  render: (args) => ({
+    components: { Timeline, SeletorOpcoes },
+    setup() {
+      const selecao = ref('todas');
+      const opcoes = [
+        {
+          valor: 'todas',
+          rotulo: 'Todas',
+          contador: ranking.reduce((soma, r) => soma + r.titulos, 0),
+        },
+        ...ranking.map((r) => ({ valor: r.selecao, rotulo: r.selecao, contador: r.titulos })),
+      ];
+      const eventos = computed(() => eventosDaSelecao(selecao.value));
+      return { args, selecao, opcoes, eventos, perfil: perfilCopaDoMundo };
+    },
+    template: `
+      <div style="max-width: 56rem; display: flex; flex-direction: column; gap: 1.6rem">
+        <SeletorOpcoes v-model="selecao" aparencia="chips" rotulo="Filtrar por seleção campeã" :opcoes="opcoes" />
+        <Timeline v-bind="args" :perfilTimeline="perfil" :eventosTimeline="eventos" />
+      </div>
+    `,
+  }),
+  args: {
+    aparencia: 'cartoes',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvasElement.querySelectorAll('.eventoCartao')).toHaveLength(23);
+
+    await userEvent.click(canvas.getByRole('button', { name: /^Brasil/ }));
+
+    await waitFor(() => expect(canvasElement.querySelectorAll('.eventoCartao')).toHaveLength(5));
+    await expect(canvas.getByText('Brasil pentacampeão')).toBeTruthy();
+    await expect(canvas.getByText(/Domingo, 30 de junho de 2002/)).toBeTruthy();
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `Todas as finais da Copa do Mundo masculina, de Montevidéu em 1930 a East Rutherford em 2026, com o placar, o estádio, um fato marcante e a conquista de cada seleção naquele ano. A hora é a do pontapé inicial, no horário local do estádio. Em 1950 não houve final: o título saiu do último jogo do quadrangular, o Maracanaço.
+
+Os chips filtram por seleção, com o número de títulos ao lado, e a Timeline acompanha a troca da lista. Troque a \`aparencia\` nos controles para ver as finais nas outras formas.
+
+Títulos por seleção:
+${ranking.map((r) => `- **${r.selecao}**: ${r.titulos} (${r.anos.join(', ')})`).join('\n')}
+
+Fontes: os verbetes das finais na Wikipedia em inglês e, para 2026, a cobertura da Associated Press.`,
       },
     },
   },
