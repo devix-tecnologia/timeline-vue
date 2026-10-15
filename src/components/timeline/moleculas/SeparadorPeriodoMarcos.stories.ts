@@ -1,20 +1,20 @@
-import SeparadorPeriodoAgiliza from './SeparadorPeriodoAgiliza.vue';
+import SeparadorPeriodoMarcos from './SeparadorPeriodoMarcos.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { comTemaAgiliza } from '../organismos/Timeline.mock';
+import { comTemaExemplo } from '../organismos/Timeline.mock';
 
 export default {
-  title: 'Devix/Moleculas/SeparadorPeriodoAgiliza',
-  component: SeparadorPeriodoAgiliza,
-  decorators: [comTemaAgiliza],
+  title: 'Devix/Moleculas/SeparadorPeriodoMarcos',
+  component: SeparadorPeriodoMarcos,
+  decorators: [comTemaExemplo],
   parameters: {
     docs: {
       description: {
-        component: `Separador de dia da aparência \`agiliza\` da Timeline: ícone de calendário e "Hoje, 7 de outubro". Fora de ontem, hoje e amanhã, mostra o dia da semana; o ano só aparece quando não é o atual.
+        component: `Separador de dia da aparência \`marcos\` da Timeline: ícone de calendário e "Hoje, 7 de outubro". Fora de ontem, hoje e amanhã, mostra o dia da semana; o ano só aparece quando não é o atual.
 
 Com \`navegavel\`, vira um botão com seta e emite \`click\`: a agenda o usa para trocar de dia.
 
 ## 🎯 Quando usar
-- Entre dias diferentes, na Timeline com \`aparencia="agiliza"\`
+- Entre dias diferentes, na Timeline com \`aparencia="marcos"\`
 - No topo da agenda, com \`navegavel\`
 
 ## 🚫 Quando NÃO usar
@@ -42,9 +42,9 @@ Com \`navegavel\`, vira um botão com seta e emite \`click\`: a agenda o usa par
       table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
   },
-} as Meta<typeof SeparadorPeriodoAgiliza>;
+} as Meta<typeof SeparadorPeriodoMarcos>;
 
-type Story = StoryObj<typeof SeparadorPeriodoAgiliza>;
+type Story = StoryObj<typeof SeparadorPeriodoMarcos>;
 
 export const Padrao: Story = {};
 Padrao.parameters = {

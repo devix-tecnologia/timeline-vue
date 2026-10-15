@@ -1,11 +1,11 @@
 import EventoPendente from './EventoPendente.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { buscarEventoConsultor, comTemaAgiliza } from '../organismos/Timeline.mock';
+import { buscarEventoConsultor, comTemaExemplo } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/EventoPendente',
   component: EventoPendente,
-  decorators: [comTemaAgiliza],
+  decorators: [comTemaExemplo],
   parameters: {
     docs: {
       description: {

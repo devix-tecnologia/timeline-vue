@@ -1,11 +1,11 @@
 import AcoesEvento from './AcoesEvento.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { comTemaAgiliza } from '../organismos/Timeline.mock';
+import { comTemaExemplo } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/AcoesEvento',
   component: AcoesEvento,
-  decorators: [comTemaAgiliza],
+  decorators: [comTemaExemplo],
   parameters: {
     docs: {
       description: {
@@ -14,7 +14,7 @@ export default {
 O clique emite \`acaoClick\` com a ação e não sobe até o cartão, que tem o próprio clique.
 
 ## 🎯 Quando usar
-- Nos cartões da agenda e da Timeline com a aparência \`agiliza\`
+- Nos cartões da agenda e da Timeline com a aparência \`marcos\`
 
 ## 🚫 Quando NÃO usar
 - Para ações da tela, fora de um evento (use o Botao)

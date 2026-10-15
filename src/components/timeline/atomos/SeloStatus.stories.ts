@@ -11,7 +11,7 @@ export default {
         component: `Selo com o status do evento por extenso, acompanhado de um ícone na cor do status.
 
 ## 🎯 Quando usar
-- Nos cartões de evento das aparências \`cartoes\` (\`contorno\`) e \`agiliza\` (\`preenchido\`) da Timeline
+- Nos cartões de evento das aparências \`cartoes\` (\`contorno\`) e \`marcos\` (\`preenchido\`) da Timeline
 - Quando o status precisa ser lido, e não só reconhecido pela cor ou pelo ícone
 
 ## 🚫 Quando NÃO usar
@@ -58,7 +58,7 @@ export const Preenchido: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Selo preenchido, com fundo tingido e ícone cheio, como na aparência `agiliza`.',
+        story: 'Selo preenchido, com fundo tingido e ícone cheio, como na aparência `marcos`.',
       },
     },
   },

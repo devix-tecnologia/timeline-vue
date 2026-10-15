@@ -1,20 +1,20 @@
-import EventoTimelineAgiliza from './EventoTimelineAgiliza.vue';
+import EventoTimelineMarcos from './EventoTimelineMarcos.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { comTemaAgiliza } from '../organismos/Timeline.mock';
+import { comTemaExemplo } from '../organismos/Timeline.mock';
 
 export default {
-  title: 'Devix/Moleculas/EventoTimelineAgiliza',
-  component: EventoTimelineAgiliza,
-  decorators: [comTemaAgiliza],
+  title: 'Devix/Moleculas/EventoTimelineMarcos',
+  component: EventoTimelineMarcos,
+  decorators: [comTemaExemplo],
   parameters: {
     docs: {
       description: {
-        component: `Evento da timeline na aparência \`agiliza\`: a hora à esquerda (a realizada, quando houver), o marcador do status sobre o trilho e um cartão com o título, o cliente, a hora prevista ou a descrição, o status por extenso e as ações.
+        component: `Evento da timeline na aparência \`marcos\`: a hora à esquerda (a realizada, quando houver), o marcador do status sobre o trilho e um cartão com o título, o cliente, a hora prevista ou a descrição, o status por extenso e as ações.
 
 Recebe as mesmas props e emite o mesmo \`click\` do EventoTimeline, para a Timeline trocar um pelo outro, mais as \`acoes\` e o \`acaoClick\`.
 
 ## 🎯 Quando usar
-- Dentro da Timeline com \`aparencia="agiliza"\`
+- Dentro da Timeline com \`aparencia="marcos"\`
 
 ## 🚫 Quando NÃO usar
 - Nas aparências \`padrao\` e \`cartoes\` (use EventoTimeline ou EventoTimelineCartao)
@@ -94,9 +94,9 @@ Recebe as mesmas props e emite o mesmo \`click\` do EventoTimeline, para a Timel
       table: { type: { summary: 'AcaoEvento[]' } },
     },
   },
-} as Meta<typeof EventoTimelineAgiliza>;
+} as Meta<typeof EventoTimelineMarcos>;
 
-type Story = StoryObj<typeof EventoTimelineAgiliza>;
+type Story = StoryObj<typeof EventoTimelineMarcos>;
 
 export const Padrao: Story = {};
 Padrao.parameters = {

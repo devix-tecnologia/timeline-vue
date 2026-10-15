@@ -1,11 +1,11 @@
 import { render, fireEvent } from '@testing-library/vue';
-import SeparadorPeriodoAgiliza from './SeparadorPeriodoAgiliza.vue';
+import SeparadorPeriodoMarcos from './SeparadorPeriodoMarcos.vue';
 import { diaComRotulo } from '../utils/datas';
 
-describe('SeparadorPeriodoAgiliza.vue', () => {
+describe('SeparadorPeriodoMarcos.vue', () => {
   it('mostra o dia com o rótulo relativo num h3, com o datetime', () => {
     const hoje = new Date();
-    const { getByRole, container } = render(SeparadorPeriodoAgiliza, {
+    const { getByRole, container } = render(SeparadorPeriodoMarcos, {
       props: { dataSeparador: hoje },
     });
 
@@ -17,7 +17,7 @@ describe('SeparadorPeriodoAgiliza.vue', () => {
   });
 
   it('não é botão por padrão', () => {
-    const { queryByRole } = render(SeparadorPeriodoAgiliza, {
+    const { queryByRole } = render(SeparadorPeriodoMarcos, {
       props: { dataSeparador: new Date() },
     });
 
@@ -25,7 +25,7 @@ describe('SeparadorPeriodoAgiliza.vue', () => {
   });
 
   it('navegável, é um botão que emite "click"', async () => {
-    const { getByRole, emitted } = render(SeparadorPeriodoAgiliza, {
+    const { getByRole, emitted } = render(SeparadorPeriodoMarcos, {
       props: { dataSeparador: new Date(), navegavel: true },
     });
 

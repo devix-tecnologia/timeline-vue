@@ -2,12 +2,12 @@ import SeletorOpcoes from './SeletorOpcoes.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { APARENCIAS_SELETOR } from './SeletorOpcoes.types';
-import { comTemaAgiliza } from '../organismos/Timeline.mock';
+import { comTemaExemplo } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/SeletorOpcoes',
   component: SeletorOpcoes,
-  decorators: [comTemaAgiliza],
+  decorators: [comTemaExemplo],
   parameters: {
     docs: {
       description: {

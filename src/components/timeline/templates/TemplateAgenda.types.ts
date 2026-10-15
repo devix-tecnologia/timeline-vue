@@ -1,7 +1,7 @@
 /**
  * Visões da TemplateAgenda:
  * - `agenda`: o que falta fazer, dia a dia (AgendaEventos).
- * - `historico`: o que já se resolveu, na Timeline com a aparência `agiliza`.
+ * - `historico`: o que já se resolveu, na Timeline com a aparência `marcos`.
  */
 export const VISOES_AGENDA = ['agenda', 'historico'] as const;
 

@@ -1,11 +1,11 @@
 import EventoAgenda from './EventoAgenda.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { buscarEventoConsultor, comTemaAgiliza } from '../organismos/Timeline.mock';
+import { buscarEventoConsultor, comTemaExemplo } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/EventoAgenda',
   component: EventoAgenda,
-  decorators: [comTemaAgiliza],
+  decorators: [comTemaExemplo],
   parameters: {
     docs: {
       description: {
@@ -18,7 +18,7 @@ Segue a linha de lista com seta do protótipo Cupertino do mobi-gv. Recebe o eve
 
 ## 🚫 Quando NÃO usar
 - Para pendentes que passaram do horário (use EventoPendente)
-- Na Timeline (use EventoTimelineAgiliza)
+- Na Timeline (use EventoTimelineMarcos)
 
 ## ♿ Acessibilidade
 - Quando clicável, o título é um \`<button>\`: o evento recebe foco e responde a Enter e Espaço

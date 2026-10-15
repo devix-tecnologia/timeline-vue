@@ -6,7 +6,7 @@ import {
   dadosPerfil,
   dadosPerfilConsultor,
   gerarEventosConsultor,
-  temaAgiliza,
+  temaExemplo,
 } from './Timeline.mock';
 import { APARENCIAS_TIMELINE } from './Timeline.types';
 import { Evento } from '../type';
@@ -46,9 +46,9 @@ O componente recebe um perfil opcional no topo e uma lista de eventos. Intername
 A prop \`aparencia\` muda a forma de representar os eventos, sem mudar os dados:
 - \`padrao\`: linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.
 - \`cartoes\`: um cartão por evento ao lado de um trilho, com status por extenso, etiquetas de categoria, prioridade e destaque, e separadores de dia por extenso ("Hoje", "Amanhã").
-- \`agiliza\`: a hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento (\`acoes\`, emitidas em \`acaoClick\`). Segue o projeto gráfico do agiliza.ai.
+- \`marcos\`: a hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento (\`acoes\`, emitidas em \`acaoClick\`).
 
-Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\`, \`SeparadorPeriodoCartao\` ou \`SeparadorPeriodoAgiliza\`; \`EventoTimeline\`, \`EventoTimelineCartao\` ou \`EventoTimelineAgiliza\`); a ordenação, o evento atual e o status atrasado continuam na Timeline.
+Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\`, \`SeparadorPeriodoCartao\` ou \`SeparadorPeriodoMarcos\`; \`EventoTimeline\`, \`EventoTimelineCartao\` ou \`EventoTimelineMarcos\`); a ordenação, o evento atual e o status atrasado continuam na Timeline.
 
 ## ♿ Acessibilidade
 - Os eventos são navegáveis por teclado via click
@@ -68,7 +68,7 @@ Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\`, \`Sep
     },
     aparencia: {
       description:
-        'Forma de representar os eventos: \`padrao\` (linha com a hora à esquerda), \`cartoes\` (um cartão por evento ao lado do trilho) ou \`agiliza\` (hora, marcador do status e cartão com ações).',
+        'Forma de representar os eventos: \`padrao\` (linha com a hora à esquerda), \`cartoes\` (um cartão por evento ao lado do trilho) ou \`marcos\` (hora, marcador do status e cartão com ações).',
       control: { type: 'select' },
       options: APARENCIAS_TIMELINE,
       table: { type: { summary: 'AparenciaTimeline' }, defaultValue: { summary: 'padrao' } },
@@ -204,7 +204,7 @@ export const Aparencias: StoryObj<typeof Timeline> = {
   },
 };
 
-export const Agiliza: StoryObj<typeof Timeline> = {
+export const Marcos: StoryObj<typeof Timeline> = {
   render: (args) => ({
     components: { Timeline },
     setup() {
@@ -212,7 +212,7 @@ export const Agiliza: StoryObj<typeof Timeline> = {
       const registrarAcao = (evento: Evento, acao: { rotulo: string }) => {
         acoes.push(`${acao.rotulo}: ${evento.titulo}`);
       };
-      return { args, tema: temaAgiliza, registrarAcao };
+      return { args, tema: temaExemplo, registrarAcao };
     },
     template: `
       <div :style="tema" style="max-width: 48rem; padding: 0 2rem">
@@ -221,15 +221,82 @@ export const Agiliza: StoryObj<typeof Timeline> = {
     `,
   }),
   args: {
-    aparencia: 'agiliza',
+    aparencia: 'marcos',
     eventosTimeline: gerarEventosConsultor(),
   },
   parameters: {
     docs: {
       description: {
-        story: `A agenda do consultor de vendas na aparência \`agiliza\`, com as cores do projeto gráfico do agiliza.ai aplicadas por tokens num contêiner.
+        story: `A agenda do consultor de vendas na aparência \`marcos\`, com as cores de uma marca fictícia (a Acme) aplicadas por tokens num contêiner, nos temas claro e escuro.
 
 Cada evento mostra a hora à esquerda (a realizada, quando houver), o marcador do status sobre o trilho e um cartão com o título, o cliente, a hora prevista ou a descrição, o status por extenso e as ações do evento. As ações vêm do campo \`acoes\` do evento, e o clique nelas sai no evento \`acaoClick\`, separado do \`eventoClick\` do cartão.`,
+      },
+    },
+  },
+};
+
+/**
+ * A mesma Timeline no tema padrão e no de uma marca, cada uma com o tema claro e o escuro
+ * forçados por data-tema: os tokens da marca trazem os dois valores, e o tema forçado vale
+ * qualquer que seja o do sistema.
+ */
+export const TemasEMarca: StoryObj<typeof Timeline> = {
+  name: 'Temas e marca',
+  render: () => ({
+    components: { Timeline },
+    setup() {
+      const combinacoes = [
+        { id: 'padrao-claro', rotulo: 'Padrão, claro', tema: 'claro', marca: {} },
+        { id: 'padrao-escuro', rotulo: 'Padrão, escuro', tema: 'escuro', marca: {} },
+        { id: 'marca-claro', rotulo: 'Marca Acme, claro', tema: 'claro', marca: temaExemplo },
+        { id: 'marca-escuro', rotulo: 'Marca Acme, escuro', tema: 'escuro', marca: temaExemplo },
+      ].map((combinacao) => ({ ...combinacao, eventos: gerarEventosConsultor() }));
+      return { combinacoes };
+    },
+    template: `
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr)); gap: 2.4rem; align-items: start">
+        <figure
+          v-for="item in combinacoes"
+          :key="item.id"
+          :data-tema="item.tema"
+          :data-testid="item.id"
+          :style="item.marca"
+          style="margin: 0; padding: 1.2rem; color: var(--cor-texto); background: var(--cor-fundo)"
+        >
+          <figcaption style="padding-bottom: 0.8rem; font-size: 1.4rem">
+            {{ item.rotulo }} — <code>data-tema="{{ item.tema }}"</code>
+          </figcaption>
+          <Timeline aparencia="marcos" :eventosTimeline="item.eventos" :rolarAteOAtual="false" />
+        </figure>
+      </div>
+    `,
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const fundo = (id: string) =>
+      getComputedStyle(canvas.getByTestId(id).querySelector('.areaTimeline')!).backgroundColor;
+
+    // O fundo de cada Timeline é o do tema forçado, e não o do sistema.
+    await expect(fundo('padrao-claro')).toBe('rgb(255, 255, 255)');
+    await expect(fundo('padrao-escuro')).toBe('rgb(13, 17, 23)');
+    await expect(fundo('marca-claro')).toBe('rgb(255, 255, 255)');
+    await expect(fundo('marca-escuro')).toBe('rgb(17, 19, 28)');
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story: `Os tokens \`--cor-*\` trazem o valor do tema claro e o do escuro, em \`light-dark()\`. O tema segue o do sistema, e \`data-tema="claro"\` ou \`data-tema="escuro"\` num contêiner força um deles só ali, para uma aplicação com botão de tema.
+
+Para aplicar uma marca, redefina os tokens no mesmo formato, na página ou num contêiner. Aqui, a marca fictícia Acme:
+
+\`\`\`css
+.minha-marca {
+  --cor-primaria: light-dark(#4338ca, #a5b4fc);
+  --cor-fundo: light-dark(#ffffff, #11131c);
+  --cor-texto: light-dark(#1a1c2b, #eceef6);
+}
+\`\`\``,
       },
     },
   },

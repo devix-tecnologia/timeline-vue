@@ -1,12 +1,12 @@
 import CampoBusca from './CampoBusca.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
-import { comTemaAgiliza } from '../organismos/Timeline.mock';
+import { comTemaExemplo } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/CampoBusca',
   component: CampoBusca,
-  decorators: [comTemaAgiliza],
+  decorators: [comTemaExemplo],
   parameters: {
     docs: {
       description: {

@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/vue';
-import EventoTimelineAgiliza from './EventoTimelineAgiliza.vue';
+import EventoTimelineMarcos from './EventoTimelineMarcos.vue';
 
 const propsBase = () => ({
   status: 'realizado' as const,
@@ -12,12 +12,12 @@ const propsBase = () => ({
   textoDestaque: '',
 });
 
-describe('EventoTimelineAgiliza.vue', () => {
+describe('EventoTimelineMarcos.vue', () => {
   it('mostra a hora realizada, o status por extenso e a hora prevista', () => {
-    const { getByTestId, getByText } = render(EventoTimelineAgiliza, { props: propsBase() });
+    const { getByTestId, getByText } = render(EventoTimelineMarcos, { props: propsBase() });
 
-    const evento = getByTestId('evento-agiliza');
-    expect(evento.querySelector('.eventoAgiliza__hora')?.textContent?.trim()).toBe('09:05');
+    const evento = getByTestId('evento-marcos');
+    expect(evento.querySelector('.eventoMarcos__hora')?.textContent?.trim()).toBe('09:05');
     expect(getByText('Realizado')).toBeTruthy();
     expect(getByText('Construtora Alicerce')).toBeTruthy();
     expect(getByText('Previsto para 09:00')).toBeTruthy();
@@ -25,7 +25,7 @@ describe('EventoTimelineAgiliza.vue', () => {
   });
 
   it('sem hora realizada, mostra a prevista e a descrição', () => {
-    const { getByTestId, getByText, queryByText } = render(EventoTimelineAgiliza, {
+    const { getByTestId, getByText, queryByText } = render(EventoTimelineMarcos, {
       props: {
         ...propsBase(),
         status: 'adiado',
@@ -36,7 +36,7 @@ describe('EventoTimelineAgiliza.vue', () => {
     });
 
     expect(
-      getByTestId('evento-agiliza').querySelector('.eventoAgiliza__hora')?.textContent?.trim()
+      getByTestId('evento-marcos').querySelector('.eventoMarcos__hora')?.textContent?.trim()
     ).toBe('11:00');
     expect(getByText('Nova data a definir')).toBeTruthy();
     expect(queryByText(/Previsto para/)).toBeNull();
@@ -44,7 +44,7 @@ describe('EventoTimelineAgiliza.vue', () => {
 
   it('emite "click" pelo botão do título e "acaoClick" pelas ações, sem misturar', async () => {
     const reagendar = { id: 'reagendar', rotulo: 'Reagendar', icone: 'edit_calendar' };
-    const { getByRole, emitted } = render(EventoTimelineAgiliza, {
+    const { getByRole, emitted } = render(EventoTimelineMarcos, {
       props: { ...propsBase(), acoes: [reagendar] },
     });
 
@@ -58,11 +58,11 @@ describe('EventoTimelineAgiliza.vue', () => {
   });
 
   it('marca o evento atual com a classe que a Timeline procura e com aria-current', () => {
-    const { getByTestId } = render(EventoTimelineAgiliza, {
+    const { getByTestId } = render(EventoTimelineMarcos, {
       props: { ...propsBase(), ehAtual: true },
     });
 
-    const evento = getByTestId('evento-agiliza');
+    const evento = getByTestId('evento-marcos');
     expect(evento.classList).toContain('atual');
     expect(evento.getAttribute('aria-current')).toBe('true');
   });

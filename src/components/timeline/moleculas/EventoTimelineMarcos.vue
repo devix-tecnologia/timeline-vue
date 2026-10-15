@@ -1,33 +1,33 @@
 <template>
   <article
-    data-testid="evento-agiliza"
-    class="eventoAgiliza"
+    data-testid="evento-marcos"
+    class="eventoMarcos"
     :class="classes"
     :aria-current="ehAtual ? 'true' : undefined"
     @click="handleClick"
   >
-    <div class="eventoAgiliza__hora">
+    <div class="eventoMarcos__hora">
       <Hora :hora="horaPrincipal" />
     </div>
 
-    <div class="eventoAgiliza__trilho" aria-hidden="true">
+    <div class="eventoMarcos__trilho" aria-hidden="true">
       <MarcoStatus :status="status" />
     </div>
 
-    <div class="eventoAgiliza__cartao">
-      <header class="eventoAgiliza__cabecalho">
-        <h4 class="eventoAgiliza__titulo">
-          <button v-if="clicavel" type="button" class="eventoAgiliza__acao">{{ titulo }}</button>
+    <div class="eventoMarcos__cartao">
+      <header class="eventoMarcos__cabecalho">
+        <h4 class="eventoMarcos__titulo">
+          <button v-if="clicavel" type="button" class="eventoMarcos__acao">{{ titulo }}</button>
           <template v-else>{{ titulo }}</template>
         </h4>
         <SeloStatus :status="status" aparencia="preenchido" />
       </header>
-      <p v-if="subtitulo" class="eventoAgiliza__subtitulo">{{ subtitulo }}</p>
-      <p v-if="realizadoEm" class="eventoAgiliza__apoio">Previsto para {{ horaPrevista }}</p>
-      <p v-if="textoDestaque" class="eventoAgiliza__apoio">{{ textoDestaque }}</p>
+      <p v-if="subtitulo" class="eventoMarcos__subtitulo">{{ subtitulo }}</p>
+      <p v-if="realizadoEm" class="eventoMarcos__apoio">Previsto para {{ horaPrevista }}</p>
+      <p v-if="textoDestaque" class="eventoMarcos__apoio">{{ textoDestaque }}</p>
       <AcoesEvento
         v-if="acoes && acoes.length > 0"
-        class="eventoAgiliza__acoes"
+        class="eventoMarcos__acoes"
         :acoes="acoes"
         @acao-click="(acao, mouseEvent) => $emit('acaoClick', acao, mouseEvent)"
       />
@@ -45,12 +45,12 @@ import { AcaoEvento, Categoria, Criticidade, Status } from '../type';
 import { horaCurta } from '../utils/datas';
 
 /**
- * Evento da timeline na aparência `agiliza`: a hora à esquerda, o marcador do status sobre
+ * Evento da timeline na aparência `marcos`: a hora à esquerda, o marcador do status sobre
  * o trilho e um cartão com título, cliente, status por extenso e ações. Recebe as mesmas
  * props e emite o mesmo `click` do EventoTimeline, mais as `acoes` e o `acaoClick`.
  */
 export default defineComponent({
-  name: 'EventoTimelineAgiliza',
+  name: 'EventoTimelineMarcos',
   components: { Hora, MarcoStatus, SeloStatus, AcoesEvento },
   props: {
     status: {
@@ -117,11 +117,11 @@ export default defineComponent({
       horaPrincipal: computed(() => props.realizadoEm ?? props.previstoPara),
       horaPrevista: computed(() => horaCurta(props.previstoPara)),
       classes: computed(() => [
-        `eventoAgiliza--${props.status}`,
+        `eventoMarcos--${props.status}`,
         {
           // `atual` é a classe que a Timeline procura para rolar até o evento.
           atual: props.ehAtual,
-          'eventoAgiliza--clicavel': props.clicavel,
+          'eventoMarcos--clicavel': props.clicavel,
         },
       ]),
     };
@@ -131,7 +131,7 @@ export default defineComponent({
 
 <style scoped>
 /* Cor e espaçamento do trilho vêm da Timeline; fora dela, o trilho não tem linha. */
-.eventoAgiliza {
+.eventoMarcos {
   display: grid;
   grid-template-columns: 5.6rem 4.4rem minmax(0, 1fr);
   align-items: start;
@@ -139,17 +139,17 @@ export default defineComponent({
   color: var(--cor-texto);
 }
 
-.eventoAgiliza__hora {
+.eventoMarcos__hora {
   padding-top: 1.8rem;
 }
 
-.eventoAgiliza__hora > .hora-padrao {
+.eventoMarcos__hora > .hora-padrao {
   color: var(--cor-texto);
   font-size: 1.8rem;
   font-weight: 700;
 }
 
-.eventoAgiliza__trilho {
+.eventoMarcos__trilho {
   position: relative;
   align-self: stretch;
   display: flex;
@@ -157,7 +157,7 @@ export default defineComponent({
   padding-top: 1.4rem;
 }
 
-.eventoAgiliza__trilho::before {
+.eventoMarcos__trilho::before {
   content: '';
   position: absolute;
   top: 0;
@@ -167,12 +167,12 @@ export default defineComponent({
   background: var(--trilho-cor, transparent);
 }
 
-.eventoAgiliza__trilho > .marcoStatus {
+.eventoMarcos__trilho > .marcoStatus {
   position: relative;
   z-index: 1;
 }
 
-.eventoAgiliza__cartao {
+.eventoMarcos__cartao {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -183,50 +183,50 @@ export default defineComponent({
   transition: border-color 0.15s ease;
 }
 
-.eventoAgiliza--clicavel {
+.eventoMarcos--clicavel {
   cursor: pointer;
 }
 
-.eventoAgiliza--clicavel:hover .eventoAgiliza__cartao {
+.eventoMarcos--clicavel:hover .eventoMarcos__cartao {
   border-color: color-mix(in srgb, var(--cor-texto) 35%, transparent);
 }
 
-.eventoAgiliza:has(.eventoAgiliza__acao:focus-visible) .eventoAgiliza__cartao {
+.eventoMarcos:has(.eventoMarcos__acao:focus-visible) .eventoMarcos__cartao {
   outline: 3px solid var(--cor-acao);
   outline-offset: 2px;
 }
 
 /* O EventoTimeline pinta `.atual` com estilo global; aqui só o cartão ganha a borda. */
-.eventoAgiliza.atual,
-.eventoAgiliza.atual:hover {
+.eventoMarcos.atual,
+.eventoMarcos.atual:hover {
   background-color: transparent;
 }
 
-.eventoAgiliza.atual .eventoAgiliza__cartao {
+.eventoMarcos.atual .eventoMarcos__cartao {
   border-color: var(--cor-primaria);
   box-shadow: 0 0 0 1px var(--cor-primaria);
 }
 
 /* A hora fica fora do cartão: não usa a cor de texto da seleção que o `.atual` global impõe. */
-.eventoAgiliza.atual .eventoAgiliza__hora > .hora {
+.eventoMarcos.atual .eventoMarcos__hora > .hora {
   color: var(--cor-texto) !important;
 }
 
-.eventoAgiliza__cabecalho {
+.eventoMarcos__cabecalho {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.8rem;
 }
 
-.eventoAgiliza__titulo {
+.eventoMarcos__titulo {
   margin: 0;
   font-size: 1.7rem;
   font-weight: 700;
   line-height: 2.2rem;
 }
 
-.eventoAgiliza__acao {
+.eventoMarcos__acao {
   margin: 0;
   padding: 0;
   border: 0;
@@ -237,20 +237,20 @@ export default defineComponent({
   cursor: pointer;
 }
 
-.eventoAgiliza__subtitulo {
+.eventoMarcos__subtitulo {
   margin: 0;
   font-size: 1.5rem;
   line-height: 2rem;
 }
 
-.eventoAgiliza__apoio {
+.eventoMarcos__apoio {
   margin: 0;
   color: var(--cor-apoio);
   font-size: 1.4rem;
   line-height: 2rem;
 }
 
-.eventoAgiliza__acoes {
+.eventoMarcos__acoes {
   margin-top: 1rem;
 }
 </style>

@@ -1,16 +1,16 @@
 import AgendaEventos from './AgendaEventos.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { comTemaAgiliza, gerarEventosConsultor } from './Timeline.mock';
+import { comTemaExemplo, gerarEventosConsultor } from './Timeline.mock';
 import { FILTROS_AGENDA } from './AgendaEventos.types';
 
 export default {
   title: 'Devix/Organismos/AgendaEventos',
   component: AgendaEventos,
-  decorators: [comTemaAgiliza],
+  decorators: [comTemaExemplo],
   parameters: {
     docs: {
       description: {
-        component: `Agenda de um dia, conforme o projeto gráfico do agiliza.ai. Separa os eventos em três grupos:
+        component: `Agenda de um dia. Separa os eventos em três grupos:
 - **Pendentes que passaram do horário**, deste dia ou de antes, em destaque (EventoPendente);
 - **Próximos eventos**, os pendentes do dia que ainda vão acontecer (EventoAgenda);
 - **Concluídos**, os do dia já resolvidos: realizados, adiados e cancelados (EventoAgenda).
@@ -21,7 +21,7 @@ Os filtros Todos, Pendentes e Concluídos escolhem os grupos; o de pendentes mos
 - Para mostrar o que falta fazer num dia, com o que ficou para trás em destaque
 
 ## 🚫 Quando NÃO usar
-- Para o histórico do que já aconteceu (use a Timeline com \`aparencia="agiliza"\`)
+- Para o histórico do que já aconteceu (use a Timeline com \`aparencia="marcos"\`)
 
 ## ♿ Acessibilidade
 - Região com o nome "Agenda"; dia e seções em \`<h3>\`, eventos em \`<h4>\`

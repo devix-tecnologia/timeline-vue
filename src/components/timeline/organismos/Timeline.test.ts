@@ -151,20 +151,20 @@ describe('Timeline.vue', () => {
       expect(queryAllByRole('button')).toHaveLength(0);
     });
 
-    it('troca separadores e eventos pelos da aparência agiliza, com as ações', () => {
+    it('troca separadores e eventos pelos da aparência marcos, com as ações', () => {
       const { container, getAllByRole } = render(Timeline, {
-        props: { aparencia: 'agiliza', eventosTimeline: gerarEventosConsultor(referencia) },
+        props: { aparencia: 'marcos', eventosTimeline: gerarEventosConsultor(referencia) },
       });
 
-      expect(container.querySelector('.timeline--agiliza')).toBeTruthy();
-      expect(container.querySelectorAll('.separadorAgiliza')).toHaveLength(4);
-      expect(container.querySelectorAll('.eventoAgiliza')).toHaveLength(12);
+      expect(container.querySelector('.timeline--marcos')).toBeTruthy();
+      expect(container.querySelectorAll('.separadorMarcos')).toHaveLength(4);
+      expect(container.querySelectorAll('.eventoMarcos')).toHaveLength(12);
       expect(getAllByRole('button', { name: 'Concluir' }).length).toBeGreaterThan(0);
     });
 
-    it('na aparência agiliza, emite "acaoClick" com o evento e a ação', async () => {
+    it('na aparência marcos, emite "acaoClick" com o evento e a ação', async () => {
       const { getByRole, emitted } = render(Timeline, {
-        props: { aparencia: 'agiliza', eventosTimeline: gerarEventosConsultor(referencia) },
+        props: { aparencia: 'marcos', eventosTimeline: gerarEventosConsultor(referencia) },
       });
 
       await fireEvent.click(getByRole('button', { name: 'Reagendar' }));

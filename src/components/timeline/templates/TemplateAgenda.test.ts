@@ -14,7 +14,7 @@ const renderizar = (props: Record<string, unknown> = {}) =>
       dia: agora,
       ...props,
     },
-    slots: { marca: '<span>agiliza.ai</span>' },
+    slots: { marca: '<span>acme.app</span>' },
   });
 
 describe('TemplateAgenda.vue', () => {
@@ -30,7 +30,7 @@ describe('TemplateAgenda.vue', () => {
   it('mostra a marca, as iniciais, o título, o nome e a função', () => {
     const { getByText, getByRole } = renderizar();
 
-    expect(getByText('agiliza.ai')).toBeTruthy();
+    expect(getByText('acme.app')).toBeTruthy();
     expect(getByText('RM')).toBeTruthy();
     expect(getByRole('heading', { level: 1 }).textContent).toBe('Eventos');
     expect(getByRole('heading', { level: 2 }).textContent).toBe('Rafael Moreira');
@@ -46,7 +46,7 @@ describe('TemplateAgenda.vue', () => {
     await fireEvent.click(getByRole('button', { name: 'Histórico' }));
 
     expect(queryByTestId('agenda-eventos')).toBeNull();
-    const titulos = [...container.querySelectorAll('.eventoAgiliza h4')].map((titulo) =>
+    const titulos = [...container.querySelectorAll('.eventoMarcos h4')].map((titulo) =>
       titulo.textContent?.trim()
     );
     expect(titulos).toEqual([
@@ -69,7 +69,7 @@ describe('TemplateAgenda.vue', () => {
 
     await fireEvent.click(getByRole('button', { name: 'Histórico' }));
     await fireEvent.update(getByRole('searchbox'), 'reuniao');
-    const noHistorico = [...container.querySelectorAll('.eventoAgiliza h4')].map((titulo) =>
+    const noHistorico = [...container.querySelectorAll('.eventoMarcos h4')].map((titulo) =>
       titulo.textContent?.trim()
     );
     expect(noHistorico).toEqual(['Reunião de descoberta', 'Alinhamento com a pré-venda']);

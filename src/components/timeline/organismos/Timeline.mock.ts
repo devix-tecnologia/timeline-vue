@@ -493,37 +493,43 @@ export function gerarEventosConsultor(referencia: Date = new Date()): Evento[] {
 }
 
 /**
- * Tokens de cor do projeto gráfico do agiliza.ai (task-004), tirados da imagem: verde
- * escuro da marca, superfícies claras e âmbar para o que está pendente. Aplicados num
- * contêiner, trocam as cores da Timeline sem mudar os componentes.
+ * Tokens de uma marca fictícia, a Acme: índigo, superfícies frias e âmbar para o que está
+ * pendente. Cada token traz o valor do tema claro e o do escuro, em light-dark(), como os do
+ * global.css. Aplicados num contêiner, trocam as cores dos componentes sem mudá-los, e o
+ * contêiner continua seguindo o tema (o do sistema ou o de um data-tema acima dele).
  */
-export const temaAgiliza: Record<string, string> = {
+export const temaExemplo: Record<string, string> = {
   '--fonte': "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
-  '--cor-primaria': '#0e5a3a',
-  '--cor-secundaria': '#0e5a3a',
-  '--cor-terciaria': '#f1f3f2',
-  '--cor-fundo': '#ffffff',
-  '--cor-selecao': '#e3f1ea',
-  '--cor-texto-selecao': '#0b3b26',
-  '--cor-texto': '#1b1f1d',
-  '--cor-apoio': '#5f6964',
-  '--cor-linha': '#e2e6e4',
-  '--cor-importante': '#c62828',
-  '--cor-alerta': '#e39b17',
-  '--cor-sucesso': '#12784a',
-  '--cor-acao': '#0e6b46',
-  '--cor-texto-acao': '#ffffff',
-  '--cor-texto-sucesso': '#ffffff',
-  '--cor-texto-importante': '#ffffff',
-  '--cor-sombra': 'rgba(14, 90, 58, 0.12)',
+  '--cor-primaria': 'light-dark(#4338ca, #a5b4fc)',
+  '--cor-secundaria': 'light-dark(#312e81, #c7d2fe)',
+  '--cor-terciaria': 'light-dark(#eef0f8, #1c1f2e)',
+  '--cor-fundo': 'light-dark(#ffffff, #11131c)',
+  '--cor-selecao': 'light-dark(#e0e7ff, #2b2f5c)',
+  '--cor-texto-selecao': 'light-dark(#1e1b4b, #eef0ff)',
+  '--cor-texto': 'light-dark(#1a1c2b, #eceef6)',
+  '--cor-apoio': 'light-dark(#5b6072, #9aa1b5)',
+  '--cor-linha': 'light-dark(#e3e5ee, #2a2e40)',
+  '--cor-importante': 'light-dark(#c62828, #f87171)',
+  '--cor-alerta': 'light-dark(#e39b17, #fbbf24)',
+  '--cor-sucesso': 'light-dark(#15803d, #4ade80)',
+  '--cor-acao': 'light-dark(#4338ca, #a5b4fc)',
+  '--cor-texto-acao': 'light-dark(#ffffff, #11131c)',
+  '--cor-texto-sucesso': 'light-dark(#ffffff, #0b1a10)',
+  '--cor-texto-importante': 'light-dark(#ffffff, #1a0b0b)',
+  '--cor-sucesso-sobre-fundo': 'light-dark(#15803d, #4ade80)',
+  '--cor-importante-sobre-fundo': 'light-dark(#c62828, #f87171)',
+  '--cor-alerta-sobre-fundo': 'light-dark(#8a5a00, #fbbf24)',
+  '--cor-apoio-sobre-fundo': 'light-dark(#4b5162, #9aa1b5)',
+  '--cor-sombra': 'light-dark(rgba(67, 56, 202, 0.12), rgba(0, 0, 0, 0.5))',
   'font-family': 'var(--fonte)',
+  color: 'var(--cor-texto)',
   'background-color': 'var(--cor-fundo)',
 };
 
-/** Decorator das stories: aplica o `temaAgiliza` num contêiner da largura de um celular. */
-export const comTemaAgiliza = (story: Component) => ({
+/** Decorator das stories: aplica o `temaExemplo` num contêiner da largura de um celular. */
+export const comTemaExemplo = (story: Component) => ({
   components: { story },
-  setup: () => ({ tema: temaAgiliza }),
+  setup: () => ({ tema: temaExemplo }),
   template: '<div :style="tema" style="max-width: 48rem; padding: 1.6rem 2rem"><story /></div>',
 });
 
