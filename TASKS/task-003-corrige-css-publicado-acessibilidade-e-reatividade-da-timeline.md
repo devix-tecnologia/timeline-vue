@@ -6,7 +6,7 @@
 
 ## Description
 
-Defeitos encontrados ao usar a versão publicada (3.4.4) no OpenTask BTalk, a linha do tempo da oportunidade. Ela fica no repositório `sidartaveloso/opentask`, em `packages/btalk`, e foi feita na task-045. O BTalk contorna cada defeito com um comentário no código. Quando esta correção for publicada, esses contornos podem sair.
+Defeitos encontrados ao usar a versão publicada (3.4.4) numa aplicação. Quem usa a biblioteca hoje precisa contornar cada um deles; com esta correção publicada, os contornos podem sair.
 
 ### Defeitos
 
