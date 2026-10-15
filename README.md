@@ -189,11 +189,11 @@ Para cuidar da posição por conta própria, desligue a rolagem com a prop `rola
 
 A prop `aparencia` muda a forma de representar os eventos, com os mesmos dados:
 
-| Valor               | Como os eventos aparecem                                                                                                                                |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `padrao` (o padrão) | Linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.                                                                             |
-| `cartoes`           | Um cartão por evento ao lado de um trilho, com o status por extenso e etiquetas de categoria, prioridade e destaque. O dia aparece por extenso.         |
-| `agiliza`           | A hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento. Segue o projeto gráfico do agiliza.ai. |
+| Valor               | Como os eventos aparecem                                                                                                                        |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `padrao` (o padrão) | Linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.                                                                     |
+| `cartoes`           | Um cartão por evento ao lado de um trilho, com o status por extenso e etiquetas de categoria, prioridade e destaque. O dia aparece por extenso. |
+| `agiliza`           | A hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento.                                |
 
 ```vue
 <Timeline aparencia="cartoes" :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos" />
@@ -223,25 +223,84 @@ const evento = {
 />
 ```
 
+## 🧩 Telas prontas
+
+Além da `Timeline`, a biblioteca traz telas inteiras, prontas para usar, e os organismos com que elas são montadas. Quem usa a biblioteca passa os dados e trata os eventos; a navegação entre as etapas da tela fica com o componente.
+
+| Componente         | O que é                                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `TemplateAgenda`   | Tela de agenda: cabeçalho com o perfil, busca e as visões **Agenda** e **Histórico**.                   |
+| `TemplateTimeline` | Tela de acompanhamento: linha do tempo, detalhe do evento, edição do status e inclusão de observações.  |
+| `AgendaEventos`    | A agenda de um dia, com filtros: os atrasados em destaque, os próximos eventos e os concluídos.         |
+| `EventoDetalhado`  | O detalhe de um evento, com as observações e os botões para editar o status e adicionar uma observação. |
+| `EditarEvento`     | Moldura de edição, com os slots `conteudo` e `salvamento` e os botões de salvar e cancelar.             |
+
+No Storybook, cada uma tem stories em **Templates** e **Organismos**.
+
 ### Tela de agenda (`TemplateAgenda`)
 
-O `TemplateAgenda` monta a tela do projeto gráfico do agiliza.ai. No topo ficam a marca (slot `marca`), o avatar com as iniciais, o título, o nome e a função (`perfil.descricao`). Abaixo, a busca e a escolha entre duas visões:
+No topo ficam a marca (slot `marca`), o avatar com as iniciais, o título, o nome e a função (`perfil.descricao`). Abaixo, a busca, que filtra pelo título, subtítulo, destaque e categoria, e a escolha entre duas visões:
 
-- **Agenda** (`AgendaEventos`): os pendentes que passaram do horário em destaque, os próximos eventos do dia e os concluídos, com filtros;
-- **Histórico**: os eventos já resolvidos, na Timeline com a aparência `agiliza`.
+- **Agenda** (`AgendaEventos`): os pendentes que passaram do horário em destaque, os próximos eventos do dia e os concluídos, com os filtros Todos, Pendentes e Concluídos;
+- **Histórico**: os eventos já resolvidos (realizados, adiados e cancelados), na `Timeline` com a aparência `agiliza`.
 
 ```vue
 <TemplateAgenda
   :perfil="perfil"
   :eventos="eventos"
-  @acaoClick="executarAcao"
+  @eventoClick="abrirEvento"
+  @acaoClick="(evento, acao) => executar(acao.id, evento)"
   @diaClick="escolherDia"
 >
-  <template #marca><img src="/logo.svg" alt="agiliza.ai" /></template>
+  <template #marca><img src="/logo.svg" alt="Minha empresa" /></template>
 </TemplateAgenda>
 ```
 
-As cores vêm dos tokens `--cor-*` de quem usa o componente. As stories aplicam os tokens do agiliza.ai num contêiner.
+| Prop            | Padrão      | Descrição                                                         |
+| --------------- | ----------- | ----------------------------------------------------------------- |
+| `perfil`        | —           | `Perfil` mostrado no topo (nome, imagem e `descricao`).           |
+| `eventos`       | —           | `Evento[]` da agenda e do histórico.                              |
+| `titulo`        | `'Eventos'` | Título da tela.                                                   |
+| `dia`           | hoje        | Dia mostrado na agenda.                                           |
+| `visaoInicial`  | `'agenda'`  | `'agenda'` ou `'historico'` (tipo `VisaoAgenda`).                 |
+| `filtroInicial` | `'todos'`   | `'todos'`, `'pendentes'` ou `'concluidos'` (tipo `FiltroAgenda`). |
+
+Eventos: `eventoClick(evento, mouseEvent)`, `acaoClick(evento, acao, mouseEvent)`, para as ações do campo `acoes` de cada evento, e `diaClick(mouseEvent)`, no dia da agenda, para quem quiser abrir um seletor de data.
+
+O `AgendaEventos` pode ser usado sozinho, com as props `eventos`, `dia` e `filtroInicial` e os mesmos três eventos. Ele não altera o status dos eventos: são pendentes os `planejado`, `atrasado` e `adiantado`.
+
+### Tela de acompanhamento (`TemplateTimeline`)
+
+Mostra a linha do tempo de uma pessoa e conduz as etapas a partir dela: ao clicar num evento, abre o detalhe (`EventoDetalhado`); do detalhe, a pessoa edita o status ou adiciona uma observação. O botão de voltar do topo leva de volta à linha do tempo; na linha do tempo, ele emite `voltarClick`, para quem usa o componente decidir para onde ir.
+
+```vue
+<TemplateTimeline
+  :perfil="perfil"
+  :eventos="eventosDetalhados"
+  @editarStatusSalvarClicked="(evento, status) => salvarStatus(evento, status)"
+  @adicionarObservacaoSalvarClicked="(evento, mensagem) => salvarObservacao(evento, mensagem)"
+  @voltarClick="sair"
+/>
+```
+
+Os eventos são do tipo `EventoDetalhado` (exportado em `TiposDetalhado`): um `Evento` com a lista de `observacoes`. A tela só avisa o que a pessoa fez; gravar o status e a observação fica com quem usa o componente. Os eventos emitidos são:
+
+| Evento                                 | Quando                                                    |
+| -------------------------------------- | --------------------------------------------------------- |
+| `eventoTimelineClicked`                | Um evento da linha do tempo foi aberto.                   |
+| `eventoStatusEditClicked`              | No detalhe, a pessoa pediu para editar o status.          |
+| `eventoDetalhadoObservacoesAddClicked` | No detalhe, a pessoa pediu para adicionar uma observação. |
+| `editarStatusSalvarClicked`            | O novo status foi salvo (`evento`, `status`).             |
+| `editarStatusCancelarClicked`          | A edição do status foi cancelada.                         |
+| `adicionarObservacaoSalvarClicked`     | A observação foi salva (`evento`, `mensagem`).            |
+| `adicionarObservacaoCancelarClicked`   | A inclusão da observação foi cancelada.                   |
+| `voltarClick`                          | O botão de voltar foi clicado na linha do tempo.          |
+
+Todos recebem o `MouseEvent` como último argumento.
+
+### Cores
+
+As telas usam os mesmos tokens `--cor-*` da [customização de estilos](#-customização-de-estilos). Para aplicar a identidade de uma marca só numa parte da página, defina os tokens num contêiner em volta do componente, como fazem as stories da aparência `agiliza`.
 
 ## 🚀 Contribuindo
 
@@ -318,8 +377,7 @@ Depois, compartilhe o `http://<sua-ip-local>:6006` com quem você quiser na mesm
 Para expor publicamente (internet), use uma ferramenta de túnel como `ngrok` ou `localtunnel`:
 
 ```sh
-# instalar ngrok (opcional)
-Faça um fork do projeto, crie uma nova branch e faça seus commits. Seguem passos para bons commits:
+# com ngrok
 ngrok http 6006
 
 # ou usar localtunnel
