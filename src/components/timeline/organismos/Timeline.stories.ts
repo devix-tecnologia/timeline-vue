@@ -1,5 +1,6 @@
 import Timeline from './Timeline.vue';
 import { Meta, StoryFn, StoryObj } from '@storybook/vue3-vite';
+import { expect, waitFor, within } from 'storybook/test';
 import {
   dadosEventos,
   dadosPerfil,
@@ -39,7 +40,7 @@ O componente recebe um perfil opcional no topo e uma lista de eventos. Intername
 - Insere separadores de período entre dias diferentes
 - Identifica e marca o evento "atual" (mais próximo do horário corrente com status planejado/atrasado)
 - Atualiza o status para "atrasado" quando ultrapassa a tolerância
-- Rola automaticamente até o evento atual na montagem
+- Rola o próprio contêiner até o evento atual ao montar e quando a lista muda (prop \`rolarAteOAtual\`)
 
 ## 🎨 Aparências
 A prop \`aparencia\` muda a forma de representar os eventos, sem mudar os dados:
@@ -71,6 +72,12 @@ Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\`, \`Sep
       control: { type: 'select' },
       options: APARENCIAS_TIMELINE,
       table: { type: { summary: 'AparenciaTimeline' }, defaultValue: { summary: 'padrao' } },
+    },
+    rolarAteOAtual: {
+      description:
+        'Centraliza o evento atual no primeiro ancestral com \`overflow-y\` \`auto\` ou \`scroll\` (que pode ser a própria Timeline), ao montar e quando a lista muda. Nunca rola a página nem contêineres com \`overflow: hidden\`. Desligue quando quem usa a Timeline cuida da posição.',
+      control: { type: 'boolean' },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'true' } },
     },
   },
 } as Meta<typeof Timeline>;
@@ -223,6 +230,77 @@ export const Agiliza: StoryObj<typeof Timeline> = {
         story: `A agenda do consultor de vendas na aparência \`agiliza\`, com as cores do projeto gráfico do agiliza.ai aplicadas por tokens num contêiner.
 
 Cada evento mostra a hora à esquerda (a realizada, quando houver), o marcador do status sobre o trilho e um cartão com o título, o cliente, a hora prevista ou a descrição, o status por extenso e as ações do evento. As ações vêm do campo \`acoes\` do evento, e o clique nelas sai no evento \`acaoClick\`, separado do \`eventoClick\` do cartão.`,
+      },
+    },
+  },
+};
+
+/**
+ * task-005: cada Timeline rola só o próprio contêiner até o evento atual. A página e a
+ * moldura com overflow hidden ficam paradas.
+ */
+export const RolagemAteOAtual: StoryObj<typeof Timeline> = {
+  name: 'Rolagem até o evento atual',
+  render: () => ({
+    components: { Timeline },
+    setup() {
+      // Uma lista de eventos por Timeline, porque a Timeline altera os eventos que recebe.
+      return {
+        caixas: [
+          { id: 'rolagem-a', altura: '24rem', eventos: gerarEventosConsultor() },
+          { id: 'rolagem-b', altura: '32rem', eventos: gerarEventosConsultor() },
+        ],
+        eventosMoldura: gerarEventosConsultor(),
+      };
+    },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 2.4rem; color: var(--cor-texto); font-size: 1.4rem">
+        <figure v-for="caixa in caixas" :key="caixa.id" style="margin: 0">
+          <figcaption style="padding: 0.8rem 0">Contêiner com <code>overflow-y: auto</code> e {{ caixa.altura }} de altura</figcaption>
+          <div :data-testid="caixa.id" :style="{ height: caixa.altura, overflowY: 'auto' }">
+            <Timeline aparencia="cartoes" :eventosTimeline="caixa.eventos" />
+          </div>
+        </figure>
+        <figure style="margin: 0">
+          <figcaption style="padding: 0.8rem 0">Moldura com <code>overflow: hidden</code>, que não rola</figcaption>
+          <div data-testid="moldura" style="height: 24rem; overflow: hidden">
+            <Timeline aparencia="cartoes" :eventosTimeline="eventosMoldura" />
+          </div>
+        </figure>
+      </div>
+    `,
+  }),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const pagina = canvasElement.ownerDocument.scrollingElement!;
+
+    for (const id of ['rolagem-a', 'rolagem-b']) {
+      const caixa = canvas.getByTestId(id);
+      const atual = caixa.querySelector<HTMLElement>('.atual')!;
+      expect(atual).toBeTruthy();
+      // O evento atual desta Timeline fica visível dentro da própria caixa.
+      await waitFor(
+        () => {
+          const limites = caixa.getBoundingClientRect();
+          const evento = atual.getBoundingClientRect();
+          expect(caixa.scrollTop).toBeGreaterThan(0);
+          expect(evento.top).toBeGreaterThanOrEqual(limites.top - 1);
+          expect(evento.bottom).toBeLessThanOrEqual(limites.bottom + 1);
+        },
+        { timeout: 3000 }
+      );
+    }
+
+    expect(canvas.getByTestId('moldura').scrollTop).toBe(0);
+    expect(pagina.scrollTop).toBe(0);
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story: `Duas Timelines, cada uma num contêiner que rola, e uma terceira numa moldura com \`overflow: hidden\`.
+
+Ao montar e quando a lista muda, cada Timeline centraliza o próprio evento atual no primeiro ancestral com \`overflow-y\` \`auto\` ou \`scroll\`. A página e a moldura não rolam, e o intervalo que acompanha o relógio não rola de novo. Para cuidar da posição por conta própria, use \`:rolarAteOAtual="false"\`.`,
       },
     },
   },

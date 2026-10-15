@@ -1,6 +1,6 @@
 # 🧩 Task 005 — Rolagem até o evento atual só dentro da própria timeline
 
-- Status: pending
+- Status: in-progress
 - Type: fix
 - Assignee: sidartaveloso
 
@@ -55,13 +55,28 @@ e é chamado no `onMounted`, em cada `carregarListaEventos` (a cada troca da pro
 
 <!-- [x] feito · [ ] em aberto · [ ] ... — adiado: <razão> para o que se decidiu não fazer -->
 
-- [ ] Evento atual procurado dentro do componente
-- [ ] Rolagem só do contêiner da timeline, sem `scrollIntoView`
-- [ ] Prop para desligar a rolagem automática
-- [ ] Sem rolagem no intervalo de 60 s
-- [ ] Story com duas timelines na mesma página, com play function
-- [ ] Nova versão publicada, com a prop documentada no README
+- [x] Evento atual procurado dentro do componente (`ref` na raiz da Timeline)
+- [x] Rolagem só do contêiner da timeline, sem `scrollIntoView`
+- [x] Prop para desligar a rolagem automática (`rolarAteOAtual`, padrão `true`)
+- [x] Sem rolagem no intervalo de 60 s
+- [x] Story com duas timelines na mesma página, com play function (**Rolagem até o evento atual**)
+- [ ] Nova versão publicada, com a prop documentada no README — prop documentada; publicação pendente
 
 ## Notes
 
 - Relacionada à task-003 (correções de comportamento e reatividade da `Timeline`).
+- **Qual contêiner rola.** O primeiro ancestral do evento atual com `overflow-y` `auto`, `scroll` ou
+  `overlay`, que pode ser a própria Timeline. A busca para antes do `html` e do `body`, então a página nunca
+  rola; um contêiner com `overflow: hidden` não conta como rolável. Sem contêiner rolável, nada rola.
+- **Mudança de comportamento.** Antes, uma Timeline sem contêiner rolável fazia a página rolar até o evento
+  atual. Agora não rola: para manter o posicionamento, ponha a Timeline (ou um contêiner dela) com altura e
+  `overflow-y: auto`.
+- **`scrollParaItemAtual`** continua exposto pela instância (via `ref`), agora com a mesma regra. Serve para
+  quem desliga `rolarAteOAtual` e quer posicionar num momento escolhido.
+- **Testes.** `Timeline.test.ts`, bloco "rolagem até o evento atual", um teste por critério de aceite; a story
+  **Rolagem até o evento atual** confere no navegador as duas caixas, a moldura com `overflow: hidden` e a
+  página. Todos reprovam com a implementação anterior.
+- **Versão.** O `npm view @devix-tecnologia/timeline-vue` responde `latest` 3.4.4, mas o documento do pacote em
+  `registry.npmjs.org` (consultado direto) já traz a 3.5.0 como `latest`, publicada em 2026-08-24 pelo CI com
+  provenance, e o tarball da 3.5.0 baixa. Ver o item 8 da task-003. Com os `feat` desde a tag `v3.5.0`, o
+  semantic-release calcula a 3.6.0 quando a `main` receber a develop.
