@@ -48,6 +48,20 @@ describe('Botao.vue', () => {
     expect(getByRole('button', { name: 'Concluir' })).toBeTruthy();
   });
 
+  it('só com ícone e aria-label, deixa o nome da ligadura fora do conteúdo acessível', () => {
+    const { getByTestId } = render(Botao, {
+      props: { icone: 'more_horiz' },
+      attrs: { 'aria-label': 'Mais ações' },
+    });
+
+    const botao = getByTestId('botao');
+    const icone = botao.querySelector('.material-symbols-outlined');
+    expect(botao.getAttribute('aria-label')).toBe('Mais ações');
+    expect(icone?.getAttribute('aria-hidden')).toBe('true');
+    expect(icone?.getAttribute('data-icone')).toBe('more_horiz');
+    expect(botao.textContent?.trim()).toBe('');
+  });
+
   it('centraliza o ícone quando não há título', () => {
     const { getByTestId } = render(Botao, { props: { icone: 'more_horiz' } });
 
