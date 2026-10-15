@@ -95,22 +95,11 @@ export default defineComponent({
 }
 
 .criticidade-alta .criticidade {
-  color: #c42020;
+  color: var(--cor-importante-sobre-fundo);
 }
 
 .criticidade-media .criticidade {
-  color: #8a7300;
-}
-
-/* Os tons escuros somem no fundo escuro; lá valem os mesmos do contorno do BotaoStatus. */
-@media (prefers-color-scheme: dark) {
-  .criticidade-alta .criticidade {
-    color: #fc3636;
-  }
-
-  .criticidade-media .criticidade {
-    color: var(--cor-alerta);
-  }
+  color: var(--cor-alerta-sobre-fundo);
 }
 
 .titulo {
