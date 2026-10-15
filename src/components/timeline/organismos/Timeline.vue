@@ -1,5 +1,5 @@
 <template>
-  <div class="areaTimeline">
+  <div ref="raiz" class="areaTimeline">
     <PerfilTimeline
       v-if="perfilTimeline"
       :nomePerfil="perfilTimeline.nome"
@@ -48,7 +48,9 @@
 import {
   defineComponent,
   computed,
+  nextTick,
   reactive,
+  ref,
   watch,
   onMounted,
   onBeforeUnmount,
@@ -65,6 +67,20 @@ import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
 import { AcaoEvento, Evento, Perfil } from '../type';
 import { APARENCIAS_TIMELINE, AparenciaTimeline } from './Timeline.types';
 import 'material-symbols/outlined.css';
+
+/*
+ * O primeiro ancestral do elemento que rola pela pessoa, sem passar da página: o elemento
+ * da página (html e body) fica de fora, para a Timeline nunca rolar a página.
+ */
+function conteinerRolavel(elemento: HTMLElement): HTMLElement | null {
+  const pagina = [document.documentElement, document.body, document.scrollingElement];
+  for (let pai = elemento.parentElement; pai && !pagina.includes(pai); pai = pai.parentElement) {
+    if (/^(auto|scroll|overlay)$/.test(getComputedStyle(pai).overflowY)) {
+      return pai;
+    }
+  }
+  return null;
+}
 
 type TipoEventoTimeline =
   | { tipo: 'dia'; valor: Date; key: number }
@@ -103,6 +119,14 @@ export default defineComponent({
       validator: (aparencia: string) =>
         (APARENCIAS_TIMELINE as readonly string[]).includes(aparencia),
     },
+    /*
+     * Rola o contêiner da Timeline até o evento atual ao montar e quando a lista muda.
+     * Desligue quando quem usa a Timeline cuida da posição da rolagem.
+     */
+    rolarAteOAtual: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   emits: {
@@ -132,7 +156,6 @@ export default defineComponent({
         evento.atual = ehAtual;
         evento.scroll = ehAtual;
       });
-      scrollParaItemAtual();
     }
 
     const verifica_mesmo_dia = (a: Date, b: Date) => {
@@ -212,32 +235,64 @@ export default defineComponent({
       }
     });
 
+    const raiz = ref<HTMLElement | null>(null);
+
+    /*
+     * Centraliza o evento atual desta Timeline no primeiro ancestral que rola (overflow-y
+     * auto ou scroll), que pode ser a própria Timeline. Só esse contêiner rola: nem a página
+     * nem os contêineres com overflow hidden, que não rolam pela pessoa, mudam de posição.
+     */
     const scrollParaItemAtual = () => {
-      const itemAtual = document.querySelector('.atual');
-      if (!itemAtual || !itemAtual.scrollIntoView) {
+      const itemAtual = raiz.value?.querySelector<HTMLElement>('.atual');
+      const conteiner = itemAtual && conteinerRolavel(itemAtual);
+      if (!itemAtual || !conteiner) {
         return;
       }
 
-      itemAtual.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
+      const deslocamento =
+        itemAtual.getBoundingClientRect().top - conteiner.getBoundingClientRect().top;
+      const topo = Math.max(
+        0,
+        conteiner.scrollTop + deslocamento - (conteiner.clientHeight - itemAtual.offsetHeight) / 2
+      );
+      if (typeof conteiner.scrollTo === 'function') {
+        conteiner.scrollTo({ top: topo, behavior: 'smooth' });
+      } else {
+        conteiner.scrollTop = topo;
+      }
+    };
+
+    const rolarSePermitido = () => {
+      if (props.rolarAteOAtual) {
+        scrollParaItemAtual();
+      }
     };
 
     carregarListaEventos();
-    watch(() => props.eventosTimeline, carregarListaEventos);
+    watch(
+      () => props.eventosTimeline,
+      async () => {
+        carregarListaEventos();
+        // Rola depois que a lista nova chegou ao DOM.
+        await nextTick();
+        rolarSePermitido();
+      }
+    );
 
-    // Um único intervalo por Timeline, para o evento atual acompanhar o relógio.
+    /*
+     * Um único intervalo por Timeline, para o evento atual acompanhar o relógio. O intervalo
+     * não rola: a pessoa pode ter rolado para outro lugar.
+     */
     let intervalo: ReturnType<typeof setInterval> | undefined;
     onMounted(() => {
-      // Aguardando a renderização para fazer scroll
-      scrollParaItemAtual();
+      rolarSePermitido();
       intervalo = setInterval(carregarListaEventos, 60000);
     });
     onBeforeUnmount(() => clearInterval(intervalo));
 
     return {
       componentes: computed(() => COMPONENTES_POR_APARENCIA[props.aparencia]),
+      raiz,
       eventosPorTipo: eventosTimeline,
       scrollParaItemAtual,
       handleEventoClick,

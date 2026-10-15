@@ -165,6 +165,26 @@ Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título,
 
 ![TimelineDevixExemploEvento](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/evento.png)
 
+### Rolagem até o evento atual
+
+A Timeline marca como atual o evento planejado ou atrasado mais próximo do horário corrente. Ao montar e quando a lista de eventos muda, ela centraliza esse evento no primeiro ancestral com `overflow-y` `auto` ou `scroll`, que pode ser a própria Timeline:
+
+```vue
+<div style="height: 40rem; overflow-y: auto">
+  <Timeline :eventosTimeline="listaEventos" />
+</div>
+```
+
+- Só esse contêiner rola: a página e os contêineres com `overflow: hidden` não mudam de posição. Sem um contêiner que role, nada rola.
+- Cada Timeline procura o próprio evento atual, então várias Timelines na mesma página se posicionam cada uma no seu.
+- A atualização a cada minuto, que acompanha o relógio, não rola de novo: a posição que a pessoa escolheu fica.
+
+Para cuidar da posição por conta própria, desligue a rolagem com a prop `rolarAteOAtual` (padrão `true`):
+
+```vue
+<Timeline :eventosTimeline="listaEventos" :rolarAteOAtual="false" />
+```
+
 ### Aparências
 
 A prop `aparencia` muda a forma de representar os eventos, com os mesmos dados:
