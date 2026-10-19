@@ -58,10 +58,10 @@ import {
   Component,
 } from 'vue';
 import EventoTimeline from '../moleculas/EventoTimeline.vue';
-import EventoTimelineMarcos from '../moleculas/EventoTimelineMarcos.vue';
+import EventoTimelineFilosofia from '../moleculas/EventoTimelineFilosofia.vue';
 import EventoTimelineCartao from '../moleculas/EventoTimelineCartao.vue';
 import SeparadorPeriodo from '../moleculas/SeparadorPeriodo.vue';
-import SeparadorPeriodoMarcos from '../moleculas/SeparadorPeriodoMarcos.vue';
+import SeparadorPeriodoFilosofia from '../moleculas/SeparadorPeriodoFilosofia.vue';
 import SeparadorPeriodoCartao from '../moleculas/SeparadorPeriodoCartao.vue';
 import PerfilTimeline from '../moleculas/PerfilTimeline.vue';
 import { AcaoEvento, Evento, Perfil } from '../type';
@@ -97,7 +97,11 @@ const COMPONENTES_POR_APARENCIA: Record<
 > = {
   padrao: { separador: SeparadorPeriodo, evento: EventoTimeline, comAcoes: false },
   cartoes: { separador: SeparadorPeriodoCartao, evento: EventoTimelineCartao, comAcoes: false },
-  marcos: { separador: SeparadorPeriodoMarcos, evento: EventoTimelineMarcos, comAcoes: true },
+  filosofia: {
+    separador: SeparadorPeriodoFilosofia,
+    evento: EventoTimelineFilosofia,
+    comAcoes: true,
+  },
 };
 
 export default defineComponent({
@@ -340,12 +344,12 @@ export default defineComponent({
 }
 
 /*
- * APARÊNCIA MARCOS
+ * APARÊNCIA FILOSOFIA
  * A hora à esquerda, o marcador do status sobre o trilho e um cartão por evento. Como nos
  * cartões, cada item desenha o seu trecho do trilho; entre os dias, uma linha divisória.
  */
 
-.timeline--marcos {
+.timeline--filosofia {
   --trilho-espaco: 1.2rem;
   --trilho-cor: var(--cor-linha);
   display: flex;
@@ -354,7 +358,7 @@ export default defineComponent({
   padding: 0.8rem 0 2.4rem;
 }
 
-.timeline--marcos > div:not(:first-child) > .separadorMarcos {
+.timeline--filosofia > div:not(:first-child) > .separadorFilosofia {
   margin-top: 1.2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--cor-linha);

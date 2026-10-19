@@ -297,41 +297,40 @@ export const dadosEventos: Evento[] = [
 ];
 
 /*
- * CONSULTOR DE VENDAS
- * Agenda de quem vende desenvolvimento de sistemas sob medida: prospecção,
- * descoberta, demonstração, proposta, negociação e contrato.
+ * FILOSOFIA
+ * A agenda de quem entrega a correspondência da FilosofiA, uma empresa fictícia de
+ * mensagens para os grandes pensadores da história: telegramas, cartas, pombos-correio,
+ * pergaminhos e, quando nada mais funciona, sinais de fumaça.
  */
 
-export const dadosPerfilConsultor: Perfil = {
-  nome: 'Rafael Moreira',
-  descricao: 'Consultor de vendas',
-  icone: 'handshake',
+export const dadosPerfilMensageira: Perfil = {
+  nome: 'Heloísa Abelardo',
+  descricao: 'Mensageira da FilosofiA',
+  icone: 'local_post_office',
 };
 
-const categoriasConsultor = {
-  ligacao: { nome: 'Ligação', icone: 'call' },
-  email: { nome: 'E-mail', icone: 'mail' },
-  reuniao: { nome: 'Reunião', icone: 'groups' },
-  visita: { nome: 'Visita técnica', icone: 'apartment' },
-  demonstracao: { nome: 'Demonstração', icone: 'present_to_all' },
-  workshop: { nome: 'Workshop', icone: 'design_services' },
-  proposta: { nome: 'Proposta', icone: 'request_quote' },
-  negociacao: { nome: 'Negociação', icone: 'handshake' },
-  contrato: { nome: 'Contrato', icone: 'contract' },
-  kickoff: { nome: 'Kickoff', icone: 'rocket_launch' },
+const categoriasMensagem = {
+  telegrama: { nome: 'Telegrama', icone: 'bolt' },
+  carta: { nome: 'Carta', icone: 'mail' },
+  pombo: { nome: 'Pombo-correio', icone: 'raven' },
+  pergaminho: { nome: 'Pergaminho', icone: 'history_edu' },
+  simposio: { nome: 'Simpósio', icone: 'groups' },
+  fumaca: { nome: 'Sinal de fumaça', icone: 'local_fire_department' },
+  garrafa: { nome: 'Mensagem na garrafa', icone: 'liquor' },
+  encomenda: { nome: 'Encomenda', icone: 'package_2' },
 } satisfies Record<string, Categoria>;
 
-const acoesConsultor = {
+const acoesMensagem = {
   verDetalhes: { id: 'ver-detalhes', rotulo: 'Ver detalhes', icone: 'description' },
   concluir: { id: 'concluir', rotulo: 'Concluir', icone: 'check' },
   reagendar: { id: 'reagendar', rotulo: 'Reagendar', icone: 'edit_calendar' },
-  abrirProposta: { id: 'abrir-proposta', rotulo: 'Abrir proposta', principal: true },
+  abrirCarta: { id: 'abrir-carta', rotulo: 'Abrir carta', principal: true },
   maisAcoes: { id: 'mais-acoes', rotulo: 'Mais ações', icone: 'more_horiz', apenasIcone: true },
 } satisfies Record<string, AcaoEvento>;
 
-const acoesDePlanejado = [acoesConsultor.verDetalhes, acoesConsultor.concluir];
+const acoesDePlanejado = [acoesMensagem.verDetalhes, acoesMensagem.concluir];
 
-type EventoConsultor = Pick<
+type EventoMensagem = Pick<
   Evento,
   | 'titulo'
   | 'subtitulo'
@@ -343,7 +342,7 @@ type EventoConsultor = Pick<
   | 'acoes'
 > & { previstoPara: Date };
 
-const eventoConsultor = ({ previstoPara, ...evento }: EventoConsultor): Evento => ({
+const eventoMensagem = ({ previstoPara, ...evento }: EventoMensagem): Evento => ({
   data: previstoPara,
   previstoPara: new Date(previstoPara),
   tolerancia: 15,
@@ -354,14 +353,14 @@ const eventoConsultor = ({ previstoPara, ...evento }: EventoConsultor): Evento =
 });
 
 /**
- * Gera a agenda do consultor em torno de `referencia` (hoje, por padrão): ontem,
- * hoje, amanhã e daqui a três dias. Devolve uma lista nova a cada chamada, porque
- * a Timeline ordena e altera os eventos que recebe.
+ * Gera a agenda da mensageira em torno de `referencia` (hoje, por padrão): ontem, hoje,
+ * amanhã e daqui a três dias. Devolve uma lista nova a cada chamada, porque a Timeline
+ * ordena e altera os eventos que recebe.
  *
- * A proposta de ontem está `planejado` de propósito: a Timeline a marca como atrasada,
- * e a agenda a destaca como pendente.
+ * A carta de ontem para Descartes está `planejado` de propósito: a Timeline a marca como
+ * atrasada, e a agenda a destaca como pendente.
  */
-export function gerarEventosConsultor(referencia: Date = new Date()): Evento[] {
+export function gerarEventosFilosofia(referencia: Date = new Date()): Evento[] {
   const em = (dias: number, horas: number, minutos = 0) => {
     const data = new Date(referencia);
     data.setDate(data.getDate() + dias);
@@ -370,121 +369,121 @@ export function gerarEventosConsultor(referencia: Date = new Date()): Evento[] {
   };
 
   return [
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(-1, 9),
       realizado: em(-1, 9, 5),
-      titulo: 'Ligação de prospecção',
-      subtitulo: 'Construtora Alicerce',
+      titulo: 'Telegrama para Sócrates',
+      subtitulo: 'Ágora de Atenas',
       destaque: '',
-      categoria: categoriasConsultor.ligacao,
+      categoria: categoriasMensagem.telegrama,
       status: 'realizado',
       criticidade: 'baixa',
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(-1, 11),
-      titulo: 'Visita técnica',
-      subtitulo: 'Cooperativa AgroSul',
-      destaque: 'Nova data a definir',
-      categoria: categoriasConsultor.visita,
+      titulo: 'Pombo-correio para Diógenes',
+      subtitulo: 'Um barril em Corinto',
+      destaque: 'Pediu para o pombo sair do sol',
+      categoria: categoriasMensagem.pombo,
       status: 'adiado',
       criticidade: 'baixa',
-      acoes: [acoesConsultor.reagendar],
+      acoes: [acoesMensagem.reagendar],
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(-1, 14),
       realizado: em(-1, 14, 10),
-      titulo: 'Reunião de descoberta',
-      subtitulo: 'Rede Farma Vida',
+      titulo: 'Carta para Hipátia',
+      subtitulo: 'Biblioteca de Alexandria',
       destaque: '',
-      categoria: categoriasConsultor.reuniao,
+      categoria: categoriasMensagem.carta,
       status: 'realizado',
       criticidade: 'media',
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(-1, 17),
-      titulo: 'Enviar proposta revisada',
-      subtitulo: 'Cooperativa AgroSul',
-      destaque: 'R$ 320 mil',
-      categoria: categoriasConsultor.proposta,
+      titulo: 'Carta revisada para Descartes',
+      subtitulo: 'Amsterdã, perto da lareira',
+      destaque: 'Penso, logo respondo',
+      categoria: categoriasMensagem.carta,
       status: 'planejado',
       criticidade: 'alta',
-      acoes: [acoesConsultor.abrirProposta, acoesConsultor.maisAcoes],
+      acoes: [acoesMensagem.abrirCarta, acoesMensagem.maisAcoes],
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(0, 8, 30),
       realizado: em(0, 8, 40),
-      titulo: 'Retorno por e-mail',
-      subtitulo: 'Construtora Alicerce',
+      titulo: 'Pergaminho de Confúcio',
+      subtitulo: 'Qufu, Estado de Lu',
       destaque: '',
-      categoria: categoriasConsultor.email,
+      categoria: categoriasMensagem.pergaminho,
       status: 'realizado',
       criticidade: 'baixa',
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(0, 10),
-      titulo: 'Demonstração',
-      subtitulo: 'Banco Horizonte',
-      destaque: 'Apresentação da plataforma',
-      categoria: categoriasConsultor.demonstracao,
+      titulo: 'Telegrama urgente para Kant',
+      subtitulo: 'Königsberg, antes da caminhada das 15h30',
+      destaque: 'Imperativo categórico',
+      categoria: categoriasMensagem.telegrama,
       status: 'planejado',
       criticidade: 'alta',
       acoes: acoesDePlanejado,
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(0, 13, 30),
-      titulo: 'Workshop',
-      subtitulo: 'Rede Farma Vida',
-      destaque: 'Levantamento de requisitos',
-      categoria: categoriasConsultor.workshop,
+      titulo: 'Simpósio na Academia',
+      subtitulo: 'Platão, em Atenas',
+      destaque: 'Levar a lanterna para a caverna',
+      categoria: categoriasMensagem.simposio,
       status: 'planejado',
       criticidade: 'media',
       acoes: acoesDePlanejado,
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(0, 16),
-      titulo: 'Alinhamento com a pré-venda',
-      subtitulo: 'Arquitetura e estimativa da proposta',
+      titulo: 'Sinal de fumaça para Heráclito',
+      subtitulo: 'Éfeso: o rio já não era o mesmo',
       destaque: '',
-      categoria: categoriasConsultor.reuniao,
+      categoria: categoriasMensagem.fumaca,
       status: 'cancelado',
       criticidade: 'baixa',
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(1, 9, 30),
-      titulo: 'Negociação de contrato',
-      subtitulo: 'Banco Horizonte',
-      destaque: 'R$ 480 mil',
-      categoria: categoriasConsultor.negociacao,
+      titulo: 'Pombo-correio para Simone de Beauvoir',
+      subtitulo: 'Café de Flore, Paris',
+      destaque: 'Resposta em 2 volumes',
+      categoria: categoriasMensagem.pombo,
       status: 'planejado',
       criticidade: 'alta',
       acoes: acoesDePlanejado,
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(1, 15),
-      titulo: 'Revisão de escopo com o CTO',
-      subtitulo: 'Logística Rota Norte',
-      destaque: 'Ajustes finais da proposta',
-      categoria: categoriasConsultor.reuniao,
+      titulo: 'Encomenda de lentes para Spinoza',
+      subtitulo: 'Haia, oficina de polimento',
+      destaque: 'Ética em anexo',
+      categoria: categoriasMensagem.encomenda,
       status: 'planejado',
       criticidade: 'media',
       acoes: acoesDePlanejado,
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(3, 10),
-      titulo: 'Assinatura do contrato',
-      subtitulo: 'Logística Rota Norte',
-      destaque: 'R$ 1,2 mi',
-      categoria: categoriasConsultor.contrato,
+      titulo: 'Telegrama para Nietzsche',
+      subtitulo: 'Sils-Maria, nos Alpes',
+      destaque: 'Assim falou o carteiro',
+      categoria: categoriasMensagem.telegrama,
       status: 'planejado',
       criticidade: 'alta',
       acoes: acoesDePlanejado,
     }),
-    eventoConsultor({
+    eventoMensagem({
       previstoPara: em(3, 16),
-      titulo: 'Kickoff com o time de entrega',
-      subtitulo: 'Logística Rota Norte',
-      destaque: 'Squad dedicado por 12 meses',
-      categoria: categoriasConsultor.kickoff,
+      titulo: 'Mensagem na garrafa para Hannah Arendt',
+      subtitulo: 'Nova York, pelo Atlântico',
+      destaque: 'Sobre a condição humana',
+      categoria: categoriasMensagem.garrafa,
       status: 'planejado',
       criticidade: 'media',
       acoes: acoesDePlanejado,
@@ -493,12 +492,12 @@ export function gerarEventosConsultor(referencia: Date = new Date()): Evento[] {
 }
 
 /**
- * Tokens de uma marca fictícia, a Acme: índigo, superfícies frias e âmbar para o que está
- * pendente. Cada token traz o valor do tema claro e o do escuro, em light-dark(), como os do
+ * Tokens da FilosofiA, a empresa fictícia dos exemplos: índigo, superfícies frias e âmbar
+ * para o que está pendente. Cada token traz o valor do tema claro e o do escuro, em light-dark(), como os do
  * global.css. Aplicados num contêiner, trocam as cores dos componentes sem mudá-los, e o
  * contêiner continua seguindo o tema (o do sistema ou o de um data-tema acima dele).
  */
-export const temaExemplo: Record<string, string> = {
+export const temaFilosofia: Record<string, string> = {
   '--fonte': "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
   '--cor-primaria': 'light-dark(#4338ca, #a5b4fc)',
   '--cor-secundaria': 'light-dark(#312e81, #c7d2fe)',
@@ -526,18 +525,18 @@ export const temaExemplo: Record<string, string> = {
   'background-color': 'var(--cor-fundo)',
 };
 
-/** Decorator das stories: aplica o `temaExemplo` num contêiner da largura de um celular. */
-export const comTemaExemplo = (story: Component) => ({
+/** Decorator das stories: aplica o `temaFilosofia` num contêiner da largura de um celular. */
+export const comTemaFilosofia = (story: Component) => ({
   components: { story },
-  setup: () => ({ tema: temaExemplo }),
+  setup: () => ({ tema: temaFilosofia }),
   template: '<div :style="tema" style="max-width: 48rem; padding: 1.6rem 2rem"><story /></div>',
 });
 
-/** Um evento do consultor pelo título, numa lista nova. */
-export const buscarEventoConsultor = (titulo: string): Evento => {
-  const evento = gerarEventosConsultor().find((candidato) => candidato.titulo === titulo);
+/** Um evento da mensageira pelo título, numa lista nova. */
+export const buscarEventoFilosofia = (titulo: string): Evento => {
+  const evento = gerarEventosFilosofia().find((candidato) => candidato.titulo === titulo);
   if (!evento) {
-    throw new Error(`Evento do consultor não encontrado: ${titulo}`);
+    throw new Error(`Evento da mensageira não encontrado: ${titulo}`);
   }
   return evento;
 };

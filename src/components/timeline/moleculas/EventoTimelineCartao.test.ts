@@ -5,22 +5,22 @@ const propsBase = () => ({
   status: 'planejado' as const,
   criticidade: 'alta' as const,
   previstoPara: new Date(2026, 9, 7, 10, 0),
-  categoria: { nome: 'Demonstração', icone: 'present_to_all' },
-  titulo: 'Demonstração da plataforma',
-  subtitulo: 'Banco Horizonte · squad de modernização',
-  textoDestaque: 'R$ 480 mil',
+  categoria: { nome: 'Telegrama', icone: 'bolt' },
+  titulo: 'Telegrama urgente para Kant',
+  subtitulo: 'Königsberg · antes da caminhada das 15h30',
+  textoDestaque: 'Imperativo categórico',
 });
 
 describe('EventoTimelineCartao.vue', () => {
   it('mostra título, subtítulo, status, categoria, prioridade e destaque', () => {
     const { getByText } = render(EventoTimelineCartao, { props: propsBase() });
 
-    expect(getByText('Demonstração da plataforma')).toBeTruthy();
-    expect(getByText('Banco Horizonte · squad de modernização')).toBeTruthy();
+    expect(getByText('Telegrama urgente para Kant')).toBeTruthy();
+    expect(getByText('Königsberg · antes da caminhada das 15h30')).toBeTruthy();
     expect(getByText('Planejado')).toBeTruthy();
-    expect(getByText('Demonstração')).toBeTruthy();
+    expect(getByText('Telegrama')).toBeTruthy();
     expect(getByText('Prioridade alta')).toBeTruthy();
-    expect(getByText('R$ 480 mil')).toBeTruthy();
+    expect(getByText('Imperativo categórico')).toBeTruthy();
   });
 
   it('não mostra etiqueta de prioridade para criticidade baixa', () => {
@@ -51,7 +51,7 @@ describe('EventoTimelineCartao.vue', () => {
   it('emite "click" quando o botão do título é acionado', async () => {
     const { getByRole, emitted } = render(EventoTimelineCartao, { props: propsBase() });
 
-    await fireEvent.click(getByRole('button', { name: 'Demonstração da plataforma' }));
+    await fireEvent.click(getByRole('button', { name: 'Telegrama urgente para Kant' }));
 
     expect(emitted().click).toHaveLength(1);
   });

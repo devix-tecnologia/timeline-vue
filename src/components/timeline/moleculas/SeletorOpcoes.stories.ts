@@ -2,17 +2,17 @@ import SeletorOpcoes from './SeletorOpcoes.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { APARENCIAS_SELETOR } from './SeletorOpcoes.types';
-import { comTemaExemplo } from '../organismos/Timeline.mock';
+import { comTemaFilosofia } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/SeletorOpcoes',
   component: SeletorOpcoes,
-  decorators: [comTemaExemplo],
+  decorators: [comTemaFilosofia],
   parameters: {
     docs: {
       description: {
         component: `Escolha de uma opção entre várias. A estrutura é a mesma nas duas aparências; muda o desenho:
-- \`segmentado\`: opções de mesma largura num trilho, para trocar de visão (Agenda × Histórico). Segue o controle segmentado da proposta do mobi-gv.
+- \`segmentado\`: opções de mesma largura num trilho, para trocar de visão (Agenda × Histórico).
 - \`chips\`: pílulas do tamanho do rótulo, para filtrar (Todos, Pendentes, Concluídos).
 
 Cada opção pode ter um \`contador\`. Usa \`v-model\`.

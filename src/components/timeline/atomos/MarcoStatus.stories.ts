@@ -13,7 +13,7 @@ export default {
 Ícone e cor vêm de \`SELOS_STATUS\`, o mesmo registro do SeloStatus.
 
 ## 🎯 Quando usar
-- Sobre o trilho da Timeline na aparência \`marcos\`
+- Sobre o trilho da Timeline na aparência \`filosofia\`
 - Ao lado do rótulo de um evento pendente (EventoPendente)
 
 ## 🚫 Quando NÃO usar

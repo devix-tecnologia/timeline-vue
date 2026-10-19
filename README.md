@@ -216,7 +216,7 @@ A prop `aparencia` muda a forma de representar os eventos, com os mesmos dados:
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `padrao` (o padrão) | Linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.                                                                     |
 | `cartoes`           | Um cartão por evento ao lado de um trilho, com o status por extenso e etiquetas de categoria, prioridade e destaque. O dia aparece por extenso. |
-| `marcos`            | A hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento.                                |
+| `filosofia`         | A hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento.                                |
 
 ```vue
 <Timeline aparencia="cartoes" :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos" />
@@ -226,13 +226,13 @@ O tipo `AparenciaTimeline` é exportado pelo pacote. No Storybook, a story **Org
 
 #### Ações do evento
 
-Na aparência `marcos`, cada evento pode trazer botões de ação no campo `acoes`. O clique sai no evento `acaoClick`, separado do `eventoClick`:
+Na aparência `filosofia`, cada evento pode trazer botões de ação no campo `acoes`. O clique sai no evento `acaoClick`, separado do `eventoClick`:
 
 ```ts
 const evento = {
   // ...
   acoes: [
-    { id: 'abrir-proposta', rotulo: 'Abrir proposta', principal: true },
+    { id: 'abrir-carta', rotulo: 'Abrir carta', principal: true },
     { id: 'mais-acoes', rotulo: 'Mais ações', icone: 'more_horiz', apenasIcone: true },
   ],
 };
@@ -240,7 +240,7 @@ const evento = {
 
 ```vue
 <Timeline
-  aparencia="marcos"
+  aparencia="filosofia"
   :eventosTimeline="listaEventos"
   @acaoClick="(evento, acao) => executar(acao.id, evento)"
 />
@@ -265,7 +265,7 @@ No Storybook, cada uma tem stories em **Templates** e **Organismos**.
 No topo ficam a marca (slot `marca`), o avatar com as iniciais, o título, o nome e a função (`perfil.descricao`). Abaixo, a busca, que filtra pelo título, subtítulo, destaque e categoria, e a escolha entre duas visões:
 
 - **Agenda** (`AgendaEventos`): os pendentes que passaram do horário em destaque, os próximos eventos do dia e os concluídos, com os filtros Todos, Pendentes e Concluídos;
-- **Histórico**: os eventos já resolvidos (realizados, adiados e cancelados), na `Timeline` com a aparência `marcos`.
+- **Histórico**: os eventos já resolvidos (realizados, adiados e cancelados), na `Timeline` com a aparência `filosofia`.
 
 ```vue
 <TemplateAgenda
@@ -323,7 +323,7 @@ Todos recebem o `MouseEvent` como último argumento.
 
 ### Cores
 
-As telas usam os mesmos tokens `--cor-*` da [customização de estilos](#-customização-de-estilos), com os temas claro e escuro e o `data-tema`. Para aplicar a identidade de uma marca só numa parte da página, defina os tokens num contêiner em volta do componente; as stories do `TemplateAgenda` fazem isso com a marca fictícia Acme. O logo entra pelo slot `marca`.
+As telas usam os mesmos tokens `--cor-*` da [customização de estilos](#-customização-de-estilos), com os temas claro e escuro e o `data-tema`. Para aplicar a identidade de uma marca só numa parte da página, defina os tokens num contêiner em volta do componente; as stories do `TemplateAgenda` fazem isso com a marca fictícia FilosofiA. O logo entra pelo slot `marca`.
 
 ## 🚀 Contribuindo
 

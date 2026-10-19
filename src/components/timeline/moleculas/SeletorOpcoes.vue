@@ -31,8 +31,7 @@ import { APARENCIAS_SELETOR, AparenciaSeletor, OpcaoSeletor } from './SeletorOpc
 /**
  * Escolha de uma opção entre várias, em botões com `aria-pressed`. Serve para trocar de
  * visão (`segmentado`) e para filtrar (`chips`); a estrutura é a mesma, muda a aparência.
- * O segmentado segue o controle segmentado da proposta do mobi-gv (trilho, opção
- * selecionada preenchida, alvo de toque de 4,4rem).
+ * O segmentado é um trilho com a opção selecionada preenchida e alvo de toque de 4,4rem.
  */
 export default defineComponent({
   name: 'SeletorOpcoes',

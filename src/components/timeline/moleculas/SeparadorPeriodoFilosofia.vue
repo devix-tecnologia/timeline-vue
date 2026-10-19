@@ -1,27 +1,27 @@
 <template>
-  <div class="separadorMarcos" data-testid="separador-marcos">
-    <h3 class="separadorMarcos__titulo">
+  <div class="separadorFilosofia" data-testid="separador-filosofia">
+    <h3 class="separadorFilosofia__titulo">
       <button
         v-if="navegavel"
         type="button"
-        class="separadorMarcos__conteudo separadorMarcos__conteudo--navegavel"
+        class="separadorFilosofia__conteudo separadorFilosofia__conteudo--navegavel"
         @click="$emit('click', $event)"
       >
         <span
-          class="material-symbols-outlined separadorMarcos__icone"
+          class="material-symbols-outlined separadorFilosofia__icone"
           data-icone="calendar_month"
           aria-hidden="true"
         ></span>
         <time :datetime="dataIso">{{ rotulo }}</time>
         <span
-          class="material-symbols-outlined separadorMarcos__seta"
+          class="material-symbols-outlined separadorFilosofia__seta"
           data-icone="chevron_right"
           aria-hidden="true"
         ></span>
       </button>
-      <span v-else class="separadorMarcos__conteudo">
+      <span v-else class="separadorFilosofia__conteudo">
         <span
-          class="material-symbols-outlined separadorMarcos__icone"
+          class="material-symbols-outlined separadorFilosofia__icone"
           data-icone="calendar_month"
           aria-hidden="true"
         ></span>
@@ -37,11 +37,11 @@ import 'material-symbols/outlined.css';
 import { dataIso, diaComRotulo } from '../utils/datas';
 
 /**
- * Separador de dia da aparência `marcos`: ícone de calendário e "Hoje, 7 de outubro".
+ * Separador de dia da aparência `filosofia`: ícone de calendário e "Hoje, 7 de outubro".
  * Com `navegavel`, vira um botão com seta, que a agenda usa para trocar de dia.
  */
 export default defineComponent({
-  name: 'SeparadorPeriodoMarcos',
+  name: 'SeparadorPeriodoFilosofia',
   props: {
     dataSeparador: {
       required: true,
@@ -65,17 +65,17 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.separadorMarcos {
+.separadorFilosofia {
   color: var(--cor-texto);
 }
 
-.separadorMarcos__titulo {
+.separadorFilosofia__titulo {
   font-size: 1.7rem;
   font-weight: 700;
   line-height: 2.4rem;
 }
 
-.separadorMarcos__conteudo {
+.separadorFilosofia__conteudo {
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -83,7 +83,7 @@ export default defineComponent({
   min-height: 4.4rem;
 }
 
-.separadorMarcos__conteudo--navegavel {
+.separadorFilosofia__conteudo--navegavel {
   padding: 0;
   border: 0;
   background: none;
@@ -93,27 +93,27 @@ export default defineComponent({
   cursor: pointer;
 }
 
-.separadorMarcos__conteudo--navegavel:focus-visible {
+.separadorFilosofia__conteudo--navegavel:focus-visible {
   outline: 3px solid var(--cor-acao);
   outline-offset: 2px;
 }
 
-.separadorMarcos__conteudo time {
+.separadorFilosofia__conteudo time {
   flex: 1;
 }
 
 /* Ícones no pseudo-elemento, para o axe não medir a ligadura como texto. */
-.separadorMarcos__icone::before,
-.separadorMarcos__seta::before {
+.separadorFilosofia__icone::before,
+.separadorFilosofia__seta::before {
   content: attr(data-icone);
 }
 
-.separadorMarcos .separadorMarcos__icone {
+.separadorFilosofia .separadorFilosofia__icone {
   color: var(--cor-secundaria);
   font-size: 2.6rem;
 }
 
-.separadorMarcos .separadorMarcos__seta {
+.separadorFilosofia .separadorFilosofia__seta {
   color: var(--cor-apoio);
   font-size: 2.4rem;
 }

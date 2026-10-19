@@ -1,33 +1,33 @@
 <template>
   <article
-    data-testid="evento-marcos"
-    class="eventoMarcos"
+    data-testid="evento-filosofia"
+    class="eventoFilosofia"
     :class="classes"
     :aria-current="ehAtual ? 'true' : undefined"
     @click="handleClick"
   >
-    <div class="eventoMarcos__hora">
+    <div class="eventoFilosofia__hora">
       <Hora :hora="horaPrincipal" />
     </div>
 
-    <div class="eventoMarcos__trilho" aria-hidden="true">
+    <div class="eventoFilosofia__trilho" aria-hidden="true">
       <MarcoStatus :status="status" />
     </div>
 
-    <div class="eventoMarcos__cartao">
-      <header class="eventoMarcos__cabecalho">
-        <h4 class="eventoMarcos__titulo">
-          <button v-if="clicavel" type="button" class="eventoMarcos__acao">{{ titulo }}</button>
+    <div class="eventoFilosofia__cartao">
+      <header class="eventoFilosofia__cabecalho">
+        <h4 class="eventoFilosofia__titulo">
+          <button v-if="clicavel" type="button" class="eventoFilosofia__acao">{{ titulo }}</button>
           <template v-else>{{ titulo }}</template>
         </h4>
         <SeloStatus :status="status" aparencia="preenchido" />
       </header>
-      <p v-if="subtitulo" class="eventoMarcos__subtitulo">{{ subtitulo }}</p>
-      <p v-if="realizadoEm" class="eventoMarcos__apoio">Previsto para {{ horaPrevista }}</p>
-      <p v-if="textoDestaque" class="eventoMarcos__apoio">{{ textoDestaque }}</p>
+      <p v-if="subtitulo" class="eventoFilosofia__subtitulo">{{ subtitulo }}</p>
+      <p v-if="realizadoEm" class="eventoFilosofia__apoio">Previsto para {{ horaPrevista }}</p>
+      <p v-if="textoDestaque" class="eventoFilosofia__apoio">{{ textoDestaque }}</p>
       <AcoesEvento
         v-if="acoes && acoes.length > 0"
-        class="eventoMarcos__acoes"
+        class="eventoFilosofia__acoes"
         :acoes="acoes"
         @acao-click="(acao, mouseEvent) => $emit('acaoClick', acao, mouseEvent)"
       />
@@ -45,12 +45,12 @@ import { AcaoEvento, Categoria, Criticidade, Status } from '../type';
 import { horaCurta } from '../utils/datas';
 
 /**
- * Evento da timeline na aparência `marcos`: a hora à esquerda, o marcador do status sobre
+ * Evento da timeline na aparência `filosofia`: a hora à esquerda, o marcador do status sobre
  * o trilho e um cartão com título, cliente, status por extenso e ações. Recebe as mesmas
  * props e emite o mesmo `click` do EventoTimeline, mais as `acoes` e o `acaoClick`.
  */
 export default defineComponent({
-  name: 'EventoTimelineMarcos',
+  name: 'EventoTimelineFilosofia',
   components: { Hora, MarcoStatus, SeloStatus, AcoesEvento },
   props: {
     status: {
@@ -117,11 +117,11 @@ export default defineComponent({
       horaPrincipal: computed(() => props.realizadoEm ?? props.previstoPara),
       horaPrevista: computed(() => horaCurta(props.previstoPara)),
       classes: computed(() => [
-        `eventoMarcos--${props.status}`,
+        `eventoFilosofia--${props.status}`,
         {
           // `atual` é a classe que a Timeline procura para rolar até o evento.
           atual: props.ehAtual,
-          'eventoMarcos--clicavel': props.clicavel,
+          'eventoFilosofia--clicavel': props.clicavel,
         },
       ]),
     };
@@ -131,7 +131,7 @@ export default defineComponent({
 
 <style scoped>
 /* Cor e espaçamento do trilho vêm da Timeline; fora dela, o trilho não tem linha. */
-.eventoMarcos {
+.eventoFilosofia {
   display: grid;
   grid-template-columns: 5.6rem 4.4rem minmax(0, 1fr);
   align-items: start;
@@ -139,17 +139,17 @@ export default defineComponent({
   color: var(--cor-texto);
 }
 
-.eventoMarcos__hora {
+.eventoFilosofia__hora {
   padding-top: 1.8rem;
 }
 
-.eventoMarcos__hora > .hora-padrao {
+.eventoFilosofia__hora > .hora-padrao {
   color: var(--cor-texto);
   font-size: 1.8rem;
   font-weight: 700;
 }
 
-.eventoMarcos__trilho {
+.eventoFilosofia__trilho {
   position: relative;
   align-self: stretch;
   display: flex;
@@ -157,7 +157,7 @@ export default defineComponent({
   padding-top: 1.4rem;
 }
 
-.eventoMarcos__trilho::before {
+.eventoFilosofia__trilho::before {
   content: '';
   position: absolute;
   top: 0;
@@ -167,12 +167,12 @@ export default defineComponent({
   background: var(--trilho-cor, transparent);
 }
 
-.eventoMarcos__trilho > .marcoStatus {
+.eventoFilosofia__trilho > .marcoStatus {
   position: relative;
   z-index: 1;
 }
 
-.eventoMarcos__cartao {
+.eventoFilosofia__cartao {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -183,50 +183,50 @@ export default defineComponent({
   transition: border-color 0.15s ease;
 }
 
-.eventoMarcos--clicavel {
+.eventoFilosofia--clicavel {
   cursor: pointer;
 }
 
-.eventoMarcos--clicavel:hover .eventoMarcos__cartao {
+.eventoFilosofia--clicavel:hover .eventoFilosofia__cartao {
   border-color: color-mix(in srgb, var(--cor-texto) 35%, transparent);
 }
 
-.eventoMarcos:has(.eventoMarcos__acao:focus-visible) .eventoMarcos__cartao {
+.eventoFilosofia:has(.eventoFilosofia__acao:focus-visible) .eventoFilosofia__cartao {
   outline: 3px solid var(--cor-acao);
   outline-offset: 2px;
 }
 
 /* O EventoTimeline pinta `.atual` com estilo global; aqui só o cartão ganha a borda. */
-.eventoMarcos.atual,
-.eventoMarcos.atual:hover {
+.eventoFilosofia.atual,
+.eventoFilosofia.atual:hover {
   background-color: transparent;
 }
 
-.eventoMarcos.atual .eventoMarcos__cartao {
+.eventoFilosofia.atual .eventoFilosofia__cartao {
   border-color: var(--cor-primaria);
   box-shadow: 0 0 0 1px var(--cor-primaria);
 }
 
 /* A hora fica fora do cartão: não usa a cor de texto da seleção que o `.atual` global impõe. */
-.eventoMarcos.atual .eventoMarcos__hora > .hora {
+.eventoFilosofia.atual .eventoFilosofia__hora > .hora {
   color: var(--cor-texto) !important;
 }
 
-.eventoMarcos__cabecalho {
+.eventoFilosofia__cabecalho {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.8rem;
 }
 
-.eventoMarcos__titulo {
+.eventoFilosofia__titulo {
   margin: 0;
   font-size: 1.7rem;
   font-weight: 700;
   line-height: 2.2rem;
 }
 
-.eventoMarcos__acao {
+.eventoFilosofia__acao {
   margin: 0;
   padding: 0;
   border: 0;
@@ -237,20 +237,20 @@ export default defineComponent({
   cursor: pointer;
 }
 
-.eventoMarcos__subtitulo {
+.eventoFilosofia__subtitulo {
   margin: 0;
   font-size: 1.5rem;
   line-height: 2rem;
 }
 
-.eventoMarcos__apoio {
+.eventoFilosofia__apoio {
   margin: 0;
   color: var(--cor-apoio);
   font-size: 1.4rem;
   line-height: 2rem;
 }
 
-.eventoMarcos__acoes {
+.eventoFilosofia__acoes {
   margin-top: 1rem;
 }
 </style>

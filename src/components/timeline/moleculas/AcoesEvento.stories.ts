@@ -1,11 +1,11 @@
 import AcoesEvento from './AcoesEvento.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { comTemaExemplo } from '../organismos/Timeline.mock';
+import { comTemaFilosofia } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/AcoesEvento',
   component: AcoesEvento,
-  decorators: [comTemaExemplo],
+  decorators: [comTemaFilosofia],
   parameters: {
     docs: {
       description: {
@@ -14,7 +14,7 @@ export default {
 O clique emite \`acaoClick\` com a ação e não sobe até o cartão, que tem o próprio clique.
 
 ## 🎯 Quando usar
-- Nos cartões da agenda e da Timeline com a aparência \`marcos\`
+- Nos cartões da agenda e da Timeline com a aparência \`filosofia\`
 
 ## 🚫 Quando NÃO usar
 - Para ações da tela, fora de um evento (use o Botao)
@@ -52,7 +52,7 @@ export const PrincipalEMais: Story = {
   name: 'Principal e mais ações',
   args: {
     acoes: [
-      { id: 'abrir-proposta', rotulo: 'Abrir proposta', principal: true },
+      { id: 'abrir-carta', rotulo: 'Abrir carta', principal: true },
       { id: 'mais-acoes', rotulo: 'Mais ações', icone: 'more_horiz', apenasIcone: true },
     ],
   },

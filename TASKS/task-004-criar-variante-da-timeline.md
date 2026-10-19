@@ -15,8 +15,8 @@ O projeto gráfico tem duas telas, a partir da agenda do consultor de vendas da 
 
 ## Decisões
 
-1. **Variante da Timeline + agenda + template.** O histórico é uma linha do tempo, e virou a aparência `marcos` da Timeline (pelo marcador do status sobre o trilho): o separador e o evento trocam de subcomponente, como na aparência `cartoes`. A agenda não é cronológica, e virou um organismo próprio (`AgendaEventos`). A tela inteira virou um template (`TemplateAgenda`).
-2. **Marca fora da biblioteca.** As cores da marca são tokens (`temaExemplo`, no mock, com a marca fictícia Acme), aplicados num contêiner nas stories. Os componentes não conhecem marca nenhuma. O logo entra pelo slot `marca`. A barra de navegação do aplicativo, com Início, Clientes, Novo evento, Eventos e Mais, fica com o aplicativo.
+1. **Variante da Timeline + agenda + template.** O histórico é uma linha do tempo, e virou a aparência `filosofia` da Timeline (pelo marcador do status sobre o trilho): o separador e o evento trocam de subcomponente, como na aparência `cartoes`. A agenda não é cronológica, e virou um organismo próprio (`AgendaEventos`). A tela inteira virou um template (`TemplateAgenda`).
+2. **Marca fora da biblioteca.** As cores da marca são tokens (`temaFilosofia`, no mock, com a marca fictícia FilosofiA), aplicados num contêiner nas stories. Os componentes não conhecem marca nenhuma. O logo entra pelo slot `marca`. A barra de navegação do aplicativo, com Início, Clientes, Novo evento, Eventos e Mais, fica com o aplicativo.
 3. **Ações vêm do evento.** "Abrir proposta", "Reagendar", "Ver detalhes" e "Concluir" dependem do negócio. Por isso vêm do campo `acoes` do `Evento` e saem no `acaoClick`, separado do `eventoClick`.
 4. **Agenda × histórico pelo status.** São pendentes `planejado`, `atrasado` e `adiantado`, que ficam na agenda. O histórico mostra os resolvidos: realizados, adiados e cancelados. A regra fica em `utils/agenda`, e a agenda não altera o status dos eventos.
 5. **Nome `TemplateAgenda`.** `TemplateEventos` diferiria do `TemplateEvento`, o detalhe de um evento, por uma letra.
@@ -37,8 +37,8 @@ O projeto gráfico tem duas telas, a partir da agenda do consultor de vendas da 
   - `AcoesEvento`
   - `CampoBusca`
   - `SeletorOpcoes` (segmentado e chips)
-  - `SeparadorPeriodoMarcos`
-  - `EventoTimelineMarcos`
+  - `SeparadorPeriodoFilosofia`
+  - `EventoTimelineFilosofia`
   - `EventoAgenda`
   - `EventoPendente`
   - `AgendaEventos`
@@ -48,7 +48,7 @@ O projeto gráfico tem duas telas, a partir da agenda do consultor de vendas da 
 
 <!-- [x] feito · [ ] em aberto · [ ] ... — adiado: <razão> para o que se decidiu não fazer -->
 
-- [x] Aparência `marcos` da Timeline (`SeparadorPeriodoMarcos`, `EventoTimelineMarcos`, `MarcoStatus`)
+- [x] Aparência `filosofia` da Timeline (`SeparadorPeriodoFilosofia`, `EventoTimelineFilosofia`, `MarcoStatus`)
 - [x] Ações do evento (`AcaoEvento`, `AcoesEvento`, `acaoClick`)
 - [x] Agenda do dia (`AgendaEventos`, `EventoPendente`, `EventoAgenda`, `SeletorOpcoes`, `utils/agenda`)
 - [x] Tela (`TemplateAgenda`, `CampoBusca`, avatar com iniciais, `perfil.descricao`)

@@ -1,11 +1,11 @@
 import EventoPendente from './EventoPendente.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { buscarEventoConsultor, comTemaExemplo } from '../organismos/Timeline.mock';
+import { buscarEventoFilosofia, comTemaFilosofia } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/EventoPendente',
   component: EventoPendente,
-  decorators: [comTemaExemplo],
+  decorators: [comTemaFilosofia],
   parameters: {
     docs: {
       description: {
@@ -27,7 +27,7 @@ O fundo e o marcador usam a cor de alerta. Recebe o evento inteiro.
     },
   },
   args: {
-    evento: buscarEventoConsultor('Enviar proposta revisada'),
+    evento: buscarEventoFilosofia('Carta revisada para Descartes'),
   },
   argTypes: {
     evento: {
@@ -43,7 +43,7 @@ export const Padrao: Story = {};
 Padrao.parameters = {
   docs: {
     description: {
-      story: 'A proposta de ontem, com "Abrir proposta" e o botão de mais ações.',
+      story: 'A carta de ontem para Descartes, com "Abrir carta" e o botão de mais ações.',
     },
   },
 };

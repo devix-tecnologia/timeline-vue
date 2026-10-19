@@ -55,7 +55,7 @@ import { AcaoEvento, Evento } from '../type';
 /**
  * Evento na lista da agenda: a hora numa coluna, separada por um divisor do título, do
  * cliente e da descrição, com as ações embaixo. O status só aparece quando não é
- * `planejado`. Segue a linha de lista com seta do protótipo Cupertino do mobi-gv.
+ * `planejado`.
  */
 export default defineComponent({
   name: 'EventoAgenda',

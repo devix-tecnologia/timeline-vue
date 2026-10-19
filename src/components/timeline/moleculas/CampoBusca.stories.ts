@@ -1,12 +1,12 @@
 import CampoBusca from './CampoBusca.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
-import { comTemaExemplo } from '../organismos/Timeline.mock';
+import { comTemaFilosofia } from '../organismos/Timeline.mock';
 
 export default {
   title: 'Devix/Moleculas/CampoBusca',
   component: CampoBusca,
-  decorators: [comTemaExemplo],
+  decorators: [comTemaFilosofia],
   parameters: {
     docs: {
       description: {
@@ -61,7 +61,7 @@ Padrao.parameters = {
 
 export const ComTexto: Story = {
   name: 'Com texto',
-  args: { modelValue: 'AgroSul' },
+  args: { modelValue: 'Diógenes' },
   parameters: {
     docs: { description: { story: 'Campo com um cliente digitado.' } },
   },

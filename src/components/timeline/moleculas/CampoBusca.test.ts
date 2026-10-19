@@ -14,8 +14,8 @@ describe('CampoBusca.vue', () => {
   it('emite "update:modelValue" com o texto digitado', async () => {
     const { getByRole, emitted } = render(CampoBusca, { props: { rotulo: 'Buscar' } });
 
-    await fireEvent.update(getByRole('searchbox'), 'AgroSul');
+    await fireEvent.update(getByRole('searchbox'), 'Diógenes');
 
-    expect(emitted()['update:modelValue']).toEqual([['AgroSul']]);
+    expect(emitted()['update:modelValue']).toEqual([['Diógenes']]);
   });
 });

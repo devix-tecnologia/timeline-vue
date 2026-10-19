@@ -7,9 +7,9 @@ import { eventosDaSelecao, perfilCopaDoMundo, titulosPorSelecao } from './CopaDo
 import {
   dadosEventos,
   dadosPerfil,
-  dadosPerfilConsultor,
-  gerarEventosConsultor,
-  temaExemplo,
+  dadosPerfilMensageira,
+  gerarEventosFilosofia,
+  temaFilosofia,
 } from './Timeline.mock';
 import { APARENCIAS_TIMELINE } from './Timeline.types';
 import { Evento } from '../type';
@@ -49,9 +49,9 @@ O componente recebe um perfil opcional no topo e uma lista de eventos. Intername
 A prop \`aparencia\` muda a forma de representar os eventos, sem mudar os dados:
 - \`padrao\`: linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.
 - \`cartoes\`: um cartão por evento ao lado de um trilho, com status por extenso, etiquetas de categoria, prioridade e destaque, e separadores de dia por extenso ("Hoje", "Amanhã").
-- \`marcos\`: a hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento (\`acoes\`, emitidas em \`acaoClick\`).
+- \`filosofia\`: a hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento (\`acoes\`, emitidas em \`acaoClick\`).
 
-Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\`, \`SeparadorPeriodoCartao\` ou \`SeparadorPeriodoMarcos\`; \`EventoTimeline\`, \`EventoTimelineCartao\` ou \`EventoTimelineMarcos\`); a ordenação, o evento atual e o status atrasado continuam na Timeline.
+Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\`, \`SeparadorPeriodoCartao\` ou \`SeparadorPeriodoFilosofia\`; \`EventoTimeline\`, \`EventoTimelineCartao\` ou \`EventoTimelineFilosofia\`); a ordenação, o evento atual e o status atrasado continuam na Timeline.
 
 ## ♿ Acessibilidade
 - Os eventos são navegáveis por teclado via click
@@ -71,7 +71,7 @@ Cada aparência troca o separador de dia e o evento (\`SeparadorPeriodo\`, \`Sep
     },
     aparencia: {
       description:
-        'Forma de representar os eventos: \`padrao\` (linha com a hora à esquerda), \`cartoes\` (um cartão por evento ao lado do trilho) ou \`marcos\` (hora, marcador do status e cartão com ações).',
+        'Forma de representar os eventos: \`padrao\` (linha com a hora à esquerda), \`cartoes\` (um cartão por evento ao lado do trilho) ou \`filosofia\` (hora, marcador do status e cartão com ações).',
       control: { type: 'select' },
       options: APARENCIAS_TIMELINE,
       table: { type: { summary: 'AparenciaTimeline' }, defaultValue: { summary: 'padrao' } },
@@ -150,17 +150,17 @@ export const Cartoes: StoryObj<typeof Timeline> = {
   render: Template,
   args: {
     aparencia: 'cartoes',
-    perfilTimeline: dadosPerfilConsultor,
-    eventosTimeline: gerarEventosConsultor(),
+    perfilTimeline: dadosPerfilMensageira,
+    eventosTimeline: gerarEventosFilosofia(),
   },
   parameters: {
     docs: {
       description: {
-        story: `Agenda de um consultor de vendas de desenvolvimento de sistemas, de ontem a daqui a três dias, na aparência \`cartoes\`.
+        story: `A agenda da mensageira da FilosofiA, uma empresa fictícia de correspondência para os grandes filósofos, de ontem a daqui a três dias, na aparência \`cartoes\`: telegramas, cartas, pombos-correio, pergaminhos e até um sinal de fumaça.
 
-Cada evento vira um cartão com a hora, o status por extenso, o cliente e as etiquetas de categoria, prioridade e destaque (o valor da proposta, a pauta do encontro). A prioridade aparece também na faixa à esquerda do cartão. Eventos encerrados perdem o preenchimento, o cancelado fica tracejado e o evento atual ganha o fundo de seleção.
+Cada evento vira um cartão com a hora, o status por extenso, o destinatário e as etiquetas de categoria, prioridade e destaque (o assunto da mensagem). A prioridade aparece também na faixa à esquerda do cartão. Eventos encerrados perdem o preenchimento, o cancelado fica tracejado e o evento atual ganha o fundo de seleção.
 
-A proposta de ontem não foi enviada: a Timeline a marca como atrasada.`,
+A carta de ontem para Descartes não saiu: a Timeline a marca como atrasada.`,
       },
     },
   },
@@ -177,9 +177,9 @@ export const Aparencias: StoryObj<typeof Timeline> = {
       // Uma lista de eventos por Timeline, porque a Timeline altera os eventos que recebe.
       const aparencias = APARENCIAS_TIMELINE.map((aparencia) => ({
         aparencia,
-        eventos: gerarEventosConsultor(),
+        eventos: gerarEventosFilosofia(),
       }));
-      return { aparencias, perfil: dadosPerfilConsultor };
+      return { aparencias, perfil: dadosPerfilMensageira };
     },
     template: `
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr)); gap: 2.4rem; align-items: start">
@@ -201,13 +201,13 @@ export const Aparencias: StoryObj<typeof Timeline> = {
     docs: {
       description: {
         story:
-          'A mesma agenda do consultor de vendas em cada aparência, para comparar as formas de representar os eventos.',
+          'A mesma agenda da mensageira em cada aparência, para comparar as formas de representar os eventos.',
       },
     },
   },
 };
 
-export const Marcos: StoryObj<typeof Timeline> = {
+export const Filosofia: StoryObj<typeof Timeline> = {
   render: (args) => ({
     components: { Timeline },
     setup() {
@@ -215,7 +215,7 @@ export const Marcos: StoryObj<typeof Timeline> = {
       const registrarAcao = (evento: Evento, acao: { rotulo: string }) => {
         acoes.push(`${acao.rotulo}: ${evento.titulo}`);
       };
-      return { args, tema: temaExemplo, registrarAcao };
+      return { args, tema: temaFilosofia, registrarAcao };
     },
     template: `
       <div :style="tema" style="max-width: 48rem; padding: 0 2rem">
@@ -224,15 +224,15 @@ export const Marcos: StoryObj<typeof Timeline> = {
     `,
   }),
   args: {
-    aparencia: 'marcos',
-    eventosTimeline: gerarEventosConsultor(),
+    aparencia: 'filosofia',
+    eventosTimeline: gerarEventosFilosofia(),
   },
   parameters: {
     docs: {
       description: {
-        story: `A agenda do consultor de vendas na aparência \`marcos\`, com as cores de uma marca fictícia (a Acme) aplicadas por tokens num contêiner, nos temas claro e escuro.
+        story: `A agenda da mensageira na aparência \`filosofia\`, com as cores da FilosofiA, uma marca fictícia, aplicadas por tokens num contêiner, nos temas claro e escuro.
 
-Cada evento mostra a hora à esquerda (a realizada, quando houver), o marcador do status sobre o trilho e um cartão com o título, o cliente, a hora prevista ou a descrição, o status por extenso e as ações do evento. As ações vêm do campo \`acoes\` do evento, e o clique nelas sai no evento \`acaoClick\`, separado do \`eventoClick\` do cartão.`,
+Cada evento mostra a hora à esquerda (a realizada, quando houver), o marcador do status sobre o trilho e um cartão com o título, o destinatário, a hora prevista ou a descrição, o status por extenso e as ações do evento. As ações vêm do campo \`acoes\` do evento, e o clique nelas sai no evento \`acaoClick\`, separado do \`eventoClick\` do cartão.`,
       },
     },
   },
@@ -251,9 +251,19 @@ export const TemasEMarca: StoryObj<typeof Timeline> = {
       const combinacoes = [
         { id: 'padrao-claro', rotulo: 'Padrão, claro', tema: 'claro', marca: {} },
         { id: 'padrao-escuro', rotulo: 'Padrão, escuro', tema: 'escuro', marca: {} },
-        { id: 'marca-claro', rotulo: 'Marca Acme, claro', tema: 'claro', marca: temaExemplo },
-        { id: 'marca-escuro', rotulo: 'Marca Acme, escuro', tema: 'escuro', marca: temaExemplo },
-      ].map((combinacao) => ({ ...combinacao, eventos: gerarEventosConsultor() }));
+        {
+          id: 'marca-claro',
+          rotulo: 'Marca FilosofiA, claro',
+          tema: 'claro',
+          marca: temaFilosofia,
+        },
+        {
+          id: 'marca-escuro',
+          rotulo: 'Marca FilosofiA, escuro',
+          tema: 'escuro',
+          marca: temaFilosofia,
+        },
+      ].map((combinacao) => ({ ...combinacao, eventos: gerarEventosFilosofia() }));
       return { combinacoes };
     },
     template: `
@@ -269,7 +279,7 @@ export const TemasEMarca: StoryObj<typeof Timeline> = {
           <figcaption style="padding-bottom: 0.8rem; font-size: 1.4rem">
             {{ item.rotulo }} — <code>data-tema="{{ item.tema }}"</code>
           </figcaption>
-          <Timeline aparencia="marcos" :eventosTimeline="item.eventos" :rolarAteOAtual="false" />
+          <Timeline aparencia="filosofia" :eventosTimeline="item.eventos" :rolarAteOAtual="false" />
         </figure>
       </div>
     `,
@@ -291,7 +301,7 @@ export const TemasEMarca: StoryObj<typeof Timeline> = {
       description: {
         story: `Os tokens \`--cor-*\` trazem o valor do tema claro e o do escuro, em \`light-dark()\`. O tema segue o do sistema, e \`data-tema="claro"\` ou \`data-tema="escuro"\` num contêiner força um deles só ali, para uma aplicação com botão de tema.
 
-Para aplicar uma marca, redefina os tokens no mesmo formato, na página ou num contêiner. Aqui, a marca fictícia Acme:
+Para aplicar uma marca, redefina os tokens no mesmo formato, na página ou num contêiner. Aqui, a marca fictícia FilosofiA:
 
 \`\`\`css
 .minha-marca {
@@ -317,10 +327,10 @@ export const RolagemAteOAtual: StoryObj<typeof Timeline> = {
       // Uma lista de eventos por Timeline, porque a Timeline altera os eventos que recebe.
       return {
         caixas: [
-          { id: 'rolagem-a', altura: '24rem', eventos: gerarEventosConsultor() },
-          { id: 'rolagem-b', altura: '32rem', eventos: gerarEventosConsultor() },
+          { id: 'rolagem-a', altura: '24rem', eventos: gerarEventosFilosofia() },
+          { id: 'rolagem-b', altura: '32rem', eventos: gerarEventosFilosofia() },
         ],
-        eventosMoldura: gerarEventosConsultor(),
+        eventosMoldura: gerarEventosFilosofia(),
       };
     },
     template: `

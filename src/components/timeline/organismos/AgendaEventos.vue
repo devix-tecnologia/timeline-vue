@@ -1,6 +1,6 @@
 <template>
   <section class="agendaEventos" aria-label="Agenda" data-testid="agenda-eventos">
-    <SeparadorPeriodoMarcos :dataSeparador="dia" navegavel @click="$emit('diaClick', $event)" />
+    <SeparadorPeriodoFilosofia :dataSeparador="dia" navegavel @click="$emit('diaClick', $event)" />
 
     <SeletorOpcoes v-model="filtro" aparencia="chips" rotulo="Filtrar eventos" :opcoes="opcoes" />
 
@@ -42,7 +42,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref, PropType } from 'vue';
-import SeparadorPeriodoMarcos from '../moleculas/SeparadorPeriodoMarcos.vue';
+import SeparadorPeriodoFilosofia from '../moleculas/SeparadorPeriodoFilosofia.vue';
 import SeletorOpcoes from '../moleculas/SeletorOpcoes.vue';
 import EventoPendente from '../moleculas/EventoPendente.vue';
 import EventoAgenda from '../moleculas/EventoAgenda.vue';
@@ -58,12 +58,12 @@ const MENSAGENS_VAZIA: Record<FiltroAgenda, string> = {
 
 /**
  * Agenda de um dia: os pendentes que passaram do horário em destaque, os próximos eventos
- * e os já concluídos, com filtro por chips. Complementa a Timeline na aparência `marcos`,
+ * e os já concluídos, com filtro por chips. Complementa a Timeline na aparência `filosofia`,
  * que mostra o histórico.
  */
 export default defineComponent({
   name: 'AgendaEventos',
-  components: { SeparadorPeriodoMarcos, SeletorOpcoes, EventoPendente, EventoAgenda },
+  components: { SeparadorPeriodoFilosofia, SeletorOpcoes, EventoPendente, EventoAgenda },
   props: {
     eventos: {
       required: true,

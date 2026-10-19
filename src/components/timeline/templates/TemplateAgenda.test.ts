@@ -1,20 +1,20 @@
 import { render, fireEvent } from '@testing-library/vue';
 import TemplateAgenda from './TemplateAgenda.vue';
-import { dadosPerfilConsultor, gerarEventosConsultor } from '../organismos/Timeline.mock';
+import { dadosPerfilMensageira, gerarEventosFilosofia } from '../organismos/Timeline.mock';
 import { Evento } from '../type';
 
-// A manhã de hoje no projeto gráfico: 9:41, antes da demonstração das 10:00.
+// A manhã de hoje: 9:41, antes do telegrama para Kant das 10:00.
 const agora = new Date(2026, 9, 7, 9, 41);
 
 const renderizar = (props: Record<string, unknown> = {}) =>
   render(TemplateAgenda, {
     props: {
-      perfil: dadosPerfilConsultor,
-      eventos: gerarEventosConsultor(agora),
+      perfil: dadosPerfilMensageira,
+      eventos: gerarEventosFilosofia(agora),
       dia: agora,
       ...props,
     },
-    slots: { marca: '<span>acme.app</span>' },
+    slots: { marca: '<span>FilosofiA</span>' },
   });
 
 describe('TemplateAgenda.vue', () => {
@@ -30,11 +30,11 @@ describe('TemplateAgenda.vue', () => {
   it('mostra a marca, as iniciais, o título, o nome e a função', () => {
     const { getByText, getByRole } = renderizar();
 
-    expect(getByText('acme.app')).toBeTruthy();
-    expect(getByText('RM')).toBeTruthy();
+    expect(getByText('FilosofiA')).toBeTruthy();
+    expect(getByText('HA')).toBeTruthy();
     expect(getByRole('heading', { level: 1 }).textContent).toBe('Eventos');
-    expect(getByRole('heading', { level: 2 }).textContent).toBe('Rafael Moreira');
-    expect(getByText('Consultor de vendas')).toBeTruthy();
+    expect(getByRole('heading', { level: 2 }).textContent).toBe('Heloísa Abelardo');
+    expect(getByText('Mensageira da FilosofiA')).toBeTruthy();
   });
 
   it('abre na agenda e troca para o histórico, que só tem eventos resolvidos', async () => {
@@ -46,33 +46,33 @@ describe('TemplateAgenda.vue', () => {
     await fireEvent.click(getByRole('button', { name: 'Histórico' }));
 
     expect(queryByTestId('agenda-eventos')).toBeNull();
-    const titulos = [...container.querySelectorAll('.eventoMarcos h4')].map((titulo) =>
+    const titulos = [...container.querySelectorAll('.eventoFilosofia h4')].map((titulo) =>
       titulo.textContent?.trim()
     );
     expect(titulos).toEqual([
-      'Ligação de prospecção',
-      'Visita técnica',
-      'Reunião de descoberta',
-      'Retorno por e-mail',
-      'Alinhamento com a pré-venda',
+      'Telegrama para Sócrates',
+      'Pombo-correio para Diógenes',
+      'Carta para Hipátia',
+      'Pergaminho de Confúcio',
+      'Sinal de fumaça para Heráclito',
     ]);
   });
 
   it('a busca filtra as duas visões, sem diferenciar acentos', async () => {
     const { getByRole, getAllByTestId, container } = renderizar();
 
-    await fireEvent.update(getByRole('searchbox'), 'farma vida');
+    await fireEvent.update(getByRole('searchbox'), 'platao');
     const naAgenda = getAllByTestId('evento-agenda').map((evento) =>
       evento.querySelector('h4')?.textContent?.trim()
     );
-    expect(naAgenda).toEqual(['Workshop']);
+    expect(naAgenda).toEqual(['Simpósio na Academia']);
 
     await fireEvent.click(getByRole('button', { name: 'Histórico' }));
-    await fireEvent.update(getByRole('searchbox'), 'reuniao');
-    const noHistorico = [...container.querySelectorAll('.eventoMarcos h4')].map((titulo) =>
+    await fireEvent.update(getByRole('searchbox'), 'hipatia');
+    const noHistorico = [...container.querySelectorAll('.eventoFilosofia h4')].map((titulo) =>
       titulo.textContent?.trim()
     );
-    expect(noHistorico).toEqual(['Reunião de descoberta', 'Alinhamento com a pré-venda']);
+    expect(noHistorico).toEqual(['Carta para Hipátia']);
   });
 
   it('avisa quando a busca não encontra nada no histórico', async () => {
@@ -86,7 +86,7 @@ describe('TemplateAgenda.vue', () => {
   it('repassa os cliques de ação das duas visões', async () => {
     const { getByRole, emitted } = renderizar({ filtroInicial: 'pendentes' });
 
-    await fireEvent.click(getByRole('button', { name: 'Abrir proposta' }));
+    await fireEvent.click(getByRole('button', { name: 'Abrir carta' }));
     await fireEvent.click(getByRole('button', { name: 'Histórico' }));
     await fireEvent.click(getByRole('button', { name: 'Reagendar' }));
 
@@ -94,8 +94,8 @@ describe('TemplateAgenda.vue', () => {
       ([evento, acao]) => `${evento.titulo}: ${acao.id}`
     );
     expect(acoes).toEqual([
-      'Enviar proposta revisada: abrir-proposta',
-      'Visita técnica: reagendar',
+      'Carta revisada para Descartes: abrir-carta',
+      'Pombo-correio para Diógenes: reagendar',
     ]);
   });
 });
