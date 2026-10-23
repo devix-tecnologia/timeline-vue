@@ -6,17 +6,17 @@
 
 ## Description
 
-Criar variante da timeline, conforme projeto gráfico ![variante agiliza](assets/task-004-timeline-agiliza.png)
+Criar variante da timeline a partir de um projeto gráfico de agenda.
 
-O projeto gráfico tem duas telas do agiliza.ai, a partir da agenda do consultor de vendas da story Cartões:
+O projeto gráfico tem duas telas, a partir da agenda do consultor de vendas da story Cartões:
 
 - **Agenda de eventos:** o dia, os filtros, o pendente de ontem em destaque e os próximos eventos com ações.
 - **Histórico de eventos:** os eventos já resolvidos, por dia, com a hora, o marcador do status e um cartão.
 
 ## Decisões
 
-1. **Variante da Timeline + agenda + template.** O histórico é uma linha do tempo, e virou a aparência `agiliza` da Timeline: o separador e o evento trocam de subcomponente, como na aparência `cartoes`. A agenda não é cronológica, e virou um organismo próprio (`AgendaEventos`). A tela inteira virou um template (`TemplateAgenda`).
-2. **Marca fora da biblioteca.** As cores do agiliza.ai são tokens (`temaAgiliza`, no mock), aplicados num contêiner nas stories. Os componentes não conhecem a marca. O logo entra pelo slot `marca`. A barra de navegação do aplicativo, com Início, Clientes, Novo evento, Eventos e Mais, fica com o aplicativo.
+1. **Variante da Timeline + agenda + template.** O histórico é uma linha do tempo, e virou a aparência `filosofia` da Timeline (pelo marcador do status sobre o trilho): o separador e o evento trocam de subcomponente, como na aparência `cartoes`. A agenda não é cronológica, e virou um organismo próprio (`AgendaEventos`). A tela inteira virou um template (`TemplateAgenda`).
+2. **Marca fora da biblioteca.** As cores da marca são tokens (`temaFilosofia`, no mock, com a marca fictícia FilosofiA), aplicados num contêiner nas stories. Os componentes não conhecem marca nenhuma. O logo entra pelo slot `marca`. A barra de navegação do aplicativo, com Início, Clientes, Novo evento, Eventos e Mais, fica com o aplicativo.
 3. **Ações vêm do evento.** "Abrir proposta", "Reagendar", "Ver detalhes" e "Concluir" dependem do negócio. Por isso vêm do campo `acoes` do `Evento` e saem no `acaoClick`, separado do `eventoClick`.
 4. **Agenda × histórico pelo status.** São pendentes `planejado`, `atrasado` e `adiantado`, que ficam na agenda. O histórico mostra os resolvidos: realizados, adiados e cancelados. A regra fica em `utils/agenda`, e a agenda não altera o status dos eventos.
 5. **Nome `TemplateAgenda`.** `TemplateEventos` diferiria do `TemplateEvento`, o detalhe de um evento, por uma letra.
@@ -31,14 +31,14 @@ O projeto gráfico tem duas telas do agiliza.ai, a partir da agenda do consultor
   - `AvatarTimeline`, que ganhou as `iniciais`.
   - A lógica de datas do `SeparadorPeriodoCartao`, extraída para `utils/datas`.
 - **Do storytype (`@storytype/components`):** a função de iniciais do Avatar, adaptada em `utils/texto`. Os demais componentes dependem do Quasar e não cobrem a tela.
-- **Do mobi-gv:** os componentes do app dependem do Quasar. Serviram de referência os protótipos em CSS puro do Storybook. O controle segmentado de `stories/proposta/proposta.scss` deu origem ao `SeletorOpcoes` segmentado. A linha com seta de `stories/cupertino/LinhaLista.vue` deu origem ao `EventoAgenda`.
+- **De protótipos em CSS puro:** um controle segmentado deu origem ao `SeletorOpcoes` segmentado, e uma linha de lista com seta, ao `EventoAgenda`.
 - **Novos, por falta de equivalente:**
   - `MarcoStatus`
   - `AcoesEvento`
   - `CampoBusca`
   - `SeletorOpcoes` (segmentado e chips)
-  - `SeparadorPeriodoAgiliza`
-  - `EventoTimelineAgiliza`
+  - `SeparadorPeriodoFilosofia`
+  - `EventoTimelineFilosofia`
   - `EventoAgenda`
   - `EventoPendente`
   - `AgendaEventos`
@@ -48,11 +48,11 @@ O projeto gráfico tem duas telas do agiliza.ai, a partir da agenda do consultor
 
 <!-- [x] feito · [ ] em aberto · [ ] ... — adiado: <razão> para o que se decidiu não fazer -->
 
-- [x] Aparência `agiliza` da Timeline (`SeparadorPeriodoAgiliza`, `EventoTimelineAgiliza`, `MarcoStatus`)
+- [x] Aparência `filosofia` da Timeline (`SeparadorPeriodoFilosofia`, `EventoTimelineFilosofia`, `MarcoStatus`)
 - [x] Ações do evento (`AcaoEvento`, `AcoesEvento`, `acaoClick`)
 - [x] Agenda do dia (`AgendaEventos`, `EventoPendente`, `EventoAgenda`, `SeletorOpcoes`, `utils/agenda`)
 - [x] Tela (`TemplateAgenda`, `CampoBusca`, avatar com iniciais, `perfil.descricao`)
-- [x] Stories de cada componente, com o caso do consultor e os tokens do agiliza.ai
+- [x] Stories de cada componente, com o caso do consultor e os tokens de uma marca fictícia
 - [x] Testes unitários e axe nas stories, nos temas claro e escuro
 - [x] Timeline reativa à troca da lista, que a busca exige (item 7 da task-003)
 - [ ] ... — adiado: barra de navegação inferior e logo, que são do aplicativo

@@ -1,10 +1,10 @@
 import { Perfil } from '../type';
 import { Observacao, EventoDetalhado } from '../typeDetalhado';
+import { FOTOS } from '../fotos.mock';
 
 export const dadosPerfil: Perfil = {
   nome: 'Maria do Socorro',
-  imagem:
-    'https://images.unsplash.com/photo-1526080652727-5b77f74eacd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80',
+  imagem: FOTOS.mulherDeCardiga,
   icone: 'person',
 };
 

@@ -2,7 +2,7 @@ export type Perfil = {
   nome: string;
   imagem?: string;
   icone?: string;
-  /** Função ou cargo, mostrado abaixo do nome (ex.: "Consultor de vendas"). */
+  /** Função ou cargo, mostrado abaixo do nome (ex.: "Mensageira da FilosofiA"). */
   descricao?: string;
 };
 

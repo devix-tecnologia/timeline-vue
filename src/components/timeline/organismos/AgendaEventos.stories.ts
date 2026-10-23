@@ -1,16 +1,16 @@
 import AgendaEventos from './AgendaEventos.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { comTemaAgiliza, gerarEventosConsultor } from './Timeline.mock';
+import { comTemaFilosofia, gerarEventosFilosofia } from './Timeline.mock';
 import { FILTROS_AGENDA } from './AgendaEventos.types';
 
 export default {
   title: 'Devix/Organismos/AgendaEventos',
   component: AgendaEventos,
-  decorators: [comTemaAgiliza],
+  decorators: [comTemaFilosofia],
   parameters: {
     docs: {
       description: {
-        component: `Agenda de um dia, conforme o projeto gráfico do agiliza.ai. Separa os eventos em três grupos:
+        component: `Agenda de um dia. Separa os eventos em três grupos:
 - **Pendentes que passaram do horário**, deste dia ou de antes, em destaque (EventoPendente);
 - **Próximos eventos**, os pendentes do dia que ainda vão acontecer (EventoAgenda);
 - **Concluídos**, os do dia já resolvidos: realizados, adiados e cancelados (EventoAgenda).
@@ -21,7 +21,7 @@ Os filtros Todos, Pendentes e Concluídos escolhem os grupos; o de pendentes mos
 - Para mostrar o que falta fazer num dia, com o que ficou para trás em destaque
 
 ## 🚫 Quando NÃO usar
-- Para o histórico do que já aconteceu (use a Timeline com \`aparencia="agiliza"\`)
+- Para o histórico do que já aconteceu (use a Timeline com \`aparencia="filosofia"\`)
 
 ## ♿ Acessibilidade
 - Região com o nome "Agenda"; dia e seções em \`<h3>\`, eventos em \`<h4>\`
@@ -31,7 +31,7 @@ Os filtros Todos, Pendentes e Concluídos escolhem os grupos; o de pendentes mos
     },
   },
   args: {
-    eventos: gerarEventosConsultor(),
+    eventos: gerarEventosFilosofia(),
     filtroInicial: 'todos',
   },
   argTypes: {
@@ -59,7 +59,7 @@ export const Todos: Story = {};
 Todos.parameters = {
   docs: {
     description: {
-      story: 'A agenda de hoje do consultor de vendas, com os três grupos.',
+      story: 'A agenda de hoje da mensageira, com os três grupos.',
     },
   },
 };
@@ -69,7 +69,7 @@ export const Pendentes: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Só o que falta fazer, como na primeira tela do projeto gráfico.',
+        story: 'Só o que falta fazer.',
       },
     },
   },

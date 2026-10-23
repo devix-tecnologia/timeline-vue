@@ -2,9 +2,9 @@ import TemplateAgenda from './TemplateAgenda.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import {
-  dadosPerfilConsultor,
-  gerarEventosConsultor,
-  temaAgiliza,
+  dadosPerfilMensageira,
+  gerarEventosFilosofia,
+  temaFilosofia,
 } from '../organismos/Timeline.mock';
 import { VISOES_AGENDA } from './TemplateAgenda.types';
 import { FILTROS_AGENDA } from '../organismos/AgendaEventos.types';
@@ -17,15 +17,15 @@ export default {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: `Tela de agenda de uma pessoa, conforme o projeto gráfico do agiliza.ai (task-004): marca e avatar no topo, título, nome e função, busca e a escolha entre **Agenda** e **Histórico**.
+        component: `Tela de agenda de uma pessoa: marca e avatar no topo, título, nome e função, busca e a escolha entre **Agenda** e **Histórico**.
 
 - **Agenda** (AgendaEventos): o dia escolhido, os filtros Todos, Pendentes e Concluídos, os pendentes que passaram do horário em destaque e os próximos eventos, com as ações de cada um.
-- **Histórico**: os eventos já resolvidos (realizados, adiados e cancelados) na Timeline com a aparência \`agiliza\`.
+- **Histórico**: os eventos já resolvidos (realizados, adiados e cancelados) na Timeline com a aparência \`filosofia\`.
 
-A busca vale para as duas visões e procura no título, no cliente, na descrição e na categoria, sem diferenciar acentos.
+A busca vale para as duas visões e procura no título, no destinatário, no destaque e na categoria, sem diferenciar acentos.
 
 ## 🎯 Quando usar
-- Tela principal de quem acompanha os próprios compromissos, como um consultor de vendas
+- Tela principal de quem acompanha os próprios compromissos, como a mensageira da FilosofiA
 - Quando a pessoa precisa ver o que falta fazer e o que já aconteceu
 
 ## 🚫 Quando NÃO usar
@@ -34,7 +34,7 @@ A busca vale para as duas visões e procura no título, no cliente, na descriç�
 
 ## 📦 Estrutura
 - A marca do produto entra pelo slot \`marca\`. A barra de navegação do aplicativo fica com quem usa o template.
-- As cores vêm dos tokens (\`--cor-*\`). Nestas stories, os tokens do agiliza.ai são aplicados num contêiner.
+- As cores vêm dos tokens (\`--cor-*\`). Nestas stories, os tokens de uma marca fictícia, a FilosofiA, são aplicados num contêiner, com os valores dos temas claro e escuro.
 - O template emite \`eventoClick\`, \`acaoClick\` e \`diaClick\`; o que cada ação faz é de quem o usa.
 
 ## ♿ Acessibilidade
@@ -46,7 +46,7 @@ A busca vale para as duas visões e procura no título, no cliente, na descriç�
     },
   },
   args: {
-    perfil: dadosPerfilConsultor,
+    perfil: dadosPerfilMensageira,
     titulo: 'Eventos',
     visaoInicial: 'agenda',
     filtroInicial: 'pendentes',
@@ -86,7 +86,7 @@ A busca vale para as duas visões e procura no título, no cliente, na descriç�
     components: { TemplateAgenda },
     setup() {
       // Uma lista por story, porque a Timeline altera os eventos que recebe.
-      const eventos = gerarEventosConsultor();
+      const eventos = gerarEventosFilosofia();
       const dia = ref(new Date());
       const avancarDia = () => {
         const proximo = new Date(dia.value);
@@ -97,7 +97,7 @@ A busca vale para as duas visões e procura no título, no cliente, na descriç�
       const registrarAcao = (evento: Evento, acao: AcaoEvento) => {
         ultimaAcao.value = `${acao.rotulo}: ${evento.titulo}`;
       };
-      return { args, eventos, dia, avancarDia, ultimaAcao, registrarAcao, tema: temaAgiliza };
+      return { args, eventos, dia, avancarDia, ultimaAcao, registrarAcao, tema: temaFilosofia };
     },
     template: `
       <div :style="tema" style="max-width: 48rem; min-height: 100vh">
@@ -110,7 +110,7 @@ A busca vale para as duas visões e procura no título, no cliente, na descriç�
         >
           <template #marca>
             <span style="font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em">
-              <span style="color: var(--cor-primaria)">agiliza</span>.ai
+              Filosofi<span style="color: var(--cor-primaria)">A</span>
             </span>
           </template>
         </TemplateAgenda>
@@ -128,7 +128,7 @@ export const Agenda: Story = {
   parameters: {
     docs: {
       description: {
-        story: `A agenda de hoje do consultor de vendas, filtrada nos pendentes, como na primeira tela do projeto gráfico: a proposta de ontem em destaque e os próximos eventos com "Ver detalhes" e "Concluir". A seta do dia avança um dia.`,
+        story: `A agenda de hoje da mensageira, filtrada nos pendentes: a carta de ontem para Descartes em destaque e os próximos eventos com "Ver detalhes" e "Concluir". A seta do dia avança um dia.`,
       },
     },
   },
@@ -141,7 +141,7 @@ export const Historico: Story = {
     docs: {
       description: {
         story:
-          'O histórico do consultor, como na segunda tela do projeto gráfico: os eventos já resolvidos, por dia, na Timeline com a aparência `agiliza`. A visita adiada oferece "Reagendar".',
+          'O histórico da mensageira: os eventos já resolvidos, por dia, na Timeline com a aparência `filosofia`. O pombo-correio adiado para Diógenes oferece "Reagendar".',
       },
     },
   },

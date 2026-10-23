@@ -1,20 +1,20 @@
-import SeparadorPeriodoAgiliza from './SeparadorPeriodoAgiliza.vue';
+import SeparadorPeriodoFilosofia from './SeparadorPeriodoFilosofia.vue';
 import { Meta, StoryObj } from '@storybook/vue3-vite';
-import { comTemaAgiliza } from '../organismos/Timeline.mock';
+import { comTemaFilosofia } from '../organismos/Timeline.mock';
 
 export default {
-  title: 'Devix/Moleculas/SeparadorPeriodoAgiliza',
-  component: SeparadorPeriodoAgiliza,
-  decorators: [comTemaAgiliza],
+  title: 'Devix/Moleculas/SeparadorPeriodoFilosofia',
+  component: SeparadorPeriodoFilosofia,
+  decorators: [comTemaFilosofia],
   parameters: {
     docs: {
       description: {
-        component: `Separador de dia da aparência \`agiliza\` da Timeline: ícone de calendário e "Hoje, 7 de outubro". Fora de ontem, hoje e amanhã, mostra o dia da semana; o ano só aparece quando não é o atual.
+        component: `Separador de dia da aparência \`filosofia\` da Timeline: ícone de calendário e "Hoje, 7 de outubro". Fora de ontem, hoje e amanhã, mostra o dia da semana; o ano só aparece quando não é o atual.
 
 Com \`navegavel\`, vira um botão com seta e emite \`click\`: a agenda o usa para trocar de dia.
 
 ## 🎯 Quando usar
-- Entre dias diferentes, na Timeline com \`aparencia="agiliza"\`
+- Entre dias diferentes, na Timeline com \`aparencia="filosofia"\`
 - No topo da agenda, com \`navegavel\`
 
 ## 🚫 Quando NÃO usar
@@ -42,9 +42,9 @@ Com \`navegavel\`, vira um botão com seta e emite \`click\`: a agenda o usa par
       table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
     },
   },
-} as Meta<typeof SeparadorPeriodoAgiliza>;
+} as Meta<typeof SeparadorPeriodoFilosofia>;
 
-type Story = StoryObj<typeof SeparadorPeriodoAgiliza>;
+type Story = StoryObj<typeof SeparadorPeriodoFilosofia>;
 
 export const Padrao: Story = {};
 Padrao.parameters = {

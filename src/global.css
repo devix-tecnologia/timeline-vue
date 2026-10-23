@@ -16,60 +16,60 @@
 :root {
   --fonte: 'Work Sans', sans-serif;
   font-size: 62.5%;
-
-  --cor-primaria: #00e01d;
-  --cor-secundaria: #1b2f39;
-  --cor-terciaria: #ebf1f2;
-
-  --cor-fundo: #fff;
-
-  --cor-selecao: #ccf9d2;
-  --cor-texto-selecao: #1b2f39;
-  --cor-texto: #1b2f39;
-
-  --cor-apoio: #57676f;
-  --cor-linha: #e9eaeb;
-
-  --cor-importante: #fc3636;
-  --cor-alerta: #f0cc0d;
-  --cor-sucesso: #00a816;
-  --cor-acao: #0187b1;
-
-  /* Texto sobre os fundos de ação, sucesso e importante, como o --cor-texto-selecao. */
-  --cor-texto-acao: #0d1117;
-  --cor-texto-sucesso: #0d1117;
-  --cor-texto-importante: #0d1117;
-
-  --cor-sombra: rgba(27, 47, 57, 0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --fonte: 'Work Sans', sans-serif;
-    font-size: 62.5%;
+/*
+ * TEMAS
+ * Cada token traz o valor do tema claro e o do escuro, em light-dark(). O tema segue o do
+ * sistema; data-tema="claro" ou data-tema="escuro" num contêiner (ou no html) força um deles
+ * só ali. Para aplicar uma marca, redefina os tokens no mesmo formato, na página ou num
+ * contêiner: --cor-primaria: light-dark(#0e5a3a, #4fd39a). Um valor só vale nos dois temas.
+ */
+:root {
+  color-scheme: light dark;
 
-    --cor-primaria: #00e01d;
-    --cor-secundaria: #ebf1f2;
-    --cor-terciaria: #1b2f39;
+  --cor-primaria: light-dark(#00e01d, #00e01d);
+  --cor-secundaria: light-dark(#1b2f39, #ebf1f2);
+  --cor-terciaria: light-dark(#ebf1f2, #1b2f39);
 
-    --cor-fundo: #0d1117;
+  --cor-fundo: light-dark(#fff, #0d1117);
 
-    --cor-selecao: #ccf9d2;
-    --cor-texto-selecao: #1b2f39;
-    --cor-texto: #f9f9f9;
+  --cor-selecao: light-dark(#ccf9d2, #ccf9d2);
+  --cor-texto-selecao: light-dark(#1b2f39, #1b2f39);
+  --cor-texto: light-dark(#1b2f39, #f9f9f9);
 
-    --cor-apoio: #81949c;
-    --cor-linha: #e9eaeb;
+  --cor-apoio: light-dark(#57676f, #81949c);
+  --cor-linha: light-dark(#e9eaeb, #e9eaeb);
 
-    --cor-importante: #bb0202;
-    --cor-alerta: #f0cc0d;
-    --cor-sucesso: #00a816;
+  --cor-importante: light-dark(#fc3636, #bb0202);
+  --cor-alerta: light-dark(#f0cc0d, #f0cc0d);
+  --cor-sucesso: light-dark(#00a816, #00a816);
+  --cor-acao: light-dark(#0187b1, #0187b1);
 
-    --cor-texto-sucesso: #0d1117;
-    --cor-texto-importante: #f9f9f9;
+  /* Texto sobre os fundos de ação, sucesso e importante, como o --cor-texto-selecao. */
+  --cor-texto-acao: light-dark(#0d1117, #0d1117);
+  --cor-texto-sucesso: light-dark(#0d1117, #0d1117);
+  --cor-texto-importante: light-dark(#0d1117, #f9f9f9);
 
-    --cor-sombra: rgba(252, 252, 253, 0.224);
-  }
+  /*
+   * A cor do status como texto sobre o --cor-fundo (contornos e rótulos). No claro, tons
+   * mais escuros que os fundos de status, para o contraste de texto; no escuro, os tons
+   * vivos, porque os escuros somem.
+   */
+  --cor-sucesso-sobre-fundo: light-dark(#008212, #00a816);
+  --cor-importante-sobre-fundo: light-dark(#c42020, #fc3636);
+  --cor-alerta-sobre-fundo: light-dark(#8a7300, #f0cc0d);
+  --cor-apoio-sobre-fundo: light-dark(#3d4f57, #81949c);
+
+  --cor-sombra: light-dark(rgba(27, 47, 57, 0.15), rgba(252, 252, 253, 0.224));
+}
+
+[data-tema='claro'] {
+  color-scheme: light;
+}
+
+[data-tema='escuro'] {
+  color-scheme: dark;
 }
 
 body {

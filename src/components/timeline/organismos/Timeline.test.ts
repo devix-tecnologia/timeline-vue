@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/vue';
 import { defineComponent, h, nextTick } from 'vue';
 import type { Mock } from 'vitest';
 import Timeline from './Timeline.vue';
-import { dadosPerfil, dadosPerfilConsultor, gerarEventosConsultor } from './Timeline.mock';
+import { dadosPerfil, dadosPerfilMensageira, gerarEventosFilosofia } from './Timeline.mock';
 import { Evento } from '../type';
 
 describe('Timeline.vue', () => {
@@ -101,7 +101,7 @@ describe('Timeline.vue', () => {
 
     it('usa a aparência padrao quando a prop não é informada', () => {
       const { container } = render(Timeline, {
-        props: { eventosTimeline: gerarEventosConsultor(referencia) },
+        props: { eventosTimeline: gerarEventosFilosofia(referencia) },
       });
 
       expect(container.querySelector('.timeline--padrao')).toBeTruthy();
@@ -114,8 +114,8 @@ describe('Timeline.vue', () => {
       const { container } = render(Timeline, {
         props: {
           aparencia: 'cartoes',
-          perfilTimeline: dadosPerfilConsultor,
-          eventosTimeline: gerarEventosConsultor(referencia),
+          perfilTimeline: dadosPerfilMensageira,
+          eventosTimeline: gerarEventosFilosofia(referencia),
         },
       });
 
@@ -127,20 +127,20 @@ describe('Timeline.vue', () => {
     });
 
     it('na aparência cartoes, emite "eventoClick" com o evento clicado', async () => {
-      const eventos = gerarEventosConsultor(referencia);
+      const eventos = gerarEventosFilosofia(referencia);
       const { emitted, getByRole } = render(Timeline, {
         props: { aparencia: 'cartoes', eventosTimeline: eventos },
       });
 
-      await fireEvent.click(getByRole('button', { name: 'Assinatura do contrato' }));
+      await fireEvent.click(getByRole('button', { name: 'Telegrama para Nietzsche' }));
 
       const eventoClick = emitted().eventoClick as [Evento, MouseEvent][];
       expect(eventoClick).toHaveLength(1);
-      expect(eventoClick[0][0].titulo).toBe('Assinatura do contrato');
+      expect(eventoClick[0][0].titulo).toBe('Telegrama para Nietzsche');
     });
 
     it('na aparência cartoes, mostra o evento não clicável sem botão', () => {
-      const eventos = gerarEventosConsultor(referencia).map((evento) => ({
+      const eventos = gerarEventosFilosofia(referencia).map((evento) => ({
         ...evento,
         clicavel: false,
       }));
@@ -151,33 +151,33 @@ describe('Timeline.vue', () => {
       expect(queryAllByRole('button')).toHaveLength(0);
     });
 
-    it('troca separadores e eventos pelos da aparência agiliza, com as ações', () => {
+    it('troca separadores e eventos pelos da aparência filosofia, com as ações', () => {
       const { container, getAllByRole } = render(Timeline, {
-        props: { aparencia: 'agiliza', eventosTimeline: gerarEventosConsultor(referencia) },
+        props: { aparencia: 'filosofia', eventosTimeline: gerarEventosFilosofia(referencia) },
       });
 
-      expect(container.querySelector('.timeline--agiliza')).toBeTruthy();
-      expect(container.querySelectorAll('.separadorAgiliza')).toHaveLength(4);
-      expect(container.querySelectorAll('.eventoAgiliza')).toHaveLength(12);
+      expect(container.querySelector('.timeline--filosofia')).toBeTruthy();
+      expect(container.querySelectorAll('.separadorFilosofia')).toHaveLength(4);
+      expect(container.querySelectorAll('.eventoFilosofia')).toHaveLength(12);
       expect(getAllByRole('button', { name: 'Concluir' }).length).toBeGreaterThan(0);
     });
 
-    it('na aparência agiliza, emite "acaoClick" com o evento e a ação', async () => {
+    it('na aparência filosofia, emite "acaoClick" com o evento e a ação', async () => {
       const { getByRole, emitted } = render(Timeline, {
-        props: { aparencia: 'agiliza', eventosTimeline: gerarEventosConsultor(referencia) },
+        props: { aparencia: 'filosofia', eventosTimeline: gerarEventosFilosofia(referencia) },
       });
 
       await fireEvent.click(getByRole('button', { name: 'Reagendar' }));
 
       const [evento, acao] = emitted().acaoClick[0] as [Evento, { id: string }];
-      expect(evento.titulo).toBe('Visita técnica');
+      expect(evento.titulo).toBe('Pombo-correio para Diógenes');
       expect(acao.id).toBe('reagendar');
       expect(emitted().eventoClick).toBeUndefined();
     });
 
     it('nas aparências sem ações, não põe as ações como atributo no evento', () => {
       const { container } = render(Timeline, {
-        props: { aparencia: 'cartoes', eventosTimeline: gerarEventosConsultor(referencia) },
+        props: { aparencia: 'cartoes', eventosTimeline: gerarEventosFilosofia(referencia) },
       });
 
       expect(container.querySelector('[acoes]')).toBeNull();
@@ -189,7 +189,7 @@ describe('Timeline.vue', () => {
     const referencia = new Date(2026, 9, 7, 12, 0);
 
     it('acompanha a troca da prop', async () => {
-      const eventos = gerarEventosConsultor(referencia);
+      const eventos = gerarEventosFilosofia(referencia);
       const { container, rerender } = render(Timeline, {
         props: { aparencia: 'cartoes', eventosTimeline: eventos },
       });
@@ -201,7 +201,7 @@ describe('Timeline.vue', () => {
     });
 
     it('não muda a ordem da lista de quem usa a Timeline', () => {
-      const eventos = gerarEventosConsultor(referencia).reverse();
+      const eventos = gerarEventosFilosofia(referencia).reverse();
       const ordemRecebida = eventos.map((evento) => evento.titulo);
 
       render(Timeline, { props: { eventosTimeline: eventos } });
@@ -214,7 +214,7 @@ describe('Timeline.vue', () => {
       const limpar = vi.spyOn(globalThis, 'clearInterval');
 
       const { unmount } = render(Timeline, {
-        props: { eventosTimeline: gerarEventosConsultor(referencia) },
+        props: { eventosTimeline: gerarEventosFilosofia(referencia) },
       });
       expect(criar).toHaveBeenCalledTimes(1);
 
@@ -247,7 +247,7 @@ describe('Timeline.vue', () => {
                     'data-testid': `conteiner-${indice}`,
                     style: `height: 200px; overflow-y: ${overflow}`,
                   },
-                  [h(Timeline, { eventosTimeline: gerarEventosConsultor(referencia), ...props })]
+                  [h(Timeline, { eventosTimeline: gerarEventosFilosofia(referencia), ...props })]
                 )
               )
             ),
@@ -314,13 +314,13 @@ describe('Timeline.vue', () => {
     });
 
     it('com rolarAteOAtual desligado, não rola nada, nem quando a lista muda', async () => {
-      const eventos = gerarEventosConsultor(referencia);
+      const eventos = gerarEventosFilosofia(referencia);
       const { rerender } = render(Timeline, {
         props: { eventosTimeline: eventos, rolarAteOAtual: false },
         attrs: { style: 'height: 200px; overflow-y: auto' },
       });
 
-      await rerender({ eventosTimeline: gerarEventosConsultor(referencia), rolarAteOAtual: false });
+      await rerender({ eventosTimeline: gerarEventosFilosofia(referencia), rolarAteOAtual: false });
       await nextTick();
 
       expect(scrollTo).not.toHaveBeenCalled();
@@ -329,14 +329,14 @@ describe('Timeline.vue', () => {
     });
 
     it('rola de novo quando a lista muda', async () => {
-      const eventos = gerarEventosConsultor(referencia);
+      const eventos = gerarEventosFilosofia(referencia);
       const { rerender } = render(Timeline, {
         props: { eventosTimeline: eventos },
         attrs: { style: 'height: 200px; overflow-y: auto' },
       });
       expect(scrollTo).toHaveBeenCalledTimes(1);
 
-      await rerender({ eventosTimeline: gerarEventosConsultor(referencia) });
+      await rerender({ eventosTimeline: gerarEventosFilosofia(referencia) });
       await nextTick();
 
       expect(scrollTo).toHaveBeenCalledTimes(2);

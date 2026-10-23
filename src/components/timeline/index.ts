@@ -5,7 +5,7 @@ import TemplateAgenda from './templates/TemplateAgenda.vue';
 import AgendaEventos from './organismos/AgendaEventos.vue';
 import EventoTimeline from './moleculas/EventoTimeline.vue';
 import EventoTimelineCartao from './moleculas/EventoTimelineCartao.vue';
-import EventoTimelineAgiliza from './moleculas/EventoTimelineAgiliza.vue';
+import EventoTimelineFilosofia from './moleculas/EventoTimelineFilosofia.vue';
 import EventoDetalhado from './organismos/EventoDetalhado.vue';
 import EditarEvento from './organismos/EditarEvento.vue';
 
@@ -25,7 +25,7 @@ export {
   TiposDetalhado,
   EventoTimeline,
   EventoTimelineCartao,
-  EventoTimelineAgiliza,
+  EventoTimelineFilosofia,
   AgendaEventos,
   EventoDetalhado,
   EditarEvento,

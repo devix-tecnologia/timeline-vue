@@ -65,7 +65,7 @@ export default defineComponent({
 
 .btn.realizado {
   border: 1px solid var(--cor-sucesso);
-  color: #008212;
+  color: var(--cor-sucesso-sobre-fundo);
 }
 .btn.realizado:active,
 .btn.preenchido.realizado {
@@ -79,7 +79,7 @@ export default defineComponent({
 
 .btn.cancelado {
   border: 1px solid var(--cor-importante);
-  color: #c42020;
+  color: var(--cor-importante-sobre-fundo);
 }
 .btn.cancelado:active,
 .btn.preenchido.cancelado {
@@ -93,7 +93,7 @@ export default defineComponent({
 
 .btn.atrasado {
   border: 1px solid var(--cor-alerta);
-  color: #8a7300;
+  color: var(--cor-alerta-sobre-fundo);
 }
 
 .btn.atrasado:active,
@@ -107,8 +107,8 @@ export default defineComponent({
 }
 
 .btn.adiado {
-  border: 1px solid #3d4f57;
-  color: #3d4f57;
+  border: 1px solid var(--cor-apoio-sobre-fundo);
+  color: var(--cor-apoio-sobre-fundo);
 }
 
 .btn.adiado:active,
@@ -120,25 +120,5 @@ export default defineComponent({
 .btn.adiado:active .icone::before,
 .btn.preenchido.adiado .icone::before {
   color: var(--cor-fundo);
-}
-
-/*
- * Os tons escuros do texto do contorno somem no fundo escuro. Lá, o texto usa a cor do
- * status, e o cancelado usa o vermelho do tema claro, porque o do escuro é escuro demais.
- */
-@media (prefers-color-scheme: dark) {
-  .btn.realizado {
-    color: var(--cor-sucesso);
-  }
-  .btn.cancelado {
-    color: #fc3636;
-  }
-  .btn.atrasado {
-    color: var(--cor-alerta);
-  }
-  .btn.adiado {
-    border-color: var(--cor-apoio);
-    color: var(--cor-apoio);
-  }
 }
 </style>

@@ -4,7 +4,7 @@ import AcoesEvento from './AcoesEvento.vue';
 import { AcaoEvento } from '../type';
 
 const acoes: AcaoEvento[] = [
-  { id: 'abrir-proposta', rotulo: 'Abrir proposta', principal: true },
+  { id: 'abrir-carta', rotulo: 'Abrir carta', principal: true },
   { id: 'mais-acoes', rotulo: 'Mais ações', icone: 'more_horiz', apenasIcone: true },
 ];
 
@@ -12,7 +12,7 @@ describe('AcoesEvento.vue', () => {
   it('mostra a ação principal preenchida e a só com ícone pelo nome acessível', () => {
     const { getByRole } = render(AcoesEvento, { props: { acoes } });
 
-    const principal = getByRole('button', { name: 'Abrir proposta' });
+    const principal = getByRole('button', { name: 'Abrir carta' });
     expect(principal.classList).toContain('preenchido');
     const mais = getByRole('button', { name: 'Mais ações' });
     expect(mais.classList).not.toContain('preenchido');

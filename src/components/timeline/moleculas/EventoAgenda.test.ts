@@ -1,18 +1,18 @@
 import { render, fireEvent } from '@testing-library/vue';
 import EventoAgenda from './EventoAgenda.vue';
-import { buscarEventoConsultor } from '../organismos/Timeline.mock';
+import { buscarEventoFilosofia } from '../organismos/Timeline.mock';
 
 describe('EventoAgenda.vue', () => {
   it('mostra hora, título, cliente, descrição e ações, sem selo para planejado', () => {
     const { getByTestId, getByText, getByRole, queryByTestId } = render(EventoAgenda, {
-      props: { evento: buscarEventoConsultor('Demonstração') },
+      props: { evento: buscarEventoFilosofia('Telegrama urgente para Kant') },
     });
 
     expect(
       getByTestId('evento-agenda').querySelector('.eventoAgenda__hora')?.textContent?.trim()
     ).toBe('10:00');
-    expect(getByText('Banco Horizonte')).toBeTruthy();
-    expect(getByText('Apresentação da plataforma')).toBeTruthy();
+    expect(getByText('Königsberg, antes da caminhada das 15h30')).toBeTruthy();
+    expect(getByText('Imperativo categórico')).toBeTruthy();
     expect(getByRole('button', { name: 'Ver detalhes' })).toBeTruthy();
     expect(getByRole('button', { name: 'Concluir' })).toBeTruthy();
     expect(queryByTestId('selo-status')).toBeNull();
@@ -20,7 +20,7 @@ describe('EventoAgenda.vue', () => {
 
   it('mostra o selo e a hora realizada nos concluídos', () => {
     const { getByTestId, getByText } = render(EventoAgenda, {
-      props: { evento: buscarEventoConsultor('Retorno por e-mail') },
+      props: { evento: buscarEventoFilosofia('Pergaminho de Confúcio') },
     });
 
     expect(getByText('Realizado')).toBeTruthy();
@@ -31,19 +31,19 @@ describe('EventoAgenda.vue', () => {
 
   it('emite "click" pelo título e "acaoClick" pelas ações', async () => {
     const { getByRole, emitted } = render(EventoAgenda, {
-      props: { evento: buscarEventoConsultor('Demonstração') },
+      props: { evento: buscarEventoFilosofia('Telegrama urgente para Kant') },
     });
 
     await fireEvent.click(getByRole('button', { name: 'Concluir' }));
     expect(emitted().acaoClick).toHaveLength(1);
     expect(emitted().click).toBeUndefined();
 
-    await fireEvent.click(getByRole('button', { name: 'Demonstração' }));
+    await fireEvent.click(getByRole('button', { name: 'Telegrama urgente para Kant' }));
     expect(emitted().click).toHaveLength(1);
   });
 
   it('não é clicável quando o evento diz que não é', async () => {
-    const evento = { ...buscarEventoConsultor('Retorno por e-mail'), clicavel: false };
+    const evento = { ...buscarEventoFilosofia('Pergaminho de Confúcio'), clicavel: false };
     const { getByTestId, queryByRole, emitted } = render(EventoAgenda, { props: { evento } });
 
     expect(queryByRole('button')).toBeNull();

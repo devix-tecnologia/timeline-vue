@@ -33,10 +33,10 @@ O cartão mostra a hora (e a prevista, riscada, quando o evento foi realizado), 
     ehAtual: false,
     previstoPara: new Date('2026-10-07T13:00Z'),
     realizadoEm: undefined,
-    categoria: { nome: 'Demonstração', icone: 'present_to_all' },
-    titulo: 'Demonstração da plataforma',
-    subtitulo: 'Banco Horizonte · squad de modernização',
-    textoDestaque: 'R$ 480 mil',
+    categoria: { nome: 'Telegrama', icone: 'bolt' },
+    titulo: 'Telegrama urgente para Kant',
+    subtitulo: 'Königsberg · antes da caminhada das 15h30',
+    textoDestaque: 'Imperativo categórico',
     clicavel: true,
   },
   argTypes: {
@@ -98,7 +98,7 @@ export const Padrao: Story = {};
 Padrao.parameters = {
   docs: {
     description: {
-      story: 'Evento planejado de prioridade alta, com o valor da proposta em destaque.',
+      story: 'Evento planejado de prioridade alta, com o assunto em destaque.',
     },
   },
 };
@@ -117,10 +117,10 @@ export const Realizado: Story = {
     status: 'realizado',
     criticidade: 'media',
     realizadoEm: new Date('2026-10-07T13:10Z'),
-    categoria: { nome: 'Reunião', icone: 'groups' },
-    titulo: 'Reunião de descoberta',
-    subtitulo: 'Rede Farma Vida · portal do cliente e app',
-    textoDestaque: '3 squads',
+    categoria: { nome: 'Carta', icone: 'mail' },
+    titulo: 'Carta para Hipátia',
+    subtitulo: 'Biblioteca de Alexandria · seção de astronomia',
+    textoDestaque: '3 rolos de papiro',
   },
   parameters: {
     docs: {
@@ -135,9 +135,9 @@ export const Cancelado: Story = {
   args: {
     status: 'cancelado',
     criticidade: 'baixa',
-    categoria: { nome: 'Reunião', icone: 'groups' },
-    titulo: 'Alinhamento com a pré-venda',
-    subtitulo: 'Arquitetura e estimativa da proposta',
+    categoria: { nome: 'Sinal de fumaça', icone: 'local_fire_department' },
+    titulo: 'Sinal de fumaça para Heráclito',
+    subtitulo: 'Éfeso: o rio já não era o mesmo',
     textoDestaque: '',
   },
   parameters: {

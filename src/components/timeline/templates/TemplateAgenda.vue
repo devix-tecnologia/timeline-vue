@@ -44,7 +44,7 @@
     <template v-else>
       <Timeline
         v-if="historico.length > 0"
-        aparencia="agiliza"
+        aparencia="filosofia"
         :eventosTimeline="historico"
         @evento-click="(evento, mouseEvent) => $emit('eventoClick', evento, mouseEvent)"
         @acao-click="(evento, acao, mouseEvent) => $emit('acaoClick', evento, acao, mouseEvent)"
@@ -69,7 +69,7 @@ import { VISOES_AGENDA, VisaoAgenda, ROTULOS_VISAO_AGENDA } from './TemplateAgen
 
 /**
  * Tela de agenda de uma pessoa: busca, e a escolha entre a agenda (o que falta fazer) e o
- * histórico (o que já se resolveu, na Timeline com a aparência `agiliza`). A marca do
+ * histórico (o que já se resolveu, na Timeline com a aparência `filosofia`). A marca do
  * produto entra pelo slot `marca`; a navegação do aplicativo fica com quem usa o template.
  */
 export default defineComponent({

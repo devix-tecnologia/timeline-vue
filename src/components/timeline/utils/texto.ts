@@ -1,5 +1,5 @@
 /**
- * Iniciais de um nome: "Rafael Moreira" → "RM"; com um nome só, as duas primeiras letras.
+ * Iniciais de um nome: "Heloísa Abelardo" → "HA"; com um nome só, as duas primeiras letras.
  * Adaptado do Avatar do @storytype/components, que usa o primeiro e o segundo nome;
  * aqui vão o primeiro e o último ("Maria do Socorro" → "MS").
  */
