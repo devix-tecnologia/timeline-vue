@@ -13,17 +13,18 @@ export default {
 ## 🎯 Quando usar
 - Para exibir ícones categorizados dentro de eventos da timeline
 - Quando é necessário diferenciar visualmente tipos de evento (padrão, importante, alerta, sucesso)
-- Em列表agens de timeline que precisam de identificação visual rápida por categoria
+- Em listagens de timeline que precisam de identificação visual rápida por categoria
 
 ## 🚫 Quando NÃO usar
 - Para ícones de status (use IconeStatus)
 - Quando o ícone precisa ser clicável ou interativo
-- Em contexts fora da timeline
+- Em contextos fora da timeline
 
 ## ♿ Acessibilidade
-- O atributo \`categoria\` é usado como texto alternativo (\`alt\`) do ícone
+- Com \`categoria\`, o ícone vira uma imagem (\`role="img"\`) que tem a categoria como nome acessível
+- Sem \`categoria\`, o ícone é decorativo e fica fora do leitor de tela
 - As cores de borda seguem o tema visual e devem manter contraste suficiente
-- Ícones decorativos devem ser ignorados por leitores de tela quando não伝える informação essencial`,
+- O ícone pede contraste de 3:1 com o fundo. Com \`backgroundColor\`, que não muda com o tema, defina também \`color\``,
       },
     },
   },
@@ -33,7 +34,8 @@ export default {
       table: { type: { summary: 'string' } },
     },
     categoria: {
-      description: 'Texto alternativo descritivo da categoria, usado como \`alt\` no ícone.',
+      description:
+        'Nome da categoria. Vira o nome acessível do ícone (\`role="img"\` com \`aria-label\`); sem ele, o ícone é decorativo.',
       table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
     },
     escuro: {
@@ -53,7 +55,14 @@ export default {
       table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
     },
     backgroundColor: {
-      description: 'Cor personalizada do fundo, sobrescreve a cor definida por \`escuro\`.',
+      description:
+        'Cor personalizada do fundo, sobrescreve a cor definida por \`escuro\`. Não muda com o tema.',
+      control: { type: 'color' },
+      table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
+    },
+    color: {
+      description:
+        'Cor personalizada do ícone, sobrescreve a cor definida por \`escuro\`. Use junto com \`backgroundColor\`, para o ícone não depender do tema.',
       control: { type: 'color' },
       table: { type: { summary: 'string' }, defaultValue: { summary: 'undefined' } },
     },
@@ -61,17 +70,32 @@ export default {
 } as Meta<typeof IconeCategoria>;
 
 const categoriaMock = 'call';
+const nomeCategoriaMock = 'Ligação';
 
-export const Escuro = { args: { iconeCategoria: categoriaMock, escuro: true, tipo: 'padrao' } };
+export const Escuro = {
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: true,
+    tipo: 'padrao',
+  },
+};
 Escuro.parameters = {
   docs: {
     description: {
-      story: 'Ícone com fundo escuro e borda padrão — aparência mais contrasted e sóbria.',
+      story: 'Ícone com fundo escuro e borda padrão — aparência mais contrastada e sóbria.',
     },
   },
 };
 
-export const Claro = { args: { iconeCategoria: categoriaMock, escuro: false, tipo: 'padrao' } };
+export const Claro = {
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: false,
+    tipo: 'padrao',
+  },
+};
 Claro.parameters = {
   docs: {
     description: {
@@ -82,7 +106,12 @@ Claro.parameters = {
 };
 
 export const Importante = {
-  args: { iconeCategoria: categoriaMock, escuro: true, tipo: 'importante' },
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: true,
+    tipo: 'importante',
+  },
 };
 Importante.parameters = {
   docs: {
@@ -93,17 +122,31 @@ Importante.parameters = {
   },
 };
 
-export const Alerta = { args: { iconeCategoria: categoriaMock, escuro: true, tipo: 'alerta' } };
+export const Alerta = {
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: true,
+    tipo: 'alerta',
+  },
+};
 Alerta.parameters = {
   docs: {
     description: {
       story:
-        'Ícone com borda na cor de alerta (amarelo/laranja) para eventos que要求 atenção moderada.',
+        'Ícone com borda na cor de alerta (amarelo/laranja) para eventos que pedem atenção moderada.',
     },
   },
 };
 
-export const Sucesso = { args: { iconeCategoria: categoriaMock, escuro: true, tipo: 'sucesso' } };
+export const Sucesso = {
+  args: {
+    iconeCategoria: categoriaMock,
+    categoria: nomeCategoriaMock,
+    escuro: true,
+    tipo: 'sucesso',
+  },
+};
 Sucesso.parameters = {
   docs: {
     description: {
@@ -115,17 +158,19 @@ Sucesso.parameters = {
 export const CoresCustomizadas = {
   args: {
     iconeCategoria: 'palette',
+    categoria: 'Personalizada',
     escuro: true,
     tipo: 'padrao',
     borderColor: '#7c3aed',
     backgroundColor: '#ede9fe',
+    color: '#5b21b6',
   },
 };
 CoresCustomizadas.parameters = {
   docs: {
     description: {
       story:
-        'Demonstração das props \`borderColor\` e \`backgroundColor\` para customização completa de cores.',
+        'Demonstração das props \`borderColor\`, \`backgroundColor\` e \`color\` para customização completa de cores. O fundo customizado não muda com o tema, por isso a cor do ícone também é definida.',
     },
   },
 };

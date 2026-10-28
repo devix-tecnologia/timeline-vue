@@ -1,9 +1,18 @@
 {
   "version": "1.0.3",
+  "automation": {
+    "level": "autopilot",
+    "autoSync": true,
+    "ciSkipTag": "[skip ci]",
+    "defaultBranch": "develop"
+  },
   "provider": {
     "type": "fs",
     "config": {
       "tasksDir": "TASKS"
     }
+  },
+  "hookConfig": {
+    "baseBranch": "develop"
   }
 }

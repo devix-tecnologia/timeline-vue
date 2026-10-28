@@ -65,35 +65,35 @@ export default defineComponent({
 
 .btn.realizado {
   border: 1px solid var(--cor-sucesso);
-  color: #008212;
+  color: var(--cor-sucesso-sobre-fundo);
 }
 .btn.realizado:active,
 .btn.preenchido.realizado {
   background: var(--cor-sucesso);
-  color: var(--cor-texto);
+  color: var(--cor-texto-sucesso);
 }
 .btn.realizado:active .icone::before,
 .btn.preenchido.realizado .icone::before {
-  color: var(--cor-texto);
+  color: var(--cor-texto-sucesso);
 }
 
 .btn.cancelado {
   border: 1px solid var(--cor-importante);
-  color: #c42020;
+  color: var(--cor-importante-sobre-fundo);
 }
 .btn.cancelado:active,
 .btn.preenchido.cancelado {
   background: var(--cor-importante);
-  color: var(--cor-texto);
+  color: var(--cor-texto-importante);
 }
 .btn.cancelado:active .icone::before,
 .btn.preenchido.cancelado .icone::before {
-  color: var(--cor-texto);
+  color: var(--cor-texto-importante);
 }
 
 .btn.atrasado {
   border: 1px solid var(--cor-alerta);
-  color: #8a7300;
+  color: var(--cor-alerta-sobre-fundo);
 }
 
 .btn.atrasado:active,
@@ -107,8 +107,8 @@ export default defineComponent({
 }
 
 .btn.adiado {
-  border: 1px solid #3d4f57;
-  color: #3d4f57;
+  border: 1px solid var(--cor-apoio-sobre-fundo);
+  color: var(--cor-apoio-sobre-fundo);
 }
 
 .btn.adiado:active,

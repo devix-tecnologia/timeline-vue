@@ -1,7 +1,17 @@
 <template>
   <div class="areaCategoria">
-    <div class="iconeCategoria" :class="classes" :style="style" :alt="categoria">
-      <span class="material-symbols-outlined"> {{ iconeCategoria }} </span>
+    <div
+      class="iconeCategoria"
+      :class="classes"
+      :style="style"
+      :role="categoria ? 'img' : undefined"
+      :aria-label="categoria || undefined"
+    >
+      <span
+        class="material-symbols-outlined"
+        :data-icone="iconeCategoria"
+        aria-hidden="true"
+      ></span>
     </div>
   </div>
 </template>
@@ -33,6 +43,9 @@ export default defineComponent({
     backgroundColor: {
       type: String,
     },
+    color: {
+      type: String,
+    },
   },
   setup(props) {
     props = reactive(props);
@@ -45,6 +58,7 @@ export default defineComponent({
       style: computed(() => ({
         borderColor: props.borderColor,
         backgroundColor: props.backgroundColor,
+        color: props.color,
       })),
     };
   },
@@ -77,6 +91,14 @@ export default defineComponent({
 
 .iconeCategoria span {
   font-size: 2rem;
+}
+
+/*
+ * O nome do ícone vem do atributo, num pseudo-elemento. Como texto do DOM, a ligadura
+ * seria medida pelo axe como texto comum sempre que a fonte ainda não tivesse carregado.
+ */
+.iconeCategoria span::before {
+  content: attr(data-icone);
 }
 
 .iconeCategoria.bg-claro {

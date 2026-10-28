@@ -1,6 +1,8 @@
 import { render, fireEvent } from '@testing-library/vue';
+import { defineComponent, h, nextTick } from 'vue';
+import type { Mock } from 'vitest';
 import Timeline from './Timeline.vue';
-import { dadosPerfil } from './Timeline.mock';
+import { dadosPerfil, dadosPerfilMensageira, gerarEventosFilosofia } from './Timeline.mock';
 import { Evento } from '../type';
 
 describe('Timeline.vue', () => {
@@ -92,5 +94,266 @@ describe('Timeline.vue', () => {
 
     // Verifica se o evento NÃO foi emitido
     expect(emitted().eventoClick).toBeUndefined();
+  });
+
+  describe('aparencia', () => {
+    const referencia = new Date(2026, 9, 7, 12, 0);
+
+    it('usa a aparência padrao quando a prop não é informada', () => {
+      const { container } = render(Timeline, {
+        props: { eventosTimeline: gerarEventosFilosofia(referencia) },
+      });
+
+      expect(container.querySelector('.timeline--padrao')).toBeTruthy();
+      expect(container.querySelectorAll('.separadorPeriodo')).toHaveLength(4);
+      expect(container.querySelectorAll('.eventoTimeline')).toHaveLength(12);
+      expect(container.querySelector('.eventoCartao')).toBeNull();
+    });
+
+    it('troca separadores e eventos pelos cartões na aparência cartoes', () => {
+      const { container } = render(Timeline, {
+        props: {
+          aparencia: 'cartoes',
+          perfilTimeline: dadosPerfilMensageira,
+          eventosTimeline: gerarEventosFilosofia(referencia),
+        },
+      });
+
+      expect(container.querySelector('.timeline--cartoes')).toBeTruthy();
+      expect(container.querySelectorAll('.separadorCartao')).toHaveLength(4);
+      expect(container.querySelectorAll('.eventoCartao')).toHaveLength(12);
+      expect(container.querySelector('.eventoTimeline')).toBeNull();
+      expect(container.querySelector('.separadorPeriodo')).toBeNull();
+    });
+
+    it('na aparência cartoes, emite "eventoClick" com o evento clicado', async () => {
+      const eventos = gerarEventosFilosofia(referencia);
+      const { emitted, getByRole } = render(Timeline, {
+        props: { aparencia: 'cartoes', eventosTimeline: eventos },
+      });
+
+      await fireEvent.click(getByRole('button', { name: 'Telegrama para Nietzsche' }));
+
+      const eventoClick = emitted().eventoClick as [Evento, MouseEvent][];
+      expect(eventoClick).toHaveLength(1);
+      expect(eventoClick[0][0].titulo).toBe('Telegrama para Nietzsche');
+    });
+
+    it('na aparência cartoes, mostra o evento não clicável sem botão', () => {
+      const eventos = gerarEventosFilosofia(referencia).map((evento) => ({
+        ...evento,
+        clicavel: false,
+      }));
+      const { queryAllByRole } = render(Timeline, {
+        props: { aparencia: 'cartoes', eventosTimeline: eventos },
+      });
+
+      expect(queryAllByRole('button')).toHaveLength(0);
+    });
+
+    it('troca separadores e eventos pelos da aparência filosofia, com as ações', () => {
+      const { container, getAllByRole } = render(Timeline, {
+        props: { aparencia: 'filosofia', eventosTimeline: gerarEventosFilosofia(referencia) },
+      });
+
+      expect(container.querySelector('.timeline--filosofia')).toBeTruthy();
+      expect(container.querySelectorAll('.separadorFilosofia')).toHaveLength(4);
+      expect(container.querySelectorAll('.eventoFilosofia')).toHaveLength(12);
+      expect(getAllByRole('button', { name: 'Concluir' }).length).toBeGreaterThan(0);
+    });
+
+    it('na aparência filosofia, emite "acaoClick" com o evento e a ação', async () => {
+      const { getByRole, emitted } = render(Timeline, {
+        props: { aparencia: 'filosofia', eventosTimeline: gerarEventosFilosofia(referencia) },
+      });
+
+      await fireEvent.click(getByRole('button', { name: 'Reagendar' }));
+
+      const [evento, acao] = emitted().acaoClick[0] as [Evento, { id: string }];
+      expect(evento.titulo).toBe('Pombo-correio para Diógenes');
+      expect(acao.id).toBe('reagendar');
+      expect(emitted().eventoClick).toBeUndefined();
+    });
+
+    it('nas aparências sem ações, não põe as ações como atributo no evento', () => {
+      const { container } = render(Timeline, {
+        props: { aparencia: 'cartoes', eventosTimeline: gerarEventosFilosofia(referencia) },
+      });
+
+      expect(container.querySelector('[acoes]')).toBeNull();
+    });
+  });
+
+  // task-003, item 7: reatividade à prop, sem reordenar a lista recebida e sem vazar o intervalo.
+  describe('lista recebida', () => {
+    const referencia = new Date(2026, 9, 7, 12, 0);
+
+    it('acompanha a troca da prop', async () => {
+      const eventos = gerarEventosFilosofia(referencia);
+      const { container, rerender } = render(Timeline, {
+        props: { aparencia: 'cartoes', eventosTimeline: eventos },
+      });
+      expect(container.querySelectorAll('.eventoCartao')).toHaveLength(12);
+
+      await rerender({ aparencia: 'cartoes', eventosTimeline: eventos.slice(0, 2) });
+
+      expect(container.querySelectorAll('.eventoCartao')).toHaveLength(2);
+    });
+
+    it('não muda a ordem da lista de quem usa a Timeline', () => {
+      const eventos = gerarEventosFilosofia(referencia).reverse();
+      const ordemRecebida = eventos.map((evento) => evento.titulo);
+
+      render(Timeline, { props: { eventosTimeline: eventos } });
+
+      expect(eventos.map((evento) => evento.titulo)).toEqual(ordemRecebida);
+    });
+
+    it('cria um intervalo ao montar e o limpa ao desmontar', () => {
+      const criar = vi.spyOn(globalThis, 'setInterval');
+      const limpar = vi.spyOn(globalThis, 'clearInterval');
+
+      const { unmount } = render(Timeline, {
+        props: { eventosTimeline: gerarEventosFilosofia(referencia) },
+      });
+      expect(criar).toHaveBeenCalledTimes(1);
+
+      unmount();
+      expect(limpar).toHaveBeenCalledWith(criar.mock.results[0].value);
+
+      criar.mockRestore();
+      limpar.mockRestore();
+    });
+  });
+
+  // task-005: a rolagem até o evento atual fica dentro da própria Timeline.
+  describe('rolagem até o evento atual', () => {
+    const referencia = new Date(2026, 9, 7, 12, 0);
+
+    // Timelines dentro de contêineres com o overflow informado, como quem usa a biblioteca faria.
+    const montar = (
+      overflows: string[],
+      props: Record<string, unknown> = {}
+    ): ReturnType<typeof render> =>
+      render(
+        defineComponent({
+          setup: () => () =>
+            h(
+              'div',
+              overflows.map((overflow, indice) =>
+                h(
+                  'div',
+                  {
+                    'data-testid': `conteiner-${indice}`,
+                    style: `height: 200px; overflow-y: ${overflow}`,
+                  },
+                  [h(Timeline, { eventosTimeline: gerarEventosFilosofia(referencia), ...props })]
+                )
+              )
+            ),
+        })
+      );
+
+    let scrollTo: ReturnType<typeof vi.spyOn>;
+    let scrollIntoView: Mock<Element['scrollIntoView']>;
+    const scrollIntoViewOriginal = HTMLElement.prototype.scrollIntoView;
+    let scrollDaJanela: ReturnType<typeof vi.spyOn>;
+
+    beforeEach(() => {
+      scrollTo = vi.spyOn(HTMLElement.prototype, 'scrollTo').mockImplementation(function (
+        this: HTMLElement,
+        opcoes?: ScrollToOptions | number
+      ) {
+        if (typeof opcoes === 'object') this.scrollTop = opcoes.top ?? 0;
+      });
+      scrollIntoView = vi.fn<Element['scrollIntoView']>();
+      HTMLElement.prototype.scrollIntoView = scrollIntoView;
+      scrollDaJanela = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+      vi.restoreAllMocks();
+      HTMLElement.prototype.scrollIntoView = scrollIntoViewOriginal;
+    });
+
+    const contextos = () => scrollTo.mock.contexts as HTMLElement[];
+
+    it('com duas timelines, cada uma rola só o próprio contêiner, e a página não rola', () => {
+      const { getByTestId } = montar(['auto', 'auto']);
+
+      expect(contextos()).toEqual([getByTestId('conteiner-0'), getByTestId('conteiner-1')]);
+      expect(scrollIntoView).not.toHaveBeenCalled();
+      expect(scrollDaJanela).not.toHaveBeenCalled();
+    });
+
+    it('procura o evento atual dentro da própria Timeline', () => {
+      const posicoes: HTMLElement[] = [];
+      const original = HTMLElement.prototype.getBoundingClientRect;
+      vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockImplementation(function (
+        this: HTMLElement
+      ) {
+        if (this.classList.contains('atual')) posicoes.push(this);
+        return original.call(this);
+      });
+
+      const { getByTestId } = montar(['auto', 'auto']);
+
+      expect(posicoes).toHaveLength(2);
+      expect(getByTestId('conteiner-0').contains(posicoes[0])).toBe(true);
+      expect(getByTestId('conteiner-1').contains(posicoes[1])).toBe(true);
+    });
+
+    it('não rola um contêiner com overflow hidden', () => {
+      const { getByTestId } = montar(['hidden']);
+
+      expect(scrollTo).not.toHaveBeenCalled();
+      expect(getByTestId('conteiner-0').scrollTop).toBe(0);
+      expect(scrollIntoView).not.toHaveBeenCalled();
+      expect(scrollDaJanela).not.toHaveBeenCalled();
+    });
+
+    it('com rolarAteOAtual desligado, não rola nada, nem quando a lista muda', async () => {
+      const eventos = gerarEventosFilosofia(referencia);
+      const { rerender } = render(Timeline, {
+        props: { eventosTimeline: eventos, rolarAteOAtual: false },
+        attrs: { style: 'height: 200px; overflow-y: auto' },
+      });
+
+      await rerender({ eventosTimeline: gerarEventosFilosofia(referencia), rolarAteOAtual: false });
+      await nextTick();
+
+      expect(scrollTo).not.toHaveBeenCalled();
+      expect(scrollIntoView).not.toHaveBeenCalled();
+      expect(scrollDaJanela).not.toHaveBeenCalled();
+    });
+
+    it('rola de novo quando a lista muda', async () => {
+      const eventos = gerarEventosFilosofia(referencia);
+      const { rerender } = render(Timeline, {
+        props: { eventosTimeline: eventos },
+        attrs: { style: 'height: 200px; overflow-y: auto' },
+      });
+      expect(scrollTo).toHaveBeenCalledTimes(1);
+
+      await rerender({ eventosTimeline: gerarEventosFilosofia(referencia) });
+      await nextTick();
+
+      expect(scrollTo).toHaveBeenCalledTimes(2);
+    });
+
+    it('o intervalo de 60 s não volta ao evento atual depois de a pessoa rolar', () => {
+      vi.useFakeTimers();
+      vi.setSystemTime(referencia);
+      const { getByTestId } = montar(['auto']);
+      const conteiner = getByTestId('conteiner-0');
+      expect(scrollTo).toHaveBeenCalledTimes(1);
+
+      conteiner.scrollTop = 37;
+      vi.advanceTimersByTime(3 * 60000);
+
+      expect(scrollTo).toHaveBeenCalledTimes(1);
+      expect(conteiner.scrollTop).toBe(37);
+    });
   });
 });

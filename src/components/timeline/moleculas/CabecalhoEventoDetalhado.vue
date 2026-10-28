@@ -95,11 +95,11 @@ export default defineComponent({
 }
 
 .criticidade-alta .criticidade {
-  color: #c42020;
+  color: var(--cor-importante-sobre-fundo);
 }
 
 .criticidade-media .criticidade {
-  color: #8a7300;
+  color: var(--cor-alerta-sobre-fundo);
 }
 
 .titulo {

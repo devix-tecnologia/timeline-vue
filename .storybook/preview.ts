@@ -1,6 +1,7 @@
 import '@fontsource/material-icons';
 import '../src/global.css';
 import type { Preview } from '@storybook/vue3-vite';
+import { verificaContrasteIcones } from './contrasteIcones';
 
 const preview: Preview = {
   parameters: {
@@ -29,6 +30,13 @@ const preview: Preview = {
   },
 
   tags: ['autodocs'],
+
+  // O axe não mede os ícones; o contraste deles com o fundo é verificado aqui. Uma story fica
+  // de fora com `parameters: { contrasteIcones: 'off' }`.
+  afterEach: async ({ canvasElement, parameters, viewMode }) => {
+    if (viewMode !== 'story' || parameters.contrasteIcones === 'off') return;
+    await verificaContrasteIcones(canvasElement);
+  },
 };
 
 export default preview;

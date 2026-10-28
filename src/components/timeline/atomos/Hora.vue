@@ -1,11 +1,10 @@
 <template>
-  <div class="hora" :class="classes">
-    {{ horas.getHours() }}:{{ horas.getMinutes().toString().padStart(2, '0') }}
-  </div>
+  <div class="hora" :class="classes">{{ texto }}</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, computed } from 'vue';
+import { horaCurta } from '../utils/datas';
 
 export default defineComponent({
   name: 'Hora',
@@ -24,10 +23,8 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const horas = ref(new Date(props.hora));
-
     return {
-      horas,
+      texto: computed(() => horaCurta(new Date(props.hora))),
       classes: computed(() => ({
         [`hora-${props.aparencia || ''}`]: true,
       })),

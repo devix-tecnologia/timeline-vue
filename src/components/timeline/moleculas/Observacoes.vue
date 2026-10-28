@@ -90,6 +90,7 @@ export default defineComponent({
 .btn:hover,
 .btn:active {
   background: var(--cor-acao);
+  color: var(--cor-texto-acao);
 }
 
 .lista-obs {

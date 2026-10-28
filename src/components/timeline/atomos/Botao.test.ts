@@ -24,4 +24,47 @@ describe('Botao.vue', () => {
     // Verifica se o evento foi emitido
     expect(emitted().click).toBeTruthy();
   });
+
+  it.each([
+    [Aparencias.PREENCHIDO, Tamanhos.PEQUENO],
+    [Aparencias.VAZIO, Tamanhos.GRANDE],
+  ])('aplica a aparência %s e o tamanho %s como classes do botão', (aparencia, tamanho) => {
+    const { getByTestId } = render(Botao, { props: { aparencia, tamanho, titulo: 'Salvar' } });
+
+    expect(getByTestId('botao').classList).toContain(aparencia);
+    expect(getByTestId('botao').classList).toContain(tamanho);
+  });
+
+  it('é outline e médio por padrão', () => {
+    const { getByTestId } = render(Botao, { props: { titulo: 'Salvar' } });
+
+    expect(getByTestId('botao').classList).toContain(Aparencias.OUTLINE);
+    expect(getByTestId('botao').classList).toContain(Tamanhos.MEDIO);
+  });
+
+  it('deixa o nome da ligadura fora do nome acessível quando há título', () => {
+    const { getByRole } = render(Botao, { props: { icone: 'check', titulo: 'Concluir' } });
+
+    expect(getByRole('button', { name: 'Concluir' })).toBeTruthy();
+  });
+
+  it('só com ícone e aria-label, deixa o nome da ligadura fora do conteúdo acessível', () => {
+    const { getByTestId } = render(Botao, {
+      props: { icone: 'more_horiz' },
+      attrs: { 'aria-label': 'Mais ações' },
+    });
+
+    const botao = getByTestId('botao');
+    const icone = botao.querySelector('.material-symbols-outlined');
+    expect(botao.getAttribute('aria-label')).toBe('Mais ações');
+    expect(icone?.getAttribute('aria-hidden')).toBe('true');
+    expect(icone?.getAttribute('data-icone')).toBe('more_horiz');
+    expect(botao.textContent?.trim()).toBe('');
+  });
+
+  it('centraliza o ícone quando não há título', () => {
+    const { getByTestId } = render(Botao, { props: { icone: 'more_horiz' } });
+
+    expect(getByTestId('botao').querySelector('.btn__icone--sozinho')).toBeTruthy();
+  });
 });

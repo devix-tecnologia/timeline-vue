@@ -37,12 +37,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: '11.21'
+          version: '11.28'
 
       - name: Ensure pnpm is available
         run: |
           if ! command -v pnpm >/dev/null; then
-            npm install -g pnpm@11.21
+            npm install -g pnpm@11.28
           fi
         shell: bash
 
@@ -54,6 +54,9 @@ jobs:
 
       - name: Lint
         run: pnpm run lint
+
+      - name: Typecheck
+        run: pnpm run typecheck
 
       - name: Build
         run: pnpm run build
@@ -79,12 +82,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: '11.21'
+          version: '11.28'
 
       - name: Ensure pnpm is available
         run: |
           if ! command -v pnpm >/dev/null; then
-            npm install -g pnpm@11.21
+            npm install -g pnpm@11.28
           fi
         shell: bash
 
@@ -120,12 +123,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: '11.21'
+          version: '11.28'
 
       - name: Ensure pnpm is available
         run: |
           if ! command -v pnpm >/dev/null; then
-            npm install -g pnpm@11.21
+            npm install -g pnpm@11.28
           fi
         shell: bash
 

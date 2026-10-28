@@ -1,7 +1,25 @@
 <template>
-  <button class="btn" data-testid="botao" @click="handleClick">
+  <button class="btn" :class="classes" data-testid="botao" @click="handleClick">
     <slot>
-      <span v-if="icone" class="material-symbols-outlined"> {{ icone }} </span>
+      <!--
+        Com título ou aria-label, o ícone é decorativo: fica num pseudo-elemento, fora do texto
+        do botão, para o nome acessível conter o texto visível (WCAG 2.5.3) mesmo antes de a
+        fonte dos ícones carregar. Sem nenhum dos dois, a ligadura é o único nome do botão.
+      -->
+      <span
+        v-if="icone && (titulo || $attrs['aria-label'])"
+        class="material-symbols-outlined btn__icone"
+        :class="{ 'btn__icone--sozinho': !titulo }"
+        :data-icone="icone"
+        aria-hidden="true"
+      ></span>
+      <span
+        v-else-if="icone"
+        class="material-symbols-outlined"
+        :class="{ 'btn__icone--sozinho': !titulo }"
+      >
+        {{ icone }}
+      </span>
       {{ titulo }}
     </slot>
   </button>
@@ -78,6 +96,15 @@ export default defineComponent({
 
 .btn span {
   padding-right: 1.4rem;
+}
+
+/* Sem título, o ícone fica no centro do botão. */
+.btn__icone::before {
+  content: attr(data-icone);
+}
+
+.btn span.btn__icone--sozinho {
+  padding-right: 0;
 }
 
 .btn.preenchido {

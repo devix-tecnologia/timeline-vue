@@ -71,7 +71,7 @@ export default defineComponent({
     };
     const perfilTimeline = {
       nome: 'Maria do Socorro',
-      imagem: 'https://images.unsplash.com/photo-1526080652727-5b77f74eacd2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80',
+      imagem: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Woman_in_cardigan.jpg/250px-Woman_in_cardigan.jpg',
       icone: 'person'
     }
     const listaEventos = [
@@ -119,29 +119,56 @@ export default defineComponent({
 
 ### ✨ Customização de estilos
 
-Para customizar o visual da Timeline de acordo com a identidade visual da aplicação basta adicionar o código a seguir no CSS e alterar de acordo com a necessidade.
+As cores de todos os componentes vêm de tokens `--cor-*`. Cada token traz o valor do tema claro e o do escuro, em [`light-dark()`](https://developer.mozilla.org/docs/Web/CSS/color_value/light-dark), e o tema segue o do sistema.
+
+#### Tema claro e escuro
+
+Para uma aplicação com botão de tema, `data-tema="claro"` ou `data-tema="escuro"` força um dos dois, na página inteira (no `html`) ou só num contêiner:
+
+```html
+<html data-tema="escuro">
+  <!-- ... -->
+</html>
+```
+
+#### Marca
+
+Para aplicar a identidade visual de uma marca, redefina os tokens no mesmo formato: o primeiro valor vale no tema claro, o segundo no escuro. Um valor sem `light-dark()` vale nos dois. Pode ser na página toda (`:root`) ou num contêiner, para a marca valer só ali:
 
 ```css
 :root {
   --fonte: 'Work Sans', sans-serif;
-  font-size: 62.5%;
 
-  --cor-primaria: #00e01d;
-  --cor-secundaria: #1b2f39;
-  --cor-terciaria: #ebf1f2;
+  --cor-primaria: light-dark(#4338ca, #a5b4fc);
+  --cor-secundaria: light-dark(#312e81, #c7d2fe);
+  --cor-terciaria: light-dark(#eef0f8, #1c1f2e);
 
-  --cor-fundo: #fff;
+  --cor-fundo: light-dark(#ffffff, #11131c);
 
-  --cor-selecao: #ccf9d2;
-  --cor-texto-selecao: #1b2f39;
-  --cor-texto: #1b2f39;
+  --cor-selecao: light-dark(#e0e7ff, #2b2f5c);
+  --cor-texto-selecao: light-dark(#1e1b4b, #eef0ff);
+  --cor-texto: light-dark(#1a1c2b, #eceef6);
 
-  --cor-apoio: #57676f;
-  --cor-linha: #e9eaeb;
+  --cor-apoio: light-dark(#5b6072, #9aa1b5);
+  --cor-linha: light-dark(#e3e5ee, #2a2e40);
 
-  --cor-importante: #bb0202;
-  --cor-alerta: #f0cc0d;
-  --cor-sucesso: #00a816;
+  --cor-importante: light-dark(#c62828, #f87171);
+  --cor-alerta: light-dark(#e39b17, #fbbf24);
+  --cor-sucesso: light-dark(#15803d, #4ade80);
+  --cor-acao: light-dark(#4338ca, #a5b4fc);
+
+  /* Texto sobre os fundos de ação, sucesso e importante. */
+  --cor-texto-acao: light-dark(#ffffff, #11131c);
+  --cor-texto-sucesso: light-dark(#ffffff, #0b1a10);
+  --cor-texto-importante: light-dark(#ffffff, #1a0b0b);
+
+  /* A cor do status como texto sobre o --cor-fundo (contornos e rótulos). */
+  --cor-sucesso-sobre-fundo: light-dark(#15803d, #4ade80);
+  --cor-importante-sobre-fundo: light-dark(#c62828, #f87171);
+  --cor-alerta-sobre-fundo: light-dark(#8a5a00, #fbbf24);
+  --cor-apoio-sobre-fundo: light-dark(#4b5162, #9aa1b5);
+
+  --cor-sombra: light-dark(rgba(67, 56, 202, 0.12), rgba(0, 0, 0, 0.5));
 }
 
 body {
@@ -151,6 +178,8 @@ body {
 }
 ```
 
+Confira o contraste da marca nos dois temas: no Storybook, a story **Organismos/Timeline › Temas e marca** mostra o tema padrão e o de uma marca de exemplo, no claro e no escuro, e os testes passam o axe nos dois temas.
+
 ### Propriedades:
 
 A Timeline ordena e lista Eventos de forma crescente de acordo com a data/hora cadastrada.
@@ -158,6 +187,143 @@ A Timeline ordena e lista Eventos de forma crescente de acordo com a data/hora c
 Cada Evento mostra a hora prevista, hora em que o evento foi realizado, título, subtítulo, ícone de categoria, ícone de status, indicação de criticidade e campo para informação em destaque.
 
 ![TimelineDevixExemploEvento](https://github.com/devix-tecnologia/timeline-vue/blob/044648477f0b124c6968d4e84de6781d7633b984/docs/evento.png)
+
+### Rolagem até o evento atual
+
+A Timeline marca como atual o evento planejado ou atrasado mais próximo do horário corrente. Ao montar e quando a lista de eventos muda, ela centraliza esse evento no primeiro ancestral com `overflow-y` `auto` ou `scroll`, que pode ser a própria Timeline:
+
+```vue
+<div style="height: 40rem; overflow-y: auto">
+  <Timeline :eventosTimeline="listaEventos" />
+</div>
+```
+
+- Só esse contêiner rola: a página e os contêineres com `overflow: hidden` não mudam de posição. Sem um contêiner que role, nada rola.
+- Cada Timeline procura o próprio evento atual, então várias Timelines na mesma página se posicionam cada uma no seu.
+- A atualização a cada minuto, que acompanha o relógio, não rola de novo: a posição que a pessoa escolheu fica.
+
+Para cuidar da posição por conta própria, desligue a rolagem com a prop `rolarAteOAtual` (padrão `true`):
+
+```vue
+<Timeline :eventosTimeline="listaEventos" :rolarAteOAtual="false" />
+```
+
+### Aparências
+
+A prop `aparencia` muda a forma de representar os eventos, com os mesmos dados:
+
+| Valor               | Como os eventos aparecem                                                                                                                        |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `padrao` (o padrão) | Linha vertical, com a hora à esquerda e o ícone da categoria sobre a linha.                                                                     |
+| `cartoes`           | Um cartão por evento ao lado de um trilho, com o status por extenso e etiquetas de categoria, prioridade e destaque. O dia aparece por extenso. |
+| `filosofia`         | A hora à esquerda, o marcador do status sobre o trilho e um cartão com o status, o cliente e as ações do evento.                                |
+
+```vue
+<Timeline aparencia="cartoes" :perfilTimeline="perfilTimeline" :eventosTimeline="listaEventos" />
+```
+
+O tipo `AparenciaTimeline` é exportado pelo pacote. No Storybook, a story **Organismos/Timeline › Aparências lado a lado** mostra a mesma agenda em todas as aparências.
+
+#### Ações do evento
+
+Na aparência `filosofia`, cada evento pode trazer botões de ação no campo `acoes`. O clique sai no evento `acaoClick`, separado do `eventoClick`:
+
+```ts
+const evento = {
+  // ...
+  acoes: [
+    { id: 'abrir-carta', rotulo: 'Abrir carta', principal: true },
+    { id: 'mais-acoes', rotulo: 'Mais ações', icone: 'more_horiz', apenasIcone: true },
+  ],
+};
+```
+
+```vue
+<Timeline
+  aparencia="filosofia"
+  :eventosTimeline="listaEventos"
+  @acaoClick="(evento, acao) => executar(acao.id, evento)"
+/>
+```
+
+## 🧩 Telas prontas
+
+Além da `Timeline`, a biblioteca traz telas inteiras, prontas para usar, e os organismos com que elas são montadas. Quem usa a biblioteca passa os dados e trata os eventos; a navegação entre as etapas da tela fica com o componente.
+
+| Componente         | O que é                                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `TemplateAgenda`   | Tela de agenda: cabeçalho com o perfil, busca e as visões **Agenda** e **Histórico**.                   |
+| `TemplateTimeline` | Tela de acompanhamento: linha do tempo, detalhe do evento, edição do status e inclusão de observações.  |
+| `AgendaEventos`    | A agenda de um dia, com filtros: os atrasados em destaque, os próximos eventos e os concluídos.         |
+| `EventoDetalhado`  | O detalhe de um evento, com as observações e os botões para editar o status e adicionar uma observação. |
+| `EditarEvento`     | Moldura de edição, com os slots `conteudo` e `salvamento` e os botões de salvar e cancelar.             |
+
+No Storybook, cada uma tem stories em **Templates** e **Organismos**.
+
+### Tela de agenda (`TemplateAgenda`)
+
+No topo ficam a marca (slot `marca`), o avatar com as iniciais, o título, o nome e a função (`perfil.descricao`). Abaixo, a busca, que filtra pelo título, subtítulo, destaque e categoria, e a escolha entre duas visões:
+
+- **Agenda** (`AgendaEventos`): os pendentes que passaram do horário em destaque, os próximos eventos do dia e os concluídos, com os filtros Todos, Pendentes e Concluídos;
+- **Histórico**: os eventos já resolvidos (realizados, adiados e cancelados), na `Timeline` com a aparência `filosofia`.
+
+```vue
+<TemplateAgenda
+  :perfil="perfil"
+  :eventos="eventos"
+  @eventoClick="abrirEvento"
+  @acaoClick="(evento, acao) => executar(acao.id, evento)"
+  @diaClick="escolherDia"
+>
+  <template #marca><img src="/logo.svg" alt="Minha empresa" /></template>
+</TemplateAgenda>
+```
+
+| Prop            | Padrão      | Descrição                                                         |
+| --------------- | ----------- | ----------------------------------------------------------------- |
+| `perfil`        | —           | `Perfil` mostrado no topo (nome, imagem e `descricao`).           |
+| `eventos`       | —           | `Evento[]` da agenda e do histórico.                              |
+| `titulo`        | `'Eventos'` | Título da tela.                                                   |
+| `dia`           | hoje        | Dia mostrado na agenda.                                           |
+| `visaoInicial`  | `'agenda'`  | `'agenda'` ou `'historico'` (tipo `VisaoAgenda`).                 |
+| `filtroInicial` | `'todos'`   | `'todos'`, `'pendentes'` ou `'concluidos'` (tipo `FiltroAgenda`). |
+
+Eventos: `eventoClick(evento, mouseEvent)`, `acaoClick(evento, acao, mouseEvent)`, para as ações do campo `acoes` de cada evento, e `diaClick(mouseEvent)`, no dia da agenda, para quem quiser abrir um seletor de data.
+
+O `AgendaEventos` pode ser usado sozinho, com as props `eventos`, `dia` e `filtroInicial` e os mesmos três eventos. Ele não altera o status dos eventos: são pendentes os `planejado`, `atrasado` e `adiantado`.
+
+### Tela de acompanhamento (`TemplateTimeline`)
+
+Mostra a linha do tempo de uma pessoa e conduz as etapas a partir dela: ao clicar num evento, abre o detalhe (`EventoDetalhado`); do detalhe, a pessoa edita o status ou adiciona uma observação. O botão de voltar do topo leva de volta à linha do tempo; na linha do tempo, ele emite `voltarClick`, para quem usa o componente decidir para onde ir.
+
+```vue
+<TemplateTimeline
+  :perfil="perfil"
+  :eventos="eventosDetalhados"
+  @editarStatusSalvarClicked="(evento, status) => salvarStatus(evento, status)"
+  @adicionarObservacaoSalvarClicked="(evento, mensagem) => salvarObservacao(evento, mensagem)"
+  @voltarClick="sair"
+/>
+```
+
+Os eventos são do tipo `EventoDetalhado` (exportado em `TiposDetalhado`): um `Evento` com a lista de `observacoes`. A tela só avisa o que a pessoa fez; gravar o status e a observação fica com quem usa o componente. Os eventos emitidos são:
+
+| Evento                                 | Quando                                                    |
+| -------------------------------------- | --------------------------------------------------------- |
+| `eventoTimelineClicked`                | Um evento da linha do tempo foi aberto.                   |
+| `eventoStatusEditClicked`              | No detalhe, a pessoa pediu para editar o status.          |
+| `eventoDetalhadoObservacoesAddClicked` | No detalhe, a pessoa pediu para adicionar uma observação. |
+| `editarStatusSalvarClicked`            | O novo status foi salvo (`evento`, `status`).             |
+| `editarStatusCancelarClicked`          | A edição do status foi cancelada.                         |
+| `adicionarObservacaoSalvarClicked`     | A observação foi salva (`evento`, `mensagem`).            |
+| `adicionarObservacaoCancelarClicked`   | A inclusão da observação foi cancelada.                   |
+| `voltarClick`                          | O botão de voltar foi clicado na linha do tempo.          |
+
+Todos recebem o `MouseEvent` como último argumento.
+
+### Cores
+
+As telas usam os mesmos tokens `--cor-*` da [customização de estilos](#-customização-de-estilos), com os temas claro e escuro e o `data-tema`. Para aplicar a identidade de uma marca só numa parte da página, defina os tokens num contêiner em volta do componente; as stories do `TemplateAgenda` fazem isso com a marca fictícia FilosofiA. O logo entra pelo slot `marca`.
 
 ## 🚀 Contribuindo
 
@@ -234,8 +400,7 @@ Depois, compartilhe o `http://<sua-ip-local>:6006` com quem você quiser na mesm
 Para expor publicamente (internet), use uma ferramenta de túnel como `ngrok` ou `localtunnel`:
 
 ```sh
-# instalar ngrok (opcional)
-Faça um fork do projeto, crie uma nova branch e faça seus commits. Seguem passos para bons commits:
+# com ngrok
 ngrok http 6006
 
 # ou usar localtunnel
